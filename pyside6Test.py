@@ -1,0 +1,1 @@
+print('L o L')
