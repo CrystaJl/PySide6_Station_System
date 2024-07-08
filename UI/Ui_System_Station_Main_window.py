@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'SystemStationMainWindowAWfRgP.ui'
+## Form generated from reading UI file 'SystemStationMainWindowWUIyBW.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.1
 ##
@@ -51,14 +51,14 @@ class Ui_System_Station_Main_window(object):
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(616, 0, 181, 40))
         self.label.setFont(font)
-        self.main_settings_pushButton = QPushButton(self.Main_page)
-        self.main_settings_pushButton.setObjectName(u"main_settings_pushButton")
-        self.main_settings_pushButton.setGeometry(QRect(0, 0, 135, 40))
+        self.go_to_main_settings_pushButton = QPushButton(self.Main_page)
+        self.go_to_main_settings_pushButton.setObjectName(u"go_to_main_settings_pushButton")
+        self.go_to_main_settings_pushButton.setGeometry(QRect(0, 0, 135, 40))
         font2 = QFont()
         font2.setFamilies([u"Arial"])
         font2.setPointSize(14)
         font2.setBold(True)
-        self.main_settings_pushButton.setFont(font2)
+        self.go_to_main_settings_pushButton.setFont(font2)
         self.label_8 = QLabel(self.Main_page)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setGeometry(QRect(290, 360, 71, 71))
@@ -447,7 +447,7 @@ class Ui_System_Station_Main_window(object):
         self.label_12.setText(QCoreApplication.translate("System_Station_Main_window", u"\u041f", None))
         self.label_2.setText(QCoreApplication.translate("System_Station_Main_window", u"\u0412\u044b\u0445\u043e\u0434:    0.00     \u0411\u0430\u0440", None))
         self.label.setText(QCoreApplication.translate("System_Station_Main_window", u"07/07/2024 21:44", None))
-        self.main_settings_pushButton.setText(QCoreApplication.translate("System_Station_Main_window", u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438", None))
+        self.go_to_main_settings_pushButton.setText(QCoreApplication.translate("System_Station_Main_window", u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438", None))
         self.label_8.setText(QCoreApplication.translate("System_Station_Main_window", u"\u041f", None))
         self.main_first_pushButton.setText("")
         self.label_10.setText(QCoreApplication.translate("System_Station_Main_window", u"\u041f", None))
