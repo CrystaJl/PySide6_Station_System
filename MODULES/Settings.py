@@ -25,6 +25,7 @@ class System_Station_Main_window_settings:
 
         self.is_password = 1
         self.user_level = 0 #5
+        self.loh = 23493409
 
 class Password_window_settings:
     def setupPasswordWindowSettings(self, is_password, user_level):
