@@ -82,7 +82,7 @@ class System_Station_Main_window_settings:
 #Данный блок кода сфокусирован на подключение всех возможных кнопок, связанных с паролями и уровнями доступа, к окну, отвечающее за изменение доступа и за изменение атрибутов(future is comming)
 
         #Планировщик
-        self.manager_morning_1_pushButton.clicked.connect(self.show_password_window)
+        self.manager_morning_1_pushButton.clicked.connect(lambda: self.show_password_window(3))
         self.manager_morning_2_pushButton.clicked.connect(self.show_password_window)
         self.manager_morning_3_pushButton.clicked.connect(self.show_password_window)
         self.manager_morning_4_pushButton.clicked.connect(self.show_password_window)
@@ -209,10 +209,10 @@ class System_Station_Main_window_settings:
 
         self.is_password = 1
         self.user_level = 0 #5
+        self.level_access = 0
 
 class Password_window_settings:
-    def setupPasswordWindowSettings(self, is_password, user_level):
-        self.text_to_aply_label.setText('') #ФУ КОСТЫЛЕМ ВАНЯЕТ
+    def setupPasswordWindowSettings(self, is_password, user_level, level_access):
         self.number_0_pushButton.clicked.connect(lambda: self.append_text(0))
         self.number_1_pushButton.clicked.connect(lambda: self.append_text(1))
         self.number_2_pushButton.clicked.connect(lambda: self.append_text(2))
@@ -224,12 +224,14 @@ class Password_window_settings:
         self.number_8_pushButton.clicked.connect(lambda: self.append_text(8))
         self.number_9_pushButton.clicked.connect(lambda: self.append_text(9))
         self.set_comma_pushButton.clicked.connect(lambda: self.append_text(','))
-        self.clear_all_pushButton.clicked.connect(lambda: self.delete_all_text())
+        self.clear_all_pushButton.clicked.connect(lambda: self.text_to_aply_label.setText(''))
         self.delete_previous_pushButton.clicked.connect(lambda: self.delete_text())
         self.accept_password_window_pushButton.clicked.connect(lambda: self.set_changes())
         self.is_password = is_password
         self.user_level = user_level
-
+        self.level_access = level_access
+        self.give_them_text()
+        print(self.user_level, self.level_access)
 
         
     def append_text(self, text):
@@ -246,12 +248,13 @@ class Password_window_settings:
         new_text = str(current_text[:-1])
         self.text_to_aply_label.setText(new_text)
 
-    def delete_all_text(self):
+
+    def give_them_text(self):
         self.text_to_aply_label.setText('')
-
-
-    def give_them_text(self, role, level):
-        self.password_text_label.setText(f"min: {role}   max: {level}")
+        if int(self.user_level) >= int(self.level_access):
+            self.password_text_label.setText(f"min: {self.user_level}   max: {self.level_access}")
+        else:
+            self.password_text_label.setText("Введите пароль")
 
     def set_changes(self):
         current_text = str(self.text_to_aply_label.text())
@@ -265,9 +268,10 @@ class Password_window_settings:
                 role = details["role"]
                 level = details["level"]
                 print(f"Role for password '{current_text}' found: {role}, {level}")
-                self.user_level = role
-                print(self.user_level)
-                self.give_them_text(role, level)
+                self.user_level = level
+                self.give_them_text()
+                print(self.user_level, self.level_access)
+                
 
 
 
