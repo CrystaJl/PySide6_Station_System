@@ -209,10 +209,9 @@ class System_Station_Main_window_settings:
 
         self.is_password = 1
         self.user_level = 0 #5
-        self.level_access = 0
 
 class Password_window_settings:
-    def setupPasswordWindowSettings(self, is_password, user_level, level_access):
+    def setupPasswordWindowSettings(self, parent, requiered_level):
         self.number_0_pushButton.clicked.connect(lambda: self.append_text(0))
         self.number_1_pushButton.clicked.connect(lambda: self.append_text(1))
         self.number_2_pushButton.clicked.connect(lambda: self.append_text(2))
@@ -227,13 +226,34 @@ class Password_window_settings:
         self.clear_all_pushButton.clicked.connect(lambda: self.text_to_aply_label.setText(''))
         self.delete_previous_pushButton.clicked.connect(lambda: self.delete_text())
         self.accept_password_window_pushButton.clicked.connect(lambda: self.set_changes())
-        self.is_password = is_password
-        self.user_level = user_level
-        self.level_access = level_access
+        self.parent = parent
+        self.requiered_level = requiered_level
         self.give_them_text()
-        print(self.user_level, self.level_access)
+        print(self.parent.user_level, self.requiered_level)
 
-        
+    def give_them_text(self):
+        if not self.parent.is_password and self.parent.user_level >= self.requiered_level:
+            self.password_text_label.setText(f"min: {self.parent.user_level}   max: {self.requiered_level}")
+        else:
+            self.password_text_label.setText("Введите пароль")
+
+    def set_changes(self):
+        current_text = str(self.text_to_aply_label.text())
+
+        with open('users.json', 'r') as f:
+            passwords = json.load(f)
+            
+        for user, details in passwords.items():
+            if details["password"] == current_text:
+                role = details["role"]
+                level = int(details["level"])
+                print(f"Role for password '{current_text}' found: {role}, {level}")
+                if int(level) >= self.requiered_level:
+                    self.parent.is_password = 0
+                    self.parent.user_level = level
+                print(self.parent.user_level, self.requiered_level)
+        self.give_them_text()
+
     def append_text(self, text):
         current_text = str(self.text_to_aply_label.text())
         if text == ',':
@@ -247,32 +267,3 @@ class Password_window_settings:
         current_text = str(self.text_to_aply_label.text())
         new_text = str(current_text[:-1])
         self.text_to_aply_label.setText(new_text)
-
-
-    def give_them_text(self):
-        self.text_to_aply_label.setText('')
-        if int(self.user_level) >= int(self.level_access):
-            self.password_text_label.setText(f"min: {self.user_level}   max: {self.level_access}")
-        else:
-            self.password_text_label.setText("Введите пароль")
-
-    def set_changes(self):
-        current_text = str(self.text_to_aply_label.text())
-
-        with open('users.json', 'r') as f:
-            passwords = json.load(f)
-        
-            
-        for user, details in passwords.items():
-            if details["password"] == current_text:
-                role = details["role"]
-                level = details["level"]
-                print(f"Role for password '{current_text}' found: {role}, {level}")
-                self.user_level = level
-                self.give_them_text()
-                print(self.user_level, self.level_access)
-                
-
-
-
-        
