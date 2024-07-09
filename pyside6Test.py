@@ -13,8 +13,10 @@ class System_Station_Main_window(QWidget, Ui_System_Station_Main_window, System_
         self.setupUi(self)
         self.setupSystemStationMainSettings()
 
-    def show_password_window(self, requiered_level):
-        self.password_window = Password_window(self, requiered_level)
+    def show_password_window(self, requiered_level, current_button, min, max, text_to_change=""):
+        self.current_button = current_button
+        self.text_to_change = text_to_change
+        self.password_window = Password_window(self, requiered_level, min, max)
         self.password_window.setWindowModality(Qt.ApplicationModal)
         self.password_window.show()
 
