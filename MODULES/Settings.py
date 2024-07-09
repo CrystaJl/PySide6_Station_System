@@ -1,3 +1,4 @@
+import json
 class System_Station_Main_window_settings:
     def setupSystemStationMainSettings(self):
         #переключение между основным окном(страницей) и основными настройками
@@ -81,7 +82,7 @@ class System_Station_Main_window_settings:
 #Данный блок кода сфокусирован на подключение всех возможных кнопок, связанных с паролями и уровнями доступа, к окну, отвечающее за изменение доступа и за изменение атрибутов(future is comming)
 
         #Планировщик
-        self.manager_morning_1_pushButton.clicked.connect(self.show_password_window)
+        self.manager_morning_1_pushButton.clicked.connect(lambda: self.show_password_window(3))
         self.manager_morning_2_pushButton.clicked.connect(self.show_password_window)
         self.manager_morning_3_pushButton.clicked.connect(self.show_password_window)
         self.manager_morning_4_pushButton.clicked.connect(self.show_password_window)
@@ -210,7 +211,7 @@ class System_Station_Main_window_settings:
         self.user_level = 0 #5
 
 class Password_window_settings:
-    def setupPasswordWindowSettings(self, is_password, user_level):
+    def setupPasswordWindowSettings(self, parent, requiered_level):
         self.number_0_pushButton.clicked.connect(lambda: self.append_text(0))
         self.number_1_pushButton.clicked.connect(lambda: self.append_text(1))
         self.number_2_pushButton.clicked.connect(lambda: self.append_text(2))
@@ -222,14 +223,47 @@ class Password_window_settings:
         self.number_8_pushButton.clicked.connect(lambda: self.append_text(8))
         self.number_9_pushButton.clicked.connect(lambda: self.append_text(9))
         self.set_comma_pushButton.clicked.connect(lambda: self.append_text(','))
-        self.clear_all_pushButton.clicked.connect(lambda: self.append_text('clear'))
-        self.delete_previous_pushButton.clicked.connect(lambda: self.append_text('del_prev'))
-        self.accept_password_window_pushButton.clicked.connect(lambda: self.set_changes)
-        self.is_password = is_password
-        self.user_level = user_level
+        self.clear_all_pushButton.clicked.connect(lambda: self.text_to_aply_label.setText(''))
+        self.delete_previous_pushButton.clicked.connect(lambda: self.delete_text())
+        self.accept_password_window_pushButton.clicked.connect(lambda: self.set_changes())
+        self.parent = parent
+        self.requiered_level = requiered_level
+        self.give_them_text()
+        print(self.parent.user_level, self.requiered_level)
 
-    def append_text(self, text):
-        print(text)
+    def give_them_text(self):
+        if not self.parent.is_password and self.parent.user_level >= self.requiered_level:
+            self.password_text_label.setText(f"min: {self.parent.user_level}   max: {self.requiered_level}")
+        else:
+            self.password_text_label.setText("Введите пароль")
 
     def set_changes(self):
-        pass
+        current_text = str(self.text_to_aply_label.text())
+
+        with open('users.json', 'r') as f:
+            passwords = json.load(f)
+            
+        for user, details in passwords.items():
+            if details["password"] == current_text:
+                role = details["role"]
+                level = int(details["level"])
+                print(f"Role for password '{current_text}' found: {role}, {level}")
+                if int(level) >= self.requiered_level:
+                    self.parent.is_password = 0
+                    self.parent.user_level = level
+                print(self.parent.user_level, self.requiered_level)
+        self.give_them_text()
+
+    def append_text(self, text):
+        current_text = str(self.text_to_aply_label.text())
+        if text == ',':
+            if current_text == '' or "," in current_text:
+                text = ''
+
+        new_text = str(current_text + str(text))
+        self.text_to_aply_label.setText(new_text)
+
+    def delete_text(self):
+        current_text = str(self.text_to_aply_label.text())
+        new_text = str(current_text[:-1])
+        self.text_to_aply_label.setText(new_text)
