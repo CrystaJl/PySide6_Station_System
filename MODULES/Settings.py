@@ -1,4 +1,10 @@
+from PySide6.QtWidgets import QPushButton, QLabel
+from PySide6.QtGui import QIcon, QPixmap, QPainter
+from PySide6.QtCore import Qt
+from PySide6.QtSvg import QSvgRenderer
+
 import json
+import os
 
 
 class System_Station_Main_window_settings:
@@ -78,14 +84,15 @@ class System_Station_Main_window_settings:
         self.go_to_engineering_panel_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
         self.go_to_engineering_contacts_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(2))
 
-#Выше находится блок кода, отвечающий за подключение всех возможных кнопок, связанных со страницами кнопок и страницами основной работы с обурудованием, для полноценной работы в приложении(wow)
+#Выше находится блок кода, отвечающий за подключение всех возможных кнопок, связанных со страницами кнопок и страницами основной работы с обурудованием, для полноценной работы в приложении
 ###################################################################################################################################################################################################
 ###################################################################################################################################################################################################
-#Данный блок кода сфокусирован на подключение всех возможных кнопок, связанных с паролями и уровнями доступа, к окну, отвечающее за изменение доступа и за изменение атрибутов(future is comming)
+#Данный блок кода сфокусирован на подключение всех возможных кнопок, связанных с паролями и уровнями доступа, к окну, отвечающее за изменение доступа и за изменение атрибутов
 
         #Планировщик
         self.manager_morning_1_pushButton.clicked.connect(lambda: self.show_password_window(3, self.manager_morning_1_pushButton, 0, 50))
         self.manager_morning_2_pushButton.clicked.connect(lambda: self.show_password_window(4, self.manager_morning_2_pushButton, 0, 60))
+      
         self.manager_morning_3_pushButton.clicked.connect(self.show_password_window)
         self.manager_morning_4_pushButton.clicked.connect(self.show_password_window)
         self.manager_day_1_pushButton.clicked.connect(self.show_password_window)
@@ -195,7 +202,7 @@ class System_Station_Main_window_settings:
         self.station_settings_emergency_modes_critical_pressure_to_shutdown_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_emergency_modes_control_pipeline_rupture_pushButton.clicked.connect(self.show_password_window)
 
-        #Настройки пид-asujdaiu-регистрации                    (внутри инженерного меню)
+        #Настройки пид-регистрации                             (внутри инженерного меню)
         self.engineering_menu_pid_registration_settings_proportional_coefficient_pushButton.clicked.connect(self.show_password_window)
         self.engineering_menu_pid_registration_settings_integral_coefficient_pushButton.clicked.connect(self.show_password_window)
         self.engineering_menu_pid_registration_settings_differential_coefficient_pushButton.clicked.connect(self.show_password_window)
@@ -209,10 +216,91 @@ class System_Station_Main_window_settings:
         self.engineering_menu_backup_save_trends_pushButton.clicked.connect(self.show_password_window)
         self.engineering_menu_backup_factory_all_settings_pushButton.clicked.connect(self.show_password_window)
 
+        #ключевые атрибуты взаимодействия
         self.is_password = 1
-        self.user_level = 0 #5
+
+    
         self.current_button = None
         self.text_to_change = ""
+
+        self.user_level = 0
+
+        #атрибуты для работы с видом
+        self.icons_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ICONS")
+        self.svg_icons_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "SVGICONS")
+        self.current_theme = 'black'
+
+    def setupSystemStationMainWindowIcons(self):
+        if self.current_theme == 'white':
+            pass
+        else:
+            pass
+
+    def setupSystemStationMainWindowSvgIcons(self):
+        if self.current_theme == 'white':
+            pass
+        else:
+            pass
+
+
+        self.setSvgIcon(self.main_pump_all_icon_label, 'main_pump_all_icon_label_none_2.svg')
+
+        self.setSvgIcon(self.main_pump_icon_label_1_1, 'main_pump_up_icon_label_1.svg')
+        self.setSvgIcon(self.main_pump_icon_label_1_2, 'main_pump_down_icon_label_off.svg')
+        self.setSvgIcon(self.main_pump_icon_label_2_1, 'main_pump_up_icon_label_1.svg')
+        self.setSvgIcon(self.main_pump_icon_label_2_2, 'main_pump_down_icon_label_off.svg')
+        self.setSvgIcon(self.main_pump_icon_label_3_1, 'main_pump_up_icon_label_1.svg')
+        self.setSvgIcon(self.main_pump_icon_label_3_2, 'main_pump_down_icon_label_off.svg')
+        self.setSvgIcon(self.main_pump_icon_label_4_1, 'main_pump_up_icon_label_1.svg')
+        self.setSvgIcon(self.main_pump_icon_label_4_2, 'main_pump_down_icon_label_off.svg')
+        self.setSvgIcon(self.main_pump_icon_label_5_1, 'main_pump_up_icon_label_none.svg')
+        self.setSvgIcon(self.main_pump_icon_label_5_2, 'main_pump_down_icon_label_none.svg')
+        self.setSvgIcon(self.main_pump_icon_label_6_1, 'main_pump_up_icon_label_none.svg')
+        self.setSvgIcon(self.main_pump_icon_label_6_2, 'main_pump_down_icon_label_none.svg')
+
+        self.setSvgIcon(self.main_pump_icon_label_1, 'main_pump_icon_label_red.svg')
+        self.setSvgIcon(self.main_pump_icon_label_2, 'main_pump_icon_label_red.svg')
+        self.setSvgIcon(self.main_pump_icon_label_3, 'main_pump_icon_label_red.svg')
+        self.setSvgIcon(self.main_pump_icon_label_4, 'main_pump_icon_label_red.svg')
+        #self.setSvgIcon(self.main_pump_icon_label_5, 'main_pump_icon_label_black.svg')
+        #self.setSvgIcon(self.main_pump_icon_label_6, 'main_pump_icon_label_black.svg')
+
+        self.setSvgIcon(self.main_enter_statistic_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg')
+        self.setSvgIcon(self.main_exit_statistic_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg')
+
+        self.setSvgIcon(self.main_pipe_up_icon_label, 'main_pipe_up_icon_label_4_4.svg')
+        self.setSvgIcon(self.main_pipe_down_icon_label, 'main_pipe_down_icon_label_4_4.svg')
+
+
+        #self.setSvgIcon(self.main_pipe_up_icon_label, 'main_pipe_up_icon_label_1_1.svg')
+        #self.setSvgIcon(self.main_pipe_down_icon_label, 'main_pipe_down_icon_label_1_1.svg')
+
+
+    def setSvgIcon(self, widget, svg_filename):
+        svg_path = os.path.join(self.svg_icons_dir, svg_filename)
+
+        svg_renderer = QSvgRenderer(svg_path)
+        
+        # Получаем размер оригинального SVG
+        original_size = svg_renderer.defaultSize()
+        width = original_size.width()
+        height = original_size.height()
+
+        # Создаем QPixmap и отрисовываем SVG на нем
+        svg_image = QPixmap(width, height)
+        svg_image.fill(Qt.transparent)
+
+        painter = QPainter(svg_image)
+        svg_renderer.render(painter)
+        painter.end()
+
+        if isinstance(widget, QPushButton):
+            widget.setIcon(QIcon(svg_image))
+            widget.setIconSize(svg_image.size())
+        elif isinstance(widget, QLabel):
+            widget.setPixmap(svg_image)
+        #widget.setText('')
+
 
 class Password_window_settings:
     def setupPasswordWindowSettings(self, parent, requiered_level, min, max):

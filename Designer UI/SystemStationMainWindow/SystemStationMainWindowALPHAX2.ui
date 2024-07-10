@@ -40,7 +40,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_3">
      <property name="geometry">
       <rect>
-       <x>390</x>
+       <x>404</x>
        <y>360</y>
        <width>71</width>
        <height>71</height>
@@ -61,12 +61,12 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="main_exit_statistic_just_label">
+    <widget class="QLabel" name="main_exit_statistic_icon_label">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>320</y>
-       <width>151</width>
+       <y>322</y>
+       <width>161</width>
        <height>31</height>
       </rect>
      </property>
@@ -79,7 +79,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       </font>
      </property>
      <property name="text">
-      <string>Выход:                Бар</string>
+      <string/>
      </property>
     </widget>
     <widget class="QLabel" name="main_time_label">
@@ -127,7 +127,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_2">
      <property name="geometry">
       <rect>
-       <x>290</x>
+       <x>306</x>
        <y>360</y>
        <width>71</width>
        <height>71</height>
@@ -359,7 +359,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_5">
      <property name="geometry">
       <rect>
-       <x>590</x>
+       <x>602</x>
        <y>360</y>
        <width>71</width>
        <height>71</height>
@@ -383,7 +383,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_6">
      <property name="geometry">
       <rect>
-       <x>690</x>
+       <x>700</x>
        <y>360</y>
        <width>71</width>
        <height>71</height>
@@ -407,9 +407,9 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_task_statistic_just_label">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>14</x>
        <y>350</y>
-       <width>151</width>
+       <width>71</width>
        <height>31</height>
       </rect>
      </property>
@@ -422,15 +422,15 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       </font>
      </property>
      <property name="text">
-      <string>Задание:             Бар</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#c00000;&quot;&gt; Задание:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="main_enter_statistic_just_label">
+    <widget class="QLabel" name="main_enter_statistic_icon_label">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>440</y>
-       <width>151</width>
+       <y>437</y>
+       <width>161</width>
        <height>31</height>
       </rect>
      </property>
@@ -443,13 +443,13 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       </font>
      </property>
      <property name="text">
-      <string>Вход:                   Бар</string>
+      <string/>
      </property>
     </widget>
     <widget class="QLabel" name="main_pump_icon_label_4">
      <property name="geometry">
       <rect>
-       <x>490</x>
+       <x>503</x>
        <y>360</y>
        <width>71</width>
        <height>71</height>
@@ -475,7 +475,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       <rect>
        <x>10</x>
        <y>380</y>
-       <width>151</width>
+       <width>75</width>
        <height>31</height>
       </rect>
      </property>
@@ -488,7 +488,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       </font>
      </property>
      <property name="text">
-      <string>∆:                          Бар</string>
+      <string> ∆:</string>
      </property>
     </widget>
     <widget class="QLabel" name="main_frequency_statistic_just_label">
@@ -496,7 +496,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       <rect>
        <x>10</x>
        <y>410</y>
-       <width>151</width>
+       <width>75</width>
        <height>31</height>
       </rect>
      </property>
@@ -509,13 +509,13 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       </font>
      </property>
      <property name="text">
-      <string>Частота:              Hz</string>
+      <string> Частота:</string>
      </property>
     </widget>
     <widget class="QLabel" name="main_pump_icon_label_1">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>207</x>
        <y>360</y>
        <width>71</width>
        <height>71</height>
@@ -565,9 +565,9 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_some_triangle_statistic_label">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>85</x>
        <y>380</y>
-       <width>51</width>
+       <width>86</width>
        <height>31</height>
       </rect>
      </property>
@@ -580,15 +580,15 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       </font>
      </property>
      <property name="text">
-      <string>-10.00</string>
+      <string>-10.00   Бар</string>
      </property>
     </widget>
     <widget class="QLabel" name="main_task_statistic_label">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>85</x>
        <y>350</y>
-       <width>51</width>
+       <width>86</width>
        <height>31</height>
       </rect>
      </property>
@@ -601,15 +601,15 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       </font>
      </property>
      <property name="text">
-      <string>3.00</string>
+      <string>3.00      Бар</string>
      </property>
     </widget>
     <widget class="QLabel" name="main_exit_statistic_label">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>320</y>
-       <width>51</width>
+       <x>85</x>
+       <y>321</y>
+       <width>86</width>
        <height>31</height>
       </rect>
      </property>
@@ -622,15 +622,15 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       </font>
      </property>
      <property name="text">
-      <string>0.00</string>
+      <string>0.00      Бар</string>
      </property>
     </widget>
     <widget class="QLabel" name="main_frequency_statistic_label">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>85</x>
        <y>410</y>
-       <width>51</width>
+       <width>86</width>
        <height>31</height>
       </rect>
      </property>
@@ -643,15 +643,15 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       </font>
      </property>
      <property name="text">
-      <string>0.0</string>
+      <string>0.0        Hz</string>
      </property>
     </widget>
     <widget class="QLabel" name="main_enter_statistic_label">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>440</y>
-       <width>51</width>
+       <x>85</x>
+       <y>436</y>
+       <width>86</width>
        <height>31</height>
       </rect>
      </property>
@@ -664,15 +664,15 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       </font>
      </property>
      <property name="text">
-      <string>10.00</string>
+      <string>10.00    Бар</string>
      </property>
     </widget>
-    <widget class="QLabel" name="main_pump_all_label">
+    <widget class="QLabel" name="main_pump_all_icon_label">
      <property name="geometry">
       <rect>
-       <x>-10</x>
+       <x>10</x>
        <y>320</y>
-       <width>771</width>
+       <width>781</width>
        <height>151</height>
       </rect>
      </property>
@@ -691,7 +691,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_1_2">
      <property name="geometry">
       <rect>
-       <x>150</x>
+       <x>170</x>
        <y>400</y>
        <width>71</width>
        <height>41</height>
@@ -712,7 +712,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_1_1">
      <property name="geometry">
       <rect>
-       <x>150</x>
+       <x>170</x>
        <y>350</y>
        <width>71</width>
        <height>41</height>
@@ -733,7 +733,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_2_1">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>269</x>
        <y>350</y>
        <width>71</width>
        <height>41</height>
@@ -754,7 +754,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_3_1">
      <property name="geometry">
       <rect>
-       <x>350</x>
+       <x>367</x>
        <y>350</y>
        <width>71</width>
        <height>41</height>
@@ -775,7 +775,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_4_1">
      <property name="geometry">
       <rect>
-       <x>450</x>
+       <x>466</x>
        <y>350</y>
        <width>71</width>
        <height>41</height>
@@ -796,7 +796,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_5_1">
      <property name="geometry">
       <rect>
-       <x>550</x>
+       <x>565</x>
        <y>350</y>
        <width>71</width>
        <height>41</height>
@@ -817,7 +817,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_6_1">
      <property name="geometry">
       <rect>
-       <x>650</x>
+       <x>663</x>
        <y>350</y>
        <width>71</width>
        <height>41</height>
@@ -838,7 +838,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_6_2">
      <property name="geometry">
       <rect>
-       <x>650</x>
+       <x>663</x>
        <y>400</y>
        <width>71</width>
        <height>41</height>
@@ -859,7 +859,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_5_2">
      <property name="geometry">
       <rect>
-       <x>550</x>
+       <x>565</x>
        <y>400</y>
        <width>71</width>
        <height>41</height>
@@ -880,7 +880,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_4_2">
      <property name="geometry">
       <rect>
-       <x>450</x>
+       <x>466</x>
        <y>400</y>
        <width>71</width>
        <height>41</height>
@@ -901,7 +901,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_3_2">
      <property name="geometry">
       <rect>
-       <x>350</x>
+       <x>367</x>
        <y>400</y>
        <width>71</width>
        <height>41</height>
@@ -922,7 +922,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
     <widget class="QLabel" name="main_pump_icon_label_2_2">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>269</x>
        <y>400</y>
        <width>71</width>
        <height>41</height>
@@ -940,12 +940,12 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="main_pump_up_icon_label">
+    <widget class="QLabel" name="main_pipe_up_icon_label">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>320</y>
-       <width>751</width>
+       <y>325</y>
+       <width>781</width>
        <height>41</height>
       </rect>
      </property>
@@ -961,12 +961,12 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="main_pump_down_icon_label">
+    <widget class="QLabel" name="main_pipe_down_icon_label">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>430</y>
-       <width>751</width>
+       <y>425</y>
+       <width>781</width>
        <height>41</height>
       </rect>
      </property>
@@ -982,43 +982,87 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       <string/>
      </property>
     </widget>
+    <widget class="QLabel" name="main_enter_statistic_just_label">
+     <property name="geometry">
+      <rect>
+       <x>14</x>
+       <y>436</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0042ff;&quot;&gt; Вход:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="main_exit_statistic_just_label">
+     <property name="geometry">
+      <rect>
+       <x>14</x>
+       <y>321</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#3cb371;&quot;&gt; Выход:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <zorder>main_pump_icon_label_1_1</zorder>
+    <zorder>main_pump_icon_label_1_2</zorder>
+    <zorder>main_pump_icon_label_2_1</zorder>
+    <zorder>main_pump_icon_label_2_2</zorder>
+    <zorder>main_pump_icon_label_3_1</zorder>
+    <zorder>main_pump_icon_label_3_2</zorder>
+    <zorder>main_pump_icon_label_4_1</zorder>
+    <zorder>main_pump_icon_label_4_2</zorder>
+    <zorder>main_pump_icon_label_5_1</zorder>
+    <zorder>main_pump_icon_label_5_2</zorder>
+    <zorder>main_pump_icon_label_6_2</zorder>
+    <zorder>main_pump_icon_label_6_1</zorder>
+    <zorder>main_pump_all_icon_label</zorder>
     <zorder>main_time_label</zorder>
     <zorder>go_to_settings_main_page_pushButton</zorder>
     <zorder>main_pages_stackedWidget</zorder>
     <zorder>main_pushButton_1</zorder>
     <zorder>main_pushButton_3</zorder>
     <zorder>main_pushButton_2</zorder>
-    <zorder>main_pump_icon_label_1_2</zorder>
-    <zorder>main_pump_icon_label_1_1</zorder>
-    <zorder>main_pump_icon_label_2_1</zorder>
-    <zorder>main_pump_icon_label_3_1</zorder>
-    <zorder>main_pump_icon_label_4_1</zorder>
-    <zorder>main_pump_icon_label_5_1</zorder>
-    <zorder>main_pump_icon_label_6_1</zorder>
-    <zorder>main_pump_icon_label_6_2</zorder>
-    <zorder>main_pump_icon_label_5_2</zorder>
-    <zorder>main_pump_icon_label_4_2</zorder>
-    <zorder>main_pump_icon_label_3_2</zorder>
-    <zorder>main_pump_icon_label_1</zorder>
-    <zorder>main_pump_icon_label_2</zorder>
-    <zorder>main_pump_icon_label_3</zorder>
-    <zorder>main_pump_icon_label_4</zorder>
-    <zorder>main_pump_icon_label_5</zorder>
-    <zorder>main_pump_icon_label_6</zorder>
-    <zorder>main_pump_icon_label_2_2</zorder>
-    <zorder>main_task_statistic_just_label</zorder>
-    <zorder>main_some_triangle_statistic_just_label</zorder>
+    <zorder>main_pipe_down_icon_label</zorder>
+    <zorder>main_pipe_up_icon_label</zorder>
+    <zorder>main_exit_statistic_icon_label</zorder>
     <zorder>main_frequency_statistic_just_label</zorder>
+    <zorder>main_some_triangle_statistic_just_label</zorder>
+    <zorder>main_task_statistic_just_label</zorder>
+    <zorder>main_enter_statistic_icon_label</zorder>
     <zorder>main_enter_statistic_just_label</zorder>
-    <zorder>main_enter_statistic_label</zorder>
-    <zorder>main_frequency_statistic_label</zorder>
-    <zorder>main_task_statistic_label</zorder>
-    <zorder>main_some_triangle_statistic_label</zorder>
     <zorder>main_exit_statistic_just_label</zorder>
+    <zorder>main_frequency_statistic_label</zorder>
     <zorder>main_exit_statistic_label</zorder>
-    <zorder>main_pump_up_icon_label</zorder>
-    <zorder>main_pump_down_icon_label</zorder>
-    <zorder>main_pump_all_label</zorder>
+    <zorder>main_enter_statistic_label</zorder>
+    <zorder>main_some_triangle_statistic_label</zorder>
+    <zorder>main_task_statistic_label</zorder>
+    <zorder>main_pump_icon_label_6</zorder>
+    <zorder>main_pump_icon_label_5</zorder>
+    <zorder>main_pump_icon_label_4</zorder>
+    <zorder>main_pump_icon_label_3</zorder>
+    <zorder>main_pump_icon_label_2</zorder>
+    <zorder>main_pump_icon_label_1</zorder>
    </widget>
    <widget class="QWidget" name="Settings_Main_page">
     <property name="styleSheet">
