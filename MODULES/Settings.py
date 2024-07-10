@@ -1,8 +1,7 @@
 from PySide6.QtWidgets import QPushButton, QLabel
 from PySide6.QtGui import QIcon, QPixmap, QPainter
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QTimer, QTime, QDateTime
 from PySide6.QtSvg import QSvgRenderer
-
 import json
 import os
 
@@ -299,6 +298,19 @@ class System_Station_Main_window_settings:
         elif isinstance(widget, QLabel):
             widget.setPixmap(svg_image)
         #widget.setText('')
+
+    def giveTimer(self):
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.timeChanger)
+        self.timer.start(1000)
+
+    def timeChanger(self):
+        current_time = QDateTime.currentDateTime().toString('dd/MM/yy hh:mm')
+        self.main_time_label.setText(current_time)
+        self.manager_time_label.setText(current_time)
+        self.panel_settings_time_label.setText(current_time)
+        self.contacts_time_label.setText(current_time)
+
 
 
 class Password_window_settings:
