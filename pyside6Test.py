@@ -12,6 +12,8 @@ class System_Station_Main_window(QWidget, Ui_System_Station_Main_window, System_
         super().__init__()
         self.setupUi(self)
         self.setupSystemStationMainSettings()
+        self.setupSystemStationMainWindowIcons()
+        self.setupSystemStationMainWindowSvgIcons()
 
     def show_password_window(self, requiered_level):
         self.password_window = Password_window(self, requiered_level)
