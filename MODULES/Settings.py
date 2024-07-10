@@ -246,6 +246,8 @@ class Password_window_settings:
             self.parent.current_button.setText(f"{self.parent.text_to_change}{current_text}")
             self.close()
 
+
+
     def give_them_text(self):
         if not self.parent.is_password and self.parent.user_level >= self.requiered_level:
             self.text_to_aply_label.setText('')
@@ -284,8 +286,15 @@ class Password_window_settings:
                 text = ''
 
         new_text = str(current_text + str(text))
-        self.text_to_aply_label.setText(new_text)
-
+        if self.parent.is_password == 0:
+            if float(new_text) >= self.min and float(new_text) <= self.max:
+                self.text_to_aply_label.setText(new_text)
+            else: 
+                new_text[:-1]
+        else:
+            self.text_to_aply_label.setText(new_text)
+    
+    
     def delete_text(self):
         current_text = str(self.text_to_aply_label.text())
         new_text = str(current_text[:-1])
