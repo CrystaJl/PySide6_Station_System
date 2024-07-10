@@ -235,7 +235,6 @@ class System_Station_Main_window_settings:
         else:
             pass
 
-
         self.setSvgIcon(self.main_pump_all_icon_label, 'main_pump_all_icon_label_none_2.svg')
 
         self.setSvgIcon(self.main_pump_icon_label_1_1, 'main_pump_up_icon_label_1.svg')
