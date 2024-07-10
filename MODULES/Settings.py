@@ -6,6 +6,7 @@ from PySide6.QtSvg import QSvgRenderer
 import json
 import os
 
+
 class System_Station_Main_window_settings:
     def setupSystemStationMainSettings(self):
         #переключение между основным окном(страницей) и основными настройками
@@ -89,8 +90,9 @@ class System_Station_Main_window_settings:
 #Данный блок кода сфокусирован на подключение всех возможных кнопок, связанных с паролями и уровнями доступа, к окну, отвечающее за изменение доступа и за изменение атрибутов
 
         #Планировщик
-        self.manager_morning_1_pushButton.clicked.connect(lambda: self.show_password_window(3))
-        self.manager_morning_2_pushButton.clicked.connect(lambda: self.show_password_window(4))
+        self.manager_morning_1_pushButton.clicked.connect(lambda: self.show_password_window(3, self.manager_morning_1_pushButton, 0, 50))
+        self.manager_morning_2_pushButton.clicked.connect(lambda: self.show_password_window(4, self.manager_morning_2_pushButton, 0, 60))
+      
         self.manager_morning_3_pushButton.clicked.connect(self.show_password_window)
         self.manager_morning_4_pushButton.clicked.connect(self.show_password_window)
         self.manager_day_1_pushButton.clicked.connect(self.show_password_window)
@@ -134,7 +136,7 @@ class System_Station_Main_window_settings:
         self.panel_settings_gateway_4_pushButton.clicked.connect(self.show_password_window)
 
         #Контакты
-        self.contacts_number_of_pumps_pushButton.clicked.connect(self.show_password_window)
+        self.contacts_number_of_pumps_pushButton.clicked.connect(lambda: self.show_password_window(0, self.contacts_number_of_pumps_pushButton, 0, 6, "Колличество насосов:            "))
         self.contacts_current_workings_number_of_pumps_pushButton.clicked.connect(self.show_password_window)
 
         #Параметры двигателей                  (внутри настроек станции)
@@ -216,6 +218,11 @@ class System_Station_Main_window_settings:
 
         #ключевые атрибуты взаимодействия
         self.is_password = 1
+
+    
+        self.current_button = None
+        self.text_to_change = ""
+
         self.user_level = 0
 
         #атрибуты для работы с видом
@@ -293,8 +300,9 @@ class System_Station_Main_window_settings:
             widget.setPixmap(svg_image)
         #widget.setText('')
 
+
 class Password_window_settings:
-    def setupPasswordWindowSettings(self, parent, requiered_level):
+    def setupPasswordWindowSettings(self, parent, requiered_level, min, max):
         self.number_0_pushButton.clicked.connect(lambda: self.append_text(0))
         self.number_1_pushButton.clicked.connect(lambda: self.append_text(1))
         self.number_2_pushButton.clicked.connect(lambda: self.append_text(2))
@@ -305,47 +313,75 @@ class Password_window_settings:
         self.number_7_pushButton.clicked.connect(lambda: self.append_text(7))
         self.number_8_pushButton.clicked.connect(lambda: self.append_text(8))
         self.number_9_pushButton.clicked.connect(lambda: self.append_text(9))
-        self.set_comma_pushButton.clicked.connect(lambda: self.append_text(','))
+        self.set_comma_pushButton.clicked.connect(lambda: self.append_text('.'))
         self.clear_all_pushButton.clicked.connect(lambda: self.text_to_aply_label.setText(''))
         self.delete_previous_pushButton.clicked.connect(lambda: self.delete_text())
         self.accept_password_window_pushButton.clicked.connect(lambda: self.set_changes())
         self.parent = parent
         self.requiered_level = requiered_level
+        self.min = min
+        self.max = max
+        
         self.give_them_text()
         print(self.parent.user_level, self.requiered_level)
 
+
+    def change_button_text(self):
+        self.parent.is_password = 0
+        current_text = str(self.text_to_aply_label.text())
+        if float(current_text) >= float(self.min) and float(current_text) <= float(self.max):
+            self.parent.current_button.setText(f"{self.parent.text_to_change}{current_text}")
+            self.close()
+
+
+
     def give_them_text(self):
         if not self.parent.is_password and self.parent.user_level >= self.requiered_level:
-            self.password_text_label.setText(f"min: {self.parent.user_level}   max: {self.requiered_level}")
+            self.text_to_aply_label.setText('')
+            self.password_text_label.setText(f"min: {self.min}   max: {self.max}")
         else:
             self.password_text_label.setText("Введите пароль")
 
     def set_changes(self):
         current_text = str(self.text_to_aply_label.text())
+        if self.parent.is_password:
+            with open('users.json', 'r') as f:
+                passwords = json.load(f)
+                
+            for user, details in passwords.items():
+                if details["password"] == current_text:
+                    role = details["role"]
+                    level = int(details["level"])
+                    print(f"Role for password '{current_text}' found: {role}, {level}")
+                    if int(level) >= self.requiered_level:
+                        self.parent.is_password = 0
+                        self.parent.user_level = level
+                    print(self.parent.user_level, self.requiered_level)
+            self.give_them_text()
 
-        with open('users.json', 'r') as f:
-            passwords = json.load(f)
+        else:
+            self.parent.is_password = 1
+            self.change_button_text()
             
-        for user, details in passwords.items():
-            if details["password"] == current_text:
-                role = details["role"]
-                level = int(details["level"])
-                print(f"Role for password '{current_text}' found: {role}, {level}")
-                if int(level) >= self.requiered_level:
-                    self.parent.is_password = 0
-                    self.parent.user_level = level
-                print(self.parent.user_level, self.requiered_level)
-        self.give_them_text()
+
+
 
     def append_text(self, text):
         current_text = str(self.text_to_aply_label.text())
-        if text == ',':
-            if current_text == '' or "," in current_text:
+        if text == '.':
+            if current_text == '' or "." in current_text:
                 text = ''
 
         new_text = str(current_text + str(text))
-        self.text_to_aply_label.setText(new_text)
-
+        if self.parent.is_password == 0:
+            if float(new_text) >= self.min and float(new_text) <= self.max:
+                self.text_to_aply_label.setText(new_text)
+            else: 
+                new_text[:-1]
+        else:
+            self.text_to_aply_label.setText(new_text)
+    
+    
     def delete_text(self):
         current_text = str(self.text_to_aply_label.text())
         new_text = str(current_text[:-1])
