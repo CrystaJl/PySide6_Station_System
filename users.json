@@ -1,6 +1,6 @@
 {
     "guest":{
-        "role": "guest", "level": "0", "password": ""
+        "role": "guest", "level": "0", "password": "0"
     },
 
     "god":{

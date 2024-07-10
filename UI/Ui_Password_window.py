@@ -116,7 +116,7 @@ class Ui_Password_window(object):
     def retranslateUi(self, Password_window):
         Password_window.setWindowTitle(QCoreApplication.translate("Password_window", u"Form", None))
         self.password_text_label.setText(QCoreApplication.translate("Password_window", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u041f\u0430\u0440\u043e\u043b\u044c", None))
-        self.text_to_aply_label.setText(QCoreApplication.translate("Password_window", u"TextLabel", None))
+        self.text_to_aply_label.setText(QCoreApplication.translate("Password_window", u"", None))
         self.number_7_pushButton.setText(QCoreApplication.translate("Password_window", u"7", None))
         self.number_8_pushButton.setText(QCoreApplication.translate("Password_window", u"8", None))
         self.number_9_pushButton.setText(QCoreApplication.translate("Password_window", u"9", None))

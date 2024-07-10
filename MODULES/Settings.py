@@ -1,4 +1,11 @@
+from PySide6.QtWidgets import QPushButton, QLabel
+from PySide6.QtGui import QIcon, QPixmap, QPainter
+from PySide6.QtCore import Qt
+from PySide6.QtSvg import QSvgRenderer
+
 import json
+import os
+
 class System_Station_Main_window_settings:
     def setupSystemStationMainSettings(self):
         #переключение между основным окном(страницей) и основными настройками
@@ -76,14 +83,14 @@ class System_Station_Main_window_settings:
         self.go_to_engineering_panel_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
         self.go_to_engineering_contacts_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(2))
 
-#Выше находится блок кода, отвечающий за подключение всех возможных кнопок, связанных со страницами кнопок и страницами основной работы с обурудованием, для полноценной работы в приложении(wow)
+#Выше находится блок кода, отвечающий за подключение всех возможных кнопок, связанных со страницами кнопок и страницами основной работы с обурудованием, для полноценной работы в приложении
 ###################################################################################################################################################################################################
 ###################################################################################################################################################################################################
-#Данный блок кода сфокусирован на подключение всех возможных кнопок, связанных с паролями и уровнями доступа, к окну, отвечающее за изменение доступа и за изменение атрибутов(future is comming)
+#Данный блок кода сфокусирован на подключение всех возможных кнопок, связанных с паролями и уровнями доступа, к окну, отвечающее за изменение доступа и за изменение атрибутов
 
         #Планировщик
-        self.manager_morning_1_pushButton.clicked.connect(self.show_password_window)
-        self.manager_morning_2_pushButton.clicked.connect(self.show_password_window)
+        self.manager_morning_1_pushButton.clicked.connect(lambda: self.show_password_window(3))
+        self.manager_morning_2_pushButton.clicked.connect(lambda: self.show_password_window(4))
         self.manager_morning_3_pushButton.clicked.connect(self.show_password_window)
         self.manager_morning_4_pushButton.clicked.connect(self.show_password_window)
         self.manager_day_1_pushButton.clicked.connect(self.show_password_window)
@@ -193,7 +200,7 @@ class System_Station_Main_window_settings:
         self.station_settings_emergency_modes_critical_pressure_to_shutdown_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_emergency_modes_control_pipeline_rupture_pushButton.clicked.connect(self.show_password_window)
 
-        #Настройки пид-asujdaiu-регистрации                    (внутри инженерного меню)
+        #Настройки пид-регистрации                             (внутри инженерного меню)
         self.engineering_menu_pid_registration_settings_proportional_coefficient_pushButton.clicked.connect(self.show_password_window)
         self.engineering_menu_pid_registration_settings_integral_coefficient_pushButton.clicked.connect(self.show_password_window)
         self.engineering_menu_pid_registration_settings_differential_coefficient_pushButton.clicked.connect(self.show_password_window)
@@ -207,12 +214,88 @@ class System_Station_Main_window_settings:
         self.engineering_menu_backup_save_trends_pushButton.clicked.connect(self.show_password_window)
         self.engineering_menu_backup_factory_all_settings_pushButton.clicked.connect(self.show_password_window)
 
+        #ключевые атрибуты взаимодействия
         self.is_password = 1
-        self.user_level = 0 #5
+        self.user_level = 0
+
+        #атрибуты для работы с видом
+        self.icons_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ICONS")
+        self.svg_icons_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "SVGICONS")
+        self.current_theme = 'black'
+
+    def setupSystemStationMainWindowIcons(self):
+        if self.current_theme == 'white':
+            pass
+        else:
+            pass
+
+    def setupSystemStationMainWindowSvgIcons(self):
+        if self.current_theme == 'white':
+            pass
+        else:
+            pass
+
+        #тестовые подключения svg
+        self.setSvgIcon(self.main_pump_all_label, '123.svg')
+        self.setSvgIcon(self.main_pump_icon_label_1_1, '1.svg')
+        self.setSvgIcon(self.main_pump_icon_label_1_2, 'Частотник выкл.svg')
+
+        #тестовые подключения svg
+        self.setSvgIcon(self.main_pump_icon_label_2_1, '1.svg')
+        self.setSvgIcon(self.main_pump_icon_label_2_2, 'Частотник выкл.svg')
+
+        #тестовые подключения svg
+        self.setSvgIcon(self.main_pump_icon_label_3_1, '1.svg')
+        self.setSvgIcon(self.main_pump_icon_label_3_2, 'Частотник выкл.svg')
+
+        #тестовые подключения svg
+        self.setSvgIcon(self.main_pump_icon_label_4_1, '1.svg')
+        self.setSvgIcon(self.main_pump_icon_label_4_2, 'Частотник выкл.svg')
+
+        #тестовые подключения svg
+        self.setSvgIcon(self.main_pump_icon_label_5_1, '1.svg')
+        self.setSvgIcon(self.main_pump_icon_label_5_2, 'Частотник выкл.svg')
+
+        #тестовые подключения svg
+        self.setSvgIcon(self.main_pump_icon_label_6_1, '1.svg')
+        self.setSvgIcon(self.main_pump_icon_label_6_2, 'Частотник выкл.svg')
+        self.setSvgIcon(self.main_pump_icon_label_6_2, 'Частотник выкл.svg')
+
+        #тестовые подключения svg
+        self.setSvgIcon(self.main_pump_icon_label_1, 'Серый.svg')
+        self.setSvgIcon(self.main_pump_icon_label_2, 'Серый.svg')
+        self.setSvgIcon(self.main_pump_icon_label_3, 'Серый.svg')
+        self.setSvgIcon(self.main_pump_icon_label_4, 'Серый.svg')
+        self.setSvgIcon(self.main_pump_icon_label_5, 'Серый.svg')
+        self.setSvgIcon(self.main_pump_icon_label_6, 'Серый.svg')
+
+    def setSvgIcon(self, widget, svg_filename):
+        svg_path = os.path.join(self.svg_icons_dir, svg_filename)
+
+        svg_renderer = QSvgRenderer(svg_path)
+        
+        # Получаем размер оригинального SVG
+        original_size = svg_renderer.defaultSize()
+        width = original_size.width()
+        height = original_size.height()
+
+        # Создаем QPixmap и отрисовываем SVG на нем
+        svg_image = QPixmap(width, height)
+        svg_image.fill(Qt.transparent)
+
+        painter = QPainter(svg_image)
+        svg_renderer.render(painter)
+        painter.end()
+
+        if isinstance(widget, QPushButton):
+            widget.setIcon(QIcon(svg_image))
+            widget.setIconSize(svg_image.size())
+        elif isinstance(widget, QLabel):
+            widget.setPixmap(svg_image)
+        #widget.setText('')
 
 class Password_window_settings:
-    def setupPasswordWindowSettings(self, is_password, user_level):
-        self.text_to_aply_label.setText('') #ФУ КОСТЫЛЕМ ВАНЯЕТ
+    def setupPasswordWindowSettings(self, parent, requiered_level):
         self.number_0_pushButton.clicked.connect(lambda: self.append_text(0))
         self.number_1_pushButton.clicked.connect(lambda: self.append_text(1))
         self.number_2_pushButton.clicked.connect(lambda: self.append_text(2))
@@ -224,14 +307,37 @@ class Password_window_settings:
         self.number_8_pushButton.clicked.connect(lambda: self.append_text(8))
         self.number_9_pushButton.clicked.connect(lambda: self.append_text(9))
         self.set_comma_pushButton.clicked.connect(lambda: self.append_text(','))
-        self.clear_all_pushButton.clicked.connect(lambda: self.delete_all_text())
+        self.clear_all_pushButton.clicked.connect(lambda: self.text_to_aply_label.setText(''))
         self.delete_previous_pushButton.clicked.connect(lambda: self.delete_text())
         self.accept_password_window_pushButton.clicked.connect(lambda: self.set_changes())
-        self.is_password = is_password
-        self.user_level = user_level
+        self.parent = parent
+        self.requiered_level = requiered_level
+        self.give_them_text()
+        print(self.parent.user_level, self.requiered_level)
 
+    def give_them_text(self):
+        if not self.parent.is_password and self.parent.user_level >= self.requiered_level:
+            self.password_text_label.setText(f"min: {self.parent.user_level}   max: {self.requiered_level}")
+        else:
+            self.password_text_label.setText("Введите пароль")
 
-        
+    def set_changes(self):
+        current_text = str(self.text_to_aply_label.text())
+
+        with open('users.json', 'r') as f:
+            passwords = json.load(f)
+            
+        for user, details in passwords.items():
+            if details["password"] == current_text:
+                role = details["role"]
+                level = int(details["level"])
+                print(f"Role for password '{current_text}' found: {role}, {level}")
+                if int(level) >= self.requiered_level:
+                    self.parent.is_password = 0
+                    self.parent.user_level = level
+                print(self.parent.user_level, self.requiered_level)
+        self.give_them_text()
+
     def append_text(self, text):
         current_text = str(self.text_to_aply_label.text())
         if text == ',':
@@ -245,30 +351,3 @@ class Password_window_settings:
         current_text = str(self.text_to_aply_label.text())
         new_text = str(current_text[:-1])
         self.text_to_aply_label.setText(new_text)
-
-    def delete_all_text(self):
-        self.text_to_aply_label.setText('')
-
-
-    def give_them_text(self, role, level):
-        self.password_text_label.setText(f"min: {role}   max: {level}")
-
-    def set_changes(self):
-        current_text = str(self.text_to_aply_label.text())
-
-        with open('users.json', 'r') as f:
-            passwords = json.load(f)
-        
-            
-        for user, details in passwords.items():
-            if details["password"] == current_text:
-                role = details["role"]
-                level = details["level"]
-                print(f"Role for password '{current_text}' found: {role}, {level}")
-                self.user_level = role
-                print(self.user_level)
-                self.give_them_text(role, level)
-
-
-
-        
