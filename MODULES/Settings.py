@@ -245,31 +245,30 @@ class System_Station_Main_window_settings:
 
         self.setSvgIcon(self.main_pump_all_icon_label, 'main_pump_all_icon_label_none_2.svg')
 
-        self.setSvgIcon(self.main_pump_icon_label_1_1, 'main_pump_up_icon_label_1.svg')
-        self.setSvgIcon(self.main_pump_icon_label_1_2, 'main_pump_down_icon_label_off.svg')
-        self.setSvgIcon(self.main_pump_icon_label_2_1, 'main_pump_up_icon_label_1.svg')
-        self.setSvgIcon(self.main_pump_icon_label_2_2, 'main_pump_down_icon_label_off.svg')
-        self.setSvgIcon(self.main_pump_icon_label_3_1, 'main_pump_up_icon_label_1.svg')
-        self.setSvgIcon(self.main_pump_icon_label_3_2, 'main_pump_down_icon_label_off.svg')
-        self.setSvgIcon(self.main_pump_icon_label_4_1, 'main_pump_up_icon_label_1.svg')
-        self.setSvgIcon(self.main_pump_icon_label_4_2, 'main_pump_down_icon_label_off.svg')
+        self.setSvgIcon(self.main_pump_icon_label_1_1, 'main_pump_up_icon_label_none.svg')
+        self.setSvgIcon(self.main_pump_icon_label_1_2, 'main_pump_down_icon_label_none.svg')
+        self.setSvgIcon(self.main_pump_icon_label_2_1, 'main_pump_up_icon_label_none.svg')
+        self.setSvgIcon(self.main_pump_icon_label_2_2, 'main_pump_down_icon_label_none.svg')
+        self.setSvgIcon(self.main_pump_icon_label_3_1, 'main_pump_up_icon_label_none.svg')
+        self.setSvgIcon(self.main_pump_icon_label_3_2, 'main_pump_down_icon_label_none.svg')
+        self.setSvgIcon(self.main_pump_icon_label_4_1, 'main_pump_up_icon_label_none.svg')
+        self.setSvgIcon(self.main_pump_icon_label_4_2, 'main_pump_down_icon_label_none.svg')
         self.setSvgIcon(self.main_pump_icon_label_5_1, 'main_pump_up_icon_label_none.svg')
         self.setSvgIcon(self.main_pump_icon_label_5_2, 'main_pump_down_icon_label_none.svg')
         self.setSvgIcon(self.main_pump_icon_label_6_1, 'main_pump_up_icon_label_none.svg')
         self.setSvgIcon(self.main_pump_icon_label_6_2, 'main_pump_down_icon_label_none.svg')
 
-        self.setSvgIcon(self.main_pump_icon_label_1, 'main_pump_icon_label_red.svg')
-        self.setSvgIcon(self.main_pump_icon_label_2, 'main_pump_icon_label_red.svg')
-        self.setSvgIcon(self.main_pump_icon_label_3, 'main_pump_icon_label_red.svg')
-        self.setSvgIcon(self.main_pump_icon_label_4, 'main_pump_icon_label_red.svg')
+        self.setSvgIcon(self.main_pump_icon_label_1, 'main_pump_icon_label_grey.svg')
+        self.setSvgIcon(self.main_pump_icon_label_2, 'main_pump_icon_label_grey.svg')
+        self.setSvgIcon(self.main_pump_icon_label_3, 'main_pump_icon_label_grey.svg')
+        self.setSvgIcon(self.main_pump_icon_label_4, 'main_pump_icon_label_grey.svg')
         #self.setSvgIcon(self.main_pump_icon_label_5, 'main_pump_icon_label_black.svg')
         #self.setSvgIcon(self.main_pump_icon_label_6, 'main_pump_icon_label_black.svg')
 
         self.setSvgIcon(self.main_enter_statistic_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg')
         self.setSvgIcon(self.main_exit_statistic_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg')
 
-        self.setSvgIcon(self.main_pipe_up_icon_label, 'main_pipe_up_icon_label_4_4.svg')
-        self.setSvgIcon(self.main_pipe_down_icon_label, 'main_pipe_down_icon_label_4_4.svg')
+
 
 
         #self.setSvgIcon(self.main_pipe_up_icon_label, 'main_pipe_up_icon_label_1_1.svg')
