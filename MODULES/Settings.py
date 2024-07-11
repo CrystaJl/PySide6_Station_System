@@ -10,8 +10,12 @@ import os
 class System_Station_Main_window_settings:
     def setupSystemStationMainSettings(self):
         #переключение между основным окном(страницей) и основными настройками
-        self.go_to_settings_main_page_pushButton.clicked.connect(lambda: self.main_stackedWidget.setCurrentIndex(1))
-        self.go_to_main_page_pushButton.clicked.connect(lambda: self.main_stackedWidget.setCurrentIndex(0))
+        self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.main_stackedWidget.setCurrentIndex(1))
+        self.go_to_settings_main_page_pushButton.clicked.connect(lambda: self.main_stackedWidget.setCurrentIndex(0))
+
+        self.go_to_main_graphic_page_pushButton.clicked.connect(lambda: self.main_main_pages_stackedWidget.setCurrentIndex(0))
+        self.go_to_main_statistics_page_pushButton.clicked.connect(lambda: self.main_main_pages_stackedWidget.setCurrentIndex(1))
+        self.go_to_main_switch_page_pushButton.clicked.connect(lambda: self.main_main_pages_stackedWidget.setCurrentIndex(2))
 
         #три подключения к кнопкам основной страницы кнопок, и переключение, при нажатии на них, страниц справа
         self.go_to_settings_manager_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
@@ -242,51 +246,54 @@ class System_Station_Main_window_settings:
         else:
             pass
 
-        self.setSvgIcon(self.main_pump_all_icon_label, 'main_pump_all_icon_label_none_2.svg')
+        self.setSvgIcon(self.main_pump_all_icon_label, 'main_pump_all_icon_label_none_2.svg', 0)
 
-        self.setSvgIcon(self.main_pump_icon_label_1_1, 'main_pump_up_icon_label_1.svg')
-        self.setSvgIcon(self.main_pump_icon_label_1_2, 'main_pump_down_icon_label_off.svg')
-        self.setSvgIcon(self.main_pump_icon_label_2_1, 'main_pump_up_icon_label_1.svg')
-        self.setSvgIcon(self.main_pump_icon_label_2_2, 'main_pump_down_icon_label_off.svg')
-        self.setSvgIcon(self.main_pump_icon_label_3_1, 'main_pump_up_icon_label_1.svg')
-        self.setSvgIcon(self.main_pump_icon_label_3_2, 'main_pump_down_icon_label_off.svg')
-        self.setSvgIcon(self.main_pump_icon_label_4_1, 'main_pump_up_icon_label_1.svg')
-        self.setSvgIcon(self.main_pump_icon_label_4_2, 'main_pump_down_icon_label_off.svg')
-        self.setSvgIcon(self.main_pump_icon_label_5_1, 'main_pump_up_icon_label_none.svg')
-        self.setSvgIcon(self.main_pump_icon_label_5_2, 'main_pump_down_icon_label_none.svg')
-        self.setSvgIcon(self.main_pump_icon_label_6_1, 'main_pump_up_icon_label_none.svg')
-        self.setSvgIcon(self.main_pump_icon_label_6_2, 'main_pump_down_icon_label_none.svg')
+        self.setSvgIcon(self.main_pump_icon_60StartPumpDetection1_label_1_1, 'main_pump_up_icon_label_1.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60FCIcon1_label_1_2, 'main_pump_down_icon_label_off.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60StartPumpDetection2_label_2_1, 'main_pump_up_icon_label_1.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60FCIcon2_label_2_2, 'main_pump_down_icon_label_off.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60StartPumpDetection3_label_3_1, 'main_pump_up_icon_label_1.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60FCIcon3_label_3_2, 'main_pump_down_icon_label_off.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60StartPumpDetection4_label_4_1, 'main_pump_up_icon_label_1.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60FCIcon4_label_4_2, 'main_pump_down_icon_label_off.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60StartPumpDetection5_label_5_1, 'main_pump_up_icon_label_none.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60FCIcon5_label_5_2, 'main_pump_down_icon_label_none.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60StartPumpDetection6_label_6_1, 'main_pump_up_icon_label_none.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60FCIcon6_label_6_2, 'main_pump_down_icon_label_none.svg', 0)
 
-        self.setSvgIcon(self.main_pump_icon_label_1, 'main_pump_icon_label_red.svg')
-        self.setSvgIcon(self.main_pump_icon_label_2, 'main_pump_icon_label_red.svg')
-        self.setSvgIcon(self.main_pump_icon_label_3, 'main_pump_icon_label_red.svg')
-        self.setSvgIcon(self.main_pump_icon_label_4, 'main_pump_icon_label_red.svg')
-        #self.setSvgIcon(self.main_pump_icon_label_5, 'main_pump_icon_label_black.svg')
-        #self.setSvgIcon(self.main_pump_icon_label_6, 'main_pump_icon_label_black.svg')
+        self.setSvgIcon(self.main_pump_icon_60Pump1_label_1, 'main_pump_icon_label_red.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60Pump2_label_2, 'main_pump_icon_label_red.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60Pump3_label_3, 'main_pump_icon_label_red.svg', 0)
+        self.setSvgIcon(self.main_pump_icon_60Pump4_label_4, 'main_pump_icon_label_red.svg', 0)
+        #self.setSvgIcon(self.main_pump_icon_60Pump5_label_5, 'main_pump_icon_label_black.svg', 0)
+        #self.setSvgIcon(self.main_pump_icon_60Pump6_label_6, 'main_pump_icon_label_black.svg', 0)
 
-        self.setSvgIcon(self.main_enter_statistic_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg')
-        self.setSvgIcon(self.main_exit_statistic_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg')
+        self.setSvgIcon(self.main_enter_statistic_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
+        self.setSvgIcon(self.main_exit_statistic_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
 
-        self.setSvgIcon(self.main_pipe_up_icon_label, 'main_pipe_up_icon_label_4_4.svg')
-        self.setSvgIcon(self.main_pipe_down_icon_label, 'main_pipe_down_icon_label_4_4.svg')
+        self.setSvgIcon(self.main_pipe_up_60UpperPipeline_icon_label, 'main_pipe_up_icon_label_4_4.svg', 0)
+        self.setSvgIcon(self.main_pipe_down_icon_60LowerPipeline_label, 'main_pipe_down_icon_label_4_4.svg', 0)
+
+        self.setSvgIcon(self.main_graphic_70ScaleNumber_pushButton, 'main_graphic_70ScaleNumber_pushButton_blue.svg', 1)
+
+        #self.setSvgIcon(self.main_pipe_up_icon_label, 'main_pipe_up_icon_label_1_1.svg', 0)
+        #self.setSvgIcon(self.main_pipe_down_icon_label, 'main_pipe_down_icon_label_1_1.svg', 0)
 
 
-        #self.setSvgIcon(self.main_pipe_up_icon_label, 'main_pipe_up_icon_label_1_1.svg')
-        #self.setSvgIcon(self.main_pipe_down_icon_label, 'main_pipe_down_icon_label_1_1.svg')
-
-
-    def setSvgIcon(self, widget, svg_filename):
+    def setSvgIcon(self, widget, svg_filename, set_widget_size):
         svg_path = os.path.join(self.svg_icons_dir, svg_filename)
 
         svg_renderer = QSvgRenderer(svg_path)
         
         # Получаем размер оригинального SVG
         original_size = svg_renderer.defaultSize()
-        width = original_size.width()
-        height = original_size.height()
 
         # Создаем QPixmap и отрисовываем SVG на нем
-        svg_image = QPixmap(width, height)
+        if set_widget_size:
+            svg_image = QPixmap(widget.width(), widget.height())
+        else:
+            svg_image = QPixmap(original_size.width(), original_size.height())
+
         svg_image.fill(Qt.transparent)
 
         painter = QPainter(svg_image)
