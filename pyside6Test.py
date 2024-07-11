@@ -15,8 +15,14 @@ class System_Station_Main_window(QWidget, Ui_System_Station_Main_window, System_
         self.setupSystemStationMainSettings()
         self.setupSystemStationMainWindowIcons()
         self.setupSystemStationMainWindowSvgIcons()
+
+        self.giveTimer()
+        self.timeChanger()
+        
+
         self.update_json('test.json', '01', '0100', '01SuctionPressure', 500)
         print(self.read_json('test.json', '01', '0100', '01SuctionPressure'))
+
 
     def show_password_window(self, requiered_level, current_button, min, max, text_to_change=""):
         self.current_button = current_button
