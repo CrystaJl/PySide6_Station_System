@@ -173,19 +173,6 @@
         "187": {"01AverageTemperature": 0}
     },
 
-
-    
-
-
-   
-
-
-
-
-
-
-
-
     "02": {
         "0200": {"02DigitalInput16": 0},
         "020000": {"02DigitalInput1": 0},
@@ -229,15 +216,6 @@
         "0221": {"02DAC2": 0}, 
         "0281": {"02ModbusErrorSum": 0}
     },
-
-
- 
-
-
-
-
-
-
 
     "03": {
         "0300": {"03Frequency": 0},
@@ -341,13 +319,6 @@
         "0381": {"03ModbusErrorSum": 0}
     },
 
-
-    
-
-
-
-
-
     "04": {
         "0400": {"03Frequency": 0},
 
@@ -449,19 +420,6 @@
 
         "0481": {"03ModbusErrorSum": 0}
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     "05": {
         "0500": {"03Frequency": 0},
@@ -565,20 +523,6 @@
         "0581": {"03ModbusErrorSum": 0}
     },
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
     "06": {
         "0600": {"03Frequency": 0},
 
@@ -680,11 +624,6 @@
 
         "0681": {"03ModbusErrorSum": 0}
     },
-
-
-
-
-
 
     "07": {
         "0700": {"03Frequency": 0},
@@ -788,13 +727,6 @@
         "0781": {"03ModbusErrorSum": 0}
     },
 
-
-
-
-
-
-
-
     "08": {
        "0800": {"03Frequency": 0},
 
@@ -897,12 +829,6 @@
         "0881": {"03ModbusErrorSum": 0}
 
     },
-
-
-
-
-
-
 
     "09": {
         "0900": {"09StatusWord1": 0},
@@ -1036,11 +962,6 @@
         "0958": {"": 0}
     },
 
-
-
-
-
-
     "10": {
         "01000": {"10SetpointUser": 0},
 
@@ -1155,13 +1076,6 @@
         "01033": {"10WeekendNightMinutes": 0}
     },
 
-    
-
-
-
-
-
-
     "11": {
         "01100": {"11MinimumFrequency": 0},
 
@@ -1181,11 +1095,6 @@
         "0110501": {"11PermanentMaster": 0},
         "0110502": {"11ChangeEnable": 0}
     },
-
-
-
-
-
 
     "12": {
         "01200": {"12FrequencyToTurnOnTheAuxiliaryPump": 0},
@@ -1212,11 +1121,6 @@
         "01207": {"12FixedFrequencyTimeStartPump": 0}
     },
 
-
-   
-
-
-
     "13": {
         "01300": {"13FrequencyToTurnOffTheAuxiliaryPump": 0},
 
@@ -1241,14 +1145,6 @@
 
         "01307": {"13FixedFrequencyTimeStopPump": 0}
     },
-
-
-  
-
-
-
-
-
 
     "14": {
         "01400": {"14DryPressureTracking": 0},
@@ -1314,17 +1210,6 @@
         "01420": {"14PumpStopDelayInTheAlarm": 0}
     },
 
-
-
-
-
-
-
-
-
-
-
-
     "15": {
         "01500": {"15SoftFillingOut": 0},
 
@@ -1351,15 +1236,6 @@
         "01507": {"15PowerSavingPermissibleFrequencySpan": 0}
     },
 
-
-    
-
-
-
-
-
-
-
     "16": {
         "01600": {"16RangeLowerSuctionSensor": 0},
 
@@ -1373,261 +1249,472 @@
         "01603": {"16RangeDischargeSensor": 0}
     },
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
     "17": {
         "01700": {"17IntegrationTi bme": 0},
-        "01701": {"": 0},
+        "01701": {"17IntegrationTi bme": 0},
 
-        "01702": {"": 0},
-        "01703": {"": 0},
+        "01702": {"17ProportionalCoefficient": 0},
+        "01703": {"17ProportionalCoefficient": 0},
 
-        "01704": {"": 0},
-        "01705": {"": 0},
+        "01704": {"17IntegralCoefficient": 0},
+        "01705": {"17IntegralCoefficient": 0},
 
-        "01706": {"": 0},
-        "01707": {"": 0},
+        "01706": {"17DifferentialCoefficient": 0},
+        "01707": {"17DifferentialCoefficient": 0},
 
-        "01708": {"17SetpointPID": 0}
-
-
-
-        
+        "01708": {"17SetpointPID": 0}  
     },
-
-
-
-
-
-
-
-
-
-
-
 
     "18": {
-        "01800":{"18MotorVoltage": 0}
-
+        "01800":{"18MotorVoltage": 0},
+        "01801":{"18MotorCurrent": 0},
+        "01802":{"18MotorFrequency": 0},
+        "01803":{"18MotorSpeed": 0},
+        "01804":{"18MotorPower": 0},
+        "01805":{"18AccelerationTime": 0},
+        "01806":{"18DecelerationTime": 0}
     },
-    "0180": {"18DecelerationTime": 0},
-    "19": {"": 0},
-    "1900": {"19QuantityPump": 0},
-    "1901": {"19WorkingQuantityPump": 0},
-    "20": {"": 0},
-    "2000": {"20PumpMaintenance": 0},
-    "21": {"": 0},
-    "2100": {"21MainWundowTime": 0},
-    "60": {"": 0},
-    "6000": {"60LowerPipeline": 0},
-    "6001": {"60UpperPipeline": 0},
-    "6002": {"60Pump1": 0},
-    "6003": {"60Pump2": 0},
-    "6004": {"60Pump3": 0},
-    "6005": {"60Pump4": 0},
-    "6006": {"60Pump5": 0},
-    "6007": {"60Pump6": 0},
-    "6008": {"60StartPumpDetection1": 0},
-    "6009": {"60StartPumpDetection2": 0},
-    "6010": {"60StartPumpDetection3": 0},
-    "6011": {"60StartPumpDetection4": 0},
-    "6012": {"60StartPumpDetection5": 0},
-    "6013": {"60StartPumpDetection6": 0},
-    "6014": {"60NumberDisplayMenu": 0},
-    "6015": {"60NumberDisplaySettings": 0},
-    "6016": {"60NumberDisplayAlarm": 0},
-    "6017": {"60PreviousMenu1": 0},
-    "6018": {"60PreviousDisplay1": 0},
-    "6019": {"60PreviousMenu2": 0},
-    "6020": {"60PreviousDisplay2": 0},
-    "6021": {"60PreviousMenu3": 0},
-    "6022": {"60PreviousDisplay3": 0},
-    "6023": {"60PreviousMenu4": 0},
-    "6024": {"60PreviousDisplay4": 0},
-    "6025": {"60NumberDisplayMain": 0},
-    "6026": {"60FCIcon1": 0},
-    "6027": {"60FCIcon2": 0},
-    "6028": {"60FCIcon3": 0},
-    "6029": {"60FCIcon4": 0},
-    "6030": {"60FCIcon5": 0},
-    "6031": {"60FCIcon6": 0},
-    "6032": {"60WindowChangeTrigger": 0},
-    "6033": {"Не использовать": 0},
-    "6034": {"60GraphicTriggersInaction": 0},
-    "6035": {"60AlarmSumPrev": 0},
-    "70": {"": 0},
-    "7000": {"70SuctionPressure": 0},
-    "7001": {"70DischargePressure": 0},
-    "7002": {"70DifferencePressure": 0},
-    "7003": {"70Setpoint": 0},
-    "7004": {"70FrequencySetpoint": 0},
-    "7005": {"70SumFrequencyFC": 0},
-    "7006": {"": 0},
-    "7007": {"": 0},
-    "7008": {"": 0},
-    "7009": {"": 0},
-    "7010": {"": 0},
-    "7011": {"": 0},
-    "7012": {"": 0},
-    "7013": {"": 0},
-    "7014": {"": 0},
-    "7015": {"70TrendsHistorycontrol": 0},
-    "7016": {"70OnlineTrendsChannelVisibility6": 0},
-    "7017": {"70OnlineTrendsDynamicRangeTime": 0},
-    "7018": {"70OnlineTrendsObservationLine1": 0},
-    "7019": {"70OnlineTrendsObservationLine2": 0},
-    "7020": {"70OnlineTrendsObservationLine3": 0},
-    "7021": {"70OnlineTrendsObservationLine4": 0},
-    "7022": {"70OnlineTrendsObservationLine5": 0},
-    "7023": {"70OnlineTrendsObservationLine6": 0},
-    "7024": {"70OnlineTrendsObservationLine7": 0},
-    "7025": {"70OnlineTrendsObservationLine8": 0},
-    "7026": {"70OnlineTrendsObservationLine9": 0},
-    "7027": {"70OnlineTrendsObservationLine10": 0},
-    "7028": {"70OnlineTrendsObservationLine11": 0},
-    "7029": {"70OnlineTrendsObservationLine12": 0},
-    "7030": {"70OnlineTrendsObservationLine13": 0},
-    "7031": {"70OnlineTrendsObservationLine14": 0},
-    "7032": {"70OnlineTrendsObservationLine15": 0},
-    "7033": {"70OnlineTrendsDynamicLimitLoChanel1": 0},
-    "7034": {"70OnlineTrendsDynamicLimitHiChanel1": 0},
-    "7035": {"70OnlineTrendsDynamicLimitLoChanel2": 0},
-    "7036": {"70OnlineTrendsDynamicLimitHiChanel2": 0},
-    "7037": {"70OnlineTrendsDynamicLimitLoChanel3": 0},
-    "7038": {"70OnlineTrendsDynamicLimitHiChanel3": 0},
-    "7039": {"70OnlineTrendsDynamicLimitLoChanel4": 0},
-    "7040": {"70OnlineTrendsDynamicLimitHiChanel4": 0},
-    "7041": {"70OnlineTrendsDynamicLimitLoChanel5": 0},
-    "7042": {"70OnlineTrendsDynamicLimitHiChanel5": 0},
-    "7043": {"70OnlineTrendsDynamicLimitLoChanel6": 0},
-    "7044": {"70OnlineTrendsDynamicLimitHiChanel6": 0},
-    "7045": {"70OnlineTrendsDynamicLimitLoChanel7": 0},
-    "7046": {"70OnlineTrendsDynamicLimitHiChanel7": 0},
-    "7047": {"70OnlineTrendsDynamicLimitLoChanel8": 0},
-    "7048": {"70OnlineTrendsDynamicLimitHiChanel8": 0},
-    "7049": {"70OnlineTrendsDynamicLimitLoChanel9": 0},
-    "7050": {"70OnlineTrendsDynamicLimitHiChanel9": 0},
-    "7051": {"70OnlineTrendsDynamicLimitLoChanel10": 0},
-    "7052": {"70OnlineTrendsDynamicLimitHiChanel10": 0},
-    "7053": {"70OnlineTrendsDynamicLimitLoChanel11": 0},
-    "7054": {"70OnlineTrendsDynamicLimitHiChanel11": 0},
-    "7055": {"70OnlineTrendsDynamicLimitLoChanel12": 0},
-    "7056": {"70OnlineTrendsDynamicLimitHiChanel12": 0},
-    "7057": {"70OnlineTrendsDynamicLimitLoChanel13": 0},
-    "7058": {"70OnlineTrendsDynamicLimitHiChanel13": 0},
-    "7059": {"70OnlineTrendsDynamicLimitLoChanel14": 0},
-    "7060": {"70OnlineTrendsDynamicLimitHiChanel14": 0},
-    "7061": {"70OnlineTrendsDynamicLimitLoChanel15": 0},
-    "7062": {"70OnlineTrendsDynamicLimitHiChanel15": 0},
-    "7063": {"70ScaleNumber": 0},
-    "7064": {"70Scale1": 0},
-    "7065": {"70Scale2": 0},
-    "7066": {"70Scale3": 0},
-    "7067": {"70Scale4": 0},
-    "7068": {"70Scale5": 0},
-    "7069": {"70Scale6": 0},
-    "7070": {"70Scale7": 0},
-    "7071": {"70Scale8": 0},
-    "7072": {"70Scale9": 0},
-    "7073": {"70Scale10": 0},
-    "80": {"": 0},
-    "8000": {"80TriggerStartStop": 0},
-    "8001": {"80PumpRunSeconds1": 0},
-    "8002": {"80PumpRunSeconds2": 0},
-    "8003": {"80PumpRunSeconds3": 0},
-    "8004": {"80PumpRunSeconds4": 0},
-    "8005": {"80PumpRunSeconds5": 0},
-    "8006": {"80PumpRunSeconds6": 0},
-    "8007": {"80PumpOffSeconds1": 0},
-    "8008": {"80PumpOffSeconds2": 0},
-    "8009": {"80PumpOffSeconds3": 0},
-    "8010": {"80PumpOffSeconds4": 0},
-    "8011": {"80PumpOffSeconds5": 0},
-    "8012": {"80PumpOffSeconds6": 0},
-    "8013": {"80UnixTimePrev": 0},
-    "8014": {"80UnixTimePrev": 0},
-    "8015": {"80UnixTimePrev": 0},
-    "8016": {"80UnixTimePrev": 0},
-    "8017": {"80ArrayHoursSinceLastStartPump": 0},
-    "8378": {"80ArrayHoursSinceLastStartPump": 0},
-    "8379": {"80SoftFillingOutControlStarted": 0},
-    "8380": {"80SoftFillingOutTime": 0},
-    "8382": {"80DopStartedTime": 0},
-    "8384": {"80DopStopedTime": 0},
-    "8386": {"80StartStopPump": 0},
-    "8387": {"80StartPumpDetectionTrig": 0},
-    "8388": {"80StartPumpDetectionTimePump1": 0},
-    "8390": {"80StartPumpDetectionTimePump2": 0},
-    "8392": {"80StartPumpDetectionTimePump3": 0},
-    "8394": {"80StartPumpDetectionTimePump4": 0},
-    "8396": {"80StartPumpDetectionTimePump5": 0},
-    "8398": {"80StartPumpDetectionTimePump6": 0},
-    "8400": {"80SumStartPumpDetectionAlarm1": 0},
-    "8401": {"80SumStartPumpDetectionAlarm2": 0},
-    "8402": {"80SumStartPumpDetectionAlarm3": 0},
-    "8403": {"80SumStartPumpDetectionAlarm4": 0},
-    "8404": {"80SumStartPumpDetectionAlarm5": 0},
-    "8405": {"80SumStartPumpDetectionAlarm6": 0},
-    "8406": {"80AuthentificationPassword": 0},
-    "8410": {"80SetpointPID": 0},
-    "8411": {"80PIDIterationTime": 0},
-    "8413": {"80AdditionalPumpsStartsStop": 0},
-    "8414": {"80AdditionalPumpsStartKritTime": 0},
-    "8416": {"80AdditionalPumpsStartTime": 0},
-    "8418": {"80AdditionalPumpsStopKritTime": 0},
-    "8420": {"80AdditionalPumpsStopTime": 0},
-    "8422": {"80AdditionalPumpsStarted": 0},
-    "8424": {"80AdditionalPumpsStoped": 0},
-    "8426": {"80DryRunning": 0},
-    "8427": {"80DryRunningTime": 0},
-    "8429": {"80CounterCyclicAlarmDryRunning": 0},
-    "8430": {"80CriticalPressure": 0},
-    "8431": {"80CriticalPressureTime": 0},
-    "8433": {"80CounterCyclicAlarmCriticalPressure": 0},
-    "8434": {"80PowerSavingModeBitON": 0},
-    "8435": {"80PowerSavingModeAmplitudeTime": 0},
-    "8437": {"80PowerSavingModeSignalMaxPressure": 0},
-    "8438": {"80PowerSavingModeSignalMinPressure": 0},
-    "8439": {"80PowerSavingModeSignalMaxFrequency": 0},
-    "8440": {"80PowerSavingModeSignalMinFrequency": 0},
-    "8441": {"80PowerSavingPeakToPeakPressure": 0},
-    "8442": {"80PowerSavingPeakToPeakFrequency": 0},
-    "8443": {"80PowerSavingModeTimeShtamp": 0},
-    "8445": {"80PowerSavingModeOutput": 0},
-    "8446": {"80TrendsBackupTimerBit2": 0},
-    "8447": {"80BackupTimer": 0},
-    "8448": {"80FConverterPoweredPumpsPrev": 0},
-    "8449": {"80FCRunStatus": 0},
-    "8450": {"80IdleUserTime": 0},
-    "8452": {"80ScreensaverPosition1": 0},
-    "8453": {"80ScreensaverPosition2": 0},
-    "8454": {"80ScreensaverPosition3": 0},
-    "8455": {"80ScreensaverPosition4": 0},
-    "8456": {"80ScreensaverPosition5": 0},
-    "8457": {"80ScreensaverPosition6": 0},
-    "8458": {"80ScreensaverPosition7": 0},
-    "8459": {"80ScreensaverPosition8": 0},
-    "8460": {"80ScreensaverPosition9": 0},
-    "8461": {"80ScreensaverPosition10": 0},
-    "8462": {"80ScreensaverPositionTime": 0},
-    "8464": {"80ScreensaverPositionCurrent": 0},
-    "90": {"": 0},
-    "9017": {"90LocalSeconds": 0},
-    "9018": {"90LocalMinutes": 0},
-    "9019": {"90LocalHour": 0},
-    "9020": {"90LocalDay": 0},
-    "9021": {"90LocalMonth": 0},
-    "9022": {"90LocalYear": 0},
-    "9023": {"90LocalWeek": 0}
+
+    "19": {
+        "01900": {"19QuantityPump": 0},
+        "01901": {"19WorkingQuantityPump": 0}    
+    },
+
+    "20": {
+        "02000": {"20PumpMaintenance": 0}
+    },
+
+    "21": {
+        "02100": {"21MainWundowTime": 0}
+    },
+
+    "60": {
+        "06000": {"60LowerPipeline": 0},
+        "06001": {"60UpperPipeline": 0},
+
+
+        "06002": {"60Pump1": 0},
+        "06003": {"60Pump2": 0},
+        "06004": {"60Pump3": 0},
+        "06005": {"60Pump4": 0},
+        "06006": {"60Pump5": 0},
+        "06007": {"60Pump6": 0},
+
+
+        "06008": {"60StartPumpDetection1": 0},
+        "06009": {"60StartPumpDetection2": 0},
+        "06010": {"60StartPumpDetection3": 0},
+        "06011": {"60StartPumpDetection4": 0},
+        "06012": {"60StartPumpDetection5": 0},
+        "06013": {"60StartPumpDetection6": 0},
+
+
+        "06014": {"60NumberDisplayMenu": 0},
+
+
+        "06015": {"60NumberDisplaySettings": 0},
+
+
+        "06016": {"60NumberDisplayAlarm": 0},
+
+
+        "06017": {"60PreviousMenu1": 0},
+        "06018": {"60PreviousDisplay1": 0},
+        "06019": {"60PreviousMenu2": 0},
+        "06020": {"60PreviousDisplay2": 0},
+        "06021": {"60PreviousMenu3": 0},
+        "06022": {"60PreviousDisplay3": 0},
+        "06023": {"60PreviousMenu4": 0},
+        "06024": {"60PreviousDisplay4": 0},
+        "06025": {"60NumberDisplayMain": 0},
+
+
+        "06026": {"60FCIcon1": 0},
+        "06027": {"60FCIcon2": 0},
+        "06028": {"60FCIcon3": 0},
+        "06029": {"60FCIcon4": 0},
+        "06030": {"60FCIcon5": 0},
+        "06031": {"60FCIcon6": 0},
+
+
+        "06032": {"60WindowChangeTrigger": 0},
+
+
+        "06033": {"Не использовать": 0},
+
+
+        "06034": {"60GraphicTriggersInaction": 0},
+
+
+        "06035": {"60AlarmSumPrev": 0}
+    },
+
+
+    "70": {
+        "07000": {"70SuctionPressure": 0},
+
+
+        "07001": {"70DischargePressure": 0},
+
+
+        "07002": {"70DifferencePressure": 0},
+
+
+        "07003": {"70Setpoint": 0},
+
+
+        "07004": {"70FrequencySetpoint": 0},
+
+
+        "07005": {"70SumFrequencyFC": 0},
+
+
+        "07006": {"": 0},
+        "07007": {"": 0},
+        "07008": {"": 0},
+        "07009": {"": 0},
+        "07010": {"": 0},
+        "07011": {"": 0},
+        "07012": {"": 0},
+        "07013": {"": 0},
+        "07014": {"": 0},
+
+
+        "07015": {"70TrendsHistorycontrol": 0},
+
+
+        "07016": {"70OnlineTrendsChannelVisibility": 0},
+        "0701600": {"70OnlineTrendsChannelVisibility1": 0},
+        "0701601": {"70OnlineTrendsChannelVisibility2": 0},
+        "0701602": {"70OnlineTrendsChannelVisibility3": 0},
+        "0701603": {"70OnlineTrendsChannelVisibility4": 0},
+        "0701604": {"70OnlineTrendsChannelVisibility5": 0},
+        "0701605": {"70OnlineTrendsChannelVisibility6": 0},
+
+
+        "07017": {"70OnlineTrendsDynamicRangeTime": 0},
+
+
+        "07018": {"70OnlineTrendsObservationLine1": 0},
+        "07019": {"70OnlineTrendsObservationLine2": 0},
+        "07020": {"70OnlineTrendsObservationLine3": 0},
+        "07021": {"70OnlineTrendsObservationLine4": 0},
+        "07022": {"70OnlineTrendsObservationLine5": 0},
+        "07023": {"70OnlineTrendsObservationLine6": 0},
+        "07024": {"70OnlineTrendsObservationLine7": 0},
+        "07025": {"70OnlineTrendsObservationLine8": 0},
+        "07026": {"70OnlineTrendsObservationLine9": 0},
+        "07027": {"70OnlineTrendsObservationLine10": 0},
+        "07028": {"70OnlineTrendsObservationLine11": 0},
+        "07029": {"70OnlineTrendsObservationLine12": 0},
+        "07030": {"70OnlineTrendsObservationLine13": 0},
+        "07031": {"70OnlineTrendsObservationLine14": 0},
+        "07032": {"70OnlineTrendsObservationLine15": 0},
+
+
+        "07033": {"70OnlineTrendsDynamicLimitLoChanel1": 0},
+        "07034": {"70OnlineTrendsDynamicLimitHiChanel1": 0},
+        "07035": {"70OnlineTrendsDynamicLimitLoChanel2": 0},
+        "07036": {"70OnlineTrendsDynamicLimitHiChanel2": 0},
+        "07037": {"70OnlineTrendsDynamicLimitLoChanel3": 0},
+        "07038": {"70OnlineTrendsDynamicLimitHiChanel3": 0},
+        "07039": {"70OnlineTrendsDynamicLimitLoChanel4": 0},
+        "07040": {"70OnlineTrendsDynamicLimitHiChanel4": 0},
+        "07041": {"70OnlineTrendsDynamicLimitLoChanel5": 0},
+        "07042": {"70OnlineTrendsDynamicLimitHiChanel5": 0},
+        "07043": {"70OnlineTrendsDynamicLimitLoChanel6": 0},
+        "07044": {"70OnlineTrendsDynamicLimitHiChanel6": 0},
+        "07045": {"70OnlineTrendsDynamicLimitLoChanel7": 0},
+        "07046": {"70OnlineTrendsDynamicLimitHiChanel7": 0},
+        "07047": {"70OnlineTrendsDynamicLimitLoChanel8": 0},
+        "07048": {"70OnlineTrendsDynamicLimitHiChanel8": 0},
+        "07049": {"70OnlineTrendsDynamicLimitLoChanel9": 0},
+        "07050": {"70OnlineTrendsDynamicLimitHiChanel9": 0},
+        "07051": {"70OnlineTrendsDynamicLimitLoChanel10": 0},
+        "07052": {"70OnlineTrendsDynamicLimitHiChanel10": 0},
+        "07053": {"70OnlineTrendsDynamicLimitLoChanel11": 0},
+        "07054": {"70OnlineTrendsDynamicLimitHiChanel11": 0},
+        "07055": {"70OnlineTrendsDynamicLimitLoChanel12": 0},
+        "07056": {"70OnlineTrendsDynamicLimitHiChanel12": 0},
+        "07057": {"70OnlineTrendsDynamicLimitLoChanel13": 0},
+        "07058": {"70OnlineTrendsDynamicLimitHiChanel13": 0},
+        "07059": {"70OnlineTrendsDynamicLimitLoChanel14": 0},
+        "07060": {"70OnlineTrendsDynamicLimitHiChanel14": 0},
+        "07061": {"70OnlineTrendsDynamicLimitLoChanel15": 0},
+        "07062": {"70OnlineTrendsDynamicLimitHiChanel15": 0},
+
+
+        "07063": {"70ScaleNumber": 0},
+
+
+        "07064": {"70Scale1": 0},
+        "07065": {"70Scale2": 0},
+        "07066": {"70Scale3": 0},
+        "07067": {"70Scale4": 0},
+        "07068": {"70Scale5": 0},
+        "07069": {"70Scale6": 0},
+        "07070": {"70Scale7": 0},
+        "07071": {"70Scale8": 0},
+        "07072": {"70Scale9": 0},
+        "07073": {"70Scale10": 0}
+    },
+
+    "80": {
+        "08000": {"80TriggerStartStop": 0},
+
+
+        "08001": {"80PumpRunSeconds1": 0},
+        "08002": {"80PumpRunSeconds2": 0},
+        "08003": {"80PumpRunSeconds3": 0},
+        "08004": {"80PumpRunSeconds4": 0},
+        "08005": {"80PumpRunSeconds5": 0},
+        "08006": {"80PumpRunSeconds6": 0},
+
+
+        "08007": {"80PumpOffSeconds1": 0},
+        "08008": {"80PumpOffSeconds2": 0},
+        "08009": {"80PumpOffSeconds3": 0},
+        "08010": {"80PumpOffSeconds4": 0},
+        "08011": {"80PumpOffSeconds5": 0},
+        "08012": {"80PumpOffSeconds6": 0},
+
+
+        "08013": {"80UnixTimePrev": 0},
+        "08014": {"80UnixTimePrev": 0},
+        "08015": {"80UnixTimePrev": 0},
+        "08016": {"80UnixTimePrev": 0},
+
+
+        "08017": {"80ArrayHoursSinceLastStartPump": 0},
+        "08378": {"80ArrayHoursSinceLastStartPump": 0},
+
+
+        "08379": {"80SoftFillingOutControl": 0},
+        "0837900": {"80SoftFillingOutControlEnable": 0},
+        "0837901": {"80SoftFillingOutControlStarted": 0},
+
+        
+        "08380": {"80SoftFillingOutTime": 0},
+        "08381": {"80SoftFillingOutTime": 0},
+
+
+        "08382": {"80DopStartedTime": 0},
+        "08383": {"80DopStartedTime": 0},
+
+
+        "08384": {"80DopStopedTime": 0},
+        "08385": {"80DopStopedTime": 0},
+
+
+        "08386": {"80StartStopPump": 0},
+
+
+        "08387": {"80StartPumpDetectionTrig": 0},
+
+
+        "08388": {"80StartPumpDetectionTimePump1": 0},
+        "08389": {"80StartPumpDetectionTimePump1": 0},
+
+
+        "08390": {"80StartPumpDetectionTimePump2": 0},
+        "08391": {"80StartPumpDetectionTimePump2": 0},
+
+
+        "08392": {"80StartPumpDetectionTimePump3": 0},
+        "08393": {"80StartPumpDetectionTimePump3": 0},
+
+
+        "08394": {"80StartPumpDetectionTimePump4": 0},
+        "08395": {"80StartPumpDetectionTimePump4": 0},
+
+
+        "08396": {"80StartPumpDetectionTimePump5": 0},
+        "08397": {"80StartPumpDetectionTimePump5": 0},
+
+
+        "08398": {"80StartPumpDetectionTimePump6": 0},
+        "08399": {"80StartPumpDetectionTimePump6": 0},
+
+
+        "08400": {"80SumStartPumpDetectionAlarm1": 0},
+        "08401": {"80SumStartPumpDetectionAlarm2": 0},
+        "08402": {"80SumStartPumpDetectionAlarm3": 0},
+        "08403": {"80SumStartPumpDetectionAlarm4": 0},
+        "08404": {"80SumStartPumpDetectionAlarm5": 0},
+        "08405": {"80SumStartPumpDetectionAlarm6": 0},
+
+
+        "08406": {"80AuthentificationPassword": 0},
+
+
+        "08410": {"80SetpointPID": 0},
+
+
+        "08411": {"80PIDIterationTime": 0},
+        "08412": {"80PIDIterationTime": 0},
+
+
+        "08413": {"80AdditionalPumpsStartsStop": 0},
+
+
+        "08414": {"80AdditionalPumpsStartKritTime": 0},
+        "08415": {"80AdditionalPumpsStartKritTime": 0},
+
+
+        "08416": {"80AdditionalPumpsStartTime": 0},
+        "08417": {"80AdditionalPumpsStartTime": 0},
+
+
+        "08418": {"80AdditionalPumpsStopKritTime": 0},
+        "08419": {"80AdditionalPumpsStopKritTime": 0},
+
+
+        "08420": {"80AdditionalPumpsStopTime": 0},
+        "08421": {"80AdditionalPumpsStopTime": 0},
+
+
+        "08422": {"80AdditionalPumpsStarted": 0},
+        "08423": {"80AdditionalPumpsStarted": 0},
+
+
+        "08424": {"80AdditionalPumpsStoped": 0},
+        "08425": {"80AdditionalPumpsStoped": 0},
+
+
+        "08426": {"80DryRunning": 0},
+
+
+        "08427": {"80DryRunningTime": 0},
+        "08428": {"80DryRunningTime": 0},
+
+
+        "08429": {"80CounterCyclicAlarmDryRunning": 0},
+
+
+        "08430": {"80CriticalPressure": 0},
+
+
+        "08431": {"80CriticalPressureTime": 0},
+        "08432": {"80CriticalPressureTime": 0},
+
+
+        "08433": {"80CounterCyclicAlarmCriticalPressure": 0},
+
+
+        "08434": {"80PowerSavingModeBit": 0},
+        "0843400": {"80PowerSavingModeBitON": 0},
+        "0843401": {"80PowerSavingModeBit1": 0},
+        "0843402": {"80PowerSavingModeBit2": 0},
+
+
+        "08435": {"80PowerSavingModeAmplitudeTime": 0},
+        "08436": {"80PowerSavingModeAmplitudeTime": 0},
+
+
+        "08437": {"80PowerSavingModeSignalMaxPressure": 0},
+
+
+        "08438": {"80PowerSavingModeSignalMinPressure": 0},
+
+
+        "08439": {"80PowerSavingModeSignalMaxFrequency": 0},
+
+
+        "08440": {"80PowerSavingModeSignalMinFrequency": 0},
+
+
+        "08441": {"80PowerSavingPeakToPeakPressure": 0},
+
+
+        "08442": {"80PowerSavingPeakToPeakFrequency": 0},
+
+
+        "08443": {"80PowerSavingModeTimeShtamp": 0},
+        "08444": {"80PowerSavingModeTimeShtamp": 0},
+
+
+        "08445": {"80PowerSavingModeOutput": 0},
+
+
+        "0844600": {"80LogBackup": 0},
+        "0844601": {"80LogBackupTimerBit": 0},
+        "0844602": {"80LogBackupTimerBit2": 0},
+        "0844603": {"80RWBackup": 0},
+        "0844604": {"80RWBackupTimerBit": 0},
+        "0844605": {"80RWBackupTimerBit2": 0},
+        "0844606": {"80TrendsBackup": 0},
+        "0844607": {"80TrendsBackupTimerBit": 0},
+        "0844608": {"80TrendsBackupTimerBit2": 0},
+
+
+        "08447": {"80BackupTimer": 0},
+        "0844700": {"80FConverterPoweredPumpsPrev": 0},
+
+
+        "08448": {"80FConverterPoweredPumpsPrev": 0},
+
+
+        "08449": {"80FCRunStatus": 0},
+
+
+        "08450": {"80IdleUserTime": 0},
+
+
+        "08452": {"80ScreensaverPosition1": 0},
+        "08453": {"80ScreensaverPosition2": 0},
+        "08454": {"80ScreensaverPosition3": 0},
+        "08455": {"80ScreensaverPosition4": 0},
+        "08456": {"80ScreensaverPosition5": 0},
+        "08457": {"80ScreensaverPosition6": 0},
+        "08458": {"80ScreensaverPosition7": 0},
+        "08459": {"80ScreensaverPosition8": 0},
+        "08460": {"80ScreensaverPosition9": 0},
+        "08461": {"80ScreensaverPosition10": 0},
+        "08462": {"80ScreensaverPositionTime": 0},
+        "08463": {"80ScreensaverPositionTime": 0},
+        "08464": {"80ScreensaverPositionCurrent": 0}
+    },
+
+    "90": {
+        "09017": {"90LocalSeconds": 0},
+        "09018": {"90LocalMinutes": 0},
+        "09019": {"90LocalHour": 0},
+        "09020": {"90LocalDay": 0},
+        "09021": {"90LocalMonth": 0},
+        "09022": {"90LocalYear": 0},
+        "09023": {"90LocalWeek": 0}
+    },
+
+    "150": {
+        "015000": {"150PumpNumberOfStarts1": 0},
+        "015001": {"150PumpNumberOfStarts2": 0},
+        "015002": {"150PumpNumberOfStarts3": 0},
+        "015003": {"150PumpNumberOfStarts4": 0},
+        "015004": {"150PumpNumberOfStarts5": 0},
+        "015005": {"150PumpNumberOfStarts6": 0},
+        "015006": {"150PumpRunHours1": 0},
+        "015007": {"150PumpRunHours2": 0},
+        "015008": {"150PumpRunHours3": 0},
+        "015009": {"150PumpRunHours4": 0},
+        "015010": {"150PumpRunHours5": 0},
+        "015011": {"150PumpRunHours6": 0},
+        "015012": {"150NumberOfStartsPerHour1": 0},
+        "015013": {"150NumberOfStartsPerHour2": 0},
+        "015014": {"150NumberOfStartsPerHour3": 0},
+        "015015": {"150NumberOfStartsPerHour4": 0},
+        "015016": {"150NumberOfStartsPerHour5": 0},
+        "015017": {"150NumberOfStartsPerHour6": 0},
+        "015018": {"150HoursSinceLastStartPump1": 0},
+        "015019": {"150HoursSinceLastStartPump2": 0},
+        "015020": {"150HoursSinceLastStartPump3": 0},
+        "015021": {"150HoursSinceLastStartPump4": 0},
+        "015022": {"150HoursSinceLastStartPump5": 0},
+        "015023": {"150HoursSinceLastStartPump6": 0},
+        "015024": {"150HoursSinceLastStopPump1": 0},
+        "015025": {"150HoursSinceLastStopPump2": 0},
+        "015026": {"150HoursSinceLastStopPump3": 0},
+        "015027": {"150HoursSinceLastStopPump4": 0},
+        "015028": {"150HoursSinceLastStopPump5": 0},
+        "015029": {"150HoursSinceLastStopPump6": 0}
+    }
 }
