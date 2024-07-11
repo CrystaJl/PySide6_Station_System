@@ -279,6 +279,7 @@ class System_Station_Main_window_settings:
         #self.setSvgIcon(self.main_pipe_up_icon_label, 'main_pipe_up_icon_label_1_1.svg', 0)
         #self.setSvgIcon(self.main_pipe_down_icon_label, 'main_pipe_down_icon_label_1_1.svg', 0)
 
+        
 
     def setSvgIcon(self, widget, svg_filename, set_widget_size):
         svg_path = os.path.join(self.svg_icons_dir, svg_filename)
