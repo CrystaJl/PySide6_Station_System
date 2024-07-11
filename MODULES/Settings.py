@@ -283,6 +283,102 @@ class System_Station_Main_window_settings:
 
         #self.setSvgIcon(self.main_pipe_up_icon_label, 'main_pipe_up_icon_label_1_1.svg', 0)
         #self.setSvgIcon(self.main_pipe_down_icon_label, 'main_pipe_down_icon_label_1_1.svg', 0)
+        self.setSvgIcon(self.main_01Mode_pushButton, 'Stop_orange.svg', 1)
+        self.setSvgIcon(self.go_to_main_graphic_page_pushButton, '2_grey.svg', 1)#
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)#
+        self.setSvgIcon(self.go_to_main_switch_page_pushButton, 'Alarm_grey.svg', 1)
+        self.setSvgIcon(self.go_to_settings_main_page_icon_label, 'main.svg', 1)
+        self.setSvgIcon(self.go_to_settings_manager_page_icon_label, 'календарь.svg', 1)
+        self.setSvgIcon(self.go_to_settings_tracking_page_icon_label_1, 'monitoring.svg', 1)
+        self.setSvgIcon(self.go_to_settings_journal_page_icon_label_1, 'journal.svg', 1)
+        self.setSvgIcon(self.go_to_settings_station_settings_page_icon_label_1, 'одна_настройка.svg', 1)
+        self.setSvgIcon(self.go_to_settings_engineering_menu_page_icon_label_1, 'гаечный_ключ.svg', 1)
+        self.setSvgIcon(self.go_to_settings_panel_settings_page_icon_label_1, 'настройки панели.svg', 1)
+        self.setSvgIcon(self.go_to_settings_contacts_page_icon_label_1, 'поддержка.svg', 1)
+
+
+        self.setSvgIcon(self.manager_icon_label_1, 'Источник.svg', 1)
+        self.setSvgIcon(self.manager_icon_label_2, 'Пользователь.svg', 1)
+        self.setSvgIcon(self.manager_icon_label_3, 'календарь.svg', 1)
+        self.setSvgIcon(self.manager_icon_label_4_1, 'Календарь событие.svg', 1)
+        self.setSvgIcon(self.manager_icon_label_4_2, 'Календарь событие.svg', 1)
+        self.setSvgIcon(self.manager_icon_label_4_3, 'Календарь событие.svg', 1)
+        self.setSvgIcon(self.manager_icon_label_4_4, 'Календарь событие.svg', 1)
+        self.setSvgIcon(self.manager_icon_label_5_1, 'глаз.svg', 1)
+        self.setSvgIcon(self.manager_icon_label_5_2, 'глаз.svg', 1)
+
+
+        self.setSvgIcon(self.go_to_settings_tracking_page_icon_label_2, 'стрелка_вправо.svg', 1)
+        self.setSvgIcon(self.return_to_settings_main_buttons_icon_label, 'стрелка_влево.svg', 1)
+        self.setSvgIcon(self.go_to_tracking_trends_online_page_icon_label_1, 'monitoring.svg', 1)
+        self.setSvgIcon(self.go_to_tracking_trends_history_page_icon_label_1, 'monitoring.svg', 1)
+        self.setSvgIcon(self.go_to_tracking_pumps_developments_page_icon_label_1, 'таймер.svg', 1)
+        self.setSvgIcon(self.go_to_tracking_trends_history_page_icon_label_2, 'стрелка_вправо.svg', 1)
+        self.setSvgIcon(self.return_to_settings_tracking_buttons_icon_label, 'стрелка_влево.svg', 1)
+
+
+        self.setSvgIcon(self.go_to_settings_journal_page_icon_label_2, 'стрелка_вправо.svg', 1)
+        self.setSvgIcon(self.return_to_settings_main_buttons_icon_label_2, 'стрелка_влево.svg', 1)
+        self.setSvgIcon(self.go_to_journal_current_events_page_icon_label_1, 'monitoring.svg', 1)
+        self.setSvgIcon(self.go_to_journal_history_page_icon_label_1, 'monitoring.svg', 1)
+        self.setSvgIcon(self.go_to_journal_changes_page_icon_label_1, 'таймер.svg', 1)
+        self.setSvgIcon(self.go_to_journal_history_page_icon_label_2, 'стрелка_вправо.svg', 1)
+        self.setSvgIcon(self.return_to_settings_journal_buttons_icon_label, 'стрелка_влево.svg', 1)
+
+
+        self.setSvgIcon(self.go_to_settings_station_settings_page_icon_label_2, 'стрелка_вправо.svg', 1)
+        self.setSvgIcon(self.return_to_settings_main_buttons_icon_label_3, 'стрелка_влево.svg', 1)
+        self.setSvgIcon(self.go_to_station_settings_engine_parameters_page_icon_label_1, 'параметры_двигателей.svg', 1)
+        self.setSvgIcon(self.go_to_station_settings_sensors_settings_page_icon_label_1, '360.svg', 1)
+        self.setSvgIcon(self.go_to_station_settings_general_pumps_parameters_page_icon_label_1, '360.svg', 1)
+        self.setSvgIcon(self.go_to_station_settings_options_page_icon_label_1, 'опции.svg', 1)
+        self.setSvgIcon(self.go_to_station_settings_emergency_modes_page_icon_label_1, 'Warning.svg', 1)
+
+        self.setSvgIcon(self.station_settings_engine_parameters_icon_label_1, 'Напряжение.svg', 1)
+        self.setSvgIcon(self.station_settings_engine_parameters_icon_label_2, 'ток.svg', 1)
+        self.setSvgIcon(self.station_settings_engine_parameters_icon_label_3, 'частота.svg', 1)
+        self.setSvgIcon(self.station_settings_engine_parameters_icon_label_4, 'скорость.svg', 1)
+        self.setSvgIcon(self.station_settings_engine_parameters_icon_label_5, 'мощность.svg', 1)
+        self.setSvgIcon(self.station_settings_engine_parameters_icon_label_6, 'время_ускорения.svg', 1)
+        self.setSvgIcon(self.station_settings_engine_parameters_icon_label_7, 'Время тормажения.svg', 1)
+        self.setSvgIcon(self.station_settings_engine_parameters_icon_label_8, 'Стрелка в лево.svg', 1)
+        self.setSvgIcon(self.station_settings_engine_parameters_icon_label_9, 'Стрелка в право.svg', 1)
+
+        self.setSvgIcon(self.station_settings_sensors_settings_icon_label_1, 'всасывание.svg', 1)
+        self.setSvgIcon(self.station_settings_sensors_settings_icon_label_2, 'нагнетание.svg', 1)
+        self.setSvgIcon(self.station_settings_sensors_settings_icon_label_3_1, 'глаз.svg', 1)
+        self.setSvgIcon(self.station_settings_sensors_settings_icon_label_3_2, 'глаз.svg', 1)
+        self.setSvgIcon(self.station_settings_sensors_settings_icon_label_3_3, 'глаз.svg', 1)
+        self.setSvgIcon(self.station_settings_sensors_settings_icon_label_3_4, 'глаз.svg', 1)
+
+        #параметры насосов общ #параметры насосов общ #параметры насосов общ #параметры насосов общ #параметры насосов общ 
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+
+
+        self.setSvgIcon(self.go_to_settings_station_settings_page_icon_label_2, 'стрелка_вправо.svg', 1)
+
+
+        self.setSvgIcon(self.go_to_settings_engineering_menu_page_icon_label_2, 'стрелка_вправо.svg', 1)
+
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+        self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)
+
+
+        
 
 
     def setSvgIcon(self, widget, svg_filename, set_widget_size):
