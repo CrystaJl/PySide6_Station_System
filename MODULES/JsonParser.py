@@ -1,7 +1,7 @@
 import json
 
 class Json_parser:
-    def read_json(self, file_name, outer_key, inner_key, target_key):
+    def readJson(self, file_name, outer_key, inner_key, target_key):
         data = self.load_json(file_name)
 
         if data == None: return
@@ -22,7 +22,7 @@ class Json_parser:
                 json.dump(data, file, indent=4)
         except Exception as e: print(f"Failed to save json ERROR: {e}")
     
-    def update_json(self, file_name, outer_key, inner_key, target_key, value):
+    def updateJson(self, file_name, outer_key, inner_key, target_key, value):
         data = self.load_json(file_name)
 
         if data == None: return
