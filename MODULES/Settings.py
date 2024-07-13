@@ -96,137 +96,190 @@ class System_Station_Main_window_settings:
         self.go_to_engineering_panel_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
         self.go_to_engineering_contacts_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(2))
 
-#Выше находится блок кода, отвечающий за подключение всех возможных кнопок, связанных со страницами кнопок и страницами основной работы с обурудованием, для полноценной работы в приложении
+#Выше находится блок кода, отвечающий за подключение всех возможных кнопок, связанных со страницами кнопок и страницами основной работы с оборудованием, для полноценной работы в приложении
 ###################################################################################################################################################################################################
 ###################################################################################################################################################################################################
-#Данный блок кода сфокусирован на подключение всех возможных кнопок, связанных с паролями и уровнями доступа, к окну, отвечающее за изменение доступа и за изменение атрибутов
+#Данный блок кода сфокусирован на подключение всех возможных кнопок, связанных с паролями и уровнями доступа, к окну, отвечающему за изменение доступа и за изменение атрибутов
 
         #Планировщик
-        self.manager_morning_1_pushButton.clicked.connect(lambda: self.show_password_window(3, self.manager_morning_1_pushButton, 0, 50))
-        self.manager_morning_2_pushButton.clicked.connect(lambda: self.show_password_window(4, self.manager_morning_2_pushButton, 0, 60))
-      
-        self.manager_morning_3_pushButton.clicked.connect(self.show_password_window)
-        self.manager_morning_4_pushButton.clicked.connect(self.show_password_window)
-        self.manager_day_1_pushButton.clicked.connect(self.show_password_window)
-        self.manager_day_2_pushButton.clicked.connect(self.show_password_window)
-        self.manager_day_3_pushButton.clicked.connect(self.show_password_window)
-        self.manager_day_4_pushButton.clicked.connect(self.show_password_window)
-        self.manager_evening_1_pushButton.clicked.connect(self.show_password_window)
-        self.manager_evening_2_pushButton.clicked.connect(self.show_password_window)
-        self.manager_evening_3_pushButton.clicked.connect(self.show_password_window)
-        self.manager_evening_4_pushButton.clicked.connect(self.show_password_window)
-        self.manager_user_setpoint_pushButton.clicked.connect(self.show_password_window)
-        self.manager_monday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_tuesday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_wednesday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_thursday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_friday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_saturday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_sunday_pushButton.clicked.connect(self.show_password_window)
+        self.manager_user_setpoint_10SetpointUser_pushButton.clicked.connect(self.show_password_window)
+
+        self.manager_monday_10TypeOfDayMonday_pushButton.clicked.connect(self.show_password_window)
+        self.manager_tuesday_10TypeOfDayTuesday_pushButton.clicked.connect(self.show_password_window)
+        self.manager_wednesday_10TypeOfDayWednesday_pushButton.clicked.connect(self.show_password_window)
+        self.manager_thursday_10TypeOfDayThursday_pushButton.clicked.connect(self.show_password_window)
+        self.manager_friday_10TypeOfDayFriday_pushButton.clicked.connect(self.show_password_window)
+        self.manager_saturday_10TypeOfDaySaturday_pushButton.clicked.connect(self.show_password_window)
+        self.manager_sunday_10TypeOfDaySunday_pushButton.clicked.connect(self.show_password_window)
+
+        self.manager_morning_1_1_10WeekdayMorningHour_pushButton.clicked.connect(lambda: self.show_password_window(3, self.manager_morning_1_1_10WeekdayMorningHour_pushButton, 0, 50))
+        self.manager_morning_1_2_10WeekdayMorningMinutes_pushButton.clicked.connect(lambda: self.show_password_window(3, self.manager_morning_1_2_10WeekdayMorningMinutes_pushButton, 0, 50))
+        self.manager_morning_2_1_10WeekendMorningHour_pushButton.clicked.connect(lambda: self.show_password_window(4, self.manager_morning_2_1_10WeekendMorningHour_pushButton, 0, 60))
+        self.manager_morning_2_2_10WeekendMorningMinutes_pushButton.clicked.connect(lambda: self.show_password_window(4, self.manager_morning_2_2_10WeekendMorningMinutes_pushButton, 0, 60))
+        self.manager_morning_3_10SetpointWeekdaysMorning_pushButton.clicked.connect(self.show_password_window)
+        self.manager_morning_4_10SetpointWeekendsMorning_pushButton.clicked.connect(self.show_password_window)
+
+        self.manager_day_1_1_10WeekdayDayHour_pushButton.clicked.connect(self.show_password_window)
+        self.manager_day_1_2_10WeekdayDayMinutes_pushButton.clicked.connect(self.show_password_window)
+        self.manager_day_2_1_10DayOffMinutes_pushButton.clicked.connect(self.show_password_window)
+        self.manager_day_2_2_10DayOffMinutes_pushButton.clicked.connect(self.show_password_window)
+        self.manager_day_3_10SetpointWeekdaysDay_pushButton.clicked.connect(self.show_password_window)
+        self.manager_day_4_10SetpointWeekendsDay_pushButton.clicked.connect(self.show_password_window)
+
+        self.manager_evening_1_1_10WeekdayEveningHour_pushButton.clicked.connect(self.show_password_window)
+        self.manager_evening_1_2_10WeekdayEveningMinutes_pushButton.clicked.connect(self.show_password_window)
+        self.manager_evening_2_1_10WeekendEveningHour_pushButton.clicked.connect(self.show_password_window)
+        self.manager_evening_2_2_10WeekendEveningMinutes_pushButton.clicked.connect(self.show_password_window)
+        self.manager_evening_3_10SetpointWeekdaysEvening_pushButton.clicked.connect(self.show_password_window)
+        self.manager_evening_4_10SetpointWeekendsEvening_pushButton.clicked.connect(self.show_password_window)
+
+        self.manager_night_1_1_10WeekdayNightHour_pushButton.clicked.connect(self.show_password_window)
+        self.manager_night_1_2_10WeekdayNightMinutes_pushButton.clicked.connect(self.show_password_window)
+        self.manager_night_2_1_10WeekendNightHour_pushButton.clicked.connect(self.show_password_window)
+        self.manager_night_2_2_10WeekendNightMinutes_pushButton.clicked.connect(self.show_password_window)
+        self.manager_night_3_10SetpointWeekdaysNights_pushButton.clicked.connect(self.show_password_window)
+        self.manager_night_4_10SetpointWeekendsNights_pushButton.clicked.connect(self.show_password_window)
+
 
         #Настройки панели
-        self.panel_settings_display_disable_time_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_screensaver_activation_time_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_buzzer_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_date_day_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_date_month_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_date_year_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_time_hour_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_time_minutes_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_time_seconds_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_ip_1_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_ip_2_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_ip_3_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_ip_4_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_mask_1_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_mask_2_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_mask_3_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_mask_4_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_gateway_1_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_gateway_2_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_gateway_3_pushButton.clicked.connect(self.show_password_window)
-        self.panel_settings_gateway_4_pushButton.clicked.connect(self.show_password_window)
+        self.panel_settings_display_disable_time_pushButton.clicked.connect(self.show_password_window)               #переименовать атрибут
+        self.panel_settings_screensaver_activation_time_pushButton.clicked.connect(self.show_password_window)        #переименовать атрибут
+        self.panel_settings_buzzer_pushButton.clicked.connect(self.show_password_window)                             #переименовать атрибут
+        self.panel_settings_date_day_pushButton.clicked.connect(self.show_password_window)                           #переименовать атрибут
+        self.panel_settings_date_month_pushButton.clicked.connect(self.show_password_window)                         #переименовать атрибут
+        self.panel_settings_date_year_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
+        self.panel_settings_time_hour_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
+        self.panel_settings_time_minutes_pushButton.clicked.connect(self.show_password_window)                       #переименовать атрибут
+        self.panel_settings_time_seconds_pushButton.clicked.connect(self.show_password_window)                       #переименовать атрибут
+        self.panel_settings_ip_1_pushButton.clicked.connect(self.show_password_window)                               #переименовать атрибут
+        self.panel_settings_ip_2_pushButton.clicked.connect(self.show_password_window)                               #переименовать атрибут
+        self.panel_settings_ip_3_pushButton.clicked.connect(self.show_password_window)                               #переименовать атрибут
+        self.panel_settings_ip_4_pushButton.clicked.connect(self.show_password_window)                               #переименовать атрибут
+        self.panel_settings_mask_1_pushButton.clicked.connect(self.show_password_window)                             #переименовать атрибут
+        self.panel_settings_mask_2_pushButton.clicked.connect(self.show_password_window)                             #переименовать атрибут
+        self.panel_settings_mask_3_pushButton.clicked.connect(self.show_password_window)                             #переименовать атрибут
+        self.panel_settings_mask_4_pushButton.clicked.connect(self.show_password_window)                             #переименовать атрибут
+        self.panel_settings_gateway_1_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
+        self.panel_settings_gateway_2_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
+        self.panel_settings_gateway_3_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
+        self.panel_settings_gateway_4_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
 
         #Контакты
-        self.contacts_number_of_pumps_pushButton.clicked.connect(lambda: self.show_password_window(0, self.contacts_number_of_pumps_pushButton, 0, 6, "Колличество насосов:            "))
-        self.contacts_current_workings_number_of_pumps_pushButton.clicked.connect(self.show_password_window)
+        self.contacts_number_of_pumps_19QuantityPump_pushButton.clicked.connect(lambda: self.show_password_window(0, self.contacts_number_of_pumps_19QuantityPump_pushButton, 0, 6, "Колличество насосов:            "))
+        self.contacts_current_workings_number_of_pumps_19WorkingQuantityPump_pushButton.clicked.connect(self.show_password_window)
 
         #Параметры двигателей                  (внутри настроек станции)
-        self.station_settings_engine_parameters_voltage_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_amperage_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_frequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_speed_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_power_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_acceleration_time_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_slow_down_time_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_read_settings_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_write_settings_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_engine_parameters_voltage_18MotorVoltage_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_engine_parameters_amperage_18MotorCurrent_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_engine_parameters_frequency_18MotorFrequency_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_engine_parameters_speed_18MotorSpeed_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_engine_parameters_power_18MotorPower_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_engine_parameters_acceleration_time_18AccelerationTime_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_engine_parameters_slow_down_time_18DecelerationTime_pushButton.clicked.connect(self.show_password_window)
+
+        self.station_settings_engine_parameters_read_settings_pushButton.clicked.connect(self.show_password_window)                        #переименовать атрибут
+        self.station_settings_engine_parameters_write_settings_pushButton.clicked.connect(self.show_password_window)                       #переименовать атрибут
 
         #Настройки датчиков                    (внутри настроек станции)
-        self.station_settings_sensors_settings_milliamps_at_suction_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_sensors_settings_milliamps_at_discharge_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_sensors_settings_milliamps_at_suction_16RangeSuctionSensor_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_sensors_settings_milliamps_at_discharge_16RangeDischargeSensor_pushButton.clicked.connect(self.show_password_window)
 
         #Общие параметры насосов               (внутри настроек станции)
-        self.station_settings_general_pumps_parameters_minimal_operating_frequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_general_pumps_parameters_maximal_operating_frequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_general_pumps_parameters_start_using_master_from_0_Hz_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_general_pumps_parameters_use_pump_rotation_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_general_pumps_parameters_pump_rotation_interval_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_general_pumps_parameters_pump_rotation_time_of_day_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_general_pumps_parameters_minimal_operating_frequency_11MinimumFrequency_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_general_pumps_parameters_maximal_operating_frequency_11MaximumFrequency_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_general_pumps_parameters_start_using_master_from_0_Hz_11ZeroStartMaster_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_general_pumps_parameters_use_pump_rotation_11ChangeEnable_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_general_pumps_parameters_pump_rotation_interval_11WizardChangeInterval_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_general_pumps_parameters_pump_rotation_time_of_day_11ChangeHour_pushButton.clicked.connect(self.show_password_window)
 
         #Включение дополнительных насосов      (внутри настроек станции)
-        self.station_settings_turn_on_extra_pumps_master_frequency_on_extra_pump_start_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_acceptable_drawdown_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_delay_for_critical_drawdown_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_critical_drawdown_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_delay_for_acceptable_drawdown_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_delay_for_leaving_to_fixed_frequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_fixed_frequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_operating_time_at_fixed_frequency_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_on_extra_pumps_master_frequency_on_extra_pump_start_12FrequencyToTurnOnTheAuxiliaryPump_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_on_extra_pumps_acceptable_drawdown_12PermissiblePressureDrop_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_on_extra_pumps_delay_for_critical_drawdown_12DelayWithAllowablePressureDrop_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_on_extra_pumps_critical_drawdown_12CriticalPressureDrop_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_on_extra_pumps_delay_for_acceptable_drawdown_12DelayCriticalPressureDrop_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_on_extra_pumps_delay_for_leaving_to_fixed_frequency_12DelayFixedFrequencyStartPump_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_on_extra_pumps_fixed_frequency_12FixedFrequencyStartingPump_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_on_extra_pumps_operating_time_at_fixed_frequency_12FixedFrequencyTimeStartPump_pushButton.clicked.connect(self.show_password_window)
 
         #Выключение дополнительных насосов     (внутри настроек станции)
-        self.station_settings_turn_off_extra_pumps_master_frequency_on_extra_pump_shutdown_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_acceptable_jump_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_delay_for_critical_jump_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_critical_jump_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_delay_for_acceptable_jump_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_delay_for_leaving_to_fixed_frequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_fixed_frequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_operating_time_at_fixed_frequency_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_off_extra_pumps_master_frequency_on_extra_pump_shutdown_13FrequencyToTurnOffTheAuxiliaryPump_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_off_extra_pumps_acceptable_jump_13PermissibleOverpressure_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_off_extra_pumps_delay_for_critical_jump_13DelayPermissibleOverpressure_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_off_extra_pumps_critical_jump_13CriticalOverpressure_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_off_extra_pumps_delay_for_acceptable_jump_13DelayCriticalOverpressure_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_off_extra_pumps_delay_for_leaving_to_fixed_frequency_13DelayFixedFrequencyStopPump_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_off_extra_pumps_fixed_frequency_13FixedFrequencyPumpStop_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_off_extra_pumps_operating_time_at_fixed_frequency_13FixedFrequencyTimeStopPump_pushButton.clicked.connect(self.show_password_window)
 
         #Опции                                 (внутри настроек станции)
-        self.station_settings_options_energy_saving_mode_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_start_energy_saving_mode_once_every_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_presure_drawdown_to_turn_off_energy_saving_mode_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_increase_pressure_by_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_swing_integration_time_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_acceptable_pressure_swing_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_acceptable_frequency_swing_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_options_energy_saving_mode_15PowerSavingModeOn_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_options_start_energy_saving_mode_once_every_15PowerSavingModeTime_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_options_presure_drawdown_to_turn_off_energy_saving_mode_15PowerSavingModeExitPresure_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_options_increase_pressure_by_15PowerSavingModePressureIncrease_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_options_swing_integration_time_15PowerSavingModeIntegrationTime_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_options_acceptable_pressure_swing_15PowerSavingAllowablePressureSwing_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_options_acceptable_frequency_swing_15PowerSavingPermissibleFrequencySpan_pushButton.clicked.connect(self.show_password_window)
 
         #Аварийные режимы                      (внутри настроек станции)
-        self.station_settings_emergency_modes_differential_operating_frequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_emergency_modes_differential_failure_delay_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_emergency_modes_differential_maximum_number_of_failures_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_emergency_modes_dry_warnings_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_emergency_modes_dry_failure_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_emergency_modes_dry_failure_delay_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_emergency_modes_shutdown_delay_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_emergency_modes_critical_pressure_to_shutdown_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_emergency_modes_control_pipeline_rupture_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_emergency_modes_differential_operating_frequency_14PumpStartConfirmationFrequency_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_emergency_modes_differential_failure_delay_14PumpStartConfirmationAlarmDelay_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_emergency_modes_differential_maximum_number_of_failures_14MaxAlarmConfirmationStartPump_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_emergency_modes_dry_warnings_pushButton.clicked.connect(self.show_password_window)                                                            #переименовать атрибут
+        self.station_settings_emergency_modes_dry_failure_pushButton.clicked.connect(self.show_password_window)                                                             #переименовать атрибут
+        self.station_settings_emergency_modes_dry_failure_delay_pushButton.clicked.connect(self.show_password_window)                                                       #переименовать атрибут
+        self.station_settings_emergency_modes_shutdown_delay_pushButton.clicked.connect(self.show_password_window)                                                          #переименовать атрибут
+        self.station_settings_emergency_modes_critical_pressure_to_shutdown_14CriticalPressureAlarmThreshold_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_emergency_modes_control_pipeline_rupture_pushButton.clicked.connect(self.show_password_window)                                                #переименовать атрибут
 
         #Настройки пид-регистрации                             (внутри инженерного меню)
-        self.engineering_menu_pid_registration_settings_proportional_coefficient_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_pid_registration_settings_integral_coefficient_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_pid_registration_settings_differential_coefficient_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_pid_registration_settings_constant_of_integration_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_pid_registration_settings_ustavka_change_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_pid_registration_settings_ustavka_for_change_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_pid_registration_settings_proportional_coefficient_17ProportionalCoefficient_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_pid_registration_settings_integral_coefficient_17IntegralCoefficient_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_pid_registration_settings_differential_coefficient_17DifferentialCoefficient_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_pid_registration_settings_constant_of_integration_17IntegrationTime_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_pid_registration_settings_ustavka_change_10SetpointModePid_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_pid_registration_settings_ustavka_for_change_17SetpointPID_pushButton.clicked.connect(self.show_password_window)
+
+        #PLC                                                   (внутри инженерного меню)
+        self.engineering_menu_plc_02DigitalInput16Bit0_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalInput16Bit1_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalInput16Bit2_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalInput16Bit3_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalInput16Bit4_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalInput16Bit5_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalInput16Bit6_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalInput16Bit7_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalInput16Bit8_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalInput16Bit9_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalInput16Bit10_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalInput16Bit11_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_09AlarmModbusPLC_pushButton.clicked.connect(self.show_password_window)
+
+        self.engineering_menu_plc_02DigitalOutput16Bit0_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalOutput16Bit1_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalOutput16Bit2_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalOutput16Bit3_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalOutput16Bit4_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalOutput16Bit5_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalOutput16Bit6_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalOutput16Bit7_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalOutput16Bit8_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalOutput16Bit9_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalOutput16Bit10_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_plc_02DigitalOutput16Bit11_pushButton.clicked.connect(self.show_password_window)
+
+        self.engineering_menu_plc_pushButton_26.clicked.connect(self.show_password_window)                     #переименовать атрибут
+        self.engineering_menu_plc_pushButton_27.clicked.connect(self.show_password_window)                     #переименовать атрибут
+        self.engineering_menu_plc_pushButton_28.clicked.connect(self.show_password_window)                     #переименовать атрибут
+        self.engineering_menu_plc_pushButton_29.clicked.connect(self.show_password_window)                     #переименовать атрибут
+        self.engineering_menu_plc_pushButton_30.clicked.connect(self.show_password_window)                     #переименовать атрибут
 
         #Бекап                                                 (внутри инженерного меню)
-        self.engineering_menu_backup_save_90_days_of_journal_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_backup_save_energy_independent_memory_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_backup_save_trends_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_backup_factory_all_settings_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_backup_save_90_days_of_journal_80LogBackup_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_backup_save_energy_independent_memory_80RWBackup_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_backup_save_trends_80TrendsBackup_pushButton.clicked.connect(self.show_password_window)
+
+        self.engineering_menu_backup_factory_all_settings_pushButton.clicked.connect(self.show_password_window) #переименовать атрибут
 
         #ключевые атрибуты взаимодействия
         self.is_password = 1
@@ -460,6 +513,7 @@ class System_Station_Main_window_settings:
 
         
 
+        
 
     def setSvgIcon(self, widget, svg_filename, set_widget_size):
         svg_path = os.path.join(self.svg_icons_dir, svg_filename)
