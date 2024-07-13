@@ -19,6 +19,7 @@ class System_Station_Main_window_settings:
         #три подключения к кнопкам основной страницы кнопок, и переключение, при нажатии на них, страниц справа
         self.go_to_settings_manager_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
+
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
@@ -281,6 +282,15 @@ class System_Station_Main_window_settings:
 
         self.engineering_menu_backup_factory_all_settings_pushButton.clicked.connect(self.show_password_window) #переименовать атрибут
 
+###################################################################################################################################################################################################
+###################################################################################################################################################################################################
+
+
+
+
+
+
+
         #ключевые атрибуты взаимодействия
         self.is_password = 1
 
@@ -289,32 +299,480 @@ class System_Station_Main_window_settings:
         self.text_to_change = ""
 
         self.user_level = 0
+        self.current_page = 0
+        self.test_json = 'test.json'
 
         #атрибуты для работы с видом
         self.icons_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ICONS")
         self.svg_icons_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "SVGICONS")
         self.current_theme = 'black'
 
-    
 
+
+
+
+
+
+
+
+
+
+
+
+
+    def updateCurrentJsonStatistics(self):
+        main_stackedWidget = self.main_stackedWidget.currentIndex()
+
+        if main_stackedWidget == 0:
+            self.MainPageLoadJson()
+
+            main_main_pages_stackedWidget_currentIndex = self.main_main_pages_stackedWidget.currentIndex()
+
+            if main_main_pages_stackedWidget_currentIndex == 0: self.MainGraficPageLoadJson()
+            elif main_main_pages_stackedWidget_currentIndex == 1: self.MainStatisticsPageLoadJson()
+            elif main_main_pages_stackedWidget_currentIndex == 2: self.MainSwitchPageLoadJson()
+
+        elif main_stackedWidget == 1:
+            settings_pages_stackedWidget_currentIndex = self.settings_pages_stackedWidget.currentIndex()
+
+            if settings_pages_stackedWidget_currentIndex == 0:         self.SettingsManagerPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 1:       self.SettingsPanelSettingsPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 2:       self.SettingsContactsPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 3:       self.SettingsTrackingTrendsOnlinePageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 4:       self.SettingsTrackingPumpsDevelopmentsPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 5:       self.SettingsTrackingTrendsHistoryPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 6:       self.SettingsJournalCurrentEventsPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 7:       self.SettingsJournalChangesPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 8:       self.SettingsJournalHistoryPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 9:       self.SettingsStationSettingsEngineParametersPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 10:      self.SettingsStationSettingsSensorsSettingsPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 11:      self.SettingsStationSettingsGeneralPumpsParametersPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 12:      self.SettingsStationSettingsTurnOnExtraPumpsPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 13:      self.SettingsStationSettingsTurnOffExtraPumpsPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 14:      self.SettingsStationSettingsOptionsPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 15:      self.SettingsStationSettingsEmergencyModesPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 16:      self.SettingsEngineeringMenuPIDRegistrationSettingsPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 17:      self.SettingsEngineeringMenuPLCPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 18:      self.SettingsEngineeringMenuBackupPageLoadJson()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def MainPageLoadJson(self):
+        self.MainPageUpdateSvgIcon(self.main_01Mode_pushButton, self.readJson(self.test_json, '01', '0107', '01Mode'), '01Mode')
+
+        self.MainPageUpdateSvgIcon(self.main_exit_statistic_60Pump1_icon_label, self.readJson(self.test_json, '60', '06002', '60Pump1'), '60Pump1')
+        self.MainPageUpdateSvgIcon(self.main_enter_statistic_60Pump1_icon_label, self.readJson(self.test_json, '60', '06002', '60Pump1'), '60Pump1')
+
+        self.main_exit_statistic_01DischargePressure_label.setText(                 f"{self.readJson(self.test_json, '01', '0101', '01DischargePressure')}")
+        self.main_task_statistic_01Setpoint_label.setText(                          f"{self.readJson(self.test_json, '01', '0104', '01Setpoint')}")
+        self.main_some_triangle_statistic_01DifferencePressure_label.setText(       f"{self.readJson(self.test_json, '01', '0102', '01DifferencePressure')}")
+        self.main_frequency_statistic_01FrequencySetpoint_label.setText(            f"{self.readJson(self.test_json, '01', '0105', '01FrequencySetpoint')}")
+        self.main_enter_statistic_01SuctionPressure_label.setText(                  f"{self.readJson(self.test_json, '01', '0100', '01SuctionPressure')}")
+
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60StartPumpDetection1_label_1_1, self.readJson(self.test_json, '60', '06008', '60StartPumpDetection1'), '60StartPumpDetection1')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60StartPumpDetection2_label_2_1, self.readJson(self.test_json, '60', '06009', '60StartPumpDetection2'), '60StartPumpDetection2')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60StartPumpDetection3_label_3_1, self.readJson(self.test_json, '60', '06010', '60StartPumpDetection3'), '60StartPumpDetection3')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60StartPumpDetection4_label_4_1, self.readJson(self.test_json, '60', '06011', '60StartPumpDetection4'), '60StartPumpDetection4')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60StartPumpDetection5_label_5_1, self.readJson(self.test_json, '60', '06012', '60StartPumpDetection5'), '60StartPumpDetection5')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60StartPumpDetection6_label_6_1, self.readJson(self.test_json, '60', '06013', '60StartPumpDetection6'), '60StartPumpDetection6')
+
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60FCIcon1_label_1_2, self.readJson(self.test_json, '60', '06026', '60FCIcon1'), '60FCIcon1')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60FCIcon2_label_2_2, self.readJson(self.test_json, '60', '06027', '60FCIcon2'), '60FCIcon2')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60FCIcon3_label_3_2, self.readJson(self.test_json, '60', '06028', '60FCIcon3'), '60FCIcon3')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60FCIcon4_label_4_2, self.readJson(self.test_json, '60', '06029', '60FCIcon4'), '60FCIcon4')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60FCIcon5_label_5_2, self.readJson(self.test_json, '60', '06030', '60FCIcon5'), '60FCIcon5')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60FCIcon6_label_6_2, self.readJson(self.test_json, '60', '06031', '60FCIcon6'), '60FCIcon6')
+
+        self.MainPageUpdateSvgIcon(self.main_pipe_up_icon_60UpperPipeline_label, self.readJson(self.test_json, '60', '06001', '60UpperPipeline'), '60UpperPipeline')
+        self.MainPageUpdateSvgIcon(self.main_pipe_down_icon_60LowerPipeline_label, self.readJson(self.test_json, '60', '06000', '60LowerPipeline'), '60LowerPipeline')
+
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60Pump1_label_1, self.readJson(self.test_json, '60', '06002', '60Pump1'), '60Pump1')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60Pump2_label_2, self.readJson(self.test_json, '60', '06003', '60Pump2'), '60Pump2')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60Pump3_label_3, self.readJson(self.test_json, '60', '06004', '60Pump3'), '60Pump3')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60Pump4_label_4, self.readJson(self.test_json, '60', '06005', '60Pump4'), '60Pump4')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60Pump5_label_5, self.readJson(self.test_json, '60', '06006', '60Pump5'), '60Pump5')
+        self.MainPageUpdateSvgIcon(self.main_pump_icon_60Pump6_label_6, self.readJson(self.test_json, '60', '06007', '60Pump6'), '60Pump6')
+
+    def MainPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        if widget == self.main_01Mode_pushButton:pass
+        if widget == self.main_exit_statistic_60Pump1_icon_label:pass
+        if widget == self.main_enter_statistic_60Pump1_icon_label:pass
+
+        if widget == self.main_pump_icon_60StartPumpDetection1_label_1_1:pass
+        if widget == self.main_pump_icon_60StartPumpDetection2_label_2_1:pass
+        if widget == self.main_pump_icon_60StartPumpDetection3_label_3_1:pass
+        if widget == self.main_pump_icon_60StartPumpDetection4_label_4_1:pass
+        if widget == self.main_pump_icon_60StartPumpDetection5_label_5_1:pass
+        if widget == self.main_pump_icon_60StartPumpDetection6_label_6_1:pass
+
+        if widget == self.main_pump_icon_60FCIcon1_label_1_2:pass
+        if widget == self.main_pump_icon_60FCIcon2_label_2_2:pass
+        if widget == self.main_pump_icon_60FCIcon3_label_3_2:pass
+        if widget == self.main_pump_icon_60FCIcon4_label_4_2:pass
+        if widget == self.main_pump_icon_60FCIcon5_label_5_2:pass
+        if widget == self.main_pump_icon_60FCIcon6_label_6_2:pass
+
+        if widget == self.main_pipe_up_icon_60UpperPipeline_label:pass
+        if widget == self.main_pipe_down_icon_60LowerPipeline_label:pass
+
+        if widget == self.main_pump_icon_60Pump1_label_1:pass
+        if widget == self.main_pump_icon_60Pump2_label_2:pass
+        if widget == self.main_pump_icon_60Pump3_label_3:pass
+        if widget == self.main_pump_icon_60Pump4_label_4:pass
+        if widget == self.main_pump_icon_60Pump5_label_5:pass
+        if widget == self.main_pump_icon_60Pump6_label_6:pass
+        if widget == self.main_pump_icon_60FCIcon6_label_6_2:pass
+        if widget == self.main_pump_icon_60FCIcon6_label_6_2:pass
+        if widget == self.main_pump_icon_60FCIcon6_label_6_2:pass
+        if widget == self.main_pump_icon_60FCIcon6_label_6_2:pass
+
+    def MainGraficPageLoadJson(self):
+        self.main_graphic_70Scale1_label.setText(                                   f"{self.readJson(self.test_json, '70', '07064', '70Scale1')}")
+        self.main_graphic_70Scale2_label.setText(                                   f"{self.readJson(self.test_json, '70', '07065', '70Scale2')}")
+        self.main_graphic_70Scale3_label.setText(                                   f"{self.readJson(self.test_json, '70', '07066', '70Scale3')}")
+        self.main_graphic_70Scale4_label.setText(                                   f"{self.readJson(self.test_json, '70', '07067', '70Scale4')}")
+        self.main_graphic_70Scale5_label.setText(                                   f"{self.readJson(self.test_json, '70', '07068', '70Scale5')}")
+        self.main_graphic_70Scale6_label.setText(                                   f"{self.readJson(self.test_json, '70', '07069', '70Scale6')}")
+
+    def MainGraficPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+        # if widget == self.main_graphic_70Scale1_label:pass
+        # if widget == self.main_graphic_70Scale2_label:pass
+        # if widget == self.main_graphic_70Scale3_label:pass
+        # if widget == self.main_graphic_70Scale4_label:pass
+        # if widget == self.main_graphic_70Scale5_label:pass
+        # if widget == self.main_graphic_70Scale6_label:pass
+
+    def MainStatisticsPageLoadJson(self):
+        self.main_statistics_03Frequency_label_1.setText(                           f"{self.readJson(self.test_json, '03', '0300', '03Frequency')}")
+        self.main_statistics_03Frequency_label_2.setText(                           f"{self.readJson(self.test_json, '03', '0300', '03Frequency')}")
+        self.main_statistics_03Frequency_label_3.setText(                           f"{self.readJson(self.test_json, '03', '0300', '03Frequency')}")
+        self.main_statistics_03Frequency_label_4.setText(                           f"{self.readJson(self.test_json, '03', '0300', '03Frequency')}")
+        self.main_statistics_03Frequency_label_5.setText(                           f"{self.readJson(self.test_json, '03', '0300', '03Frequency')}")
+        self.main_statistics_03Frequency_label_6.setText(                           f"{self.readJson(self.test_json, '03', '0300', '03Frequency')}")
+
+        self.main_statistics_03Speed_label_1.setText(                               f"{self.readJson(self.test_json, '03', '0301', '03Speed')}")
+        self.main_statistics_03Speed_label_2.setText(                               f"{self.readJson(self.test_json, '03', '0301', '03Speed')}")
+        self.main_statistics_03Speed_label_3.setText(                               f"{self.readJson(self.test_json, '03', '0301', '03Speed')}")
+        self.main_statistics_03Speed_label_4.setText(                               f"{self.readJson(self.test_json, '03', '0301', '03Speed')}")
+        self.main_statistics_03Speed_label_5.setText(                               f"{self.readJson(self.test_json, '03', '0301', '03Speed')}")
+        self.main_statistics_03Speed_label_6.setText(                               f"{self.readJson(self.test_json, '03', '0301', '03Speed')}")
+
+        self.main_statistics_03Current_label_1.setText(                             f"{self.readJson(self.test_json, '03', '0302', '03Current')}")
+        self.main_statistics_03Current_label_2.setText(                             f"{self.readJson(self.test_json, '03', '0302', '03Current')}")
+        self.main_statistics_03Current_label_3.setText(                             f"{self.readJson(self.test_json, '03', '0302', '03Current')}")
+        self.main_statistics_03Current_label_4.setText(                             f"{self.readJson(self.test_json, '03', '0302', '03Current')}")
+        self.main_statistics_03Current_label_5.setText(                             f"{self.readJson(self.test_json, '03', '0302', '03Current')}")
+        self.main_statistics_03Current_label_6.setText(                             f"{self.readJson(self.test_json, '03', '0302', '03Current')}")
+
+        self.main_statistics_03Torque_label_1.setText(                              f"{self.readJson(self.test_json, '03', '0303', '03Torque')}")
+        self.main_statistics_03Torque_label_2.setText(                              f"{self.readJson(self.test_json, '03', '0303', '03Torque')}")
+        self.main_statistics_03Torque_label_3.setText(                              f"{self.readJson(self.test_json, '03', '0303', '03Torque')}")
+        self.main_statistics_03Torque_label_4.setText(                              f"{self.readJson(self.test_json, '03', '0303', '03Torque')}")
+        self.main_statistics_03Torque_label_5.setText(                              f"{self.readJson(self.test_json, '03', '0303', '03Torque')}")
+        self.main_statistics_03Torque_label_6.setText(                              f"{self.readJson(self.test_json, '03', '0303', '03Torque')}")
+
+        self.main_statistics_03Power_label_1.setText(                               f"{self.readJson(self.test_json, '03', '0304', '03Power')}")
+        self.main_statistics_03Power_label_2.setText(                               f"{self.readJson(self.test_json, '03', '0304', '03Power')}")
+        self.main_statistics_03Power_label_3.setText(                               f"{self.readJson(self.test_json, '03', '0304', '03Power')}")
+        self.main_statistics_03Power_label_4.setText(                               f"{self.readJson(self.test_json, '03', '0304', '03Power')}")
+        self.main_statistics_03Power_label_5.setText(                               f"{self.readJson(self.test_json, '03', '0304', '03Power')}")
+        self.main_statistics_03Power_label_6.setText(                               f"{self.readJson(self.test_json, '03', '0304', '03Power')}")
+
+        self.main_statistics_03PowerBusVoltage_label_1.setText(                     f"{self.readJson(self.test_json, '03', '0305', '03PowerBusVoltage')}")
+        self.main_statistics_03PowerBusVoltage_label_2.setText(                     f"{self.readJson(self.test_json, '03', '0305', '03PowerBusVoltage')}")
+        self.main_statistics_03PowerBusVoltage_label_3.setText(                     f"{self.readJson(self.test_json, '03', '0305', '03PowerBusVoltage')}")
+        self.main_statistics_03PowerBusVoltage_label_4.setText(                     f"{self.readJson(self.test_json, '03', '0305', '03PowerBusVoltage')}")
+        self.main_statistics_03PowerBusVoltage_label_5.setText(                     f"{self.readJson(self.test_json, '03', '0305', '03PowerBusVoltage')}")
+        self.main_statistics_03PowerBusVoltage_label_6.setText(                     f"{self.readJson(self.test_json, '03', '0305', '03PowerBusVoltage')}")
+
+        self.main_statistics_03Temperature_label_1.setText(                         f"{self.readJson(self.test_json, '03', '0306', '03Temperature')}")
+        self.main_statistics_03Temperature_label_2.setText(                         f"{self.readJson(self.test_json, '03', '0306', '03Temperature')}")
+        self.main_statistics_03Temperature_label_3.setText(                         f"{self.readJson(self.test_json, '03', '0306', '03Temperature')}")
+        self.main_statistics_03Temperature_label_4.setText(                         f"{self.readJson(self.test_json, '03', '0306', '03Temperature')}")
+        self.main_statistics_03Temperature_label_5.setText(                         f"{self.readJson(self.test_json, '03', '0306', '03Temperature')}")
+        self.main_statistics_03Temperature_label_6.setText(                         f"{self.readJson(self.test_json, '03', '0306', '03Temperature')}")
+
+        self.main_statistics_03ElectricEnergyMeter_label_1.setText(                 f"{self.readJson(self.test_json, '03', '0308', '03ElectricEnergyMeter')}")
+        self.main_statistics_03ElectricEnergyMeter_label_2.setText(                 f"{self.readJson(self.test_json, '03', '0308', '03ElectricEnergyMeter')}")
+        self.main_statistics_03ElectricEnergyMeter_label_3.setText(                 f"{self.readJson(self.test_json, '03', '0308', '03ElectricEnergyMeter')}")
+        self.main_statistics_03ElectricEnergyMeter_label_4.setText(                 f"{self.readJson(self.test_json, '03', '0308', '03ElectricEnergyMeter')}")
+        self.main_statistics_03ElectricEnergyMeter_label_5.setText(                 f"{self.readJson(self.test_json, '03', '0308', '03ElectricEnergyMeter')}")
+        self.main_statistics_03ElectricEnergyMeter_label_6.setText(                 f"{self.readJson(self.test_json, '03', '0308', '03ElectricEnergyMeter')}")
+
+    def MainStatisticsPageUpdateSvgIcon(self, widget, json_value, json_value_name): 
+        pass
+        # if widget == self.main_statistics_03Frequency_label_1:pass
+        # if widget == self.main_statistics_03Frequency_label_2:pass
+        # if widget == self.main_statistics_03Frequency_label_3:pass
+        # if widget == self.main_statistics_03Frequency_label_4:pass
+        # if widget == self.main_statistics_03Frequency_label_5:pass
+        # if widget == self.main_statistics_03Frequency_label_6:pass
+            
+        # if widget == self.main_statistics_03Speed_label_1:pass
+        # if widget == self.main_statistics_03Speed_label_2:pass
+        # if widget == self.main_statistics_03Speed_label_3:pass
+        # if widget == self.main_statistics_03Speed_label_4:pass
+        # if widget == self.main_statistics_03Speed_label_5:pass
+        # if widget == self.main_statistics_03Speed_label_6:pass
+            
+        # if widget == self.main_statistics_03Current_label_1:pass
+        # if widget == self.main_statistics_03Current_label_2:pass
+        # if widget == self.main_statistics_03Current_label_3:pass
+        # if widget == self.main_statistics_03Current_label_4:pass
+        # if widget == self.main_statistics_03Current_label_5:pass
+        # if widget == self.main_statistics_03Current_label_6:pass
+            
+        # if widget == self.main_statistics_03Torque_label_1:pass
+        # if widget == self.main_statistics_03Torque_label_2:pass
+        # if widget == self.main_statistics_03Torque_label_3:pass
+        # if widget == self.main_statistics_03Torque_label_4:pass
+        # if widget == self.main_statistics_03Torque_label_5:pass
+        # if widget == self.main_statistics_03Torque_label_6:pass
+            
+        # if widget == self.main_statistics_03Power_label_1:pass
+        # if widget == self.main_statistics_03Power_label_2:pass
+        # if widget == self.main_statistics_03Power_label_3:pass
+        # if widget == self.main_statistics_03Power_label_4:pass
+        # if widget == self.main_statistics_03Power_label_5:pass
+        # if widget == self.main_statistics_03Power_label_6:pass
+            
+        # if widget == self.main_statistics_03PowerBusVoltage_label_1:pass
+        # if widget == self.main_statistics_03PowerBusVoltage_label_2:pass
+        # if widget == self.main_statistics_03PowerBusVoltage_label_3:pass
+        # if widget == self.main_statistics_03PowerBusVoltage_label_4:pass
+        # if widget == self.main_statistics_03PowerBusVoltage_label_5:pass
+        # if widget == self.main_statistics_03PowerBusVoltage_label_6:pass
+            
+        # if widget == self.main_statistics_03Temperature_label_1:pass
+        # if widget == self.main_statistics_03Temperature_label_2:pass
+        # if widget == self.main_statistics_03Temperature_label_3:pass
+        # if widget == self.main_statistics_03Temperature_label_4:pass
+        # if widget == self.main_statistics_03Temperature_label_5:pass
+        # if widget == self.main_statistics_03Temperature_label_6:pass
+
+        # if widget == self.main_statistics_03ElectricEnergyMeter_label_1:pass
+        # if widget == self.main_statistics_03ElectricEnergyMeter_label_2:pass
+        # if widget == self.main_statistics_03ElectricEnergyMeter_label_3:pass
+        # if widget == self.main_statistics_03ElectricEnergyMeter_label_4:pass
+        # if widget == self.main_statistics_03ElectricEnergyMeter_label_5:pass
+        # if widget == self.main_statistics_03ElectricEnergyMeter_label_6:pass
+
+    def MainSwitchPageLoadJson(self):
+        pass
+    def MainSwitchPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+
+
+
+
+
+    def SettingsManagerPageLoadJson(self):
+        pass
+    def SettingsManagerPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+
+
+
+
+
+
+
+    def SettingsPanelSettingsPageLoadJson(self):
+        pass
+    def SettingsPanelSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsContactsPageLoadJson(self):
+        ################################################################################################################################################################################################################################
+        #self.contacts_number_of_pumps_19QuantityPump_pushButton.clicked.connect(lambda: self.show_password_window)
+        #self.contacts_current_workings_number_of_pumps_19WorkingQuantityPump_pushButton.clicked.connect(lambda: self.show_password_window)
+        ################################################################################################################################################################################################################################
+        self.contacts_number_of_pumps_19QuantityPump_pushButton.setText(                                   f"{self.readJson(self.test_json, '19', '01900', '19QuantityPump')}")
+        self.contacts_current_workings_number_of_pumps_19WorkingQuantityPump_pushButton.setText(           f"{self.readJson(self.test_json, '19', '01901', '19WorkingQuantityPump')}")
+
+    def SettingsContactsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsTrackingTrendsOnlinePageLoadJson(self):
+        ################################################################################################################################################################################################################################
+        # self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70', '07017', '70OnlineTrendsDynamicRangeTime', 60))
+        # self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70', '07017', '70OnlineTrendsDynamicRangeTime', 180))
+        # self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70', '07017', '70OnlineTrendsDynamicRangeTime', 600))           перенести в 
+        # self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70', '07017', '70OnlineTrendsDynamicRangeTime', 1800))          setup, как
+        #                                                                                                                                                                                                               инициализацию 
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility4_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70', '0701603', '70OnlineTrendsChannelVisibility4', 1))                      подключений
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility1_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70', '0701600', '70OnlineTrendsChannelVisibility1', 1))
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility2_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70', '0701601', '70OnlineTrendsChannelVisibility2', 1))
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility3_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70', '0701602', '70OnlineTrendsChannelVisibility3', 1))
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility5_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70', '0701604', '70OnlineTrendsChannelVisibility5', 1))
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility6_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70', '0701605', '70OnlineTrendsChannelVisibility6', 1))
+        ################################################################################################################################################################################################################################
+        self.tracking_trends_online_70Scale6_label.setText(                                   f"{self.readJson(self.test_json, '70', '07069', '70Scale6')}")
+        self.tracking_trends_online_70Scale5_label.setText(                                   f"{self.readJson(self.test_json, '70', '07068', '70Scale5')}")
+        self.tracking_trends_online_70Scale4_label.setText(                                   f"{self.readJson(self.test_json, '70', '07067', '70Scale4')}")
+        self.tracking_trends_online_70Scale3_label.setText(                                   f"{self.readJson(self.test_json, '70', '07066', '70Scale3')}")
+        self.tracking_trends_online_70Scale2_label.setText(                                   f"{self.readJson(self.test_json, '70', '07065', '70Scale2')}")
+        self.tracking_trends_online_70Scale1_label.setText(                                   f"{self.readJson(self.test_json, '70', '07064', '70Scale1')}")
+
+        self.tracking_trends_online_70OnlineTrendsObservationLine4_label.setText(             f"{self.readJson(self.test_json, '70', '07021', '70OnlineTrendsObservationLine4')}")
+        self.tracking_trends_online_70OnlineTrendsObservationLine1_label.setText(             f"{self.readJson(self.test_json, '70', '07018', '70OnlineTrendsObservationLine1')}")
+        self.tracking_trends_online_70OnlineTrendsObservationLine2_label.setText(             f"{self.readJson(self.test_json, '70', '07019', '70OnlineTrendsObservationLine2')}")
+        self.tracking_trends_online_70OnlineTrendsObservationLine3_label.setText(             f"{self.readJson(self.test_json, '70', '07020', '70OnlineTrendsObservationLine3')}")
+        self.tracking_trends_online_70OnlineTrendsObservationLine5_label.setText(             f"{self.readJson(self.test_json, '70', '07022', '70OnlineTrendsObservationLine5')}")
+        self.tracking_trends_online_70OnlineTrendsObservationLine6_label.setText(             f"{self.readJson(self.test_json, '70', '07023', '70OnlineTrendsObservationLine6')}")
+
+    def SettingsTrackingTrendsOnlinePageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsTrackingPumpsDevelopmentsPageLoadJson(self):
+        ################################################################################################################################################################################################################################
+        # self.tracking_pumps_development_150PumpRunHours1_label.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150PumpRunHours2_label.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150PumpRunHours3_label.clicked.connect(lambda: self.show_password_window)                        перенести в
+        # self.tracking_pumps_development_150PumpRunHours4_label.clicked.connect(lambda: self.show_password_window)                        setup, как
+        # self.tracking_pumps_development_150PumpRunHours5_label.clicked.connect(lambda: self.show_password_window)                        инициализацию
+        # self.tracking_pumps_development_150PumpRunHours6_label.clicked.connect(lambda: self.show_password_window)                        подключений
+
+        # self.tracking_pumps_development_150PumpNumberOfStarts1_pushButton.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150PumpNumberOfStarts2_pushButton.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150PumpNumberOfStarts3_pushButton.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150PumpNumberOfStarts4_pushButton.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150PumpNumberOfStarts5_pushButton.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150PumpNumberOfStarts6_pushButton.clicked.connect(lambda: self.show_password_window)
+
+        # self.tracking_pumps_development_150NumberOfStartsPerHour1_pushButton.clicked.connect(lambda: self.show_password_window)
+
+        # self.tracking_pumps_development_150HoursSinceLastStopPump1_pushButton.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150HoursSinceLastStopPump2_pushButton.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150HoursSinceLastStopPump3_pushButton.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150HoursSinceLastStopPump4_pushButton.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150HoursSinceLastStopPump5_pushButton.clicked.connect(lambda: self.show_password_window)
+        # self.tracking_pumps_development_150HoursSinceLastStopPump6_pushButton.clicked.connect(lambda: self.show_password_window)
+        ################################################################################################################################################################################################################################
+        self.tracking_pumps_development_150PumpRunHours1_label.setText(             f"{self.readJson(self.test_json, '150', '015006', '150PumpRunHours1')}")
+        self.tracking_pumps_development_150PumpRunHours2_label.setText(             f"{self.readJson(self.test_json, '150', '015007', '150PumpRunHours2')}")
+        self.tracking_pumps_development_150PumpRunHours3_label.setText(             f"{self.readJson(self.test_json, '150', '015008', '150PumpRunHours3')}")
+        self.tracking_pumps_development_150PumpRunHours4_label.setText(             f"{self.readJson(self.test_json, '150', '015009', '150PumpRunHours4')}")
+        self.tracking_pumps_development_150PumpRunHours5_label.setText(             f"{self.readJson(self.test_json, '150', '015010', '150PumpRunHours5')}")
+        self.tracking_pumps_development_150PumpRunHours6_label.setText(             f"{self.readJson(self.test_json, '150', '015011', '150PumpRunHours6')}")
+
+        self.tracking_pumps_development_150NumberOfStartsPerHour2_label.setText(             f"{self.readJson(self.test_json, '150', '015013', '150NumberOfStartsPerHour2')}")
+        self.tracking_pumps_development_150NumberOfStartsPerHour3_label.setText(             f"{self.readJson(self.test_json, '150', '015014', '150NumberOfStartsPerHour3')}")
+        self.tracking_pumps_development_150NumberOfStartsPerHour4_label.setText(             f"{self.readJson(self.test_json, '150', '015015', '150NumberOfStartsPerHour4')}")
+        self.tracking_pumps_development_150NumberOfStartsPerHour5_label.setText(             f"{self.readJson(self.test_json, '150', '015016', '150NumberOfStartsPerHour5')}")
+        self.tracking_pumps_development_150NumberOfStartsPerHour6_label.setText(             f"{self.readJson(self.test_json, '150', '015017', '150NumberOfStartsPerHour6')}")
+
+    def SettingsTrackingPumpsDevelopmentsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+
+
+
+
+
+    def SettingsTrackingTrendsHistoryPageLoadJson(self):
+        pass
+    def SettingsTrackingTrendsHistoryPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+    def SettingsJournalCurrentEventsPageLoadJson(self):
+        pass
+    def SettingsJournalCurrentEventsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsJournalChangesPageLoadJson(self):
+        pass
+    def SettingsJournalChangesPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsJournalHistoryPageLoadJson(self):
+        pass
+    def SettingsJournalHistoryPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsStationSettingsEngineParametersPageLoadJson(self):
+        pass
+    def SettingsStationSettingsEngineParametersPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsStationSettingsSensorsSettingsPageLoadJson(self):
+        pass
+    def SettingsStationSettingsSensorsSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsStationSettingsGeneralPumpsParametersPageLoadJson(self):
+        pass
+    def SettingsStationSettingsGeneralPumpsParametersPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsStationSettingsTurnOnExtraPumpsPageLoadJson(self):
+        pass
+    def SettingsStationSettingsTurnOnExtraPumpsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsStationSettingsTurnOffExtraPumpsPageLoadJson(self):
+        pass
+    def SettingsStationSettingsTurnOffExtraPumpsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsStationSettingsOptionsPageLoadJson(self):
+        pass
+    def SettingsStationSettingsOptionsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsStationSettingsEmergencyModesPageLoadJson(self):
+        pass
+    def SettingsStationSettingsEmergencyModesPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsEngineeringMenuPIDRegistrationSettingsPageLoadJson(self):
+        pass
+    def SettingsEngineeringMenuPIDRegistrationSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsEngineeringMenuPLCPageLoadJson(self):
+        pass
+    def SettingsEngineeringMenuPLCPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+    def SettingsEngineeringMenuBackupPageLoadJson(self):
+        pass
+    def SettingsEngineeringMenuBackupPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+        pass
+
+
+        #self.setSvgIcon(widget, json_value, json_value_name)
+
+        
     def setupSystemStationMainWindowIcons(self):
         if self.current_theme == 'white':
             pass
         else:
             pass
 
+        
     def changeCurrentPageButtonIcon(self, button, svg_name, homelander):
         self.setSvgIcon(button, svg_name, homelander)
-
 
     def setupSystemStationMainWindowSvgIcons(self):
         if self.current_theme == 'white':
             pass
         else:
             pass
-
-        self.setSvgIcon(self.main_pump_all_icon_label, 'main_pump_all_icon_label_none_2.svg', 0)
-
 
         self.setSvgIcon(self.main_pump_icon_60StartPumpDetection1_label_1_1, 'main_pump_up_icon_label_1.svg', 0)
         self.setSvgIcon(self.main_pump_icon_60FCIcon1_label_1_2, 'main_pump_down_icon_label_off.svg', 0)
@@ -337,13 +795,13 @@ class System_Station_Main_window_settings:
         #self.setSvgIcon(self.main_pump_icon_60Pump6_label_6, 'main_pump_icon_label_black.svg', 0)
 
 
-        self.setSvgIcon(self.main_enter_statistic_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
-        self.setSvgIcon(self.main_exit_statistic_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
+        self.setSvgIcon(self.main_exit_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
+        self.setSvgIcon(self.main_enter_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
 
 
 
 
-        self.setSvgIcon(self.main_pipe_up_60UpperPipeline_icon_label, 'main_pipe_up_icon_label_4_4.svg', 0)
+        self.setSvgIcon(self.main_pipe_up_icon_60UpperPipeline_label, 'main_pipe_up_icon_label_4_4.svg', 0)
         self.setSvgIcon(self.main_pipe_down_icon_60LowerPipeline_label, 'main_pipe_down_icon_label_4_4.svg', 0)
 
 
@@ -545,12 +1003,15 @@ class System_Station_Main_window_settings:
     def giveTimer(self):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.timeChanger)
+        self.timer.timeout.connect(self.updateCurrentJsonStatistics)
         self.timer.start(1000)
 
     def timeChanger(self):
         current_time = QDateTime.currentDateTime().toString('dd/MM/yy hh:mm')
         self.main_time_label.setText(current_time)
         self.settings_time_label.setText(current_time)
+
+
 
 
 
