@@ -3470,7 +3470,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>300</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -3505,7 +3505,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>360</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -3747,7 +3747,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>0</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -3781,7 +3781,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>60</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -3829,7 +3829,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>180</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -3981,7 +3981,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>0</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4046,7 +4046,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>0</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4067,7 +4067,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>60</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4089,7 +4089,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>180</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4290,7 +4290,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>0</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4342,7 +4342,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>0</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4454,7 +4454,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>60</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4476,7 +4476,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>110</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4498,7 +4498,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>160</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4520,7 +4520,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>210</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4542,7 +4542,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>260</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4564,7 +4564,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>310</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4585,7 +4585,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>360</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4863,7 +4863,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>0</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4884,7 +4884,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>60</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4906,7 +4906,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>120</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4927,7 +4927,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>180</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4941,7 +4941,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        </property>
        <property name="text">
         <string>Настройки
-станции</string>
+станции2</string>
        </property>
       </widget>
       <widget class="QPushButton" name="go_to_engineering_backup_page_pushButton">
@@ -4949,7 +4949,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>240</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4970,7 +4970,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>300</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -4984,7 +4984,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        </property>
        <property name="text">
         <string>Настройки
-панели</string>
+панели2</string>
        </property>
       </widget>
       <widget class="QPushButton" name="go_to_engineering_contacts_page_pushButton">
@@ -4992,7 +4992,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <rect>
          <x>40</x>
          <y>360</y>
-         <width>110</width>
+         <width>111</width>
          <height>50</height>
         </rect>
        </property>
@@ -5005,7 +5005,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         </font>
        </property>
        <property name="text">
-        <string>Контакты</string>
+        <string>Контакты2</string>
        </property>
       </widget>
       <widget class="QLabel" name="go_to_engineering_pid_registration_settings_page_icon_label_1">
@@ -5553,7 +5553,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
         <string>ЧТ</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="manager_friday__10TypeOfDayFriday_pushButton">
+      <widget class="QPushButton" name="manager_friday_10TypeOfDayFriday_pushButton">
        <property name="geometry">
         <rect>
          <x>475</x>
@@ -6847,7 +6847,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
       <zorder>manager_tuesday_10TypeOfDayTuesday_pushButton</zorder>
       <zorder>manager_wednesday_10TypeOfDayWednesday_pushButton</zorder>
       <zorder>manager_thursday_10TypeOfDayThursday_pushButton</zorder>
-      <zorder>manager_friday__10TypeOfDayFriday_pushButton</zorder>
+      <zorder>manager_friday_10TypeOfDayFriday_pushButton</zorder>
       <zorder>manager_saturday_10TypeOfDaySaturday_pushButton</zorder>
       <zorder>manager_sunday_10TypeOfDaySunday_pushButton</zorder>
       <zorder>shield_1_label</zorder>
