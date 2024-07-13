@@ -356,7 +356,7 @@ class System_Station_Main_window_settings:
         self.setSvgIcon(self.go_to_main_statistics_page_pushButton, '1.svg', 1)#
         self.setSvgIcon(self.go_to_main_switch_page_pushButton, 'Alarm_grey.svg', 1)
         self.setSvgIcon(self.go_to_settings_main_page_icon_label, 'main.svg', 1)
-        self.setSvgIcon(self.go_to_settings_manager_page_icon_label, 'календарь.svg', 1)
+        self.setSvgIcon(self.go_to_settings_manager_page_icon_label_1, 'календарь.svg', 1)
         self.setSvgIcon(self.go_to_settings_tracking_page_icon_label_1, 'monitoring.svg', 1)
         self.setSvgIcon(self.go_to_settings_journal_page_icon_label_1, 'journal.svg', 1)
         self.setSvgIcon(self.go_to_settings_station_settings_page_icon_label_1, 'одна_настройка.svg', 1)
@@ -550,9 +550,8 @@ class System_Station_Main_window_settings:
     def timeChanger(self):
         current_time = QDateTime.currentDateTime().toString('dd/MM/yy hh:mm')
         self.main_time_label.setText(current_time)
-        self.manager_time_label.setText(current_time)
-        self.panel_settings_time_label.setText(current_time)
-        self.contacts_time_label.setText(current_time)
+        self.settings_time_label.setText(current_time)
+
 
 
 

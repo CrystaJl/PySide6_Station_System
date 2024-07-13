@@ -27,7 +27,7 @@ class Ui_System_Station_Main_window(object):
         self.main_stackedWidget = QStackedWidget(System_Station_Main_window)
         self.main_stackedWidget.setObjectName(u"main_stackedWidget")
         self.main_stackedWidget.setGeometry(QRect(0, 0, 800, 480))
-        self.main_stackedWidget.setStyleSheet(u"QLabel {border: 1px Solid white;color: white;}\n"
+        self.main_stackedWidget.setStyleSheet(u"QLabel {color: white;}\n"
 "QPushButton {background-color: rgba(0,0,0,0);color: white;}\n"
 "QStackedWidget > QWidget {background-color: black;}")
         self.Main_page = QWidget()
