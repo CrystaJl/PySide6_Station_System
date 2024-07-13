@@ -44,16 +44,30 @@ class System_Station_Main_window_settings:
         #Блок подключений различного мониторинга, включая подключения возврата на предыдущие страницы справа и страницы кнопок
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
 
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
-        
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
 
         self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
         self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
         self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(4))
         self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'empty.svg', 1))
@@ -62,6 +76,26 @@ class System_Station_Main_window_settings:
         self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(2))
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
+
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
 
         #Блок подключений журнала, так же как и выше включая подключения возврата на предыдущие страницы справа и страницы кнопок
         self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(6))
