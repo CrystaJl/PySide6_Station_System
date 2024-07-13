@@ -19,7 +19,16 @@ class System_Station_Main_window_settings:
         #три подключения к кнопкам основной страницы кнопок, и переключение, при нажатии на них, страниц справа
         self.go_to_settings_manager_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
+        self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
+
+
         self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(2))
+        self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
+
+
 
         #Блок подключений различного мониторинга, включая подключения возврата на предыдущие страницы справа и страницы кнопок
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
@@ -233,11 +242,17 @@ class System_Station_Main_window_settings:
         self.svg_icons_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "SVGICONS")
         self.current_theme = 'black'
 
+    
+
     def setupSystemStationMainWindowIcons(self):
         if self.current_theme == 'white':
             pass
         else:
             pass
+
+    def changeCurrentPageButtonIcon(self, button, svg_name, homelander):
+        self.setSvgIcon(button, svg_name, homelander)
+
 
     def setupSystemStationMainWindowSvgIcons(self):
         if self.current_theme == 'white':
