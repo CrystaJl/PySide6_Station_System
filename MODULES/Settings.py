@@ -10,6 +10,13 @@ class System_Station_Main_window_settings:
     def setupSystemStationMainSettings(self):
         #переключение между основным окном(страницей) и основными настройками
         self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.main_stackedWidget.setCurrentIndex(1))
+        self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
+        self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
+
+
+        self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
         self.go_to_settings_main_page_pushButton.clicked.connect(lambda: self.main_stackedWidget.setCurrentIndex(0))
 
         self.go_to_main_graphic_page_pushButton.clicked.connect(lambda: self.main_main_pages_stackedWidget.setCurrentIndex(0))
@@ -18,33 +25,128 @@ class System_Station_Main_window_settings:
 
         #три подключения к кнопкам основной страницы кнопок, и переключение, при нажатии на них, страниц справа
         self.go_to_settings_manager_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
+        self.go_to_settings_manager_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_settings_manager_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_settings_manager_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
+
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
 
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'empty.svg', 1))
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
-        self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
+        
 
 
         self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(2))
         self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'empty.svg', 1))
         self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
-
-
 
         #Блок подключений различного мониторинга, включая подключения возврата на предыдущие страницы справа и страницы кнопок
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
 
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
 
         self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
         self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(4))
+        self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'empty.svg', 1))
 
         self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(5))
         self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(2))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'указатель верх.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+
+
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
+
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
 
         #Блок подключений журнала, так же как и выше включая подключения возврата на предыдущие страницы справа и страницы кнопок
         self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(6))
@@ -52,9 +154,16 @@ class System_Station_Main_window_settings:
 
         self.go_to_settings_journal_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(6))
         self.go_to_settings_journal_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(3))
+        self.go_to_settings_journal_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_current_events_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_settings_journal_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_changes_page_icon_label_2, 'empty.svg', 1))
 
         self.go_to_journal_current_events_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(6))
         self.go_to_journal_changes_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(7))
+        self.go_to_journal_changes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_changes_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_journal_changes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_current_events_page_icon_label_2, 'empty.svg', 1))
+
+        self.go_to_journal_current_events_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_current_events_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_journal_current_events_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_changes_page_icon_label_2, 'empty.svg', 1))
 
         self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(8))
         self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(4))
@@ -64,34 +173,112 @@ class System_Station_Main_window_settings:
         #Так как настройки станции не имеют вложенных страниц с кнопками из за чего есть три блока: 1) сам переход в настройки станции 2) возврат 3) отображение страниц настроек станции
         self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(9))
         self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(5))
+        self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_sensors_settings_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_general_pumps_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_on_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
 
         self.return_to_settings_main_buttons_pushButton_3.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
         self.return_to_settings_main_buttons_pushButton_3.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
 
         self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(9))
+        self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_sensors_settings_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_general_pumps_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_on_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
+
         self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(10))
+        self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_sensors_settings_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_general_pumps_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_on_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
+
+
         self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(11))
+        self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_general_pumps_parameters_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_sensors_settings_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_on_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
+
         self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(12))
+        self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_on_extra_pumps_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_sensors_settings_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_general_pumps_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
+
         self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(13))
+        self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_sensors_settings_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_general_pumps_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_on_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
+
         self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(14))
+        self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_sensors_settings_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_general_pumps_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_on_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
+
         self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(15))
+        self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_sensors_settings_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_general_pumps_parameters_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_on_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
 
         #последние подключения к вкладке инженерного меню, так же с возвратом к основным кнопкам и странице
         self.go_to_settings_engineering_menu_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(16))
         self.go_to_settings_engineering_menu_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(6))
+        self.go_to_settings_engineering_menu_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_pid_registration_settings_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_settings_engineering_menu_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_plc_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_settings_engineering_menu_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_backup_page_icon_label_2, 'empty.svg', 1))
 
         self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
         self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
 
         self.go_to_engineering_pid_registration_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(16))
+        self.go_to_engineering_pid_registration_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_pid_registration_settings_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_engineering_pid_registration_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_plc_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_engineering_pid_registration_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_backup_page_icon_label_2, 'empty.svg', 1))
+
         self.go_to_engineering_plc_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(17))
         self.go_to_engineering_plc_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(17))
+        self.go_to_engineering_plc_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_plc_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_engineering_plc_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_pid_registration_settings_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_engineering_plc_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_backup_page_icon_label_2, 'empty.svg', 1))
 
         #дубликат двух существующих подключений (доступ из другого места к тем страницам, к которым уже есть доступ из другого места)
         self.go_to_engineering_station_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(9))
         self.go_to_engineering_station_settings_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(5))
     
         self.go_to_engineering_backup_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(18))
+        self.go_to_engineering_backup_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_backup_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_engineering_backup_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_pid_registration_settings_page_icon_label_2, 'empty.svg', 1))
+        self.go_to_engineering_backup_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_plc_page_icon_label_2, 'empty.svg', 1))
+
+        
 
         #так же два дубликата
         self.go_to_engineering_panel_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
@@ -938,6 +1125,8 @@ class System_Station_Main_window_settings:
         self.setSvgIcon(self.engineering_menu_pid_registration_settings_icon_label_7, 'глаз.svg', 1)
 
         #self.setSvgIcon(self.engineering_menu_pid_registration_settings_icon_label_8, '1.svg', 1) плюсик с палками сюды
+        self.setSvgIcon(self.engineering_menu_plc_up_plc_icon_label, 'plc_up.svg', 1)
+        self.setSvgIcon(self.engineering_menu_plc_down_plc_icon_label, 'plc_down.svg', 1)
 
 
         self.setSvgIcon(self.engineering_menu_backup_icon_label_1, 'journal.svg', 1)
