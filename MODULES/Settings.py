@@ -8,15 +8,31 @@ import os
 
 class System_Station_Main_window_settings:
     def setupSystemStationMainSettings(self):
-        #переключение между основным окном(страницей) и основными настройками
+
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+#Блок кода, отвечающий за подключение всех возможных кнопок, связанных со страницами кнопок и страницами основной работы с оборудованием
+
+        #переключение между основным окном(страницей) и основными настройками, дополнительно, переключение между страницами в основном окне
         self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.main_stackedWidget.setCurrentIndex(1))
         self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
         self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
-
-
         self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
         self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
+
         self.go_to_settings_main_page_pushButton.clicked.connect(lambda: self.main_stackedWidget.setCurrentIndex(0))
 
         self.go_to_main_graphic_page_pushButton.clicked.connect(lambda: self.main_main_pages_stackedWidget.setCurrentIndex(0))
@@ -30,19 +46,38 @@ class System_Station_Main_window_settings:
         self.go_to_settings_manager_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
 
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
-
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'empty.svg', 1))
         self.go_to_settings_panel_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
         
-
-
         self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(2))
         self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'empty.svg', 1))
         self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
 
         #Блок подключений различного мониторинга, включая подключения возврата на предыдущие страницы справа и страницы кнопок
+        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
+        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
+        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
+        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
+        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
+
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
+
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
+
+        self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(4))
+        self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'empty.svg', 1))
+
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(5))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(2))
+
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
@@ -51,102 +86,6 @@ class System_Station_Main_window_settings:
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-
-        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
-        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
-        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
-        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
-        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-
-        self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(4))
-        self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'указатель влево.svg', 1))
-        self.go_to_tracking_pumps_developments_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'empty.svg', 1))
-
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(5))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(2))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'указатель верх.svg', 1))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-
-
-        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
-        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
-
-        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-
-        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-
-        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-
-        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
 
         #Блок подключений журнала, так же как и выше включая подключения возврата на предыдущие страницы справа и страницы кнопок
         self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(6))
@@ -157,18 +96,27 @@ class System_Station_Main_window_settings:
         self.go_to_settings_journal_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_current_events_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_settings_journal_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_changes_page_icon_label_2, 'empty.svg', 1))
 
+        self.return_to_settings_main_buttons_pushButton_2.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
+        self.return_to_settings_main_buttons_pushButton_2.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
+        self.return_to_settings_main_buttons_pushButton_2.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
+        self.return_to_settings_main_buttons_pushButton_2.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
+        self.return_to_settings_main_buttons_pushButton_2.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
+
         self.go_to_journal_current_events_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(6))
+        self.go_to_journal_current_events_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_current_events_page_icon_label_2, 'указатель влево.svg', 1))
+        self.go_to_journal_current_events_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_changes_page_icon_label_2, 'empty.svg', 1))
+
         self.go_to_journal_changes_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(7))
         self.go_to_journal_changes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_changes_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_journal_changes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_current_events_page_icon_label_2, 'empty.svg', 1))
 
-        self.go_to_journal_current_events_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_current_events_page_icon_label_2, 'указатель влево.svg', 1))
-        self.go_to_journal_current_events_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_changes_page_icon_label_2, 'empty.svg', 1))
-
         self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(8))
         self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(4))
-        self.return_to_settings_main_buttons_pushButton_2.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
-        self.return_to_settings_main_buttons_pushButton_2.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
+
+        self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(6))
+        self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(3))
+        self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_current_events_page_icon_label_2, 'указатель влево.svg', 1))
+        self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_changes_page_icon_label_2, 'empty.svg', 1))
 
         #Так как настройки станции не имеют вложенных страниц с кнопками из за чего есть три блока: 1) сам переход в настройки станции 2) возврат 3) отображение страниц настроек станции
         self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(9))
@@ -181,8 +129,11 @@ class System_Station_Main_window_settings:
         self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
         self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
 
-        self.return_to_settings_main_buttons_pushButton_3.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
+        self.return_to_settings_main_buttons_pushButton_3.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
         self.return_to_settings_main_buttons_pushButton_3.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
+        self.return_to_settings_main_buttons_pushButton_3.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
+        self.return_to_settings_main_buttons_pushButton_3.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
+        self.return_to_settings_main_buttons_pushButton_3.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
 
         self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(9))
         self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'указатель влево.svg', 1))
@@ -192,7 +143,6 @@ class System_Station_Main_window_settings:
         self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_engine_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
-
         self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(10))
         self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_sensors_settings_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
@@ -201,8 +151,6 @@ class System_Station_Main_window_settings:
         self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_sensors_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
-
-
         self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(11))
         self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_general_pumps_parameters_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
@@ -211,7 +159,6 @@ class System_Station_Main_window_settings:
         self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_general_pumps_parameters_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
-
         self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(12))
         self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_on_extra_pumps_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
@@ -220,7 +167,6 @@ class System_Station_Main_window_settings:
         self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_turn_on_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
-
         self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(13))
         self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
@@ -229,7 +175,6 @@ class System_Station_Main_window_settings:
         self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_on_extra_pumps_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_turn_off_extra_pumps_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
-
         self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(14))
         self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
@@ -238,7 +183,6 @@ class System_Station_Main_window_settings:
         self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_on_extra_pumps_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_options_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'empty.svg', 1))
-
         self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(15))
         self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_emergency_modes_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_engine_parameters_page_icon_label_2, 'empty.svg', 1))
@@ -257,6 +201,9 @@ class System_Station_Main_window_settings:
 
         self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
         self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
+        self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
+        self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
+        self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
 
         self.go_to_engineering_pid_registration_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(16))
         self.go_to_engineering_pid_registration_settings_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_pid_registration_settings_page_icon_label_2, 'указатель влево.svg', 1))
@@ -269,26 +216,39 @@ class System_Station_Main_window_settings:
         self.go_to_engineering_plc_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_pid_registration_settings_page_icon_label_2, 'empty.svg', 1))
         self.go_to_engineering_plc_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_backup_page_icon_label_2, 'empty.svg', 1))
 
-        #дубликат двух существующих подключений (доступ из другого места к тем страницам, к которым уже есть доступ из другого места)
+        #дубликат существующего подключения с переходом на соответствующую страницу кнопок(доступ из другого места к тем страницам, к которым уже есть доступ из другого места)
         self.go_to_engineering_station_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(9))
         self.go_to_engineering_station_settings_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(5))
-    
+        #############################################################################################################################
+
         self.go_to_engineering_backup_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(18))
         self.go_to_engineering_backup_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_backup_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_engineering_backup_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_pid_registration_settings_page_icon_label_2, 'empty.svg', 1))
         self.go_to_engineering_backup_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_plc_page_icon_label_2, 'empty.svg', 1))
 
-        
-
-        #так же два дубликата
+        #дубликат двух существующих подключений (доступ из другого места к тем страницам, к которым уже есть доступ из другого места)
         self.go_to_engineering_panel_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
         self.go_to_engineering_contacts_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(2))
+        #############################################################################################################################
 
-#Выше находится блок кода, отвечающий за подключение всех возможных кнопок, связанных со страницами кнопок и страницами основной работы с оборудованием, для полноценной работы в приложении
-###################################################################################################################################################################################################
-###################################################################################################################################################################################################
+
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
 #Данный блок кода сфокусирован на подключение всех возможных кнопок, связанных с паролями и уровнями доступа, к окну, отвечающему за изменение доступа и за изменение атрибутов
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Планировщик
         self.manager_user_setpoint_10SetpointUser_pushButton.clicked.connect(self.show_password_window)
 
@@ -328,7 +288,7 @@ class System_Station_Main_window_settings:
         self.manager_night_3_10SetpointWeekdaysNights_pushButton.clicked.connect(self.show_password_window)
         self.manager_night_4_10SetpointWeekendsNights_pushButton.clicked.connect(self.show_password_window)
 
-
+###################################################################################################################################################################################################################################################################################################################################################
         #Настройки панели
         self.panel_settings_display_disable_time_pushButton.clicked.connect(self.show_password_window)               #переименовать атрибут
         self.panel_settings_screensaver_activation_time_pushButton.clicked.connect(self.show_password_window)        #переименовать атрибут
@@ -352,10 +312,12 @@ class System_Station_Main_window_settings:
         self.panel_settings_gateway_3_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
         self.panel_settings_gateway_4_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Контакты
         self.contacts_number_of_pumps_19QuantityPump_pushButton.clicked.connect(lambda: self.show_password_window(0, self.contacts_number_of_pumps_19QuantityPump_pushButton, 0, 6, "Колличество насосов:            "))
         self.contacts_current_workings_number_of_pumps_19WorkingQuantityPump_pushButton.clicked.connect(self.show_password_window)
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Параметры двигателей                  (внутри настроек станции)
         self.station_settings_engine_parameters_voltage_18MotorVoltage_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_engine_parameters_amperage_18MotorCurrent_pushButton.clicked.connect(self.show_password_window)
@@ -368,10 +330,12 @@ class System_Station_Main_window_settings:
         self.station_settings_engine_parameters_read_settings_pushButton.clicked.connect(self.show_password_window)                        #переименовать атрибут
         self.station_settings_engine_parameters_write_settings_pushButton.clicked.connect(self.show_password_window)                       #переименовать атрибут
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Настройки датчиков                    (внутри настроек станции)
         self.station_settings_sensors_settings_milliamps_at_suction_16RangeSuctionSensor_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_sensors_settings_milliamps_at_discharge_16RangeDischargeSensor_pushButton.clicked.connect(self.show_password_window)
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Общие параметры насосов               (внутри настроек станции)
         self.station_settings_general_pumps_parameters_minimal_operating_frequency_11MinimumFrequency_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_general_pumps_parameters_maximal_operating_frequency_11MaximumFrequency_pushButton.clicked.connect(self.show_password_window)
@@ -380,6 +344,7 @@ class System_Station_Main_window_settings:
         self.station_settings_general_pumps_parameters_pump_rotation_interval_11WizardChangeInterval_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_general_pumps_parameters_pump_rotation_time_of_day_11ChangeHour_pushButton.clicked.connect(self.show_password_window)
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Включение дополнительных насосов      (внутри настроек станции)
         self.station_settings_turn_on_extra_pumps_master_frequency_on_extra_pump_start_12FrequencyToTurnOnTheAuxiliaryPump_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_turn_on_extra_pumps_acceptable_drawdown_12PermissiblePressureDrop_pushButton.clicked.connect(self.show_password_window)
@@ -390,6 +355,7 @@ class System_Station_Main_window_settings:
         self.station_settings_turn_on_extra_pumps_fixed_frequency_12FixedFrequencyStartingPump_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_turn_on_extra_pumps_operating_time_at_fixed_frequency_12FixedFrequencyTimeStartPump_pushButton.clicked.connect(self.show_password_window)
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Выключение дополнительных насосов     (внутри настроек станции)
         self.station_settings_turn_off_extra_pumps_master_frequency_on_extra_pump_shutdown_13FrequencyToTurnOffTheAuxiliaryPump_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_turn_off_extra_pumps_acceptable_jump_13PermissibleOverpressure_pushButton.clicked.connect(self.show_password_window)
@@ -400,6 +366,7 @@ class System_Station_Main_window_settings:
         self.station_settings_turn_off_extra_pumps_fixed_frequency_13FixedFrequencyPumpStop_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_turn_off_extra_pumps_operating_time_at_fixed_frequency_13FixedFrequencyTimeStopPump_pushButton.clicked.connect(self.show_password_window)
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Опции                                 (внутри настроек станции)
         self.station_settings_options_energy_saving_mode_15PowerSavingModeOn_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_options_start_energy_saving_mode_once_every_15PowerSavingModeTime_pushButton.clicked.connect(self.show_password_window)
@@ -409,6 +376,7 @@ class System_Station_Main_window_settings:
         self.station_settings_options_acceptable_pressure_swing_15PowerSavingAllowablePressureSwing_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_options_acceptable_frequency_swing_15PowerSavingPermissibleFrequencySpan_pushButton.clicked.connect(self.show_password_window)
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Аварийные режимы                      (внутри настроек станции)
         self.station_settings_emergency_modes_differential_operating_frequency_14PumpStartConfirmationFrequency_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_emergency_modes_differential_failure_delay_14PumpStartConfirmationAlarmDelay_pushButton.clicked.connect(self.show_password_window)
@@ -420,6 +388,7 @@ class System_Station_Main_window_settings:
         self.station_settings_emergency_modes_critical_pressure_to_shutdown_14CriticalPressureAlarmThreshold_pushButton.clicked.connect(self.show_password_window)
         self.station_settings_emergency_modes_control_pipeline_rupture_pushButton.clicked.connect(self.show_password_window)                                                #переименовать атрибут
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Настройки пид-регистрации                             (внутри инженерного меню)
         self.engineering_menu_pid_registration_settings_proportional_coefficient_17ProportionalCoefficient_pushButton.clicked.connect(self.show_password_window)
         self.engineering_menu_pid_registration_settings_integral_coefficient_17IntegralCoefficient_pushButton.clicked.connect(self.show_password_window)
@@ -428,6 +397,7 @@ class System_Station_Main_window_settings:
         self.engineering_menu_pid_registration_settings_ustavka_change_10SetpointModePid_pushButton.clicked.connect(self.show_password_window)
         self.engineering_menu_pid_registration_settings_ustavka_for_change_17SetpointPID_pushButton.clicked.connect(self.show_password_window)
 
+###################################################################################################################################################################################################################################################################################################################################################
         #PLC                                                   (внутри инженерного меню)
         self.engineering_menu_plc_02DigitalInput16Bit0_pushButton.clicked.connect(self.show_password_window)
         self.engineering_menu_plc_02DigitalInput16Bit1_pushButton.clicked.connect(self.show_password_window)
@@ -462,6 +432,7 @@ class System_Station_Main_window_settings:
         self.engineering_menu_plc_pushButton_29.clicked.connect(self.show_password_window)                     #переименовать атрибут
         self.engineering_menu_plc_pushButton_30.clicked.connect(self.show_password_window)                     #переименовать атрибут
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Бекап                                                 (внутри инженерного меню)
         self.engineering_menu_backup_save_90_days_of_journal_80LogBackup_pushButton.clicked.connect(self.show_password_window)
         self.engineering_menu_backup_save_energy_independent_memory_80RWBackup_pushButton.clicked.connect(self.show_password_window)
@@ -469,16 +440,112 @@ class System_Station_Main_window_settings:
 
         self.engineering_menu_backup_factory_all_settings_pushButton.clicked.connect(self.show_password_window) #переименовать атрибут
 
-###################################################################################################################################################################################################
-###################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+#блок кода контроля и отслеживания СТРАНИЦ ДЛЯ НАСТРОЙКИ И КОНТРОЛЯ ОБОРУДОВАНИЯ, отвечает за визуальное подтверждения действий путем изменения svg иконок кнопок, лейблов и т.д. исходя из нажатой кнопки навигации по приложению, включая будущие навигации по графикам и в лейблах отображения json значений
+
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'указатель верх.svg', 1))
+
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
 
 
 
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+#ключевые атрибуты взаимодействия с приложением, включая как интерфейс, так и логику
 
-
-
-        #ключевые атрибуты взаимодействия
         self.is_password = 1
 
     
@@ -499,13 +566,24 @@ class System_Station_Main_window_settings:
 
 
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+#Методы работы с json загрузкой значений, работающих по отслеживанию текущей страницы и загрузки значений только для текущей страницы пользователя, чтобы не нагружать систему лишними загрузками, которые пользователь не будет отслеживать
 
-
-
-
-
-
-
+###################################################################################################################################################################################################################################################################################################################################################
+#Основной метод проверки текущей страницы и перенаправление на метод загрузки json значений во все необходимые виждеты страницы
 
     def updateCurrentJsonStatistics(self):
         main_stackedWidget = self.main_stackedWidget.currentIndex()
@@ -542,20 +620,30 @@ class System_Station_Main_window_settings:
             elif settings_pages_stackedWidget_currentIndex == 17:      self.SettingsEngineeringMenuPLCPageLoadJson()
             elif settings_pages_stackedWidget_currentIndex == 18:      self.SettingsEngineeringMenuBackupPageLoadJson()
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+#Первый блок кода для главной страницы приложения. Включает в себя метод для главного окна приложения и три метода для загрузки json значений в три страницы главого приложения
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #загрузка значений и иконок для основного окна
     def MainPageLoadJson(self):
         self.MainPageUpdateSvgIcon(self.main_01Mode_pushButton, self.readJson(self.test_json, '01', '0107', '01Mode'), '01Mode')
 
@@ -625,6 +713,14 @@ class System_Station_Main_window_settings:
         if widget == self.main_pump_icon_60FCIcon6_label_6_2:pass
         if widget == self.main_pump_icon_60FCIcon6_label_6_2:pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #первая страница stackedWidget-а основного окна
     def MainGraficPageLoadJson(self):
         self.main_graphic_70Scale1_label.setText(                                   f"{self.readJson(self.test_json, '70', '07064', '70Scale1')}")
         self.main_graphic_70Scale2_label.setText(                                   f"{self.readJson(self.test_json, '70', '07065', '70Scale2')}")
@@ -642,6 +738,14 @@ class System_Station_Main_window_settings:
         # if widget == self.main_graphic_70Scale5_label:pass
         # if widget == self.main_graphic_70Scale6_label:pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #вторая страница stackedWidget-а основного окна
     def MainStatisticsPageLoadJson(self):
         self.main_statistics_03Frequency_label_1.setText(                           f"{self.readJson(self.test_json, '03', '0300', '03Frequency')}")
         self.main_statistics_03Frequency_label_2.setText(                           f"{self.readJson(self.test_json, '03', '0300', '03Frequency')}")
@@ -757,33 +861,70 @@ class System_Station_Main_window_settings:
         # if widget == self.main_statistics_03ElectricEnergyMeter_label_5:pass
         # if widget == self.main_statistics_03ElectricEnergyMeter_label_6:pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #третья страница stackedWidget-а основного окна
     def MainSwitchPageLoadJson(self):
         pass
     def MainSwitchPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+#Второй блок кода для страницы настроек всего приложения. Включает в себя двадцать методов для загрузки json значений в 20 страниц главого приложения
 
-
-
-
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #1 страница настроек
     def SettingsManagerPageLoadJson(self):
         pass
     def SettingsManagerPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
-
-
-
-
-
-
-
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #2 страница настроек
     def SettingsPanelSettingsPageLoadJson(self):
         pass
     def SettingsPanelSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #3 страница настроек
     def SettingsContactsPageLoadJson(self):
         ################################################################################################################################################################################################################################
         #self.contacts_number_of_pumps_19QuantityPump_pushButton.clicked.connect(lambda: self.show_password_window)
@@ -795,6 +936,14 @@ class System_Station_Main_window_settings:
     def SettingsContactsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #4 страница настроек
     def SettingsTrackingTrendsOnlinePageLoadJson(self):
         ################################################################################################################################################################################################################################
         # self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70', '07017', '70OnlineTrendsDynamicRangeTime', 60))
@@ -826,6 +975,14 @@ class System_Station_Main_window_settings:
     def SettingsTrackingTrendsOnlinePageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #5 страница настроек
     def SettingsTrackingPumpsDevelopmentsPageLoadJson(self):
         ################################################################################################################################################################################################################################
         # self.tracking_pumps_development_150PumpRunHours1_label.clicked.connect(lambda: self.show_password_window)
@@ -871,71 +1028,183 @@ class System_Station_Main_window_settings:
 
 
 
-
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #6 страница настроек
     def SettingsTrackingTrendsHistoryPageLoadJson(self):
         pass
     def SettingsTrackingTrendsHistoryPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
+
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #7 страница настроек
     def SettingsJournalCurrentEventsPageLoadJson(self):
         pass
     def SettingsJournalCurrentEventsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #8 страница настроек
     def SettingsJournalChangesPageLoadJson(self):
         pass
     def SettingsJournalChangesPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #9 страница настроек
     def SettingsJournalHistoryPageLoadJson(self):
         pass
     def SettingsJournalHistoryPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #10 страница настроек
     def SettingsStationSettingsEngineParametersPageLoadJson(self):
         pass
     def SettingsStationSettingsEngineParametersPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #11 страница настроек
     def SettingsStationSettingsSensorsSettingsPageLoadJson(self):
         pass
     def SettingsStationSettingsSensorsSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #12 страница настроек
     def SettingsStationSettingsGeneralPumpsParametersPageLoadJson(self):
         pass
     def SettingsStationSettingsGeneralPumpsParametersPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #13 страница настроек
     def SettingsStationSettingsTurnOnExtraPumpsPageLoadJson(self):
         pass
     def SettingsStationSettingsTurnOnExtraPumpsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #14 страница настроек
     def SettingsStationSettingsTurnOffExtraPumpsPageLoadJson(self):
         pass
     def SettingsStationSettingsTurnOffExtraPumpsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #15 страница настроек
     def SettingsStationSettingsOptionsPageLoadJson(self):
         pass
     def SettingsStationSettingsOptionsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #16 страница настроек
     def SettingsStationSettingsEmergencyModesPageLoadJson(self):
         pass
     def SettingsStationSettingsEmergencyModesPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #17 страница настроек
     def SettingsEngineeringMenuPIDRegistrationSettingsPageLoadJson(self):
         pass
     def SettingsEngineeringMenuPIDRegistrationSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #18 страница настроек
     def SettingsEngineeringMenuPLCPageLoadJson(self):
         pass
     def SettingsEngineeringMenuPLCPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+    #19 страница настроек
     def SettingsEngineeringMenuBackupPageLoadJson(self):
         pass
     def SettingsEngineeringMenuBackupPageUpdateSvgIcon(self, widget, json_value, json_value_name):
@@ -944,16 +1213,25 @@ class System_Station_Main_window_settings:
 
         #self.setSvgIcon(widget, json_value, json_value_name)
 
-        
-    def setupSystemStationMainWindowIcons(self):
-        if self.current_theme == 'white':
-            pass
-        else:
-            pass
+
+
+
+
+    # def setupSystemStationMainWindowIcons(self):
+    #     if self.current_theme == 'white':
+    #         pass
+    #     else:
+    #         pass
 
         
-    def changeCurrentPageButtonIcon(self, button, svg_name, homelander):
-        self.setSvgIcon(button, svg_name, homelander)
+#DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
+#DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
+#DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELET
+#DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
+#DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
+#DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
+#DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
+#Данный setup svg иконок будет не актуален после реализации чтения значений с json файла и включение функции изменения svg иконок для текущей страницы, исходя из переданного json значения(то есть проверки на соответствие из списка возможных значений конкретного json значения, для определения нужной для отображения svg иконки).
 
     def setupSystemStationMainWindowSvgIcons(self):
         if self.current_theme == 'white':
@@ -1155,12 +1433,27 @@ class System_Station_Main_window_settings:
         self.setSvgIcon(self.contacts_icon_label_5, 'Email.svg', 1)
         self.setSvgIcon(self.contacts_icon_label_6, 'Web.svg', 1)
         self.setSvgIcon(self.contacts_icon_label_7, 'Телефон.svg', 1)
-        
+
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+#Блок кода основной логики программы. Включает различные укомплектованные методы работы приложения. Методы являются системными(формально) и составляют основу работы приложения.
 
 
-        
 
-        
+    def changeCurrentPageButtonIcon(self, button, svg_name, homelander):
+        self.setSvgIcon(button, svg_name, homelander)
 
     def setSvgIcon(self, widget, svg_filename, set_widget_size):
         svg_path = os.path.join(self.svg_icons_dir, svg_filename)
@@ -1200,10 +1493,48 @@ class System_Station_Main_window_settings:
         self.main_time_label.setText(current_time)
         self.settings_time_label.setText(current_time)
 
-
-
-
-
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
 
 class Password_window_settings:
     def setupPasswordWindowSettings(self, parent, requiered_level, min, max):

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'SystemStationMainWindowBETAX1CsDkep.ui'
+## Form generated from reading UI file 'SystemStationMainWindowBETAX2MlGPRy.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.1
 ##
@@ -2904,6 +2904,21 @@ class Ui_System_Station_Main_window(object):
         self.journal_current_events_set_user_events_60NumberDisplayAlarm_icon_label.setGeometry(QRect(453, 28, 21, 6))
         self.journal_current_events_set_user_events_60NumberDisplayAlarm_icon_label.setAlignment(Qt.AlignCenter)
         self.settings_pages_stackedWidget.addWidget(self.Settings_Journal_History_page)
+        self.label_206.raise_()
+        self.label_207.raise_()
+        self.label_209.raise_()
+        self.label_211.raise_()
+        self.label_212.raise_()
+        self.journal_current_events_set_all_60NumberDisplayAlarm_icon_label.raise_()
+        self.journal_current_events_set_emergencies_60NumberDisplayAlarm_icon_label.raise_()
+        self.journal_current_events_set_warnings_60NumberDisplayAlarm_icon_label.raise_()
+        self.journal_current_events_set_messages_60NumberDisplayAlarm_icon_label.raise_()
+        self.journal_current_events_set_user_events_60NumberDisplayAlarm_icon_label.raise_()
+        self.journal_current_events_set_all_60NumberDisplayAlarm_pushButton.raise_()
+        self.journal_current_events_set_emergencies_60NumberDisplayAlarm_pushButton.raise_()
+        self.journal_current_events_set_messages_60NumberDisplayAlarm_pushButton.raise_()
+        self.journal_current_events_set_user_events_60NumberDisplayAlarm_pushButton.raise_()
+        self.journal_current_events_set_warnings_60NumberDisplayAlarm_pushButton.raise_()
         self.Settings_Station_Settings_Engine_Parameters_page = QWidget()
         self.Settings_Station_Settings_Engine_Parameters_page.setObjectName(u"Settings_Station_Settings_Engine_Parameters_page")
         self.label_81 = QLabel(self.Settings_Station_Settings_Engine_Parameters_page)
@@ -4441,7 +4456,7 @@ class Ui_System_Station_Main_window(object):
         self.engineering_menu_backup_line_1.setFrameShape(QFrame.Shape.HLine)
         self.label_260 = QLabel(self.Settings_Engineering_Menu_Backup_page)
         self.label_260.setObjectName(u"label_260")
-        self.label_260.setGeometry(QRect(10, 360, 441, 21))
+        self.label_260.setGeometry(QRect(10, 360, 431, 21))
         self.label_260.setFont(font8)
         self.label_261 = QLabel(self.Settings_Engineering_Menu_Backup_page)
         self.label_261.setObjectName(u"label_261")
@@ -5404,7 +5419,7 @@ class Ui_System_Station_Main_window(object):
         self.engineering_menu_backup_factory_all_settings_pushButton.setText("")
         self.engineering_menu_backup_save_energy_independent_memory_80RWBackup_pushButton.setText("")
         self.engineering_menu_backup_save_90_days_of_journal_80LogBackup_pushButton.setText("")
-        self.label_260.setText(QCoreApplication.translate("System_Station_Main_window", u"\u0412\u043d\u0438\u043c\u0430\u043d\u0438\u0435, \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 \u043c\u043e\u0436\u0435\u0442 \u0437\u0430\u043d\u044f\u0442\u044c \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435  \u0432\u0440\u0435\u043c\u044f!", None))
+        self.label_260.setText(QCoreApplication.translate("System_Station_Main_window", u"<html><head/><body><p><span style=\" color:#ffff00;\">\u0412\u043d\u0438\u043c\u0430\u043d\u0438\u0435, \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 \u043c\u043e\u0436\u0435\u0442 \u0437\u0430\u043d\u044f\u0442\u044c \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f!</span></p></body></html>", None))
         self.label_261.setText(QCoreApplication.translate("System_Station_Main_window", u"\u0414\u043e\u0441\u0442\u0443\u043f \u043a \u0444\u0430\u0439\u043b\u0430\u043c \u0436\u0443\u0440\u043d\u0430\u043b\u0430 \u0442\u0430\u043a \u0436\u0435 \u0432\u043e\u0437\u043c\u043e\u0436\u0435\u043d \u0447\u0435\u0440\u0435\u0437 FTTP:", None))
         self.label_262.setText(QCoreApplication.translate("System_Station_Main_window", u"\u0418\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f: uploadhis", None))
         self.label_263.setText(QCoreApplication.translate("System_Station_Main_window", u"\u041f\u0430\u0440\u043e\u043b\u044c: 111111", None))
