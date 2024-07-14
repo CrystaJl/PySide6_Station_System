@@ -85,10 +85,6 @@ class System_Station_Main_window_settings:
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
-        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
-        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Блок подключений журнала, так же как и выше включая подключения возврата на предыдущие страницы справа и страницы кнопок
@@ -463,10 +459,17 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 #блок кода контроля и отслеживания СТРАНИЦ ДЛЯ НАСТРОЙКИ И КОНТРОЛЯ ОБОРУДОВАНИЯ, отвечает за визуальное подтверждения действий путем изменения svg иконок кнопок, лейблов и т.д. исходя из нажатой кнопки навигации по приложению, включая будущие навигации по графикам и в лейблах отображения json значений
 
+###################################################################################################################################################################################################################################################################################################################################################
+        #Подклюсение изменения иконок кнопок страниц работы с оборудованием через кнопки в страницах кнопки(сделаны подключения здесь, так как они относится к изменению иконок в странице оборудования, хоть подключения идут из кнопок, находящихся в страницах кнопок)
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
 
         self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
         self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
@@ -480,6 +483,8 @@ class System_Station_Main_window_settings:
         self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
         self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'указатель верх.svg', 1))
 
+###################################################################################################################################################################################################################################################################################################################################################
+        #одключение кнопок в странице трендов
         self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
         self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
         self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
@@ -497,6 +502,8 @@ class System_Station_Main_window_settings:
         self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
         self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
 
+###################################################################################################################################################################################################################################################################################################################################################
+        #Подключение кнопок в странице онлайн трендов, находящейся в странице трендов(формально, по структуре доступ выглядит именно так)
         self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'указатель верх.svg', 1))
         self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
         self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
@@ -533,6 +540,41 @@ class System_Station_Main_window_settings:
         self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
         self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
         self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+
+###################################################################################################################################################################################################################################################################################################################################################
+        #Подключение кнопок в вложенной странице истории журнала, находящейся в странице журнала(формально, по структуре доступ выглядит именно так)
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+
+
 
 
 

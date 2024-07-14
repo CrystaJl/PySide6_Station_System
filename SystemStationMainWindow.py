@@ -6,7 +6,7 @@ from MODULES.Settings import System_Station_Main_window_settings
 from MODULES.JsonParser import Json_parser
 from MAIN.PasswordWindow import Password_window
 
-import sys 
+import sys
 
 class System_Station_Main_window(QWidget, Ui_System_Station_Main_window, System_Station_Main_window_settings, Json_parser):
     def __init__(self):
