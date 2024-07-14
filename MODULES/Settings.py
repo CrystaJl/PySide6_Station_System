@@ -59,11 +59,14 @@ class System_Station_Main_window_settings:
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Блок подключений различного мониторинга, включая подключения возврата на предыдущие страницы справа и страницы кнопок
+
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
+        
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_time_label.setVisible(True))
 
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
@@ -80,6 +83,10 @@ class System_Station_Main_window_settings:
 
         self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(5))
         self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(2))
+
+
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.settings_time_label.setVisible(False))
+
 
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
@@ -112,6 +119,7 @@ class System_Station_Main_window_settings:
 
         self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(8))
         self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(4))
+
 
         self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(6))
         self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(3))
