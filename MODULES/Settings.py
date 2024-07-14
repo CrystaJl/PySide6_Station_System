@@ -51,6 +51,7 @@ class System_Station_Main_window_settings:
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_time_label.setVisible(True))
 
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(3))
         self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
@@ -81,6 +82,7 @@ class System_Station_Main_window_settings:
         self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
         self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
         self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.settings_time_label.setVisible(False))
 
 
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
@@ -167,6 +169,43 @@ class System_Station_Main_window_settings:
 
         self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(8))
         self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(4))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_all_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+
+        self.journal_current_events_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_all_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_current_events_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+
+        self.journal_current_events_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_emergencies_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_current_events_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+
+        self.journal_current_events_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_warnings_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_current_events_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+
+        self.journal_current_events_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_messages_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_current_events_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+
+
+        self.journal_current_events_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_user_events_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_current_events_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_current_events_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.journal_current_events_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+
         self.return_to_settings_main_buttons_pushButton_2.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
         self.return_to_settings_main_buttons_pushButton_2.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
 
