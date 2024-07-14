@@ -25,6 +25,7 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 #Блок кода, отвечающий за подключение всех возможных кнопок, связанных со страницами кнопок и страницами основной работы с оборудованием
 
+###################################################################################################################################################################################################################################################################################################################################################
         #переключение между основным окном(страницей) и основными настройками, дополнительно, переключение между страницами в основном окне
         self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.main_stackedWidget.setCurrentIndex(1))
         self.go_to_main_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
@@ -39,6 +40,7 @@ class System_Station_Main_window_settings:
         self.go_to_main_statistics_page_pushButton.clicked.connect(lambda: self.main_main_pages_stackedWidget.setCurrentIndex(1))
         self.go_to_main_switch_page_pushButton.clicked.connect(lambda: self.main_main_pages_stackedWidget.setCurrentIndex(2))
 
+###################################################################################################################################################################################################################################################################################################################################################
         #три подключения к кнопкам основной страницы кнопок, и переключение, при нажатии на них, страниц справа
         self.go_to_settings_manager_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
         self.go_to_settings_manager_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
@@ -55,6 +57,7 @@ class System_Station_Main_window_settings:
         self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'empty.svg', 1))
         self.go_to_settings_contacts_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Блок подключений различного мониторинга, включая подключения возврата на предыдущие страницы справа и страницы кнопок
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
@@ -87,6 +90,7 @@ class System_Station_Main_window_settings:
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Блок подключений журнала, так же как и выше включая подключения возврата на предыдущие страницы справа и страницы кнопок
         self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(6))
         self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(3))
@@ -118,6 +122,7 @@ class System_Station_Main_window_settings:
         self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_current_events_page_icon_label_2, 'указатель влево.svg', 1))
         self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_journal_changes_page_icon_label_2, 'empty.svg', 1))
 
+###################################################################################################################################################################################################################################################################################################################################################
         #Так как настройки станции не имеют вложенных страниц с кнопками из за чего есть три блока: 1) сам переход в настройки станции 2) возврат 3) отображение страниц настроек станции
         self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(9))
         self.go_to_settings_station_settings_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(5))
@@ -192,6 +197,7 @@ class System_Station_Main_window_settings:
         self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_turn_off_extra_pumps_page_icon_label_2, 'empty.svg', 1))
         self.go_to_station_settings_emergency_modes_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_station_settings_options_page_icon_label_2, 'empty.svg', 1))
 
+###################################################################################################################################################################################################################################################################################################################################################
         #последние подключения к вкладке инженерного меню, так же с возвратом к основным кнопкам и странице
         self.go_to_settings_engineering_menu_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(16))
         self.go_to_settings_engineering_menu_page_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(6))
@@ -215,6 +221,7 @@ class System_Station_Main_window_settings:
         self.go_to_engineering_plc_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_plc_page_icon_label_2, 'указатель влево.svg', 1))
         self.go_to_engineering_plc_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_pid_registration_settings_page_icon_label_2, 'empty.svg', 1))
         self.go_to_engineering_plc_page_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_engineering_backup_page_icon_label_2, 'empty.svg', 1))
+
 
         #дубликат существующего подключения с переходом на соответствующую страницу кнопок(доступ из другого места к тем страницам, к которым уже есть доступ из другого места)
         self.go_to_engineering_station_settings_page_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(9))

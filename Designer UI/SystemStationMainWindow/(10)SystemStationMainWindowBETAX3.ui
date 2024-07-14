@@ -183,7 +183,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        <property name="font">
         <font>
          <family>Arial</family>
-         <pointsize>8</pointsize>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -207,7 +207,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        <property name="font">
         <font>
          <family>Arial</family>
-         <pointsize>8</pointsize>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -231,7 +231,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        <property name="font">
         <font>
          <family>Arial</family>
-         <pointsize>8</pointsize>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -255,7 +255,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        <property name="font">
         <font>
          <family>Arial</family>
-         <pointsize>8</pointsize>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -279,7 +279,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        <property name="font">
         <font>
          <family>Arial</family>
-         <pointsize>8</pointsize>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -303,7 +303,7 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        <property name="font">
         <font>
          <family>Arial</family>
-         <pointsize>8</pointsize>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -526,6 +526,9 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        <property name="text">
         <string>ПЧ1</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
       <widget class="QLabel" name="label_10">
        <property name="geometry">
@@ -546,6 +549,9 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        </property>
        <property name="text">
         <string>ПЧ1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_11">
@@ -568,6 +574,9 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        <property name="text">
         <string>ПЧ1</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
       <widget class="QLabel" name="label_12">
        <property name="geometry">
@@ -588,6 +597,9 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        </property>
        <property name="text">
         <string>ПЧ1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_13">
@@ -610,6 +622,9 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        <property name="text">
         <string>ПЧ1</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
       <widget class="QLabel" name="label_14">
        <property name="geometry">
@@ -630,6 +645,9 @@ QStackedWidget &gt; QWidget {background-color: black;}</string>
        </property>
        <property name="text">
         <string>ПЧ1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="main_statistics_03Frequency_label_1">
