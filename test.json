@@ -1948,7 +1948,7 @@
             "10SetpointWeekendsNights": 0
         },
         "01011": {
-            "10TypeOfDayMonday": 0
+            "10TypeOfDayMonday": 1
         },
         "0101100": {
             "": 0
@@ -1960,7 +1960,7 @@
             "": 0
         },
         "01012": {
-            "10TypeOfDayTuesday": 0
+            "10TypeOfDayTuesday": 1
         },
         "0101200": {
             "": 0
@@ -1972,7 +1972,7 @@
             "": 0
         },
         "01013": {
-            "10TypeOfDayWednesday": 0
+            "10TypeOfDayWednesday": 1
         },
         "0101300": {
             "": 0
@@ -1984,7 +1984,7 @@
             "": 0
         },
         "01014": {
-            "10TypeOfDayThursday": 0
+            "10TypeOfDayThursday": 1
         },
         "0101400": {
             "": 0
@@ -1996,7 +1996,7 @@
             "": 0
         },
         "01015": {
-            "10TypeOfDayFriday": 0
+            "10TypeOfDayFriday": 1
         },
         "0101500": {
             "": 0
@@ -2008,7 +2008,7 @@
             "": 0
         },
         "01016": {
-            "10TypeOfDaySaturday": 0
+            "10TypeOfDaySaturday": 2
         },
         "0101600": {
             "": 0

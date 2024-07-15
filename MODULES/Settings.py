@@ -85,7 +85,7 @@ class System_Station_Main_window_settings:
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(1))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_trends_online_page_icon_label_2, 'указатель влево.svg', 1))
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_tracking_pumps_developments_page_icon_label_2, 'empty.svg', 1))
-
+ 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Блок подключений журнала, так же как и выше включая подключения возврата на предыдущие страницы справа и страницы кнопок
         self.return_to_settings_journal_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(6))
@@ -780,12 +780,6 @@ class System_Station_Main_window_settings:
 
     def MainGraficPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
-        # if widget == self.main_graphic_70Scale1_label:pass
-        # if widget == self.main_graphic_70Scale2_label:pass
-        # if widget == self.main_graphic_70Scale3_label:pass
-        # if widget == self.main_graphic_70Scale4_label:pass
-        # if widget == self.main_graphic_70Scale5_label:pass
-        # if widget == self.main_graphic_70Scale6_label:pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -854,61 +848,6 @@ class System_Station_Main_window_settings:
 
     def MainStatisticsPageUpdateSvgIcon(self, widget, json_value, json_value_name): 
         pass
-        # if widget == self.main_statistics_03Frequency_label_1:pass
-        # if widget == self.main_statistics_03Frequency_label_2:pass
-        # if widget == self.main_statistics_03Frequency_label_3:pass
-        # if widget == self.main_statistics_03Frequency_label_4:pass
-        # if widget == self.main_statistics_03Frequency_label_5:pass
-        # if widget == self.main_statistics_03Frequency_label_6:pass
-            
-        # if widget == self.main_statistics_03Speed_label_1:pass
-        # if widget == self.main_statistics_03Speed_label_2:pass
-        # if widget == self.main_statistics_03Speed_label_3:pass
-        # if widget == self.main_statistics_03Speed_label_4:pass
-        # if widget == self.main_statistics_03Speed_label_5:pass
-        # if widget == self.main_statistics_03Speed_label_6:pass
-            
-        # if widget == self.main_statistics_03Current_label_1:pass
-        # if widget == self.main_statistics_03Current_label_2:pass
-        # if widget == self.main_statistics_03Current_label_3:pass
-        # if widget == self.main_statistics_03Current_label_4:pass
-        # if widget == self.main_statistics_03Current_label_5:pass
-        # if widget == self.main_statistics_03Current_label_6:pass
-            
-        # if widget == self.main_statistics_03Torque_label_1:pass
-        # if widget == self.main_statistics_03Torque_label_2:pass
-        # if widget == self.main_statistics_03Torque_label_3:pass
-        # if widget == self.main_statistics_03Torque_label_4:pass
-        # if widget == self.main_statistics_03Torque_label_5:pass
-        # if widget == self.main_statistics_03Torque_label_6:pass
-            
-        # if widget == self.main_statistics_03Power_label_1:pass
-        # if widget == self.main_statistics_03Power_label_2:pass
-        # if widget == self.main_statistics_03Power_label_3:pass
-        # if widget == self.main_statistics_03Power_label_4:pass
-        # if widget == self.main_statistics_03Power_label_5:pass
-        # if widget == self.main_statistics_03Power_label_6:pass
-            
-        # if widget == self.main_statistics_03PowerBusVoltage_label_1:pass
-        # if widget == self.main_statistics_03PowerBusVoltage_label_2:pass
-        # if widget == self.main_statistics_03PowerBusVoltage_label_3:pass
-        # if widget == self.main_statistics_03PowerBusVoltage_label_4:pass
-        # if widget == self.main_statistics_03PowerBusVoltage_label_5:pass
-        # if widget == self.main_statistics_03PowerBusVoltage_label_6:pass
-            
-        # if widget == self.main_statistics_03Temperature_label_1:pass
-        # if widget == self.main_statistics_03Temperature_label_2:pass
-        # if widget == self.main_statistics_03Temperature_label_3:pass
-        # if widget == self.main_statistics_03Temperature_label_4:pass
-        # if widget == self.main_statistics_03Temperature_label_5:pass
-        # if widget == self.main_statistics_03Temperature_label_6:pass
-
-        # if widget == self.main_statistics_03ElectricEnergyMeter_label_1:pass
-        # if widget == self.main_statistics_03ElectricEnergyMeter_label_2:pass
-        # if widget == self.main_statistics_03ElectricEnergyMeter_label_3:pass
-        # if widget == self.main_statistics_03ElectricEnergyMeter_label_4:pass
-        # if widget == self.main_statistics_03ElectricEnergyMeter_label_5:pass
-        # if widget == self.main_statistics_03ElectricEnergyMeter_label_6:pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -922,7 +861,6 @@ class System_Station_Main_window_settings:
         pass
     def MainSwitchPageUpdateSvgIcon(self, widget, json_value, json_value_name):
         pass
-
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -949,9 +887,72 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #1 страница настроек
     def SettingsManagerPageLoadJson(self):
-        pass
-    def SettingsManagerPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+
+        self.SettingsManagerPageUpdateSvgIcon(self.shield_1_label)
+        self.manager_user_setpoint_10SetpointUser_pushButton.setText(               f"{self.readJson(self.test_json, '10', '01000', '10SetpointUser')}")
+
+        self.SettingsManagerPageUpdateSvgIcon(self.shield_2_label)
+        self.SettingsManagerPageUpdateStyles(self.manager_monday_10TypeOfDayMonday_pushButton,       self.readJson(self.test_json, '10', '01011', '10TypeOfDayMonday'))
+        self.SettingsManagerPageUpdateStyles(self.manager_tuesday_10TypeOfDayTuesday_pushButton,     self.readJson(self.test_json, '10', '01012', '10TypeOfDayTuesday'))
+        self.SettingsManagerPageUpdateStyles(self.manager_wednesday_10TypeOfDayWednesday_pushButton, self.readJson(self.test_json, '10', '01013', '10TypeOfDayWednesday'))
+        self.SettingsManagerPageUpdateStyles(self.manager_thursday_10TypeOfDayThursday_pushButton,   self.readJson(self.test_json, '10', '01014', '10TypeOfDayThursday'))
+        self.SettingsManagerPageUpdateStyles(self.manager_friday_10TypeOfDayFriday_pushButton,       self.readJson(self.test_json, '10', '01015', '10TypeOfDayFriday'))
+        self.SettingsManagerPageUpdateStyles(self.manager_saturday_10TypeOfDaySaturday_pushButton,   self.readJson(self.test_json, '10', '01016', '10TypeOfDaySaturday'))
+        self.SettingsManagerPageUpdateStyles(self.manager_sunday_10TypeOfDaySunday_pushButton,       self.readJson(self.test_json, '10', '01017', '10TypeOfDaySunday'))
+
+        self.SettingsManagerPageUpdateSvgIcon(self.shield_3_label)
+        self.manager_morning_1_1_10WeekdayMorningHour_pushButton.setText(           f"{self.readJson(self.test_json, '10', '01018', '10WeekdayMorningHour')}")
+        self.manager_morning_1_2_10WeekdayMorningMinutes_pushButton.setText(        f"{self.readJson(self.test_json, '10', '01019', '10WeekdayMorningMinutes')}")
+        self.manager_morning_2_1_10WeekendMorningHour_pushButton.setText(           f"{self.readJson(self.test_json, '10', '01026', '10WeekendMorningHour')}")
+        self.manager_morning_2_2_10WeekendMorningMinutes_pushButton.setText(        f"{self.readJson(self.test_json, '10', '01027', '10WeekendMorningMinutes')}")
+        self.manager_morning_3_10SetpointWeekdaysMorning_pushButton.setText(        f"{self.readJson(self.test_json, '10', '01003', '10SetpointWeekdaysMorning')}")
+        self.manager_morning_4_10SetpointWeekendsMorning_pushButton.setText(        f"{self.readJson(self.test_json, '10', '01007', '10SetpointWeekendsMorning')}")
+
+        self.SettingsManagerPageUpdateSvgIcon(self.shield_4_label)
+        self.manager_day_1_1_10WeekdayDayHour_pushButton.setText(                   f"{self.readJson(self.test_json, '10', '01020', '10WeekdayDayHour')}")
+        self.manager_day_1_2_10WeekdayDayMinutes_pushButton.setText(                f"{self.readJson(self.test_json, '10', '01021', '10WeekdayDayMinutes')}")
+        self.manager_day_2_1_10DayOffMinutes_pushButton.setText(                    f"{self.readJson(self.test_json, '10', '01029', '10DayOffMinutes')}")
+        self.manager_day_2_2_10DayOffMinutes_pushButton.setText(                    f"{self.readJson(self.test_json, '10', '01029', '10DayOffMinutes')}")
+        self.manager_day_3_10SetpointWeekdaysDay_pushButton.setText(                f"{self.readJson(self.test_json, '10', '01004', '10SetpointWeekdaysDay')}")
+        self.manager_day_4_10SetpointWeekendsDay_pushButton.setText(                f"{self.readJson(self.test_json, '10', '01008', '10SetpointWeekendsDay')}")
+
+        self.SettingsManagerPageUpdateSvgIcon(self.shield_5_label)
+        self.manager_evening_1_1_10WeekdayEveningHour_pushButton.setText(           f"{self.readJson(self.test_json, '10', '01022', '10WeekdayEveningHour')}")
+        self.manager_evening_1_2_10WeekdayEveningMinutes_pushButton.setText(        f"{self.readJson(self.test_json, '10', '01023', '10WeekdayEveningMinutes')}")
+        self.manager_evening_2_1_10WeekendEveningHour_pushButton.setText(           f"{self.readJson(self.test_json, '10', '01030', '10WeekendEveningHour')}")
+        self.manager_evening_2_2_10WeekendEveningMinutes_pushButton.setText(        f"{self.readJson(self.test_json, '10', '01031', '10WeekendEveningMinutes')}")
+        self.manager_evening_3_10SetpointWeekdaysEvening_pushButton.setText(        f"{self.readJson(self.test_json, '10', '01005', '10SetpointWeekdaysEvening')}")
+        self.manager_evening_4_10SetpointWeekendsEvening_pushButton.setText(        f"{self.readJson(self.test_json, '10', '01009', '10SetpointWeekendsEvening')}")
+
+        self.SettingsManagerPageUpdateSvgIcon(self.shield_6_label)
+        self.manager_night_1_1_10WeekdayNightHour_pushButton.setText(               f"{self.readJson(self.test_json, '10', '01024', '10WeekdayNightHour')}")
+        self.manager_night_1_2_10WeekdayNightMinutes_pushButton.setText(            f"{self.readJson(self.test_json, '10', '01025', '10WeekdayNightMinutes')}")
+        self.manager_night_2_1_10WeekendNightHour_pushButton.setText(               f"{self.readJson(self.test_json, '10', '01032', '10WeekendNightHour')}")
+        self.manager_night_2_2_10WeekendNightMinutes_pushButton.setText(            f"{self.readJson(self.test_json, '10', '01033', '10WeekendNightMinutes')}")
+        self.manager_night_3_10SetpointWeekdaysNights_pushButton.setText(           f"{self.readJson(self.test_json, '10', '01006', '10SetpointWeekdaysNights')}")
+        self.manager_night_4_10SetpointWeekendsNights_pushButton.setText(           f"{self.readJson(self.test_json, '10', '01010', '10SetpointWeekendsNights')}")
+
+        self.manager_current_day_of_the_week_01DayOfTheWeek_label.setText(          f"{self.readJson(self.test_json, '01', '0145', '01DayOfTheWeek')}")
+        self.manager_day_type_01DayType_label.setText(                              f"{self.readJson(self.test_json, '01', '0146', '01DayType')}")
+
+        self.manager_01SetpointType_label.setText(                                  f"{self.readJson(self.test_json, '01', '0144', '01SetpointType')}")
+        self.manager_01Setpoint_label.setText(                                      f"{self.readJson(self.test_json, '01', '0104', '01Setpoint')}")
+
+
+    def SettingsManagerPageUpdateSvgIcon(self, widget):
+        if self.user_level > 0:
+            self.changeCurrentPageButtonIcon(widget, 'shield.svg', 1)
+        else:
+            self.changeCurrentPageButtonIcon(widget, 'empty.svg', 1)
+
+
+    def SettingsManagerPageUpdateStyles(self, widget, json_value):
+        if json_value == 0:
+            widget.setStyleSheet('border: none; border-radius: none; background-color: rgb(144,144,144);')
+        elif json_value == 1:
+            widget.setStyleSheet('border: none; border-radius: none; background-color: rgb(0,160,227);')
+        elif json_value == 2:
+            widget.setStyleSheet('border: none; border-radius: none; background-color: rgb(175,37,34);')
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1501,10 +1502,10 @@ class System_Station_Main_window_settings:
 
 
 
-    def changeCurrentPageButtonIcon(self, button, svg_name, homelander):
-        self.setSvgIcon(button, svg_name, homelander)
+    def setSvgIcon(self, button, svg_name, homelander):
+        self.changeCurrentPageButtonIcon(button, svg_name, homelander)
 
-    def setSvgIcon(self, widget, svg_filename, set_widget_size):
+    def changeCurrentPageButtonIcon(self, widget, svg_filename, set_widget_size):
         svg_path = os.path.join(self.svg_icons_dir, svg_filename)
 
         svg_renderer = QSvgRenderer(svg_path)
