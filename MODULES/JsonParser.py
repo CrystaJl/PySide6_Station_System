@@ -19,7 +19,7 @@ class Json_parser:
     def save_json(self,file_name, data):
         try:
             with open(file_name, 'w') as file:
-                json.dump(data, file, indent=4)
+                json.dump(data, file, indent=0)
         except Exception as e: print(f"Failed to save json ERROR: {e}")
     
     def updateJson(self, file_name, outer_key, inner_key, target_key, value):

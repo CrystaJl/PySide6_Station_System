@@ -15,7 +15,7 @@ class System_Station_Main_window(QWidget, Ui_System_Station_Main_window, System_
         self.setupSystemStationMainSettings()
         # self.setupSystemStationMainWindowIcons()
         self.setupSystemStationMainWindowSvgIcons()
-
+        self.updateJson(self.test_json, '10', '01011', '10TypeOfDayMonday', 900)       
         self.giveTimer()
         self.timeChanger()
 
