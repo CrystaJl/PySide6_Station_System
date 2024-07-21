@@ -8,6 +8,14 @@ import os
 
 class System_Station_Main_window_settings:
     def setupSystemStationMainSettings(self):
+        #ключевые атрибуты взаимодействия с приложением, включая как интерфейс, так и логику
+        self.current_level = 0
+        self.security_levels = [0, 1, 2, 3, 4, 5, 6]
+        self.test_json = 'test.json'
+
+        #атрибуты для работы с видом
+        self.svg_icons_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "SVGICONS")
+        self.current_theme = 'black'
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -262,6 +270,136 @@ class System_Station_Main_window_settings:
         self.go_to_engineering_contacts_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.go_to_engineering_plc_page_icon_label_2, 'empty.svg', 1))
         #############################################################################################################################
 
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+#блок кода контроля и отслеживания СТРАНИЦ ДЛЯ НАСТРОЙКИ И КОНТРОЛЯ ОБОРУДОВАНИЯ, отвечает за визуальное подтверждения действий путем изменения svg иконок кнопок, лейблов и т.д. исходя из нажатой кнопки навигации по приложению, включая будущие навигации по графикам и в лейблах отображения json значений
+
+###################################################################################################################################################################################################################################################################################################################################################
+        #Подключение изменения иконок кнопок страниц работы с оборудованием через кнопки в страницах кнопки(сделаны подключения здесь, так как они относится к изменению иконок в странице оборудования, хоть подключения идут из кнопок, находящихся в страницах кнопок)
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'указатель верх.svg', 1))
+
+###################################################################################################################################################################################################################################################################################################################################################
+        #Подключение кнопок в странице трендов
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
+
+###################################################################################################################################################################################################################################################################################################################################################
+        #Подключение кнопок в странице онлайн трендов, находящейся в странице трендов(формально, по структуре доступ выглядит именно так)
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'указатель верх.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
+        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
+
+###################################################################################################################################################################################################################################################################################################################################################
+        #Подключение кнопок в вложенной странице истории журнала, находящейся в странице журнала(формально, по структуре доступ выглядит именно так)
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
+        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
+        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -272,7 +410,7 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
+############################################################################################################################################# ######################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -281,43 +419,43 @@ class System_Station_Main_window_settings:
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Планировщик
-        self.manager_user_setpoint_10SetpointUser_pushButton.clicked.connect(self.show_password_window)
+        self.manager_user_setpoint_10SetpointUser_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10SetpointUser', 0.00, 99.99))
 
-        self.manager_monday_10TypeOfDayMonday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_tuesday_10TypeOfDayTuesday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_wednesday_10TypeOfDayWednesday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_thursday_10TypeOfDayThursday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_friday_10TypeOfDayFriday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_saturday_10TypeOfDaySaturday_pushButton.clicked.connect(self.show_password_window)
-        self.manager_sunday_10TypeOfDaySunday_pushButton.clicked.connect(self.show_password_window)
+        self.manager_monday_10TypeOfDayMonday_pushButton.clicked.connect(lambda: self.SettingsManagerPageInstantlyUpdateJson(self.security_levels[3], '10TypeOfDayMonday'))
+        self.manager_tuesday_10TypeOfDayTuesday_pushButton.clicked.connect(lambda: self.SettingsManagerPageInstantlyUpdateJson(self.security_levels[3], '10TypeOfDayTuesday'))
+        self.manager_wednesday_10TypeOfDayWednesday_pushButton.clicked.connect(lambda: self.SettingsManagerPageInstantlyUpdateJson(self.security_levels[3], '10TypeOfDayWednesday'))
+        self.manager_thursday_10TypeOfDayThursday_pushButton.clicked.connect(lambda: self.SettingsManagerPageInstantlyUpdateJson(self.security_levels[3], '10TypeOfDayThursday'))
+        self.manager_friday_10TypeOfDayFriday_pushButton.clicked.connect(lambda: self.SettingsManagerPageInstantlyUpdateJson(self.security_levels[3], '10TypeOfDayFriday'))
+        self.manager_saturday_10TypeOfDaySaturday_pushButton.clicked.connect(lambda: self.SettingsManagerPageInstantlyUpdateJson(self.security_levels[3], '10TypeOfDaySaturday'))
+        self.manager_sunday_10TypeOfDaySunday_pushButton.clicked.connect(lambda: self.SettingsManagerPageInstantlyUpdateJson(self.security_levels[3], '10TypeOfDaySunday'))
 
-        self.manager_morning_1_1_10WeekdayMorningHour_pushButton.clicked.connect(lambda: self.show_password_window(3, self.manager_morning_1_1_10WeekdayMorningHour_pushButton, 0, 50))
-        self.manager_morning_1_2_10WeekdayMorningMinutes_pushButton.clicked.connect(lambda: self.show_password_window(3, self.manager_morning_1_2_10WeekdayMorningMinutes_pushButton, 0, 50))
-        self.manager_morning_2_1_10WeekendMorningHour_pushButton.clicked.connect(lambda: self.show_password_window(4, self.manager_morning_2_1_10WeekendMorningHour_pushButton, 0, 60))
-        self.manager_morning_2_2_10WeekendMorningMinutes_pushButton.clicked.connect(lambda: self.show_password_window(4, self.manager_morning_2_2_10WeekendMorningMinutes_pushButton, 0, 60))
-        self.manager_morning_3_10SetpointWeekdaysMorning_pushButton.clicked.connect(self.show_password_window)
-        self.manager_morning_4_10SetpointWeekendsMorning_pushButton.clicked.connect(self.show_password_window)
+        self.manager_morning_1_1_10WeekdayMorningHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekdayMorningHour', 0, 23))
+        self.manager_morning_1_2_10WeekdayMorningMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekdayMorningMinutes', 0, 59))
+        self.manager_morning_2_1_10WeekendMorningHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekendMorningHour', 0, 23))
+        self.manager_morning_2_2_10WeekendMorningMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekendMorningMinutes', 0, 59))
+        self.manager_morning_3_10SetpointWeekdaysMorning_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10SetpointWeekdaysMorning', 0.00, 99.99))
+        self.manager_morning_4_10SetpointWeekendsMorning_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10SetpointWeekendsMorning', 0.00, 99.99))
 
-        self.manager_day_1_1_10WeekdayDayHour_pushButton.clicked.connect(self.show_password_window)
-        self.manager_day_1_2_10WeekdayDayMinutes_pushButton.clicked.connect(self.show_password_window)
-        self.manager_day_2_1_10DayOffMinutes_pushButton.clicked.connect(self.show_password_window)
-        self.manager_day_2_2_10DayOffMinutes_pushButton.clicked.connect(self.show_password_window)
-        self.manager_day_3_10SetpointWeekdaysDay_pushButton.clicked.connect(self.show_password_window)
-        self.manager_day_4_10SetpointWeekendsDay_pushButton.clicked.connect(self.show_password_window)
+        self.manager_day_1_1_10WeekdayDayHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekdayDayHour', 0, 23))
+        self.manager_day_1_2_10WeekdayDayMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekdayDayMinutes', 0, 59))
+        self.manager_day_2_1_10DayOffMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10DayOffMinutes', 0, 23))
+        self.manager_day_2_2_10DayOffMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10DayOffMinutes', 0, 59))
+        self.manager_day_3_10SetpointWeekdaysDay_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10SetpointWeekdaysDay', 0.00, 99.99))
+        self.manager_day_4_10SetpointWeekendsDay_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10SetpointWeekendsDay', 0.00, 99.99))
 
-        self.manager_evening_1_1_10WeekdayEveningHour_pushButton.clicked.connect(self.show_password_window)
-        self.manager_evening_1_2_10WeekdayEveningMinutes_pushButton.clicked.connect(self.show_password_window)
-        self.manager_evening_2_1_10WeekendEveningHour_pushButton.clicked.connect(self.show_password_window)
-        self.manager_evening_2_2_10WeekendEveningMinutes_pushButton.clicked.connect(self.show_password_window)
-        self.manager_evening_3_10SetpointWeekdaysEvening_pushButton.clicked.connect(self.show_password_window)
-        self.manager_evening_4_10SetpointWeekendsEvening_pushButton.clicked.connect(self.show_password_window)
+        self.manager_evening_1_1_10WeekdayEveningHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekdayEveningHour', 0, 23))
+        self.manager_evening_1_2_10WeekdayEveningMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekdayEveningMinutes', 0, 59))
+        self.manager_evening_2_1_10WeekendEveningHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekendEveningHour', 0, 23))
+        self.manager_evening_2_2_10WeekendEveningMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekendEveningMinutes', 0, 59))
+        self.manager_evening_3_10SetpointWeekdaysEvening_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10SetpointWeekdaysEvening', 0.00, 99.99))
+        self.manager_evening_4_10SetpointWeekendsEvening_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10SetpointWeekendsEvening', 0.00, 99.99))
 
-        self.manager_night_1_1_10WeekdayNightHour_pushButton.clicked.connect(self.show_password_window)
-        self.manager_night_1_2_10WeekdayNightMinutes_pushButton.clicked.connect(self.show_password_window)
-        self.manager_night_2_1_10WeekendNightHour_pushButton.clicked.connect(self.show_password_window)
-        self.manager_night_2_2_10WeekendNightMinutes_pushButton.clicked.connect(self.show_password_window)
-        self.manager_night_3_10SetpointWeekdaysNights_pushButton.clicked.connect(self.show_password_window)
-        self.manager_night_4_10SetpointWeekendsNights_pushButton.clicked.connect(self.show_password_window)
+        self.manager_night_1_1_10WeekdayNightHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekdayNightHour', 0, 23))
+        self.manager_night_1_2_10WeekdayNightMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekdayNightMinutes', 0, 59))
+        self.manager_night_2_1_10WeekendNightHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekendNightHour', 0, 23))
+        self.manager_night_2_2_10WeekendNightMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekendNightMinutes', 0, 59))
+        self.manager_night_3_10SetpointWeekdaysNights_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10SetpointWeekdaysNights', 0.00, 99.99))
+        self.manager_night_4_10SetpointWeekendsNights_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10SetpointWeekendsNights', 0.00, 99.99))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Настройки панели
@@ -485,163 +623,18 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
-#блок кода контроля и отслеживания СТРАНИЦ ДЛЯ НАСТРОЙКИ И КОНТРОЛЯ ОБОРУДОВАНИЯ, отвечает за визуальное подтверждения действий путем изменения svg иконок кнопок, лейблов и т.д. исходя из нажатой кнопки навигации по приложению, включая будущие навигации по графикам и в лейблах отображения json значений
+#Методы работы с json записью значений
 
-###################################################################################################################################################################################################################################################################################################################################################
-        #Подключение изменения иконок кнопок страниц работы с оборудованием через кнопки в страницах кнопки(сделаны подключения здесь, так как они относится к изменению иконок в странице оборудования, хоть подключения идут из кнопок, находящихся в страницах кнопок)
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_settings_tracking_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-
-        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
-        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-
-        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
-        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_online_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-        self.go_to_tracking_trends_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'указатель верх.svg', 1))
-
-###################################################################################################################################################################################################################################################################################################################################################
-        #Подключение кнопок в странице трендов
-        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_1_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_3_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_30_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_1_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_3_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_online_set_10_minutes_icon_label, 'empty.svg', 1))
-
-###################################################################################################################################################################################################################################################################################################################################################
-        #Подключение кнопок в странице онлайн трендов, находящейся в странице трендов(формально, по структуре доступ выглядит именно так)
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_1_hour_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_3_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_6_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_12_hours_icon_label, 'указатель верх.svg', 1))
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_10_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_30_minutes_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_1_hour_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_3_hours_icon_label, 'empty.svg', 1))
-        self.tracking_trends_history_set_12_hours_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.tracking_trends_history_set_6_hours_icon_label, 'empty.svg', 1))
-
-###################################################################################################################################################################################################################################################################################################################################################
-        #Подключение кнопок в вложенной странице истории журнала, находящейся в странице журнала(формально, по структуре доступ выглядит именно так)
-        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
-        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.go_to_journal_history_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
-        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_all_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
-        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_emergencies_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
-        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_warnings_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
-        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_messages_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_user_events_60NumberDisplayAlarm_icon_label, 'указатель верх.svg', 1))
-        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_all_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_emergencies_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_warnings_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-        self.journal_history_set_user_events_60NumberDisplayAlarm_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.journal_history_set_messages_60NumberDisplayAlarm_icon_label, 'empty.svg', 1))
-
-
-
-
-
-
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-#ключевые атрибуты взаимодействия с приложением, включая как интерфейс, так и логику
-
-        self.is_password = 1
-
-    
-        self.current_button = None
-        self.text_to_change = ""
-
-        self.user_level = 0
-        self.current_page = 0
-        self.test_json = 'test.json'
-
-        #атрибуты для работы с видом
-        self.icons_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ICONS")
-        self.svg_icons_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "SVGICONS")
-        self.current_theme = 'black'
-
-
-
-
-
+    def SettingsManagerPageInstantlyUpdateJson(self, requiered_level, json_key):
+        if self.current_level < requiered_level:
+            self.show_password_window()
+        else:
+            json_value = self.readJson(self.test_json, json_key)
+            if json_value == 0 or json_value == 1:
+                self.updateJson(self.test_json, json_key, json_value + 1)
+            else:
+                self.updateJson(self.test_json, json_key, 0)
+            self.updateCurrentJsonStatistics()
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -965,10 +958,10 @@ class System_Station_Main_window_settings:
 
 
     def SettingsManagerPageUpdateSvgIcon(self, widget):
-        if self.user_level > 0:
-            self.changeCurrentPageWidgetIcon(widget, 'shield.svg', 1)
-        else:
+        if self.current_level > 0:
             self.changeCurrentPageWidgetIcon(widget, 'empty.svg', 1)
+        else:
+            self.changeCurrentPageWidgetIcon(widget, 'shield.svg', 1)
 
 
     def SettingsManagerPageUpdateStyles(self, widget, json_value):
@@ -1326,18 +1319,6 @@ class System_Station_Main_window_settings:
         pass
 
 
-        #self.setSvgIcon(widget, json_value, json_value_name)
-
-
-
-
-
-    # def setupSystemStationMainWindowIcons(self):
-    #     if self.current_theme == 'white':
-    #         pass
-    #     else:
-    #         pass
-
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1345,26 +1326,12 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-#Данный setup svg иконок будет не актуален после реализации чтения значений с json файла и включение функции изменения svg иконок для текущей страницы, исходя из переданного json значения(то есть проверки на соответствие из списка возможных значений конкретного json значения, для определения нужной для отображения svg иконки).
-
+    #инициализация постоянных svg иконок для всего приложения
     def setupSystemStationMainWindowSvgIcons(self):
         if self.current_theme == 'white':
             pass
         else:
             pass
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
         #подключение иконок для страниц кнопок навигации по приложению
         self.changeCurrentPageWidgetIcon(self.go_to_main_graphic_page_pushButton, 'go_to_main_graphic_page_pushButton_white.svg', 1)#
@@ -1427,40 +1394,41 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
-        
+        #подключение иконок для страниц оборудования
+
 #DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
         #временные подключения для того, чтобы увидеть как будут размещены иконки
-        # self.changeCurrentPageWidgetIcon(self.main_exit_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_enter_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pipe_up_icon_60UpperPipeline_label, 'main_pipe_up_icon_label_2_4.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pipe_down_icon_60LowerPipeline_label, 'main_pipe_down_icon_label_2_4.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump1_label_1, 'main_pump_icon_label_blue_1.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump2_label_2, 'main_pump_icon_label_blue_2.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump3_label_3, 'main_pump_icon_label_blue_3.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump4_label_4, 'main_pump_icon_label_blue_4.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump5_label_5, 'main_pump_icon_label_grey.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump6_label_6, 'main_pump_icon_label_grey.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection1_label_1_1, 'empty.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection2_label_2_1, 'main_pump_up_icon_label_1.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection3_label_3_1, 'empty.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection4_label_4_1, 'main_pump_up_icon_label_4.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection5_label_5_1, 'empty.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection6_label_6_1, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_exit_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_enter_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pipe_up_icon_60UpperPipeline_label, 'main_pipe_up_icon_label_2_4.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pipe_down_icon_60LowerPipeline_label, 'main_pipe_down_icon_label_2_4.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump1_label_1, 'main_pump_icon_label_blue_1.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump2_label_2, 'main_pump_icon_label_blue_2.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump3_label_3, 'main_pump_icon_label_blue_3.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump4_label_4, 'main_pump_icon_label_blue_4.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump5_label_5, 'main_pump_icon_label_grey.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump6_label_6, 'main_pump_icon_label_grey.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection1_label_1_1, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection2_label_2_1, 'main_pump_up_icon_label_1.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection3_label_3_1, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection4_label_4_1, 'main_pump_up_icon_label_4.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection5_label_5_1, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection6_label_6_1, 'empty.svg', 0)
 
 
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon1_label_1_2, 'main_pump_down_icon_label_line.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon2_label_2_2, 'main_pump_down_icon_label_off.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon3_label_3_2, 'main_pump_down_icon_label_line.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon4_label_4_2, 'main_pump_down_icon_label_on.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon5_label_5_2, 'empty.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon6_label_6_2, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon1_label_1_2, 'main_pump_down_icon_label_line.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon2_label_2_2, 'main_pump_down_icon_label_off.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon3_label_3_2, 'main_pump_down_icon_label_line.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon4_label_4_2, 'main_pump_down_icon_label_on.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon5_label_5_2, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon6_label_6_2, 'empty.svg', 0)
     
 
-        # self.changeCurrentPageWidgetIcon(self.main_graphic_70ScaleNumber_pushButton, 'main_graphic_70ScaleNumber_pushButton_red.svg', 1)
+        self.changeCurrentPageWidgetIcon(self.main_graphic_70ScaleNumber_pushButton, 'main_graphic_70ScaleNumber_pushButton_red.svg', 1)
 #DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
 
 ###################################################################################################################################################################################################################################################################################################################################################
-        #подключение иконок для страниц оборудования
+
         self.changeCurrentPageWidgetIcon(self.manager_icon_label_1, 'Источник.svg', 1)
         self.changeCurrentPageWidgetIcon(self.manager_icon_label_2, 'Пользователь.svg', 1)
         self.changeCurrentPageWidgetIcon(self.manager_icon_label_3, 'календарь.svg', 1)
@@ -1664,117 +1632,152 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
+#
 
-class Password_window_settings:
-    def setupPasswordWindowSettings(self, parent, requiered_level, min, max):
-        self.number_0_pushButton.clicked.connect(lambda: self.append_text(0))
-        self.number_1_pushButton.clicked.connect(lambda: self.append_text(1))
-        self.number_2_pushButton.clicked.connect(lambda: self.append_text(2))
-        self.number_3_pushButton.clicked.connect(lambda: self.append_text(3))
-        self.number_4_pushButton.clicked.connect(lambda: self.append_text(4))
-        self.number_5_pushButton.clicked.connect(lambda: self.append_text(5))
-        self.number_6_pushButton.clicked.connect(lambda: self.append_text(6))
-        self.number_7_pushButton.clicked.connect(lambda: self.append_text(7))
-        self.number_8_pushButton.clicked.connect(lambda: self.append_text(8))
-        self.number_9_pushButton.clicked.connect(lambda: self.append_text(9))
-        self.set_comma_pushButton.clicked.connect(lambda: self.append_text('.'))
-        self.clear_all_pushButton.clicked.connect(lambda: self.text_to_aply_label.setText(''))
+class Global_Keypad_settings:
+    def delete_text(self):
+        self.text_to_aply_label.setText(self.text_to_aply_label.text()[:-1])
+
+    def setupGlobalKeypadSettings(self):
+        self.number_0_pushButton.clicked.connect(lambda: self.append_text('0'))
+        self.number_1_pushButton.clicked.connect(lambda: self.append_text('1'))
+        self.number_2_pushButton.clicked.connect(lambda: self.append_text('2'))
+        self.number_3_pushButton.clicked.connect(lambda: self.append_text('3'))
+        self.number_4_pushButton.clicked.connect(lambda: self.append_text('4'))
+        self.number_5_pushButton.clicked.connect(lambda: self.append_text('5'))
+        self.number_6_pushButton.clicked.connect(lambda: self.append_text('6'))
+        self.number_7_pushButton.clicked.connect(lambda: self.append_text('7'))
+        self.number_8_pushButton.clicked.connect(lambda: self.append_text('8'))
+        self.number_9_pushButton.clicked.connect(lambda: self.append_text('9'))
         self.delete_previous_pushButton.clicked.connect(lambda: self.delete_text())
-        self.accept_password_window_pushButton.clicked.connect(lambda: self.set_changes())
+        self.clear_all_pushButton.clicked.connect(lambda: self.text_to_aply_label.setText(''))
+        self.accept_pushButton.clicked.connect(lambda: self.set_changes())
+
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+#
+
+class Password_Window_settings(Global_Keypad_settings):
+    def setupPasswordWindowSettings(self, parent):
+        self.setupGlobalKeypadSettings()
+
         self.parent = parent
-        self.requiered_level = requiered_level
-        self.min = min
-        self.max = max
-        
-        self.give_them_text()
-        print(self.parent.user_level, self.requiered_level)
-
-
-    def change_button_text(self):
-        self.parent.is_password = 0
-        current_text = str(self.text_to_aply_label.text())
-        if float(current_text) >= float(self.min) and float(current_text) <= float(self.max):
-            self.parent.current_button.setText(f"{self.parent.text_to_change}{current_text}")
-            self.close()
-
-
-
-    def give_them_text(self):
-        if not self.parent.is_password and self.parent.user_level >= self.requiered_level:
-            self.text_to_aply_label.setText('')
-            self.password_text_label.setText(f"min: {self.min}   max: {self.max}")
-        else:
-            self.password_text_label.setText("Введите пароль")
 
     def set_changes(self):
-        current_text = str(self.text_to_aply_label.text())
-        if self.parent.is_password:
-            with open('users.json', 'r') as f:
-                passwords = json.load(f)
-                
-            for user, details in passwords.items():
-                if details["password"] == current_text:
-                    role = details["role"]
-                    level = int(details["level"])
-                    print(f"Role for password '{current_text}' found: {role}, {level}")
-                    if int(level) >= self.requiered_level:
-                        self.parent.is_password = 0
-                        self.parent.user_level = level
-                    print(self.parent.user_level, self.requiered_level)
-            self.give_them_text()
+        current_text = self.text_to_aply_label.text()
 
-        else:
-            self.parent.is_password = 1
-            self.change_button_text()
+        with open('users.json', 'r') as f:
+            users = json.load(f)
+
+        for user, details in users.items():
+            if details["password"] == current_text:
+                self.parent.current_level = int(details["level"])
+                print(self.parent.current_level)
+                self.close()
+        self.close()
             
 
+    def append_text(self, text):
+        current_text = self.text_to_aply_label.text()
 
+        if len(current_text) == 6:
+            return
+
+        self.text_to_aply_label.setText(current_text + text)
+
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+###################################################################################################################################################################################################################################################################################################################################################
+#
+
+class Update_Attribute_Window_settings(Global_Keypad_settings):
+    def setupUpdateAttributeWindowSettings(self, parent, json_key, min_value, max_value):
+        self.setupGlobalKeypadSettings()
+
+        if isinstance(min_value, float) and isinstance(max_value, float):
+            self.is_float = 1
+            self.set_comma_pushButton.clicked.connect(lambda: self.append_text('.'))
+        else:
+            self.is_float = 0
+            self.set_comma_pushButton.setEnabled(False)
+
+        self.parent = parent
+        self.json_key = json_key
+        self.min_value = min_value
+        self.max_value = max_value
+
+        self.title_text_label.setText(f"min: {self.min_value}   max: {self.max_value}")
+
+    def set_changes(self):
+        if self.text_to_aply_label.text() == '':
+            self.text_to_aply_label.setText('0')
+        if self.is_float:
+            current_text = float(self.text_to_aply_label.text())
+        else:
+            current_text = int(self.text_to_aply_label.text())
+
+        self.close()
+        self.parent.updateJson(self.parent.test_json, self.json_key, current_text)
+        self.parent.updateCurrentJsonStatistics()
 
     def append_text(self, text):
-        current_text = str(self.text_to_aply_label.text())
-        if text == '.':
-            if current_text == '' or "." in current_text:
-                text = ''
-
-        new_text = str(current_text + str(text))
-        if self.parent.is_password == 0:
-            if float(new_text) >= self.min and float(new_text) <= self.max:
-                self.text_to_aply_label.setText(new_text)
-            else: 
-                new_text[:-1]
+        current_text = self.text_to_aply_label.text()
+        
+        # ограничения на количество цифр до и после запятой
+        max_value_str = str(self.max_value)
+        if '.' in max_value_str:
+            max_digits_before_decimal, max_digits_after_decimal = map(len, max_value_str.split('.'))
         else:
-            self.text_to_aply_label.setText(new_text)
-    
-    
-    def delete_text(self):
-        current_text = str(self.text_to_aply_label.text())
-        new_text = str(current_text[:-1])
+            max_digits_before_decimal = len(max_value_str)
+            max_digits_after_decimal = 0
+
+        # если текст - десятичная точка
+        if text == '.' and ('.' in current_text or current_text == ''):
+            return
+        
+        new_text = current_text + text
+
+        # проверка количества цифр до и после запятой
+        if '.' in new_text:
+            before_decimal, after_decimal = new_text.split('.')
+            if len(before_decimal) > max_digits_before_decimal or len(after_decimal) > max_digits_after_decimal:
+                return
+        else:
+            if len(new_text) > max_digits_before_decimal:
+                return
+
+        # проверка, что новое значение - допустимое число
+        try:
+            new_value = float(new_text)
+        except ValueError:
+            return
+
+        # проверка, что новое значение в диапазоне
+        if new_value < self.min_value or new_value > self.max_value:
+            return
+
+        # обновляем текст, если все проверки пройдены
         self.text_to_aply_label.setText(new_text)
