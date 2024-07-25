@@ -5,7 +5,7 @@ from UI.Ui_System_Station_Main_window import Ui_System_Station_Main_window
 from MODULES.Settings import System_Station_Main_window_settings
 from MODULES.JsonParser import Json_parser
 from MAIN.PasswordWindow import Password_window
-
+from MAIN.UpdateAttributeWindow import Update_Attribute_window
 import sys
 
 class System_Station_Main_window(QWidget, Ui_System_Station_Main_window, System_Station_Main_window_settings, Json_parser):
@@ -13,16 +13,22 @@ class System_Station_Main_window(QWidget, Ui_System_Station_Main_window, System_
         super().__init__()
         self.setupUi(self)
         self.setupSystemStationMainSettings()
-        # self.setupSystemStationMainWindowIcons()
         self.setupSystemStationMainWindowSvgIcons()
-
         self.giveTimer()
         self.timeChanger()
 
-    def show_password_window(self, requiered_level, current_button, min, max, text_to_change=""):
-        self.current_button = current_button
-        self.text_to_change = text_to_change
-        self.password_window = Password_window(self, requiered_level, min, max)
+    def choose_attribute_or_password_window(self, requiered_level, json_key, min_value, max_value):
+        if self.current_level >= requiered_level:
+            self.update_attribute_window = Update_Attribute_window(self, json_key, min_value, max_value)
+            self.update_attribute_window.setWindowModality(Qt.ApplicationModal)
+            self.update_attribute_window.show()
+        else:
+            self.password_window = Password_window(self)
+            self.password_window.setWindowModality(Qt.ApplicationModal)
+            self.password_window.show()
+
+    def show_password_window(self):
+        self.password_window = Password_window(self)
         self.password_window.setWindowModality(Qt.ApplicationModal)
         self.password_window.show()
 
