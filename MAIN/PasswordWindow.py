@@ -1,10 +1,10 @@
 from PySide6.QtWidgets import QWidget
 
-from UI.Ui_Password_window import Ui_Password_window
-from MODULES.Settings import Password_window_settings
+from UI.Ui_Keypad_window import Ui_Keypad_window
+from MODULES.Settings import Password_Window_settings
 
-class Password_window(QWidget, Ui_Password_window, Password_window_settings):
-    def __init__(self, parent, requiered_level, min, max):
+class Password_window(QWidget, Ui_Keypad_window, Password_Window_settings):
+    def __init__(self, parent):
         super().__init__()
         self.setupUi(self)
-        self.setupPasswordWindowSettings(parent, requiered_level, min, max)
+        self.setupPasswordWindowSettings(parent)
