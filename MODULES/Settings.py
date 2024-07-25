@@ -1388,43 +1388,37 @@ class System_Station_Main_window_settings:
         self.changeCurrentPageWidgetIcon(self.go_to_engineering_pid_registration_settings_page_icon_label_1, 'settings.svg', 1)
 
 ###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
-###################################################################################################################################################################################################################################################################################################################################################
         #подключение иконок для страниц оборудования
 
 #DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
         #временные подключения для того, чтобы увидеть как будут размещены иконки
-        self.changeCurrentPageWidgetIcon(self.main_exit_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_enter_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pipe_up_icon_60UpperPipeline_label, 'main_pipe_up_icon_label_2_4.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pipe_down_icon_60LowerPipeline_label, 'main_pipe_down_icon_label_2_4.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump1_label_1, 'main_pump_icon_label_blue_1.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump2_label_2, 'main_pump_icon_label_blue_2.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump3_label_3, 'main_pump_icon_label_blue_3.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump4_label_4, 'main_pump_icon_label_blue_4.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump5_label_5, 'main_pump_icon_label_grey.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump6_label_6, 'main_pump_icon_label_grey.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection1_label_1_1, 'empty.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection2_label_2_1, 'main_pump_up_icon_label_1.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection3_label_3_1, 'empty.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection4_label_4_1, 'main_pump_up_icon_label_4.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection5_label_5_1, 'empty.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection6_label_6_1, 'empty.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_exit_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_enter_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pipe_up_icon_60UpperPipeline_label, 'main_pipe_up_icon_label_2_4.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pipe_down_icon_60LowerPipeline_label, 'main_pipe_down_icon_label_2_4.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump1_label_1, 'main_pump_icon_label_blue_1.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump2_label_2, 'main_pump_icon_label_blue_2.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump3_label_3, 'main_pump_icon_label_blue_3.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump4_label_4, 'main_pump_icon_label_blue_4.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump5_label_5, 'main_pump_icon_label_grey.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump6_label_6, 'main_pump_icon_label_grey.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection1_label_1_1, 'empty.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection2_label_2_1, 'main_pump_up_icon_label_1.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection3_label_3_1, 'empty.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection4_label_4_1, 'main_pump_up_icon_label_4.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection5_label_5_1, 'empty.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection6_label_6_1, 'empty.svg', 0)
 
 
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon1_label_1_2, 'main_pump_down_icon_label_line.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon2_label_2_2, 'main_pump_down_icon_label_off.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon3_label_3_2, 'main_pump_down_icon_label_line.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon4_label_4_2, 'main_pump_down_icon_label_on.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon5_label_5_2, 'empty.svg', 0)
-        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon6_label_6_2, 'empty.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon1_label_1_2, 'main_pump_down_icon_label_line.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon2_label_2_2, 'main_pump_down_icon_label_off.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon3_label_3_2, 'main_pump_down_icon_label_line.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon4_label_4_2, 'main_pump_down_icon_label_on.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon5_label_5_2, 'empty.svg', 0)
+        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon6_label_6_2, 'empty.svg', 0)
     
 
-        self.changeCurrentPageWidgetIcon(self.main_graphic_70ScaleNumber_pushButton, 'main_graphic_70ScaleNumber_pushButton_red.svg', 1)
+        # self.changeCurrentPageWidgetIcon(self.main_graphic_70ScaleNumber_pushButton, 'main_graphic_70ScaleNumber_pushButton_red.svg', 1)
 #DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
 
 ###################################################################################################################################################################################################################################################################################################################################################
