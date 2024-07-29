@@ -84,9 +84,9 @@ class System_Station_Main_window_settings:
 
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
         self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
-        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
-        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
-        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageButtonIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
+        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
+        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
+        self.return_to_settings_main_buttons_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.go_to_settings_contacts_page_icon_label_2, 'empty.svg', 1))
         
         self.return_to_settings_tracking_buttons_pushButton.clicked.connect(lambda: self.settings_time_label.setVisible(True))
 
@@ -491,129 +491,129 @@ class System_Station_Main_window_settings:
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Контакты
-        self.contacts_number_of_pumps_19QuantityPump_pushButton.clicked.connect(lambda: self.show_password_window(0, self.contacts_number_of_pumps_19QuantityPump_pushButton, 0, 6, "Колличество насосов:            "))
-        self.contacts_current_workings_number_of_pumps_19WorkingQuantityPump_pushButton.clicked.connect(self.show_password_window)
+        self.contacts_number_of_pumps_19QuantityPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[0], '19QuantityPump', 100000, 10000000))
+        self.contacts_current_workings_number_of_pumps_19WorkingQuantityPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[0], '19WorkingQuantityPump', 100000, 10000000))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Параметры двигателей                  (внутри настроек станции)
-        self.station_settings_engine_parameters_voltage_18MotorVoltage_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_amperage_18MotorCurrent_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_frequency_18MotorFrequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_speed_18MotorSpeed_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_power_18MotorPower_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_acceleration_time_18AccelerationTime_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_engine_parameters_slow_down_time_18DecelerationTime_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_engine_parameters_voltage_18MotorVoltage_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_engine_parameters_amperage_18MotorCurrent_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_engine_parameters_frequency_18MotorFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_engine_parameters_speed_18MotorSpeed_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_engine_parameters_power_18MotorPower_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_engine_parameters_acceleration_time_18AccelerationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_engine_parameters_slow_down_time_18DecelerationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
 
         self.station_settings_engine_parameters_read_settings_pushButton.clicked.connect(self.show_password_window)                        #переименовать атрибут
         self.station_settings_engine_parameters_write_settings_pushButton.clicked.connect(self.show_password_window)                       #переименовать атрибут
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Настройки датчиков                    (внутри настроек станции)
-        self.station_settings_sensors_settings_milliamps_at_suction_16RangeSuctionSensor_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_sensors_settings_milliamps_at_discharge_16RangeDischargeSensor_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_sensors_settings_milliamps_at_suction_16RangeSuctionSensor_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_sensors_settings_milliamps_at_discharge_16RangeDischargeSensor_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Общие параметры насосов               (внутри настроек станции)
-        self.station_settings_general_pumps_parameters_minimal_operating_frequency_11MinimumFrequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_general_pumps_parameters_maximal_operating_frequency_11MaximumFrequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_general_pumps_parameters_start_using_master_from_0_Hz_11ZeroStartMaster_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_general_pumps_parameters_use_pump_rotation_11ChangeEnable_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_general_pumps_parameters_pump_rotation_interval_11WizardChangeInterval_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_general_pumps_parameters_pump_rotation_time_of_day_11ChangeHour_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_general_pumps_parameters_minimal_operating_frequency_11MinimumFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_general_pumps_parameters_maximal_operating_frequency_11MaximumFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.station_settings_general_pumps_parameters_start_using_master_from_0_Hz_11ZeroStartMaster_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000)) бит проблема
+        # self.station_settings_general_pumps_parameters_use_pump_rotation_11ChangeEnable_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000)) бит проблема
+        self.station_settings_general_pumps_parameters_pump_rotation_interval_11WizardChangeInterval_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_general_pumps_parameters_pump_rotation_time_of_day_11ChangeHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Включение дополнительных насосов      (внутри настроек станции)
-        self.station_settings_turn_on_extra_pumps_master_frequency_on_extra_pump_start_12FrequencyToTurnOnTheAuxiliaryPump_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_acceptable_drawdown_12PermissiblePressureDrop_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_delay_for_critical_drawdown_12DelayWithAllowablePressureDrop_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_critical_drawdown_12CriticalPressureDrop_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_delay_for_acceptable_drawdown_12DelayCriticalPressureDrop_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_delay_for_leaving_to_fixed_frequency_12DelayFixedFrequencyStartPump_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_fixed_frequency_12FixedFrequencyStartingPump_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_on_extra_pumps_operating_time_at_fixed_frequency_12FixedFrequencyTimeStartPump_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_on_extra_pumps_master_frequency_on_extra_pump_start_12FrequencyToTurnOnTheAuxiliaryPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_on_extra_pumps_acceptable_drawdown_12PermissiblePressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_on_extra_pumps_delay_for_critical_drawdown_12DelayWithAllowablePressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_on_extra_pumps_critical_drawdown_12CriticalPressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_on_extra_pumps_delay_for_acceptable_drawdown_12DelayCriticalPressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_on_extra_pumps_delay_for_leaving_to_fixed_frequency_12DelayFixedFrequencyStartPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_on_extra_pumps_fixed_frequency_12FixedFrequencyStartingPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_on_extra_pumps_operating_time_at_fixed_frequency_12FixedFrequencyTimeStartPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Выключение дополнительных насосов     (внутри настроек станции)
-        self.station_settings_turn_off_extra_pumps_master_frequency_on_extra_pump_shutdown_13FrequencyToTurnOffTheAuxiliaryPump_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_acceptable_jump_13PermissibleOverpressure_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_delay_for_critical_jump_13DelayPermissibleOverpressure_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_critical_jump_13CriticalOverpressure_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_delay_for_acceptable_jump_13DelayCriticalOverpressure_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_delay_for_leaving_to_fixed_frequency_13DelayFixedFrequencyStopPump_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_fixed_frequency_13FixedFrequencyPumpStop_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_turn_off_extra_pumps_operating_time_at_fixed_frequency_13FixedFrequencyTimeStopPump_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_turn_off_extra_pumps_master_frequency_on_extra_pump_shutdown_13FrequencyToTurnOffTheAuxiliaryPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_off_extra_pumps_acceptable_jump_13PermissibleOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_off_extra_pumps_delay_for_critical_jump_13DelayPermissibleOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_off_extra_pumps_critical_jump_13CriticalOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_off_extra_pumps_delay_for_acceptable_jump_13DelayCriticalOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_off_extra_pumps_delay_for_leaving_to_fixed_frequency_13DelayFixedFrequencyStopPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_off_extra_pumps_fixed_frequency_13FixedFrequencyPumpStop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_off_extra_pumps_operating_time_at_fixed_frequency_13FixedFrequencyTimeStopPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Опции                                 (внутри настроек станции)
-        self.station_settings_options_energy_saving_mode_15PowerSavingModeOn_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_start_energy_saving_mode_once_every_15PowerSavingModeTime_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_presure_drawdown_to_turn_off_energy_saving_mode_15PowerSavingModeExitPresure_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_increase_pressure_by_15PowerSavingModePressureIncrease_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_swing_integration_time_15PowerSavingModeIntegrationTime_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_acceptable_pressure_swing_15PowerSavingAllowablePressureSwing_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_options_acceptable_frequency_swing_15PowerSavingPermissibleFrequencySpan_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_options_energy_saving_mode_15PowerSavingModeOn_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_options_start_energy_saving_mode_once_every_15PowerSavingModeTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_options_presure_drawdown_to_turn_off_energy_saving_mode_15PowerSavingModeExitPresure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_options_increase_pressure_by_15PowerSavingModePressureIncrease_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_options_swing_integration_time_15PowerSavingModeIntegrationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_options_acceptable_pressure_swing_15PowerSavingAllowablePressureSwing_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_options_acceptable_frequency_swing_15PowerSavingPermissibleFrequencySpan_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Аварийные режимы                      (внутри настроек станции)
-        self.station_settings_emergency_modes_differential_operating_frequency_14PumpStartConfirmationFrequency_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_emergency_modes_differential_failure_delay_14PumpStartConfirmationAlarmDelay_pushButton.clicked.connect(self.show_password_window)
-        self.station_settings_emergency_modes_differential_maximum_number_of_failures_14MaxAlarmConfirmationStartPump_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_emergency_modes_differential_operating_frequency_14PumpStartConfirmationFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_emergency_modes_differential_failure_delay_14PumpStartConfirmationAlarmDelay_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_emergency_modes_differential_maximum_number_of_failures_14MaxAlarmConfirmationStartPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
         self.station_settings_emergency_modes_dry_warnings_pushButton.clicked.connect(self.show_password_window)                                                            #переименовать атрибут
         self.station_settings_emergency_modes_dry_failure_pushButton.clicked.connect(self.show_password_window)                                                             #переименовать атрибут
         self.station_settings_emergency_modes_dry_failure_delay_pushButton.clicked.connect(self.show_password_window)                                                       #переименовать атрибут
         self.station_settings_emergency_modes_shutdown_delay_pushButton.clicked.connect(self.show_password_window)                                                          #переименовать атрибут
-        self.station_settings_emergency_modes_critical_pressure_to_shutdown_14CriticalPressureAlarmThreshold_pushButton.clicked.connect(self.show_password_window)
+        self.station_settings_emergency_modes_critical_pressure_to_shutdown_14CriticalPressureAlarmThreshold_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
         self.station_settings_emergency_modes_control_pipeline_rupture_pushButton.clicked.connect(self.show_password_window)                                                #переименовать атрибут
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Настройки пид-регистрации                             (внутри инженерного меню)
-        self.engineering_menu_pid_registration_settings_proportional_coefficient_17ProportionalCoefficient_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_pid_registration_settings_integral_coefficient_17IntegralCoefficient_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_pid_registration_settings_differential_coefficient_17DifferentialCoefficient_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_pid_registration_settings_constant_of_integration_17IntegrationTime_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_pid_registration_settings_ustavka_change_10SetpointModePid_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_pid_registration_settings_ustavka_for_change_17SetpointPID_pushButton.clicked.connect(self.show_password_window)
+        self.engineering_menu_pid_registration_settings_proportional_coefficient_17ProportionalCoefficient_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.engineering_menu_pid_registration_settings_integral_coefficient_17IntegralCoefficient_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.engineering_menu_pid_registration_settings_differential_coefficient_17DifferentialCoefficient_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.engineering_menu_pid_registration_settings_constant_of_integration_17IntegrationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_pid_registration_settings_ustavka_change_10SetpointModePid_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000)) бит проблема
+        self.engineering_menu_pid_registration_settings_ustavka_for_change_17SetpointPID_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #PLC                                                   (внутри инженерного меню)
-        self.engineering_menu_plc_02DigitalInput16Bit0_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalInput16Bit1_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalInput16Bit2_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalInput16Bit3_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalInput16Bit4_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalInput16Bit5_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalInput16Bit6_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalInput16Bit7_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalInput16Bit8_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalInput16Bit9_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalInput16Bit10_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalInput16Bit11_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_09AlarmModbusPLC_pushButton.clicked.connect(self.show_password_window)
+        # self.engineering_menu_plc_02DigitalInput16Bit0_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalInput16Bit1_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalInput16Bit2_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalInput16Bit3_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalInput16Bit4_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalInput16Bit5_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalInput16Bit6_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalInput16Bit7_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalInput16Bit8_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalInput16Bit9_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalInput16Bit10_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalInput16Bit11_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_09AlarmModbusPLC_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
 
-        self.engineering_menu_plc_02DigitalOutput16Bit0_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalOutput16Bit1_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalOutput16Bit2_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalOutput16Bit3_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalOutput16Bit4_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalOutput16Bit5_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalOutput16Bit6_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalOutput16Bit7_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalOutput16Bit8_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalOutput16Bit9_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalOutput16Bit10_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_plc_02DigitalOutput16Bit11_pushButton.clicked.connect(self.show_password_window)
+        # self.engineering_menu_plc_02DigitalOutput16Bit0_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalOutput16Bit1_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalOutput16Bit2_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalOutput16Bit3_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalOutput16Bit4_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalOutput16Bit5_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalOutput16Bit6_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalOutput16Bit7_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalOutput16Bit8_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalOutput16Bit9_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalOutput16Bit10_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.engineering_menu_plc_02DigitalOutput16Bit11_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
 
-        self.engineering_menu_plc_pushButton_26.clicked.connect(self.show_password_window)                     #переименовать атрибут
-        self.engineering_menu_plc_pushButton_27.clicked.connect(self.show_password_window)                     #переименовать атрибут
-        self.engineering_menu_plc_pushButton_28.clicked.connect(self.show_password_window)                     #переименовать атрибут
-        self.engineering_menu_plc_pushButton_29.clicked.connect(self.show_password_window)                     #переименовать атрибут
-        self.engineering_menu_plc_pushButton_30.clicked.connect(self.show_password_window)                     #переименовать атрибут
+        # self.engineering_menu_plc_pushButton_26.clicked.connect(self.show_password_window)                     #переименовать атрибут
+        # self.engineering_menu_plc_pushButton_27.clicked.connect(self.show_password_window)                     #переименовать атрибут
+        # self.engineering_menu_plc_pushButton_28.clicked.connect(self.show_password_window)                     #переименовать атрибут
+        # self.engineering_menu_plc_pushButton_29.clicked.connect(self.show_password_window)                     #переименовать атрибут
+        # self.engineering_menu_plc_pushButton_30.clicked.connect(self.show_password_window)                     #переименовать атрибут
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Бекап                                                 (внутри инженерного меню)
-        self.engineering_menu_backup_save_90_days_of_journal_80LogBackup_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_backup_save_energy_independent_memory_80RWBackup_pushButton.clicked.connect(self.show_password_window)
-        self.engineering_menu_backup_save_trends_80TrendsBackup_pushButton.clicked.connect(self.show_password_window)
+        # self.engineering_menu_backup_save_90_days_of_journal_80LogBackup_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000)) бит проблема
+        # self.engineering_menu_backup_save_energy_independent_memory_80RWBackup_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000)) бит проблема
+        # self.engineering_menu_backup_save_trends_80TrendsBackup_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000)) бит проблема
 
         self.engineering_menu_backup_factory_all_settings_pushButton.clicked.connect(self.show_password_window) #переименовать атрибут
 
@@ -673,20 +673,20 @@ class System_Station_Main_window_settings:
 
             if main_main_pages_stackedWidget_currentIndex == 0: self.MainGraficPageLoadJson()
             elif main_main_pages_stackedWidget_currentIndex == 1: self.MainStatisticsPageLoadJson()
-            elif main_main_pages_stackedWidget_currentIndex == 2: self.MainSwitchPageLoadJson()
+            elif main_main_pages_stackedWidget_currentIndex == 2: pass#self.MainSwitchPageLoadJson()
 
         elif main_stackedWidget == 1:
             settings_pages_stackedWidget_currentIndex = self.settings_pages_stackedWidget.currentIndex()
 
             if settings_pages_stackedWidget_currentIndex == 0:         self.SettingsManagerPageLoadJson()
-            elif settings_pages_stackedWidget_currentIndex == 1:       self.SettingsPanelSettingsPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 1:       pass#self.SettingsPanelSettingsPageLoadJson()
             elif settings_pages_stackedWidget_currentIndex == 2:       self.SettingsContactsPageLoadJson()
             elif settings_pages_stackedWidget_currentIndex == 3:       self.SettingsTrackingTrendsOnlinePageLoadJson()
             elif settings_pages_stackedWidget_currentIndex == 4:       self.SettingsTrackingPumpsDevelopmentsPageLoadJson()
             elif settings_pages_stackedWidget_currentIndex == 5:       self.SettingsTrackingTrendsHistoryPageLoadJson()
-            elif settings_pages_stackedWidget_currentIndex == 6:       self.SettingsJournalCurrentEventsPageLoadJson()
-            elif settings_pages_stackedWidget_currentIndex == 7:       self.SettingsJournalChangesPageLoadJson()
-            elif settings_pages_stackedWidget_currentIndex == 8:       self.SettingsJournalHistoryPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 6:       pass#self.SettingsJournalCurrentEventsPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 7:       pass#self.SettingsJournalChangesPageLoadJson()
+            elif settings_pages_stackedWidget_currentIndex == 8:       pass#self.SettingsJournalHistoryPageLoadJson()
             elif settings_pages_stackedWidget_currentIndex == 9:       self.SettingsStationSettingsEngineParametersPageLoadJson()
             elif settings_pages_stackedWidget_currentIndex == 10:      self.SettingsStationSettingsSensorsSettingsPageLoadJson()
             elif settings_pages_stackedWidget_currentIndex == 11:      self.SettingsStationSettingsGeneralPumpsParametersPageLoadJson()
@@ -872,8 +872,8 @@ class System_Station_Main_window_settings:
         self.main_statistics_03ElectricEnergyMeter_label_5.setText(                 f"{self.readJson(self.test_json, '03ElectricEnergyMeter')}")
         self.main_statistics_03ElectricEnergyMeter_label_6.setText(                 f"{self.readJson(self.test_json, '03ElectricEnergyMeter')}")
 
-    def MainStatisticsPageUpdateSvgIcon(self, widget, json_value, json_value_name): 
-        pass
+    # def MainStatisticsPageUpdateSvgIcon(self, widget, json_value, json_value_name): 
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -883,10 +883,10 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
     #третья страница stackedWidget-а основного окна
-    def MainSwitchPageLoadJson(self):
-        pass
-    def MainSwitchPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+    # def MainSwitchPageLoadJson(self):
+    #     pass
+    # def MainSwitchPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -902,7 +902,7 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
-#Второй блок кода для страницы настроек всего приложения. Включает в себя двадцать методов для загрузки json значений в 20 страниц главого приложения
+#Второй блок кода для страницы настроек всего приложения. Включает в себя двадцать методов для загрузки json значений в 20 страниц главного приложения
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -914,10 +914,10 @@ class System_Station_Main_window_settings:
     #1 страница настроек
     def SettingsManagerPageLoadJson(self):
 
-        self.SettingsManagerPageUpdateSvgIcon(self.shield_1_label)
+        self.SettingsManagerPageUpdateShieldSvgIcon(self.shield_1_label)
         self.manager_user_setpoint_10SetpointUser_pushButton.setText(               f"{self.readJson(self.test_json, '10SetpointUser')}")
 
-        self.SettingsManagerPageUpdateSvgIcon(self.shield_2_label)
+        self.SettingsManagerPageUpdateShieldSvgIcon(self.shield_2_label)
         self.SettingsManagerPageUpdateStyles(self.manager_monday_10TypeOfDayMonday_pushButton,       self.readJson(self.test_json, '10TypeOfDayMonday'))
         self.SettingsManagerPageUpdateStyles(self.manager_tuesday_10TypeOfDayTuesday_pushButton,     self.readJson(self.test_json, '10TypeOfDayTuesday'))
         self.SettingsManagerPageUpdateStyles(self.manager_wednesday_10TypeOfDayWednesday_pushButton, self.readJson(self.test_json, '10TypeOfDayWednesday'))
@@ -926,7 +926,7 @@ class System_Station_Main_window_settings:
         self.SettingsManagerPageUpdateStyles(self.manager_saturday_10TypeOfDaySaturday_pushButton,   self.readJson(self.test_json, '10TypeOfDaySaturday'))
         self.SettingsManagerPageUpdateStyles(self.manager_sunday_10TypeOfDaySunday_pushButton,       self.readJson(self.test_json, '10TypeOfDaySunday'))
 
-        self.SettingsManagerPageUpdateSvgIcon(self.shield_3_label)
+        self.SettingsManagerPageUpdateShieldSvgIcon(self.shield_3_label)
         self.manager_morning_1_1_10WeekdayMorningHour_pushButton.setText(           f"{self.readJson(self.test_json, '10WeekdayMorningHour')}")
         self.manager_morning_1_2_10WeekdayMorningMinutes_pushButton.setText(        f"{self.readJson(self.test_json, '10WeekdayMorningMinutes')}")
         self.manager_morning_2_1_10WeekendMorningHour_pushButton.setText(           f"{self.readJson(self.test_json, '10WeekendMorningHour')}")
@@ -934,7 +934,7 @@ class System_Station_Main_window_settings:
         self.manager_morning_3_10SetpointWeekdaysMorning_pushButton.setText(        f"{self.readJson(self.test_json, '10SetpointWeekdaysMorning')}")
         self.manager_morning_4_10SetpointWeekendsMorning_pushButton.setText(        f"{self.readJson(self.test_json, '10SetpointWeekendsMorning')}")
 
-        self.SettingsManagerPageUpdateSvgIcon(self.shield_4_label)
+        self.SettingsManagerPageUpdateShieldSvgIcon(self.shield_4_label)
         self.manager_day_1_1_10WeekdayDayHour_pushButton.setText(                   f"{self.readJson(self.test_json, '10WeekdayDayHour')}")
         self.manager_day_1_2_10WeekdayDayMinutes_pushButton.setText(                f"{self.readJson(self.test_json, '10WeekdayDayMinutes')}")
         self.manager_day_2_1_10DayOffMinutes_pushButton.setText(                    f"{self.readJson(self.test_json, '10DayOffMinutes')}")
@@ -942,7 +942,7 @@ class System_Station_Main_window_settings:
         self.manager_day_3_10SetpointWeekdaysDay_pushButton.setText(                f"{self.readJson(self.test_json, '10SetpointWeekdaysDay')}")
         self.manager_day_4_10SetpointWeekendsDay_pushButton.setText(                f"{self.readJson(self.test_json, '10SetpointWeekendsDay')}")
 
-        self.SettingsManagerPageUpdateSvgIcon(self.shield_5_label)
+        self.SettingsManagerPageUpdateShieldSvgIcon(self.shield_5_label)
         self.manager_evening_1_1_10WeekdayEveningHour_pushButton.setText(           f"{self.readJson(self.test_json, '10WeekdayEveningHour')}")
         self.manager_evening_1_2_10WeekdayEveningMinutes_pushButton.setText(        f"{self.readJson(self.test_json, '10WeekdayEveningMinutes')}")
         self.manager_evening_2_1_10WeekendEveningHour_pushButton.setText(           f"{self.readJson(self.test_json, '10WeekendEveningHour')}")
@@ -950,7 +950,7 @@ class System_Station_Main_window_settings:
         self.manager_evening_3_10SetpointWeekdaysEvening_pushButton.setText(        f"{self.readJson(self.test_json, '10SetpointWeekdaysEvening')}")
         self.manager_evening_4_10SetpointWeekendsEvening_pushButton.setText(        f"{self.readJson(self.test_json, '10SetpointWeekendsEvening')}")
 
-        self.SettingsManagerPageUpdateSvgIcon(self.shield_6_label)
+        self.SettingsManagerPageUpdateShieldSvgIcon(self.shield_6_label)
         self.manager_night_1_1_10WeekdayNightHour_pushButton.setText(               f"{self.readJson(self.test_json, '10WeekdayNightHour')}")
         self.manager_night_1_2_10WeekdayNightMinutes_pushButton.setText(            f"{self.readJson(self.test_json, '10WeekdayNightMinutes')}")
         self.manager_night_2_1_10WeekendNightHour_pushButton.setText(               f"{self.readJson(self.test_json, '10WeekendNightHour')}")
@@ -965,7 +965,7 @@ class System_Station_Main_window_settings:
         self.manager_01Setpoint_label.setText(                                      f"{self.readJson(self.test_json, '01Setpoint')}")
 
 
-    def SettingsManagerPageUpdateSvgIcon(self, widget):
+    def SettingsManagerPageUpdateShieldSvgIcon(self, widget):
         if self.current_level > 0:
             self.changeCurrentPageWidgetIcon(widget, 'empty.svg', 1)
         else:
@@ -988,10 +988,10 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
     #2 страница настроек
-    def SettingsPanelSettingsPageLoadJson(self):
-        pass
-    def SettingsPanelSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+    # def SettingsPanelSettingsPageLoadJson(self):
+    #     pass
+    # def SettingsPanelSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1002,15 +1002,11 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #3 страница настроек
     def SettingsContactsPageLoadJson(self):
-        ################################################################################################################################################################################################################################
-        #self.contacts_number_of_pumps_19QuantityPump_pushButton.clicked.connect(lambda: self.show_password_window)
-        #self.contacts_current_workings_number_of_pumps_19WorkingQuantityPump_pushButton.clicked.connect(lambda: self.show_password_window)
-        ################################################################################################################################################################################################################################
         self.contacts_number_of_pumps_19QuantityPump_pushButton.setText(                                   f"{self.readJson(self.test_json, '19QuantityPump')}")
         self.contacts_current_workings_number_of_pumps_19WorkingQuantityPump_pushButton.setText(           f"{self.readJson(self.test_json, '19WorkingQuantityPump')}")
 
-    def SettingsContactsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+    # def SettingsContactsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1027,13 +1023,18 @@ class System_Station_Main_window_settings:
         # self.tracking_trends_online_set_10_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70OnlineTrendsDynamicRangeTime', 600))           перенести в 
         # self.tracking_trends_online_set_30_minutes_70OnlineTrendsDynamicRangeTime_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70OnlineTrendsDynamicRangeTime', 1800))          setup, как
         #                                                                                                                                                                                                               инициализацию 
-        # self.tracking_trends_online_70OnlineTrendsChannelVisibility4_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70OnlineTrendsChannelVisibility4', 1))                      подключений
-        # self.tracking_trends_online_70OnlineTrendsChannelVisibility1_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70OnlineTrendsChannelVisibility1', 1))
-        # self.tracking_trends_online_70OnlineTrendsChannelVisibility2_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70OnlineTrendsChannelVisibility2', 1))
-        # self.tracking_trends_online_70OnlineTrendsChannelVisibility3_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70OnlineTrendsChannelVisibility3', 1))
-        # self.tracking_trends_online_70OnlineTrendsChannelVisibility5_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70OnlineTrendsChannelVisibility5', 1))
-        # self.tracking_trends_online_70OnlineTrendsChannelVisibility6_pushButton.clicked.connect(lambda: self.updateJson(self.test_json, '70OnlineTrendsChannelVisibility6', 1))
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility4_pushButton.clicked.connect(lambda: SettingsTrackingTrendsOnlinePageToogleJsonValue(self.readJson(self.test_json, '70OnlineTrendsObservationLine4'), '70OnlineTrendsObservationLine4'))                      подключений
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility1_pushButton.clicked.connect(lambda: SettingsTrackingTrendsOnlinePageToogleJsonValue(self.readJson(self.test_json, '70OnlineTrendsObservationLine1'), '70OnlineTrendsObservationLine1'))
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility2_pushButton.clicked.connect(lambda: SettingsTrackingTrendsOnlinePageToogleJsonValue(self.readJson(self.test_json, '70OnlineTrendsObservationLine2'), '70OnlineTrendsObservationLine2'))
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility3_pushButton.clicked.connect(lambda: SettingsTrackingTrendsOnlinePageToogleJsonValue(self.readJson(self.test_json, '70OnlineTrendsObservationLine3'), '70OnlineTrendsObservationLine3'))
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility5_pushButton.clicked.connect(lambda: SettingsTrackingTrendsOnlinePageToogleJsonValue(self.readJson(self.test_json, '70OnlineTrendsObservationLine5'), '70OnlineTrendsObservationLine5'))
+        # self.tracking_trends_online_70OnlineTrendsChannelVisibility6_pushButton.clicked.connect(lambda: SettingsTrackingTrendsOnlinePageToogleJsonValue(self.readJson(self.test_json, '70OnlineTrendsObservationLine6'), '70OnlineTrendsObservationLine6'))
         ################################################################################################################################################################################################################################
+    # def SettingsTrackingTrendsOnlinePageToogleJsonValue(self, json_value, json_key):
+    #     if json_value == 0:
+    #         self.updateJson(self.test_json, json_key, 1)
+    #     else:
+    #         self.updateJson(self.test_json, json_key, 0)
         self.tracking_trends_online_70Scale6_label.setText(                                   f"{self.readJson(self.test_json, '70Scale6')}")
         self.tracking_trends_online_70Scale5_label.setText(                                   f"{self.readJson(self.test_json, '70Scale5')}")
         self.tracking_trends_online_70Scale4_label.setText(                                   f"{self.readJson(self.test_json, '70Scale4')}")
@@ -1048,8 +1049,8 @@ class System_Station_Main_window_settings:
         self.tracking_trends_online_70OnlineTrendsObservationLine5_label.setText(             f"{self.readJson(self.test_json, '70OnlineTrendsObservationLine5')}")
         self.tracking_trends_online_70OnlineTrendsObservationLine6_label.setText(             f"{self.readJson(self.test_json, '70OnlineTrendsObservationLine6')}")
 
-    def SettingsTrackingTrendsOnlinePageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+    # def SettingsTrackingTrendsOnlinePageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1120,12 +1121,8 @@ class System_Station_Main_window_settings:
         self.tracking_pumps_development_150HoursSinceLastStopPump5_pushButton.setText(   f"{self.readJson(self.test_json, '150HoursSinceLastStopPump5')}")
         self.tracking_pumps_development_150HoursSinceLastStopPump6_pushButton.setText(   f"{self.readJson(self.test_json, '150HoursSinceLastStopPump6')}")
 
-    def SettingsTrackingPumpsDevelopmentsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
-
-
-
-
+    # def SettingsTrackingPumpsDevelopmentsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1136,26 +1133,20 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #6 страница настроек
     def SettingsTrackingTrendsHistoryPageLoadJson(self):
-        self.tracking_trends_history_70OnlineTrendsObservationLine4_label.setText(             f"{self.readJson(self.test_json, '70OnlineTrendsObservationLine4')}")
-        self.tracking_trends_history_70OnlineTrendsObservationLine1_label.setText(             f"{self.readJson(self.test_json, '70OnlineTrendsObservationLine1')}")
-        self.tracking_trends_history_70OnlineTrendsObservationLine2_label.setText(             f"{self.readJson(self.test_json, '70OnlineTrendsObservationLine2')}")
-        self.tracking_trends_history_70OnlineTrendsObservationLine3_label.setText(             f"{self.readJson(self.test_json, '70OnlineTrendsObservationLine3')}")
+        self.tracking_trends_history_70OnlineTrendsObservationLine4_label.setText( f"{self.readJson(self.test_json, '70OnlineTrendsObservationLine4')}")
+        self.tracking_trends_history_70OnlineTrendsObservationLine1_label.setText( f"{self.readJson(self.test_json, '70OnlineTrendsObservationLine1')}")
+        self.tracking_trends_history_70OnlineTrendsObservationLine2_label.setText( f"{self.readJson(self.test_json, '70OnlineTrendsObservationLine2')}")
+        self.tracking_trends_history_70OnlineTrendsObservationLine3_label.setText( f"{self.readJson(self.test_json, '70OnlineTrendsObservationLine3')}")
 
-        self.tracking_trends_history_70Scale6_label.setText(             f"{self.readJson(self.test_json, '70Scale6')}")
-        self.tracking_trends_history_70Scale5_label.setText(             f"{self.readJson(self.test_json, '70Scale5')}")
-        self.tracking_trends_history_70Scale4_label.setText(             f"{self.readJson(self.test_json, '70Scale4')}")
-        self.tracking_trends_history_70Scale3_label.setText(             f"{self.readJson(self.test_json, '70Scale3')}")
-        self.tracking_trends_history_70Scale2_label.setText(             f"{self.readJson(self.test_json, '70Scale2')}")
-        self.tracking_trends_history_70Scale1_label.setText(             f"{self.readJson(self.test_json, '70Scale1')}")
+        self.tracking_trends_history_70Scale6_label.setText(                       f"{self.readJson(self.test_json, '70Scale6')}")
+        self.tracking_trends_history_70Scale5_label.setText(                       f"{self.readJson(self.test_json, '70Scale5')}")
+        self.tracking_trends_history_70Scale4_label.setText(                       f"{self.readJson(self.test_json, '70Scale4')}")
+        self.tracking_trends_history_70Scale3_label.setText(                       f"{self.readJson(self.test_json, '70Scale3')}")
+        self.tracking_trends_history_70Scale2_label.setText(                       f"{self.readJson(self.test_json, '70Scale2')}")
+        self.tracking_trends_history_70Scale1_label.setText(                       f"{self.readJson(self.test_json, '70Scale1')}")
 
-
-
-
-
-
-
-    def SettingsTrackingTrendsHistoryPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+    # def SettingsTrackingTrendsHistoryPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1165,10 +1156,10 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
     #7 страница настроек
-    def SettingsJournalCurrentEventsPageLoadJson(self):
-        pass
-    def SettingsJournalCurrentEventsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+    # def SettingsJournalCurrentEventsPageLoadJson(self):
+    #     pass
+    # def SettingsJournalCurrentEventsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1178,10 +1169,10 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
     #8 страница настроек
-    def SettingsJournalChangesPageLoadJson(self):
-        pass
-    def SettingsJournalChangesPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+    # def SettingsJournalChangesPageLoadJson(self):
+    #     pass
+    # def SettingsJournalChangesPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1191,10 +1182,10 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
     #9 страница настроек
-    def SettingsJournalHistoryPageLoadJson(self):
-        pass
-    def SettingsJournalHistoryPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+    # def SettingsJournalHistoryPageLoadJson(self):
+    #     pass
+    # def SettingsJournalHistoryPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1205,9 +1196,40 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #10 страница настроек
     def SettingsStationSettingsEngineParametersPageLoadJson(self):
-        pass
-    def SettingsStationSettingsEngineParametersPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+
+        self.SettingsStationSettingsEngineParametersPageUpdateShieldSvgIcon(self.shield_15_label)
+        self.station_settings_engine_parameters_voltage_18MotorVoltage_pushButton.setText(                f"{self.readJson(self.test_json, '18MotorVoltage')}")
+
+        self.SettingsStationSettingsEngineParametersPageUpdateShieldSvgIcon(self.shield_16_label)
+        self.station_settings_engine_parameters_amperage_18MotorCurrent_pushButton.setText(               f"{self.readJson(self.test_json, '18MotorCurrent')}")
+
+        self.SettingsStationSettingsEngineParametersPageUpdateShieldSvgIcon(self.shield_17_label)
+        self.station_settings_engine_parameters_frequency_18MotorFrequency_pushButton.setText(            f"{self.readJson(self.test_json, '18MotorFrequency')}")
+
+        self.SettingsStationSettingsEngineParametersPageUpdateShieldSvgIcon(self.shield_18_label)
+        self.station_settings_engine_parameters_speed_18MotorSpeed_pushButton.setText(                    f"{self.readJson(self.test_json, '18MotorSpeed')}")
+
+        self.SettingsStationSettingsEngineParametersPageUpdateShieldSvgIcon(self.shield_19_label)
+        self.station_settings_engine_parameters_power_18MotorPower_pushButton.setText(                    f"{self.readJson(self.test_json, '18MotorPower')}")
+
+        self.SettingsStationSettingsEngineParametersPageUpdateShieldSvgIcon(self.shield_20_label)
+        self.station_settings_engine_parameters_acceleration_time_18AccelerationTime_pushButton.setText(  f"{self.readJson(self.test_json, '18AccelerationTime')}")
+
+        self.SettingsStationSettingsEngineParametersPageUpdateShieldSvgIcon(self.shield_21_label)
+        self.station_settings_engine_parameters_slow_down_time_18DecelerationTime_pushButton.setText(     f"{self.readJson(self.test_json, '18DecelerationTime')}")
+
+        self.SettingsStationSettingsEngineParametersPageUpdateShieldSvgIcon(self.shield_22_label)
+        self.SettingsStationSettingsEngineParametersPageUpdateShieldSvgIcon(self.shield_23_label)
+
+
+    def SettingsStationSettingsEngineParametersPageUpdateShieldSvgIcon(self, widget):
+        if self.current_level > 0:
+            self.changeCurrentPageWidgetIcon(widget, 'empty.svg', 1)
+        else:
+            self.changeCurrentPageWidgetIcon(widget, 'shield.svg', 1)
+
+    # def SettingsStationSettingsEngineParametersPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1218,9 +1240,26 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #11 страница настроек
     def SettingsStationSettingsSensorsSettingsPageLoadJson(self):
-        pass
-    def SettingsStationSettingsSensorsSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+
+        self.SettingsStationSettingsSensorsSettingsPageUpdateShieldSvgIcon(self.shield_24_label)
+        self.station_settings_sensors_settings_milliamps_at_suction_16RangeSuctionSensor_pushButton.setText(      f"{self.readJson(self.test_json, '16RangeSuctionSensor')}")
+
+        self.SettingsStationSettingsSensorsSettingsPageUpdateShieldSvgIcon(self.shield_25_label)
+        self.station_settings_sensors_settings_milliamps_at_discharge_16RangeDischargeSensor_pushButton.setText(  f"{self.readJson(self.test_json, '16RangeDischargeSensor')}")
+
+        self.station_settings_sensors_settings_suction_sensor_rating_01SuctionPressure_label.setText(             f"{self.readJson(self.test_json, '01SuctionPressure')}")
+        self.station_settings_sensors_settings_discharge_sensor_rating_01DischargePressure_label.setText(         f"{self.readJson(self.test_json, '01DischargePressure')}")
+        self.station_settings_sensors_settings_milliamps_at_suction_01SuctionSensorMaValue_label.setText(         f"{self.readJson(self.test_json, '01SuctionSensorMaValue')}")
+        self.station_settings_sensors_settings_milliamps_at_discharge_01DischargeSensorMaValue_label.setText(     f"{self.readJson(self.test_json, '01DischargeSensorMaValue')}")
+
+    def SettingsStationSettingsSensorsSettingsPageUpdateShieldSvgIcon(self, widget):
+        if self.current_level > 0:
+            self.changeCurrentPageWidgetIcon(widget, 'empty.svg', 1)
+        else:
+            self.changeCurrentPageWidgetIcon(widget, 'shield.svg', 1)
+
+    # def SettingsStationSettingsSensorsSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1231,9 +1270,32 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #12 страница настроек
     def SettingsStationSettingsGeneralPumpsParametersPageLoadJson(self):
-        pass
-    def SettingsStationSettingsGeneralPumpsParametersPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+        self.SettingsStationSettingsGeneralPumpsParametersPageUpdateShieldSvgIcon(self.shield_26_label)
+        self.station_settings_general_pumps_parameters_minimal_operating_frequency_11MinimumFrequency_pushButton.setText( f"{self.readJson(self.test_json, '11MinimumFrequency')}")
+
+        self.SettingsStationSettingsGeneralPumpsParametersPageUpdateShieldSvgIcon(self.shield_27_label)
+        self.station_settings_general_pumps_parameters_maximal_operating_frequency_11MaximumFrequency_pushButton.setText( f"{self.readJson(self.test_json, '11MaximumFrequency')}")
+
+        self.SettingsStationSettingsGeneralPumpsParametersPageUpdateShieldSvgIcon(self.shield_28_label)
+        self.station_settings_general_pumps_parameters_start_using_master_from_0_Hz_11ZeroStartMaster_pushButton.setText( f"{self.readJson(self.test_json, '11PumpOptions')}")  #бит 11ZeroStartMaster
+
+        self.SettingsStationSettingsGeneralPumpsParametersPageUpdateShieldSvgIcon(self.shield_29_label)
+        self.station_settings_general_pumps_parameters_use_pump_rotation_11ChangeEnable_pushButton.setText(               f"{self.readJson(self.test_json, '11PumpOptions')}") #бит 11ChangeEnable
+
+        self.SettingsStationSettingsGeneralPumpsParametersPageUpdateShieldSvgIcon(self.shield_30_label)
+        self.station_settings_general_pumps_parameters_pump_rotation_interval_11WizardChangeInterval_pushButton.setText(  f"{self.readJson(self.test_json, '11WizardChangeInterval')}")
+
+        self.SettingsStationSettingsGeneralPumpsParametersPageUpdateShieldSvgIcon(self.shield_31_label)
+        self.station_settings_general_pumps_parameters_pump_rotation_time_of_day_11ChangeHour_pushButton.setText(         f"{self.readJson(self.test_json, '11ChangeHour')}")
+
+    def SettingsStationSettingsGeneralPumpsParametersPageUpdateShieldSvgIcon(self, widget):
+        if self.current_level > 0:
+            self.changeCurrentPageWidgetIcon(widget, 'empty.svg', 1)
+        else:
+            self.changeCurrentPageWidgetIcon(widget, 'shield.svg', 1)
+
+    # def SettingsStationSettingsGeneralPumpsParametersPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1244,9 +1306,39 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #13 страница настроек
     def SettingsStationSettingsTurnOnExtraPumpsPageLoadJson(self):
-        pass
-    def SettingsStationSettingsTurnOnExtraPumpsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+
+        self.SettingsStationSettingsTurnOnExtraPumpsPageUpdateShieldSvgIcon(self.shield_32_label)
+        self.station_settings_turn_on_extra_pumps_master_frequency_on_extra_pump_start_12FrequencyToTurnOnTheAuxiliaryPump_pushButton.setText( f"{self.readJson(self.test_json, '12FrequencyToTurnOnTheAuxiliaryPump')}")
+
+        self.SettingsStationSettingsTurnOnExtraPumpsPageUpdateShieldSvgIcon(self.shield_33_label)
+        self.station_settings_turn_on_extra_pumps_acceptable_drawdown_12PermissiblePressureDrop_pushButton.setText(                            f"{self.readJson(self.test_json, '12PermissiblePressureDrop')}")
+
+        self.SettingsStationSettingsTurnOnExtraPumpsPageUpdateShieldSvgIcon(self.shield_34_label)                                                                                
+        self.station_settings_turn_on_extra_pumps_delay_for_critical_drawdown_12DelayWithAllowablePressureDrop_pushButton.setText(             f"{self.readJson(self.test_json, '12DelayWithAllowablePressureDrop')}")
+
+        self.SettingsStationSettingsTurnOnExtraPumpsPageUpdateShieldSvgIcon(self.shield_35_label)
+        self.station_settings_turn_on_extra_pumps_critical_drawdown_12CriticalPressureDrop_pushButton.setText(                                 f"{self.readJson(self.test_json, '12CriticalPressureDrop')}")
+
+        self.SettingsStationSettingsTurnOnExtraPumpsPageUpdateShieldSvgIcon(self.shield_36_label)
+        self.station_settings_turn_on_extra_pumps_delay_for_acceptable_drawdown_12DelayCriticalPressureDrop_pushButton.setText(                f"{self.readJson(self.test_json, '12DelayCriticalPressureDrop')}")
+
+        self.SettingsStationSettingsTurnOnExtraPumpsPageUpdateShieldSvgIcon(self.shield_37_label)
+        self.station_settings_turn_on_extra_pumps_delay_for_leaving_to_fixed_frequency_12DelayFixedFrequencyStartPump_pushButton.setText(      f"{self.readJson(self.test_json, '12DelayFixedFrequencyStartPump')}")
+
+        self.SettingsStationSettingsTurnOnExtraPumpsPageUpdateShieldSvgIcon(self.shield_38_label)
+        self.station_settings_turn_on_extra_pumps_fixed_frequency_12FixedFrequencyStartingPump_pushButton.setText(                             f"{self.readJson(self.test_json, '12FixedFrequencyStartingPump')}")
+
+        self.SettingsStationSettingsTurnOnExtraPumpsPageUpdateShieldSvgIcon(self.shield_39_label)
+        self.station_settings_turn_on_extra_pumps_operating_time_at_fixed_frequency_12FixedFrequencyTimeStartPump_pushButton.setText(          f"{self.readJson(self.test_json, '12FixedFrequencyTimeStartPump')}")
+
+    def SettingsStationSettingsTurnOnExtraPumpsPageUpdateShieldSvgIcon(self, widget):
+        if self.current_level > 0:
+            self.changeCurrentPageWidgetIcon(widget, 'empty.svg', 1)
+        else:
+            self.changeCurrentPageWidgetIcon(widget, 'shield.svg', 1)
+    
+    # def SettingsStationSettingsTurnOnExtraPumpsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1257,9 +1349,39 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #14 страница настроек
     def SettingsStationSettingsTurnOffExtraPumpsPageLoadJson(self):
-        pass
-    def SettingsStationSettingsTurnOffExtraPumpsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+
+        self.SettingsStationSettingsTurnOffExtraPumpsPageUpdateShieldSvgIcon(self.shield_40_label)
+        self.station_settings_turn_off_extra_pumps_master_frequency_on_extra_pump_shutdown_13FrequencyToTurnOffTheAuxiliaryPump_pushButton.setText( f"{self.readJson(self.test_json, '13FrequencyToTurnOffTheAuxiliaryPump')}")
+
+        self.SettingsStationSettingsTurnOffExtraPumpsPageUpdateShieldSvgIcon(self.shield_41_label)
+        self.station_settings_turn_off_extra_pumps_acceptable_jump_13PermissibleOverpressure_pushButton.setText(                                    f"{self.readJson(self.test_json, '13PermissibleOverpressure')}")
+
+        self.SettingsStationSettingsTurnOffExtraPumpsPageUpdateShieldSvgIcon(self.shield_42_label)
+        self.station_settings_turn_off_extra_pumps_delay_for_critical_jump_13DelayPermissibleOverpressure_pushButton.setText(                       f"{self.readJson(self.test_json, '13DelayPermissibleOverpressure')}")
+
+        self.SettingsStationSettingsTurnOffExtraPumpsPageUpdateShieldSvgIcon(self.shield_43_label)
+        self.station_settings_turn_off_extra_pumps_critical_jump_13CriticalOverpressure_pushButton.setText(                                         f"{self.readJson(self.test_json, '13CriticalOverpressure')}")
+
+        self.SettingsStationSettingsTurnOffExtraPumpsPageUpdateShieldSvgIcon(self.shield_44_label)
+        self.station_settings_turn_off_extra_pumps_delay_for_acceptable_jump_13DelayCriticalOverpressure_pushButton.setText(                        f"{self.readJson(self.test_json, '13DelayCriticalOverpressure')}")
+
+        self.SettingsStationSettingsTurnOffExtraPumpsPageUpdateShieldSvgIcon(self.shield_45_label)
+        self.station_settings_turn_off_extra_pumps_delay_for_leaving_to_fixed_frequency_13DelayFixedFrequencyStopPump_pushButton.setText(           f"{self.readJson(self.test_json, '13DelayFixedFrequencyStopPump')}")
+
+        self.SettingsStationSettingsTurnOffExtraPumpsPageUpdateShieldSvgIcon(self.shield_46_label)
+        self.station_settings_turn_off_extra_pumps_fixed_frequency_13FixedFrequencyPumpStop_pushButton.setText(                                     f"{self.readJson(self.test_json, '13FixedFrequencyPumpStop')}")
+
+        self.SettingsStationSettingsTurnOffExtraPumpsPageUpdateShieldSvgIcon(self.shield_47_label)
+        self.station_settings_turn_off_extra_pumps_operating_time_at_fixed_frequency_13FixedFrequencyTimeStopPump_pushButton.setText(               f"{self.readJson(self.test_json, '13FixedFrequencyTimeStopPump')}")
+
+    def SettingsStationSettingsTurnOffExtraPumpsPageUpdateShieldSvgIcon(self, widget):
+        if self.current_level > 0:
+            self.changeCurrentPageWidgetIcon(widget, 'empty.svg', 1)
+        else:
+            self.changeCurrentPageWidgetIcon(widget, 'shield.svg', 1)
+
+    # def SettingsStationSettingsTurnOffExtraPumpsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1270,9 +1392,39 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #15 страница настроек
     def SettingsStationSettingsOptionsPageLoadJson(self):
-        pass
-    def SettingsStationSettingsOptionsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+        self.SettingsStationSettingsOptionsPageUpdateShieldSvgIcon(self.shield_48_label)
+        self.station_settings_options_energy_saving_mode_15PowerSavingModeOn_pushButton.setText(                                       f"{self.readJson(self.test_json, '15PowerSavingModeOn')}")
+
+        self.SettingsStationSettingsOptionsPageUpdateShieldSvgIcon(self.shield_49_label)
+        self.station_settings_options_start_energy_saving_mode_once_every_15PowerSavingModeTime_pushButton.setText(                    f"{self.readJson(self.test_json, '15PowerSavingModeTime')}")
+
+        self.SettingsStationSettingsOptionsPageUpdateShieldSvgIcon(self.shield_50_label)
+        self.station_settings_options_presure_drawdown_to_turn_off_energy_saving_mode_15PowerSavingModeExitPresure_pushButton.setText( f"{self.readJson(self.test_json, '15PowerSavingModeExitPresure')}")
+
+        self.SettingsStationSettingsOptionsPageUpdateShieldSvgIcon(self.shield_51_label)
+        self.station_settings_options_increase_pressure_by_15PowerSavingModePressureIncrease_pushButton.setText(                       f"{self.readJson(self.test_json, '15PowerSavingModePressureIncrease')}")
+
+        self.SettingsStationSettingsOptionsPageUpdateShieldSvgIcon(self.shield_52_label)
+        self.station_settings_options_swing_integration_time_15PowerSavingModeIntegrationTime_pushButton.setText(                      f"{self.readJson(self.test_json, '15PowerSavingModeIntegrationTime')}")
+
+        self.SettingsStationSettingsOptionsPageUpdateShieldSvgIcon(self.shield_53_label)
+        self.station_settings_options_acceptable_pressure_swing_15PowerSavingAllowablePressureSwing_pushButton.setText(                f"{self.readJson(self.test_json, '15PowerSavingAllowablePressureSwing')}")
+
+        self.SettingsStationSettingsOptionsPageUpdateShieldSvgIcon(self.shield_54_label)
+        self.station_settings_options_acceptable_frequency_swing_15PowerSavingPermissibleFrequencySpan_pushButton.setText(             f"{self.readJson(self.test_json, '15PowerSavingPermissibleFrequencySpan')}")
+
+        self.station_settings_options_80PowerSavingPeakToPeakPressure_label.setText(                                                   f"{self.readJson(self.test_json, '80PowerSavingPeakToPeakPressure')}")
+        self.station_settings_options_80PowerSavingPeakToPeakFrequency_label.setText(                                                  f"{self.readJson(self.test_json, '80PowerSavingPeakToPeakFrequency')}")
+        self.station_settings_options_80PowerSavingModeOutput_label.setText(                                                           f"{self.readJson(self.test_json, '80PowerSavingModeOutput')}")
+
+    def SettingsStationSettingsOptionsPageUpdateShieldSvgIcon(self, widget):
+        if self.current_level > 0:
+            self.changeCurrentPageWidgetIcon(widget, 'empty.svg', 1)
+        else:
+            self.changeCurrentPageWidgetIcon(widget, 'shield.svg', 1)
+
+    # def SettingsStationSettingsOptionsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1283,9 +1435,40 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #16 страница настроек
     def SettingsStationSettingsEmergencyModesPageLoadJson(self):
-        pass
-    def SettingsStationSettingsEmergencyModesPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+        self.SettingsStationSettingsEmergencyModesPageUpdateShieldSvgIcon(self.shield_55_label)
+        self.station_settings_emergency_modes_differential_operating_frequency_14PumpStartConfirmationFrequency_pushButton.setText(       f"{self.readJson(self.test_json, '14PumpStartConfirmationFrequency')}")
+
+        self.SettingsStationSettingsEmergencyModesPageUpdateShieldSvgIcon(self.shield_56_label)
+        self.station_settings_emergency_modes_differential_failure_delay_14PumpStartConfirmationAlarmDelay_pushButton.setText(            f"{self.readJson(self.test_json, '14PumpStartConfirmationAlarmDelay')}")
+
+        self.SettingsStationSettingsEmergencyModesPageUpdateShieldSvgIcon(self.shield_57_label)
+        self.station_settings_emergency_modes_differential_maximum_number_of_failures_14MaxAlarmConfirmationStartPump_pushButton.setText( f"{self.readJson(self.test_json, '14MaxAlarmConfirmationStartPump')}")
+
+        self.SettingsStationSettingsEmergencyModesPageUpdateShieldSvgIcon(self.shield_58_label)
+        # self.station_settings_emergency_modes_dry_warnings_pushButton.setText(                                                            f"{self.readJson(self.test_json, '')}")
+
+        self.SettingsStationSettingsEmergencyModesPageUpdateShieldSvgIcon(self.shield_59_label)
+        # self.station_settings_emergency_modes_dry_failure_pushButton.setText(                                                             f"{self.readJson(self.test_json, '')}")
+
+        self.SettingsStationSettingsEmergencyModesPageUpdateShieldSvgIcon(self.shield_60_label)
+        # self.station_settings_emergency_modes_dry_failure_delay_pushButton.setText(                                                       f"{self.readJson(self.test_json, '')}")
+
+        self.SettingsStationSettingsEmergencyModesPageUpdateShieldSvgIcon(self.shield_61_label)
+        # self.station_settings_emergency_modes_shutdown_delay_pushButton.setText(                                                          f"{self.readJson(self.test_json, '')}")
+
+        self.SettingsStationSettingsEmergencyModesPageUpdateShieldSvgIcon(self.shield_62_label)
+        self.station_settings_emergency_modes_critical_pressure_to_shutdown_14CriticalPressureAlarmThreshold_pushButton.setText(          f"{self.readJson(self.test_json, '14CriticalPressureAlarmThreshold')}")
+
+        self.SettingsStationSettingsEmergencyModesPageUpdateShieldSvgIcon(self.shield_63_label)
+
+    def SettingsStationSettingsEmergencyModesPageUpdateShieldSvgIcon(self, widget):
+        if self.current_level > 0:
+            self.changeCurrentPageWidgetIcon(widget, 'empty.svg', 1)
+        else:
+            self.changeCurrentPageWidgetIcon(widget, 'shield.svg', 1)
+
+    # def SettingsStationSettingsEmergencyModesPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1296,9 +1479,41 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #17 страница настроек
     def SettingsEngineeringMenuPIDRegistrationSettingsPageLoadJson(self):
-        pass
-    def SettingsEngineeringMenuPIDRegistrationSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+        self.SettingsEngineeringMenuPIDRegistrationSettingsPageUpdateShieldSvgIcon(self.shield_64_label)
+        self.engineering_menu_pid_registration_settings_proportional_coefficient_17ProportionalCoefficient_pushButton.setText( f"{self.readJson(self.test_json, '17ProportionalCoefficient')}")
+
+        self.SettingsEngineeringMenuPIDRegistrationSettingsPageUpdateShieldSvgIcon(self.shield_65_label)
+        self.engineering_menu_pid_registration_settings_integral_coefficient_17IntegralCoefficient_pushButton.setText(         f"{self.readJson(self.test_json, '17IntegralCoefficient')}")
+
+        self.SettingsEngineeringMenuPIDRegistrationSettingsPageUpdateShieldSvgIcon(self.shield_66_label)
+        self.engineering_menu_pid_registration_settings_differential_coefficient_17DifferentialCoefficient_pushButton.setText( f"{self.readJson(self.test_json, '17DifferentialCoefficient')}")
+
+        self.SettingsEngineeringMenuPIDRegistrationSettingsPageUpdateShieldSvgIcon(self.shield_67_label)
+        self.engineering_menu_pid_registration_settings_constant_of_integration_17IntegrationTime_pushButton.setText(          f"{self.readJson(self.test_json, '17IntegrationTime')}")
+
+        self.SettingsEngineeringMenuPIDRegistrationSettingsPageUpdateShieldSvgIcon(self.shield_68_label)
+        self.engineering_menu_pid_registration_settings_ustavka_change_10SetpointModePid_pushButton.setText(                   f"{self.readJson(self.test_json, '10SetpointMode')}") #бит 10SetpointModePid
+
+        self.SettingsEngineeringMenuPIDRegistrationSettingsPageUpdateShieldSvgIcon(self.shield_69_label)
+        self.engineering_menu_pid_registration_settings_ustavka_for_change_17SetpointPID_pushButton.setText(                   f"{self.readJson(self.test_json, '17SetpointPID')}")
+
+        self.engineering_meny_pid_registration_settings_01DischargePressure_label.setText(                                     f"{self.readJson(self.test_json, '01DischargePressure')}")
+        self.engineering_meny_pid_registration_settings_01Setpoint_pushButton.setText(                                         f"{self.readJson(self.test_json, '01Setpoint')}")
+        self.engineering_meny_pid_registration_settings_01PIDError_label.setText(                                              f"{self.readJson(self.test_json, '01PIDError')}")
+        self.engineering_meny_pid_registration_settings_01PIDProportional_label.setText(                                       f"{self.readJson(self.test_json, '01PIDProportional')}")
+        self.engineering_meny_pid_registration_settings_01PIDIntegral_label.setText(                                           f"{self.readJson(self.test_json, '01PIDIntegral')}")
+        self.engineering_meny_pid_registration_settings_01PIDDerivative_pushButton.setText(                                    f"{self.readJson(self.test_json, '01PIDDerivative')}")
+        self.engineering_meny_pid_registration_settings_01PIDOutput_label.setText(                                             f"{self.readJson(self.test_json, '01PIDOutput')}")
+        self.engineering_meny_pid_registration_settings_01FrequencySetpoint_label.setText(                                     f"{self.readJson(self.test_json, '01FrequencySetpoint')}")
+
+    def SettingsEngineeringMenuPIDRegistrationSettingsPageUpdateShieldSvgIcon(self, widget):
+        if self.current_level > 0:
+            self.changeCurrentPageWidgetIcon(widget, 'empty.svg', 1)
+        else:
+            self.changeCurrentPageWidgetIcon(widget, 'shield.svg', 1)
+
+    # def SettingsEngineeringMenuPIDRegistrationSettingsPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1309,9 +1524,15 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #18 страница настроек
     def SettingsEngineeringMenuPLCPageLoadJson(self):
-        pass
-    def SettingsEngineeringMenuPLCPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+        self.engineering_menu_plc_02ADC1_label.setText(                                     f"{self.readJson(self.test_json, '02ADC1')}")
+        self.engineering_menu_plc_02ADC2_label.setText(                                     f"{self.readJson(self.test_json, '02ADC2')}")
+        self.engineering_menu_plc_02ADC3_label.setText(                                     f"{self.readJson(self.test_json, '02ADC3')}")
+        self.engineering_menu_plc_02ADC4_label.setText(                                     f"{self.readJson(self.test_json, '02ADC4')}")
+        self.engineering_menu_plc_02ADC5_label.setText(                                     f"{self.readJson(self.test_json, '02ADC5')}")
+        self.engineering_menu_plc_02DAC1_label.setText(                                     f"{self.readJson(self.test_json, '02DAC1')}")
+
+    # def SettingsEngineeringMenuPLCPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
@@ -1322,10 +1543,12 @@ class System_Station_Main_window_settings:
 ###################################################################################################################################################################################################################################################################################################################################################
     #19 страница настроек
     def SettingsEngineeringMenuBackupPageLoadJson(self):
-        pass
-    def SettingsEngineeringMenuBackupPageUpdateSvgIcon(self, widget, json_value, json_value_name):
-        pass
+        self.engineering_menu_backup_save_90_days_of_journal_80LogBackup_pushButton.setText(       f"{self.readJson(self.test_json, '80LogBackup')}")
+        self.engineering_menu_backup_save_energy_independent_memory_80RWBackup_pushButton.setText( f"{self.readJson(self.test_json, '80LogBackup')}") #бит 80RWBackup
+        self.engineering_menu_backup_save_trends_80TrendsBackup_pushButton.setText(                f"{self.readJson(self.test_json, '80LogBackup')}") #бит 80TrendsBackup
 
+    # def SettingsEngineeringMenuBackupPageUpdateSvgIcon(self, widget, json_value, json_value_name):
+    #     pass
 
 ###################################################################################################################################################################################################################################################################################################################################################
 ###################################################################################################################################################################################################################################################################################################################################################
