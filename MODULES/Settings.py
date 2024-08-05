@@ -6,6 +6,7 @@ import json
 import os
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+import random
 
 
 
@@ -1733,55 +1734,114 @@ class GraphsViewer:
         self.main_graphics_view = main_graphics_view
 
     def load_json_data(self, json_file):
-        with open(json_file, 'r') as file:
-            data = json.load(file)
-        return data
+        try:
+            with open(json_file, 'r') as file:
+                data = json.load(file)
+            print(f"Loaded data: {data}")
+            return data
+        except Exception as e:
+            print(f"Error loading JSON data: {e}")
+            return {}
 
     def update_graph(self, graphics_view, json_file):
-        data = self.load_json_data(json_file)
-        scene = graphics_view.scene()
-        scene.clear()
-        pen = QPen(Qt.blue)
-        if 'values' in data:
-            values = data['values']
-            for i in range(len(values) - 1):
-                line = QGraphicsLineItem(i * 100, values[i], (i + 1) * 100, values[i + 1])
-                line.setPen(pen)
-                scene.addItem(line)
+        try:
+            data = self.load_json_data(json_file)
+            if not data:
+                print("No data to update.")
+                return
             
-            # Обновление границ сцены для адаптивного отображения
-            scene.setSceneRect(0, min(values), len(values) * 100, max(values))
+            scene = graphics_view.scene()
+            scene.clear()
+            pen = QPen(Qt.blue)
+            if 'values' in data:
+                values = data['values']
+                print(f"Graph values: {values}")
+                for i in range(len(values) - 1):
+                    line = QGraphicsLineItem(i * 100, values[i], (i + 1) * 100, values[i + 1])
+                    line.setPen(pen)
+                    scene.addItem(line)
+                
+                min_y = min(values) if values else 0
+                max_y = max(values) if values else 0
+                scene.setSceneRect(0, min_y, len(values) * 100, max_y)
+                graphics_view.fitInView(scene.sceneRect(), Qt.KeepAspectRatio)
+            else:
+                print("No 'values' key in data.")
+        except Exception as e:
+            print(f"Error updating graph: {e}")
+
+    def update_json(self, json_file):
+        try:
+            print("Updating JSON...")
+            with open(json_file, 'r') as file:
+                data = json.load(file)
+
+            new_value = random.randint(1, 500)
+            values = data.get('values', [])
+            if len(values) >= 17:
+                values = values[1:] + [new_value]
+            else:
+                values.append(new_value)
+
+            data['values'] = values
+
+            with open(json_file, 'w') as file:
+                json.dump(data, file, indent=4)
+
+            print(f"Updated values: {values}")
+        except Exception as e:
+            print(f"Error updating JSON: {e}")
+
 
     def on_modified(self, event, graphics_view, json_file):
+        print(f"File modified: {event.src_path}")
         if event.src_path.endswith(json_file):
             self.update_graph(graphics_view, json_file)
 
+    
+
+    def update_json_and_graph(self):
+        try:
+            print("update_json_and_graph method called")
+            self.update_json('testing.json')
+            self.update_graph(self.main_graphics_view, 'testing.json')
+            print("update_json_and_graph method finished successfully")
+        except Exception as e:
+            print(f"Error occurred in update_json_and_graph: {e}")
+
     def main(self):
-        json_file = 'testing.json'
-        
-        graphics_view = self.main_graphics_view
-        graphics_view.setObjectName("main_graphicsView")
-        
-        scene = QGraphicsScene(graphics_view)
-        graphics_view.setScene(scene)
-        
-        self.update_graph(graphics_view, json_file)
-        
-        def handle_event(event):
-            self.on_modified(event, graphics_view, json_file)
-        
-        class Handler(FileSystemEventHandler):
-            def on_modified(self, event):
-                handle_event(event)
-        
-        observer = Observer()
-        event_handler = Handler()
-        observer.schedule(event_handler, path='.', recursive=False)
-        observer.start()
-        
-        timer = QTimer()
-        timer.timeout.connect(lambda: self.update_graph(graphics_view, json_file))
-        timer.start(1000)  # Обновление каждую секунду
+        try:
+            json_file = 'testing.json'
+            
+            graphics_view = self.main_graphics_view
+            graphics_view.setObjectName("main_graphicsView")
+            
+            scene = QGraphicsScene(graphics_view)
+            graphics_view.setScene(scene)
+            
+            self.update_graph(graphics_view, json_file)
+            
+            def handle_event(event):
+                try:
+                    self.on_modified(event, graphics_view, json_file)
+                except Exception as e:
+                    print(f"Error handling file modification event: {e}")
+            
+            class Handler(FileSystemEventHandler):
+                def on_modified(self, event):
+                    handle_event(event)
+            
+            observer = Observer()
+            event_handler = Handler()
+            observer.schedule(event_handler, path='.', recursive=False)
+            observer.start()
+            
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.update_json_and_graph)
+            self.timer.start(1000)  # Обновление каждые 5 секунд
+            print("Timer started")
+        except Exception as e:
+            print(f"Error in main method: {e}")
 
 
 #######################################################################################################################################################
