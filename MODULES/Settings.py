@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QPushButton, QLabel
+from PySide6.QtWidgets import QPushButton, QLabel, QWidget
 from PySide6.QtGui import QIcon, QPixmap, QPainter
 from PySide6.QtCore import Qt, QTimer, QTime, QDateTime
 from PySide6.QtSvg import QSvgRenderer
@@ -7,6 +7,146 @@ import os
 
 
 class System_Station_Main_window_settings:
+    def setupDefaultJsonSettings(self):
+###################################################################################################################################################################################################################################################################################################################################################
+#Инициализация планировщика
+        self.updateJson(self.test_json, '10SetpointMode', 1)
+        temp = 300
+        self.updateJson(self.test_json, '10SetpointUser', temp)
+        self.updateJson(self.test_json, '10SetpointWeekdaysMorning', temp)
+        self.updateJson(self.test_json, '10SetpointWeekdaysDay', temp)
+        self.updateJson(self.test_json, '10SetpointWeekdaysEvening', temp)
+        self.updateJson(self.test_json, '10SetpointWeekdaysNights', temp)
+        self.updateJson(self.test_json, '10SetpointWeekendsMorning', temp)
+        self.updateJson(self.test_json, '10SetpointWeekendsDay', temp)
+        self.updateJson(self.test_json, '10SetpointWeekendsEvening', temp)
+        self.updateJson(self.test_json, '10SetpointWeekendsNights', temp)
+        temp = 0
+        self.updateJson(self.test_json, '10WeekdayMorningMinutes', temp)
+        self.updateJson(self.test_json, '10WeekdayDayMinutes', temp)
+        self.updateJson(self.test_json, '10WeekdayEveningMinutes', temp)
+        self.updateJson(self.test_json, '10WeekdayNightMinutes', temp)
+        self.updateJson(self.test_json, '10WeekendMorningMinutes', temp)
+        self.updateJson(self.test_json, '10WeekendEveningMinutes', temp)
+        self.updateJson(self.test_json, '10WeekendNightMinutes', temp)
+        self.updateJson(self.test_json, '10DayOffMinutes', temp)
+
+        self.updateJson(self.test_json, '10WeekdayMorningHour', 5)
+        self.updateJson(self.test_json, '10WeekendMorningHour', 5)
+
+        self.updateJson(self.test_json, '10WeekdayDayHour', 10)
+        self.updateJson(self.test_json, '10WeekendDayHour', 10)
+
+        self.updateJson(self.test_json, '10WeekdayEveningHour', 17)
+        self.updateJson(self.test_json, '10WeekendEveningHour', 17)
+
+        self.updateJson(self.test_json, '10WeekdayNightHour', 22)
+        self.updateJson(self.test_json, '10WeekendNightHour', 22)
+        temp = 1
+        self.updateJson(self.test_json, '10TypeOfDayMonday', temp)
+        self.updateJson(self.test_json, '10TypeOfDayTuesday', temp)
+        self.updateJson(self.test_json, '10TypeOfDayWednesday', temp)
+        self.updateJson(self.test_json, '10TypeOfDayThursday', temp)
+        self.updateJson(self.test_json, '10TypeOfDayFriday', temp)
+
+        self.updateJson(self.test_json, '10TypeOfDaySaturday', 2)
+        self.updateJson(self.test_json, '10TypeOfDaySunday', 2)
+
+###################################################################################################################################################################################################################################################################################################################################################
+#Инициализация параметров мастер насоса (ведущего насоса)
+        self.updateJson(self.test_json, '11MinimumFrequency', 250)
+        self.updateJson(self.test_json, '11MaximumFrequency', 500)
+        self.updateJson(self.test_json, '11WizardChangeInterval', 2592000)
+        self.updateJson(self.test_json, '11ChangeHour', 23)
+        self.updateJson(self.test_json, '11PumpOptions', 0)
+
+###################################################################################################################################################################################################################################################################################################################################################
+#Инициализация параметров включения дополнительных насосов
+        self.updateJson(self.test_json, '12FrequencyToTurnOnTheAuxiliaryPump', 500)
+        self.updateJson(self.test_json, '12PermissiblePressureDrop', 20)
+        self.updateJson(self.test_json, '12DelayWithAllowablePressureDrop', 20)
+        self.updateJson(self.test_json, '12CriticalPressureDrop', 100)
+        self.updateJson(self.test_json, '12DelayCriticalPressureDrop', 10)
+        self.updateJson(self.test_json, '12FixedFrequencyStartingPump', 300)
+        self.updateJson(self.test_json, '12DelayFixedFrequencyStartPump', 5)
+        self.updateJson(self.test_json, '12FixedFrequencyTimeStartPump', 20)
+
+###################################################################################################################################################################################################################################################################################################################################################
+#Инициализация параметров выключения дополнительных насосов
+        self.updateJson(self.test_json, '13FrequencyToTurnOffTheAuxiliaryPump', 350)
+        self.updateJson(self.test_json, '13PermissibleOverpressure', 20)
+        self.updateJson(self.test_json, '13DelayPermissibleOverpressure', 20)
+        self.updateJson(self.test_json, '13CriticalOverpressure', 100)
+        self.updateJson(self.test_json, '13DelayCriticalOverpressure', 10)
+        self.updateJson(self.test_json, '13FixedFrequencyPumpStop', 480)
+        self.updateJson(self.test_json, '13DelayFixedFrequencyStopPump', 5)
+        self.updateJson(self.test_json, '13FixedFrequencyTimeStopPump', 20)
+
+###################################################################################################################################################################################################################################################################################################################################################
+#Инициализация параметров аварийных режимов
+        self.updateJson(self.test_json, '14DryPressureTracking', 0)
+        self.updateJson(self.test_json, '14DryRunningWarningPressure', 200)
+        self.updateJson(self.test_json, '14DryRunWarningAction', 0)
+        self.updateJson(self.test_json, '14WorkingPumpsDryRunningWarning', 0)
+        self.updateJson(self.test_json, '14DryRunningEmergencyPressure', 100)
+        self.updateJson(self.test_json, '14MaxNumberEmergencyDryRunning', 3)
+        self.updateJson(self.test_json, '14TrackPumpStartConfirmation', 1)
+        self.updateJson(self.test_json, '14PumpStartConfirmationFrequency', 40)
+        self.updateJson(self.test_json, '14PumpStartConfirmationAlarmDelay', 1000)
+        self.updateJson(self.test_json, '14MaxAlarmConfirmationStartPump', 3)
+        
+        temp = 0
+        self.updateJson(self.test_json, '14OperatingModeBreaksSensorOut', temp)
+        self.updateJson(self.test_json, '14NumberOfPumpsSensorBreaksDischarge', temp)
+        self.updateJson(self.test_json, '14FrequencyPumpSensorBreaksDischarge', temp)
+        self.updateJson(self.test_json, '14ModeOfCriticalPressure', temp)
+
+        self.updateJson(self.test_json, '14CriticalPressureAlarmThreshold', 1000)
+        self.updateJson(self.test_json, '14DelayCriticalPressureAlarm', 1000)
+        self.updateJson(self.test_json, '14MaxNumberOfAlarmCritPressure', 3)
+        self.updateJson(self.test_json, '14PipelineRuptureMonitoringMode', 3)
+        self.updateJson(self.test_json, '14DelayInPipelineRuptureAccident', 1000)
+
+###################################################################################################################################################################################################################################################################################################################################################
+#Инициализация параметров датчиков давления
+        self.updateJson(self.test_json, '16RangeSuctionSensor', 1000)
+        self.updateJson(self.test_json, '16RangeDischargeSensor', 1600)
+
+###################################################################################################################################################################################################################################################################################################################################################
+#Инициализация параметров ПИД регулятора
+        self.updateJson(self.test_json, '17IntegrationTime', 0.3)
+        self.updateJson(self.test_json, '17ProportionalCoefficient', 1)
+        self.updateJson(self.test_json, '17IntegralCoefficient', 2)
+        self.updateJson(self.test_json, '17DifferentialCoefficient', 0.2)
+        self.updateJson(self.test_json, '17SetpointPID', 300)
+
+###################################################################################################################################################################################################################################################################################################################################################
+#Инициализация параметров панели оператора
+        # self.updateJson(self.test_json, '', )
+        # self.updateJson(self.test_json, '', )
+        self.updateJson(self.test_json, 'IsItDefaultJsonSettings', 1)
+
+
+
+
+
+    def setTranslucentBackgroundForButtons(self, parent):
+        for child in parent.findChildren(QWidget):
+            if isinstance(child, QPushButton):
+                child.setStyleSheet("""
+                    QPushButton {
+                        background-color: rgba(0, 0, 0, 0);
+                        border: none;
+                        color: white;
+                        font-size: 16px;
+                    }
+                    QPushButton:hover {
+                        background-color: rgba(255, 255, 255, 50);
+                    }
+                """)
+                child.setAttribute(Qt.WA_TranslucentBackground, True)
+            self.setTranslucentBackgroundForButtons(child)
+
     def setupSystemStationMainSettings(self):
         #ключевые атрибуты взаимодействия с приложением, включая как интерфейс, так и логику
         self.current_level = 0
@@ -16,7 +156,6 @@ class System_Station_Main_window_settings:
         #атрибуты для работы с видом
         self.svg_icons_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "SVGICONS")
         self.current_theme = 'black'
-
 ###################################################################################################################################################################################################################################################################################################################################################
 #Блок кода, отвечающий за подключение всех возможных кнопок, связанных со страницами кнопок и страницами основной работы с оборудованием
         #переключение между основным окном(страницей) и основными настройками, дополнительно, переключение между страницами в основном окне
@@ -216,7 +355,7 @@ class System_Station_Main_window_settings:
         self.go_to_settings_engineering_menu_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.go_to_engineering_plc_page_icon_label_2, 'empty.svg', 1))
         self.go_to_settings_engineering_menu_page_pushButton.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.go_to_engineering_backup_page_icon_label_2, 'empty.svg', 1))
 
-        self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(1))
+        self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.settings_pages_stackedWidget.setCurrentIndex(0))
         self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.settings_buttons_stackedWidget.setCurrentIndex(0))
         self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.go_to_settings_manager_page_icon_label_2, 'указатель влево.svg', 1))
         self.return_to_settings_main_buttons_pushButton_4.clicked.connect(lambda: self.changeCurrentPageWidgetIcon(self.go_to_settings_panel_settings_page_icon_label_2, 'empty.svg', 1))
@@ -424,103 +563,103 @@ class System_Station_Main_window_settings:
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Настройки панели
-        self.panel_settings_display_disable_time_pushButton.clicked.connect(self.show_password_window)               #переименовать атрибут
-        self.panel_settings_screensaver_activation_time_pushButton.clicked.connect(self.show_password_window)        #переименовать атрибут
-        self.panel_settings_buzzer_pushButton.clicked.connect(self.show_password_window)                             #переименовать атрибут
-        self.panel_settings_date_day_pushButton.clicked.connect(self.show_password_window)                           #переименовать атрибут
-        self.panel_settings_date_month_pushButton.clicked.connect(self.show_password_window)                         #переименовать атрибут
-        self.panel_settings_date_year_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
-        self.panel_settings_time_hour_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
-        self.panel_settings_time_minutes_pushButton.clicked.connect(self.show_password_window)                       #переименовать атрибут
-        self.panel_settings_time_seconds_pushButton.clicked.connect(self.show_password_window)                       #переименовать атрибут
-        self.panel_settings_ip_1_pushButton.clicked.connect(self.show_password_window)                               #переименовать атрибут
-        self.panel_settings_ip_2_pushButton.clicked.connect(self.show_password_window)                               #переименовать атрибут
-        self.panel_settings_ip_3_pushButton.clicked.connect(self.show_password_window)                               #переименовать атрибут
-        self.panel_settings_ip_4_pushButton.clicked.connect(self.show_password_window)                               #переименовать атрибут
-        self.panel_settings_mask_1_pushButton.clicked.connect(self.show_password_window)                             #переименовать атрибут
-        self.panel_settings_mask_2_pushButton.clicked.connect(self.show_password_window)                             #переименовать атрибут
-        self.panel_settings_mask_3_pushButton.clicked.connect(self.show_password_window)                             #переименовать атрибут
-        self.panel_settings_mask_4_pushButton.clicked.connect(self.show_password_window)                             #переименовать атрибут
-        self.panel_settings_gateway_1_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
-        self.panel_settings_gateway_2_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
-        self.panel_settings_gateway_3_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
-        self.panel_settings_gateway_4_pushButton.clicked.connect(self.show_password_window)                          #переименовать атрибут
+        self.panel_settings_display_disable_time_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_display_disable_time', 0, 30))               #new атрибут
+        self.panel_settings_screensaver_activation_time_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_screensaver_activation_time', 0, 30)) #new атрибут
+        self.panel_settings_buzzer_pushButton.clicked.connect(lambda: self.SettingsPanelSettingsInstantlyToogleBuzzer(self.security_levels[4], 'panel_settings_buzzer'))                                           #пищалка
+        self.panel_settings_date_day_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_date_day', 0, 31))                                       #new атрибут
+        self.panel_settings_date_month_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_date_month', 0, 12))                                   #new атрибут
+        self.panel_settings_date_year_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_date_year', 0, 9999))                                   #new атрибут
+        self.panel_settings_time_hour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_time_hour', 0, 24))                                     #new атрибут
+        self.panel_settings_time_minutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_time_minutes', 0, 60))                               #new атрибут
+        self.panel_settings_time_seconds_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_time_seconds', 0, 60))                               #new атрибут
+        self.panel_settings_ip_1_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_ip_1', 0, 255))                                              #new атрибут
+        self.panel_settings_ip_2_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_ip_2', 0, 255))                                              #new атрибут
+        self.panel_settings_ip_3_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_ip_3', 0, 255))                                              #new атрибут
+        self.panel_settings_ip_4_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_ip_4', 0, 255))                                              #new атрибут
+        self.panel_settings_mask_1_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_mask_1', 0, 255))                                          #new атрибут
+        self.panel_settings_mask_2_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_mask_2', 0, 255))                                          #new атрибут
+        self.panel_settings_mask_3_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_mask_3', 0, 255))                                          #new атрибут
+        self.panel_settings_mask_4_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_mask_4', 0, 255))                                          #new атрибут
+        self.panel_settings_gateway_1_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_gateway_1', 0, 255))                                    #new атрибут
+        self.panel_settings_gateway_2_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_gateway_2', 0, 255))                                    #new атрибут
+        self.panel_settings_gateway_3_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_gateway_3', 0, 255))                                    #new атрибут
+        self.panel_settings_gateway_4_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_gateway_4', 0, 255))                                    #new атрибут
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Контакты
-        self.contacts_number_of_pumps_19QuantityPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[0], '19QuantityPump', 100000, 10000000))
-        self.contacts_current_workings_number_of_pumps_19WorkingQuantityPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[0], '19WorkingQuantityPump', 100000, 10000000))
+        self.contacts_number_of_pumps_19QuantityPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[0], '19QuantityPump', 0, 6))
+        self.contacts_current_workings_number_of_pumps_19WorkingQuantityPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[0], '19WorkingQuantityPump', 0, 6))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Параметры двигателей                  (внутри настроек станции)
-        self.station_settings_engine_parameters_voltage_18MotorVoltage_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_engine_parameters_amperage_18MotorCurrent_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_engine_parameters_frequency_18MotorFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_engine_parameters_speed_18MotorSpeed_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_engine_parameters_power_18MotorPower_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_engine_parameters_acceleration_time_18AccelerationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_engine_parameters_slow_down_time_18DecelerationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_engine_parameters_voltage_18MotorVoltage_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '18MotorVoltage', 100, 1000))
+        self.station_settings_engine_parameters_amperage_18MotorCurrent_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '18MotorCurrent', 0.0, 99.9))
+        self.station_settings_engine_parameters_frequency_18MotorFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '18MotorFrequency', 0.0, 99.9))
+        self.station_settings_engine_parameters_speed_18MotorSpeed_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '18MotorSpeed', 0, 9999))
+        self.station_settings_engine_parameters_power_18MotorPower_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '18MotorPower', 0.00, 655.35))
+        self.station_settings_engine_parameters_acceleration_time_18AccelerationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '18AccelerationTime', 0.0, 99.9))
+        self.station_settings_engine_parameters_slow_down_time_18DecelerationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '18DecelerationTime', 0.0, 99.9))
 
-        self.station_settings_engine_parameters_read_settings_pushButton.clicked.connect(self.show_password_window)                        #переименовать атрибут
-        self.station_settings_engine_parameters_write_settings_pushButton.clicked.connect(self.show_password_window)                       #переименовать атрибут
+        # self.station_settings_engine_parameters_read_settings_pushButton.clicked.connect(self.show_password_window)                        #переименовать атрибут
+        # self.station_settings_engine_parameters_write_settings_pushButton.clicked.connect(self.show_password_window)                       #переименовать атрибут
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Настройки датчиков                    (внутри настроек станции)
-        self.station_settings_sensors_settings_milliamps_at_suction_16RangeSuctionSensor_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_sensors_settings_milliamps_at_discharge_16RangeDischargeSensor_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_sensors_settings_milliamps_at_suction_16RangeSuctionSensor_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[0], '16RangeSuctionSensor', 0.00, 99.99))
+        self.station_settings_sensors_settings_milliamps_at_discharge_16RangeDischargeSensor_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[0], '16RangeDischargeSensor', 0.00, 99.99))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Общие параметры насосов               (внутри настроек станции)
-        self.station_settings_general_pumps_parameters_minimal_operating_frequency_11MinimumFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_general_pumps_parameters_maximal_operating_frequency_11MaximumFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        # self.station_settings_general_pumps_parameters_start_using_master_from_0_Hz_11ZeroStartMaster_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000)) бит проблема
-        # self.station_settings_general_pumps_parameters_use_pump_rotation_11ChangeEnable_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000)) бит проблема
-        self.station_settings_general_pumps_parameters_pump_rotation_interval_11WizardChangeInterval_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_general_pumps_parameters_pump_rotation_time_of_day_11ChangeHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_general_pumps_parameters_minimal_operating_frequency_11MinimumFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '11MinimumFrequency', 15.0, 30.0))
+        self.station_settings_general_pumps_parameters_maximal_operating_frequency_11MaximumFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '11MaximumFrequency', 40.0, 50.0))
+        # self.station_settings_general_pumps_parameters_start_using_master_from_0_Hz_11ZeroStartMaster_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '', 100000, 10000000)) бит проблема
+        # self.station_settings_general_pumps_parameters_use_pump_rotation_11ChangeEnable_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '', 100000, 10000000)) бит проблема
+        self.station_settings_general_pumps_parameters_pump_rotation_interval_11WizardChangeInterval_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '', 24, 72))
+        self.station_settings_general_pumps_parameters_pump_rotation_time_of_day_11ChangeHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '', 0, 24))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Включение дополнительных насосов      (внутри настроек станции)
-        self.station_settings_turn_on_extra_pumps_master_frequency_on_extra_pump_start_12FrequencyToTurnOnTheAuxiliaryPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_on_extra_pumps_acceptable_drawdown_12PermissiblePressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_on_extra_pumps_delay_for_critical_drawdown_12DelayWithAllowablePressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_on_extra_pumps_critical_drawdown_12CriticalPressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_on_extra_pumps_delay_for_acceptable_drawdown_12DelayCriticalPressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_on_extra_pumps_delay_for_leaving_to_fixed_frequency_12DelayFixedFrequencyStartPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_on_extra_pumps_fixed_frequency_12FixedFrequencyStartingPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_on_extra_pumps_operating_time_at_fixed_frequency_12FixedFrequencyTimeStartPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_on_extra_pumps_master_frequency_on_extra_pump_start_12FrequencyToTurnOnTheAuxiliaryPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '12FrequencyToTurnOnTheAuxiliaryPump', 0.0, 50.00))
+        self.station_settings_turn_on_extra_pumps_acceptable_drawdown_12PermissiblePressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '12PermissiblePressureDrop', 0.00, 5.00))
+        self.station_settings_turn_on_extra_pumps_delay_for_critical_drawdown_12DelayWithAllowablePressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '12DelayWithAllowablePressureDrop', 0, 30))
+        self.station_settings_turn_on_extra_pumps_critical_drawdown_12CriticalPressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '12CriticalPressureDrop', 0.00, 5.00))
+        self.station_settings_turn_on_extra_pumps_delay_for_acceptable_drawdown_12DelayCriticalPressureDrop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '12DelayCriticalPressureDrop', 0, 30))
+        self.station_settings_turn_on_extra_pumps_delay_for_leaving_to_fixed_frequency_12DelayFixedFrequencyStartPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '12DelayFixedFrequencyStartPump', 0, 10))
+        self.station_settings_turn_on_extra_pumps_fixed_frequency_12FixedFrequencyStartingPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '12FixedFrequencyStartingPump12FixedFrequencyStartingPump', 0.0, 50.0))
+        self.station_settings_turn_on_extra_pumps_operating_time_at_fixed_frequency_12FixedFrequencyTimeStartPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '12FixedFrequencyTimeStartPump', 0, 30))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Выключение дополнительных насосов     (внутри настроек станции)
-        self.station_settings_turn_off_extra_pumps_master_frequency_on_extra_pump_shutdown_13FrequencyToTurnOffTheAuxiliaryPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_off_extra_pumps_acceptable_jump_13PermissibleOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_off_extra_pumps_delay_for_critical_jump_13DelayPermissibleOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_off_extra_pumps_critical_jump_13CriticalOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_off_extra_pumps_delay_for_acceptable_jump_13DelayCriticalOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_off_extra_pumps_delay_for_leaving_to_fixed_frequency_13DelayFixedFrequencyStopPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_off_extra_pumps_fixed_frequency_13FixedFrequencyPumpStop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_turn_off_extra_pumps_operating_time_at_fixed_frequency_13FixedFrequencyTimeStopPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_turn_off_extra_pumps_master_frequency_on_extra_pump_shutdown_13FrequencyToTurnOffTheAuxiliaryPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '13FrequencyToTurnOffTheAuxiliaryPump', 35.0, 50.0))
+        self.station_settings_turn_off_extra_pumps_acceptable_jump_13PermissibleOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '13PermissibleOverpressure13PermissibleOverpressure', 0.00, 5.00))
+        self.station_settings_turn_off_extra_pumps_delay_for_critical_jump_13DelayPermissibleOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '13DelayPermissibleOverpressure', 0, 30))
+        self.station_settings_turn_off_extra_pumps_critical_jump_13CriticalOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '13CriticalOverpressure', 0.00, 5.00))
+        self.station_settings_turn_off_extra_pumps_delay_for_acceptable_jump_13DelayCriticalOverpressure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '13DelayCriticalOverpressure', 0, 30))
+        self.station_settings_turn_off_extra_pumps_delay_for_leaving_to_fixed_frequency_13DelayFixedFrequencyStopPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '13DelayFixedFrequencyStopPump', 0, 20))
+        self.station_settings_turn_off_extra_pumps_fixed_frequency_13FixedFrequencyPumpStop_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '13FixedFrequencyPumpStop', 0.0, 50.0))
+        self.station_settings_turn_off_extra_pumps_operating_time_at_fixed_frequency_13FixedFrequencyTimeStopPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], '13FixedFrequencyTimeStopPump', 0, 30))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Опции                                 (внутри настроек станции)
-        self.station_settings_options_energy_saving_mode_15PowerSavingModeOn_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_options_start_energy_saving_mode_once_every_15PowerSavingModeTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_options_presure_drawdown_to_turn_off_energy_saving_mode_15PowerSavingModeExitPresure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_options_increase_pressure_by_15PowerSavingModePressureIncrease_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_options_swing_integration_time_15PowerSavingModeIntegrationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_options_acceptable_pressure_swing_15PowerSavingAllowablePressureSwing_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_options_acceptable_frequency_swing_15PowerSavingPermissibleFrequencySpan_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.station_settings_options_energy_saving_mode_15PowerSavingModeOn_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.station_settings_options_start_energy_saving_mode_once_every_15PowerSavingModeTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '15PowerSavingModeTime', 0, 9999))
+        self.station_settings_options_presure_drawdown_to_turn_off_energy_saving_mode_15PowerSavingModeExitPresure_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '15PowerSavingModeExitPresure', 0.00, 99.99))
+        self.station_settings_options_increase_pressure_by_15PowerSavingModePressureIncrease_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '15PowerSavingModePressureIncrease', 0.00, 99.99))
+        self.station_settings_options_swing_integration_time_15PowerSavingModeIntegrationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '15PowerSavingModeIntegrationTime', 0, 30))
+        self.station_settings_options_acceptable_pressure_swing_15PowerSavingAllowablePressureSwing_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '15PowerSavingAllowablePressureSwing', 0.00, 99.99))
+        self.station_settings_options_acceptable_frequency_swing_15PowerSavingPermissibleFrequencySpan_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '15PowerSavingPermissibleFrequencySpan', 0.0, 5.0))
 
 ###################################################################################################################################################################################################################################################################################################################################################
-        #Аварийные режимы                      (внутри настроек станции)
-        self.station_settings_emergency_modes_differential_operating_frequency_14PumpStartConfirmationFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_emergency_modes_differential_failure_delay_14PumpStartConfirmationAlarmDelay_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_emergency_modes_differential_maximum_number_of_failures_14MaxAlarmConfirmationStartPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_emergency_modes_dry_warnings_pushButton.clicked.connect(self.show_password_window)                                                            #переименовать атрибут
-        self.station_settings_emergency_modes_dry_failure_pushButton.clicked.connect(self.show_password_window)                                                             #переименовать атрибут
-        self.station_settings_emergency_modes_dry_failure_delay_pushButton.clicked.connect(self.show_password_window)                                                       #переименовать атрибут
-        self.station_settings_emergency_modes_shutdown_delay_pushButton.clicked.connect(self.show_password_window)                                                          #переименовать атрибут
-        self.station_settings_emergency_modes_critical_pressure_to_shutdown_14CriticalPressureAlarmThreshold_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.station_settings_emergency_modes_control_pipeline_rupture_pushButton.clicked.connect(self.show_password_window)                                                #переименовать атрибут
+        #Аварийные режимы                      (внутри настроек станции) Need to be fixed in easybilder
+        # self.station_settings_emergency_modes_differential_operating_frequency_14PumpStartConfirmationFrequency_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.station_settings_emergency_modes_differential_failure_delay_14PumpStartConfirmationAlarmDelay_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.station_settings_emergency_modes_differential_maximum_number_of_failures_14MaxAlarmConfirmationStartPump_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.station_settings_emergency_modes_dry_warnings_pushButton.clicked.connect(self.show_password_window)                                                            #переименовать атрибут
+        # self.station_settings_emergency_modes_dry_failure_pushButton.clicked.connect(self.show_password_window)                                                             #переименовать атрибут
+        # self.station_settings_emergency_modes_dry_failure_delay_pushButton.clicked.connect(self.show_password_window)                                                       #переименовать атрибут
+        # self.station_settings_emergency_modes_shutdown_delay_pushButton.clicked.connect(self.show_password_window)                                                          #переименовать атрибут
+        # self.station_settings_emergency_modes_critical_pressure_to_shutdown_14CriticalPressureAlarmThreshold_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        # self.station_settings_emergency_modes_control_pipeline_rupture_pushButton.clicked.connect(self.show_password_window)                                                #переименовать атрибут
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Настройки пид-регистрации                             (внутри инженерного меню)
@@ -572,11 +711,27 @@ class System_Station_Main_window_settings:
         # self.engineering_menu_backup_save_energy_independent_memory_80RWBackup_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000)) бит проблема
         # self.engineering_menu_backup_save_trends_80TrendsBackup_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000)) бит проблема
 
-        self.engineering_menu_backup_factory_all_settings_pushButton.clicked.connect(self.show_password_window) #переименовать атрибут
-
+        self.engineering_menu_backup_factory_all_settings_pushButton.clicked.connect(lambda: self.SettingsEngineeringMenuInstantlySetDefaultJsonSettings(self.security_levels[3])) #переименовать атрибут
 
 ###################################################################################################################################################################################################################################################################################################################################################
-#Методы работы с json записью значений
+#Методы работы с json записью значений    
+
+    def SettingsPanelSettingsInstantlyToogleBuzzer(self, requiered_level, json_key):
+        if self.current_level < requiered_level:
+            self.show_password_window()
+        else:
+            json_value = self.readJson(self.test_json, json_key)
+            if json_value == 0:
+                self.updateJson(self.test_json, json_key, 1)
+            else:
+                self.updateJson(self.test_json, json_key, 0)
+            self.updateCurrentJsonStatistics()
+
+    def SettingsEngineeringMenuInstantlySetDefaultJsonSettings(self, requiered_level):
+        if self.current_level < requiered_level:
+            self.show_password_window()
+        else:
+            self.setupDefaultJsonSettings()
 
     def SettingsManagerPageInstantlyUpdateJson(self, requiered_level, json_key):
         if self.current_level < requiered_level:
@@ -588,7 +743,6 @@ class System_Station_Main_window_settings:
             else:
                 self.updateJson(self.test_json, json_key, 0)
             self.updateCurrentJsonStatistics()
-
 
 ###################################################################################################################################################################################################################################################################################################################################################
 #Методы работы с json загрузкой значений, работающих по отслеживанию текущей страницы и загрузки значений только для текущей страницы пользователя, чтобы не нагружать систему лишними загрузками, которые пользователь не будет отслеживать
@@ -1386,33 +1540,33 @@ class System_Station_Main_window_settings:
 
 #DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
         #временные подключения для того, чтобы увидеть как будут размещены иконки
-        # self.changeCurrentPageWidgetIcon(self.main_exit_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_enter_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pipe_up_icon_60UpperPipeline_label, 'main_pipe_up_icon_label_2_4.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pipe_down_icon_60LowerPipeline_label, 'main_pipe_down_icon_label_2_4.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump1_label_1, 'main_pump_icon_label_blue_1.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump2_label_2, 'main_pump_icon_label_blue_2.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump3_label_3, 'main_pump_icon_label_blue_3.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump4_label_4, 'main_pump_icon_label_blue_4.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump5_label_5, 'main_pump_icon_label_grey.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump6_label_6, 'main_pump_icon_label_grey.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection1_label_1_1, 'empty.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection2_label_2_1, 'main_pump_up_icon_label_1.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection3_label_3_1, 'empty.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection4_label_4_1, 'main_pump_up_icon_label_4.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection5_label_5_1, 'empty.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection6_label_6_1, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_exit_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_enter_statistic_60Pump1_icon_label, 'main_exit_enter_statistic_icon_label_blue.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pipe_up_icon_60UpperPipeline_label, 'main_pipe_up_icon_label_2_4.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pipe_down_icon_60LowerPipeline_label, 'main_pipe_down_icon_label_2_4.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump1_label_1, 'main_pump_icon_label_blue_1.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump2_label_2, 'main_pump_icon_label_blue_2.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump3_label_3, 'main_pump_icon_label_blue_3.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump4_label_4, 'main_pump_icon_label_blue_4.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump5_label_5, 'main_pump_icon_label_grey.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60Pump6_label_6, 'main_pump_icon_label_grey.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection1_label_1_1, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection2_label_2_1, 'main_pump_up_icon_label_1.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection3_label_3_1, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection4_label_4_1, 'main_pump_up_icon_label_4.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection5_label_5_1, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60StartPumpDetection6_label_6_1, 'empty.svg', 0)
 
 
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon1_label_1_2, 'main_pump_down_icon_label_line.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon2_label_2_2, 'main_pump_down_icon_label_off.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon3_label_3_2, 'main_pump_down_icon_label_line.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon4_label_4_2, 'main_pump_down_icon_label_on.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon5_label_5_2, 'empty.svg', 0)
-        # self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon6_label_6_2, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon1_label_1_2, 'main_pump_down_icon_label_line.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon2_label_2_2, 'main_pump_down_icon_label_off.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon3_label_3_2, 'main_pump_down_icon_label_line.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon4_label_4_2, 'main_pump_down_icon_label_on.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon5_label_5_2, 'empty.svg', 0)
+        self.changeCurrentPageWidgetIcon(self.main_pump_icon_60FCIcon6_label_6_2, 'empty.svg', 0)
     
 
-        # self.changeCurrentPageWidgetIcon(self.main_graphic_70ScaleNumber_pushButton, 'main_graphic_70ScaleNumber_pushButton_red.svg', 1)
+        self.changeCurrentPageWidgetIcon(self.main_graphic_70ScaleNumber_pushButton, 'main_graphic_70ScaleNumber_pushButton_red.svg', 1)
 #DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE_DELETE
 
 ###################################################################################################################################################################################################################################################################################################################################################

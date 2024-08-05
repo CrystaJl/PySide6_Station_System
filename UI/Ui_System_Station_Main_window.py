@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file '(12)SystemStationMainWindowBETAX5AGbbZt.ui'
+## Form generated from reading UI file '(12)SystemStationMainWindowBETAX5OpcujA.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.1
+## Created by: Qt User Interface Compiler version 6.7.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -27,7 +27,7 @@ class Ui_System_Station_Main_window(object):
         self.main_stackedWidget = QStackedWidget(System_Station_Main_window)
         self.main_stackedWidget.setObjectName(u"main_stackedWidget")
         self.main_stackedWidget.setGeometry(QRect(0, 0, 800, 480))
-        self.main_stackedWidget.setStyleSheet(u"QLabel {color: white;}\n"
+        self.main_stackedWidget.setStyleSheet(u"QLabel {border: 1px Solid white;color: white;}\n"
 "QPushButton {background-color: rgba(0,0,0,0);color: white;}\n"
 "QStackedWidget > QWidget {background-color: black;}")
         self.Main_page = QWidget()
@@ -772,7 +772,7 @@ class Ui_System_Station_Main_window(object):
         self.settings_buttons_stackedWidget = QStackedWidget(self.Settings_Main_page)
         self.settings_buttons_stackedWidget.setObjectName(u"settings_buttons_stackedWidget")
         self.settings_buttons_stackedWidget.setGeometry(QRect(0, 60, 182, 418))
-        self.settings_buttons_stackedWidget.setStyleSheet(u"QStackedWidget > QWidget {background-color: rgb(22,22,22);}")
+        self.settings_buttons_stackedWidget.setStyleSheet(u"QStackedWidget > QWidget {background-color: rga(0,0,0,0);} ")
         self.Settings_Main_Buttons_page = QWidget()
         self.Settings_Main_Buttons_page.setObjectName(u"Settings_Main_Buttons_page")
         self.go_to_settings_manager_page_icon_label_1 = QLabel(self.Settings_Main_Buttons_page)
@@ -4899,7 +4899,7 @@ class Ui_System_Station_Main_window(object):
 
         self.retranslateUi(System_Station_Main_window)
 
-        self.main_stackedWidget.setCurrentIndex(0)
+        self.main_stackedWidget.setCurrentIndex(1)
         self.main_main_pages_stackedWidget.setCurrentIndex(0)
         self.settings_buttons_stackedWidget.setCurrentIndex(0)
         self.settings_pages_stackedWidget.setCurrentIndex(0)

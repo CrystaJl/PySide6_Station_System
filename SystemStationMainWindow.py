@@ -16,6 +16,10 @@ class System_Station_Main_window(QWidget, Ui_System_Station_Main_window, System_
         self.setupSystemStationMainWindowSvgIcons()
         self.giveTimer()
         self.timeChanger()
+        self.setTranslucentBackgroundForButtons(self.settings_buttons_stackedWidget)
+        if self.readJson(self.test_json, 'IsItDefaultJsonSettings') == 0:
+            self.setupDefaultJsonSettings()
+
 
     def choose_attribute_or_password_window(self, requiered_level, json_key, min_value, max_value):
         if self.current_level >= requiered_level:
