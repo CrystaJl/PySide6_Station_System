@@ -1,24 +1,39 @@
-from pymodbus.server import StartTcpServer
-from pymodbus.device import ModbusDeviceIdentification
-from pymodbus.datastore import ModbusSequentialDataBlock, ModbusSlaveContext, ModbusServerContext
+from pymodbus.client import ModbusTcpClient
+import logging
 
-def run_server():
-    # Создание блока данных для хранения регистров
-    block = ModbusSequentialDataBlock(0, [0] * 100)
-    store = ModbusSlaveContext(hr=block, di=block, co=block, ir=block)
-    context = ModbusServerContext(slaves=store, single=True)
+# Настройка логирования для отладки
+logging.basicConfig()
+log = logging.getLogger()
+log.setLevel(logging.DEBUG)
 
-    # Настройка идентификационной информации сервера
-    identity = ModbusDeviceIdentification()
-    identity.VendorName = 'pymodbus'
-    identity.ProductCode = 'PM'
-    identity.VendorUrl = 'http://github.com/riptideio/pymodbus/'
-    identity.ProductName = 'pymodbus Server'
-    identity.ModelName = 'pymodbus Server'
-    identity.MajorMinorRevision = '1.0'
+def main():
+    # Настройка подключения
+    client = ModbusTcpClient('127.0.0.1')  # Укажите IP адрес вашего Modbus TCP сервера
 
-    # Запуск сервера на порту 5020
-    StartTcpServer(context, identity=identity, address=("localhost", 5020))
+    # Подключение
+    if client.connect():
+        print("Подключено к серверу")
 
-if __name__ == "__main__":
-    run_server()
+        # Чтение данных
+        # Чтение Holding Registers (адрес 0, количество 2 регистров)
+        result = client.read_holding_registers(0, 2)
+        if result.isError():
+            print("Ошибка при чтении данных:", result)
+        else:
+            print("Данные из регистров:", result.registers)
+
+        # Запись данных
+        # Запись в Holding Register (адрес 0, значение 1234)
+        write_result = client.write_register(7, 1234)
+        if write_result.isError():
+            print("Ошибка при записи данных:", write_result)
+        else:
+            print("Данные успешно записаны")
+
+        # Закрытие подключения
+        client.close()
+    else:
+        print("Не удалось подключиться к серверу")
+
+if __name__ == '__main__':
+    main()

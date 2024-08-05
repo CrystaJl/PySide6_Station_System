@@ -1,0 +1,58 @@
+//******************************************************************
+//|	Авторизация поьзователей                                       |
+//| -------------------------------------------------------------- |
+//|	Условие выполнения: Нет									       |
+//|		- Откл. когда бит:							               |
+//|		- Имя плк:                                                 |
+//|		- Адрес:           						   		           |
+//|	Однократное выполнение при старте панели: Нет	               |
+//|	Период. вып.: Нет 											   |
+//|	Интервал времени: 1										   	   |
+//******************************************************************
+unsigned int PaswordUser1=0, PaswordUser2=0, PaswordUser3=0
+unsigned short ComandUAC=0, IndexUser=0, User=0, Pasword=0
+unsigned short temp=0, zero=1
+char PaswordUser[16]="0"
+macro_command main()
+	while zero < 5
+		TRACE("UAC Start %d", zero)
+		DELAY(100)
+    	GetData(Pasword, "Local HMI", LW, 30, 1)                            // Пароль поля ввода пароля
+    	GetData(PaswordUser1, "Local HMI", LW, 9500, 1)                     // Пароль пользователя 1
+    	GetData(PaswordUser2, "Local HMI", LW, 9502, 1)                     // Пароль пользователя 2
+    	GetData(PaswordUser3, "Local HMI", LW, 9504, 1)                     // Пароль пользователя 3
+		ComandUAC = 3                                                       // log out
+		SetData(ComandUAC, "Local HMI", "Команда UAC", 1)
+		DELAY(100)                                                          // Ждем выхода
+		temp=0
+    	SetData(temp, "Local HMI", "Результат выполнения команды UAC", 1)   // Обнуляем статус
+    	if Pasword == 221 then                                              // Пароль оператора
+        	IndexUser = 1
+        	DEC2ASCII(221, PaswordUser[0], 3)
+    	else if Pasword == 159 then                                         // Пароль инженера
+        	IndexUser = 2
+        	DEC2ASCII(221, PaswordUser[0], 3)
+    	else if Pasword == 7531 then                                        // Пароль производителя
+        	IndexUser = 3
+        	DEC2ASCII(7531, PaswordUser[0], 4)
+    	else                                                                // Пароль не подошол
+        	IndexUser = 3
+    	end if
+    	ComandUAC = 2
+    	SetData(IndexUser, "Local HMI", "Индекс пользователя UAC", 1)
+    	StringSet(PaswordUser[0], "Local HMI", "Пароль UAC", 16)
+    	DELAY(500)
+    	SetData(ComandUAC, "Local HMI", "Команда UAC", 1)
+   		DELAY(500)
+   		GetData(temp, "Local HMI", "Результат выполнения команды UAC", 1)
+   		if temp <> 32 then
+   			temp = 0                                                         // Обнуляем поле ввода
+            SetData(temp, "Local HMI", LW, 30, 1)                            // Пароль поля ввода пароля
+            break
+   		else
+            TRACE("UAC status 32")
+            zero = zero + 1                 								// Счетчик
+        end if
+   wend
+end macro_command
+

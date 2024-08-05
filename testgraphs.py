@@ -1,80 +1,68 @@
 import sys
 import json
-from PySide6.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QGraphicsPixmapItem
-from PySide6.QtGui import QPixmap, QImage, QPainter
-from PySide6.QtCore import Qt
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
-from io import BytesIO
+import time
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 
-class MatplotlibWidget(FigureCanvas):
-    def __init__(self, parent=None):
-        fig, self.ax = plt.subplots()
-        FigureCanvas.__init__(self, fig)
-        self.setParent(parent)
+from PySide6.QtCore import QTimer, Qt, QRect
+from PySide6.QtGui import QPen
+from PySide6.QtWidgets import QApplication, QGraphicsScene, QGraphicsView, QGraphicsLineItem, QMainWindow
 
-    def plot(self, x, y):
-        self.ax.clear()
-        self.ax.plot(x, y, marker='o')
-        self.ax.set_xlabel('X axis')
-        self.ax.set_ylabel('Y axis')
-        self.ax.set_title('Sample Graph')
-        self.draw()
+def load_json_data(json_file):
+    with open(json_file, 'r') as file:
+        data = json.load(file)
+    return data
 
-    def figure_to_image(self):
-        # Save figure to an image buffer
-        buf = self.figure_to_buffer()
-        img = QImage()
-        img.loadFromData(buf.getvalue())
-        return img
+def update_graph(graphics_view, json_file):
+    data = load_json_data(json_file)
+    scene = graphics_view.scene()
+    scene.clear()
+    pen = QPen(Qt.blue)
+    if 'values' in data:
+        values = data['values']
+        for i in range(len(values) - 1):
+            line = QGraphicsLineItem(i * 100, values[i], (i + 1) * 100, values[i + 1])
+            line.setPen(pen)
+            scene.addItem(line)
 
-    def figure_to_buffer(self):
-        buf = BytesIO()
-        self.figure.savefig(buf, format='png')
-        buf.seek(0)
-        return buf
+def on_modified(event, graphics_view, json_file):
+    if event.src_path.endswith(json_file):
+        update_graph(graphics_view, json_file)
 
-class MainWindow(QGraphicsView):
-    def __init__(self):
-        super().__init__()
-        self.setRenderHint(QPainter.Antialiasing)
-        self.setRenderHint(QPainter.SmoothPixmapTransform)
-        self.setRenderHint(QPainter.TextAntialiasing)
-        
-        self.scene = QGraphicsScene(self)
-        self.setScene(self.scene)
+def main():
+    json_file = 'testing.json'
+    app = QApplication(sys.argv)
+    
+    main_window = QMainWindow()
+    main_window.setWindowTitle("Real-Time Graph Viewer")
+    main_window.resize(800, 600)
+    
+    scene = QGraphicsScene(graphics_view)
+    graphics_view.setScene(scene)
+    main_window.setCentralWidget(graphics_view)
+    
+    update_graph(graphics_view, json_file)
+    
+    class Handler(FileSystemEventHandler):
+        def on_modified(self, event):
+            on_modified(event, graphics_view, json_file)
+    
+    observer = Observer()
+    event_handler = Handler()
+    observer.schedule(event_handler, path='.', recursive=False)
+    observer.start()
+    
+    timer = QTimer()
+    timer.timeout.connect(lambda: update_graph(graphics_view, json_file))
+    timer.start(1000)  # Обновление каждую секунду
+    
+    main_window.show()
 
-        # Load data from JSON
-        with open('testing.json', 'r') as file:
-            data = json.load(file)
-        
-        x = data['x']
-        y = data['y']
-
-        # Create matplotlib widget
-        self.matplotlib_widget = MatplotlibWidget()
-        self.matplotlib_widget.plot(x, y)
-
-        # Save matplotlib figure to QPixmap
-        img = self.matplotlib_widget.figure_to_image()
-        pixmap = QPixmap.fromImage(img)
-
-        # Create QGraphicsPixmapItem and add to scene
-        self.pixmap_item = QGraphicsPixmapItem(pixmap)
-        self.scene.addItem(self.pixmap_item)
-
-        # Enable scaling
-        self.setRenderHint(QPainter.Antialiasing)
-        self.setRenderHint(QPainter.SmoothPixmapTransform)
-        self.setRenderHint(QPainter.TextAntialiasing)
-
-    def resizeEvent(self, event):
-        super().resizeEvent(event)
-        self.setSceneRect(self.scene.itemsBoundingRect())
-        self.fitInView(self.scene.sceneRect(), Qt.KeepAspectRatio)
+    try:
+        sys.exit(app.exec())
+    except KeyboardInterrupt:
+        observer.stop()
+    observer.join()
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-    sys.exit(app.exec())
+    main()

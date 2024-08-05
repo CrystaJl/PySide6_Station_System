@@ -16,6 +16,10 @@ class System_Station_Main_window(QWidget, Ui_System_Station_Main_window, System_
         self.setupSystemStationMainWindowSvgIcons()
         self.giveTimer()
         self.timeChanger()
+        
+        from MODULES.Settings import GraphsViewer
+        self.graph_viewer = GraphsViewer(self.main_graphicsView)
+        self.graph_viewer.main()
 
     def choose_attribute_or_password_window(self, requiered_level, json_key, min_value, max_value):
         if self.current_level >= requiered_level:

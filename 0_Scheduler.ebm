@@ -1,0 +1,181 @@
+﻿
+//******************************************************************
+//	Скрипт расчета уставок давления, по дням недели и времени.
+// --------------------------------------------------------------
+//	Условие выполнения: Нет
+//		- Откл. когда бит:
+//		- Имя плк:
+//		- Адрес:
+//	Однократное выполнение при старте панели: Нет
+//	Период. вып.: Да
+//	Интервал времени: 100
+//******************************************************************
+
+unsigned int y=0, UnixTime=0, UnixEMD=0, TempUInt=0
+
+// Глобальные переменные
+unsigned short Setpoint=0, SetpointUser=0, SetpointRemote=0, SetpointPID=0, SetpointMode=0
+unsigned short LocalDay=0, LocalMonth=0, LocalYear=0
+unsigned short SetpointType=0, DayType=0, DayOfTheWeek=0
+float TempFloat=0
+macro_command main()
+	GetDataEx(LocalDay, "Local HMI", "90LocalDay", 1)
+	GetDataEx(LocalMonth, "Local HMI", "90LocalMonth", 1)
+	GetDataEx(LocalYear, "Local HMI", "90LocalYear", 1)
+	GetDataEx(SetpointUser, "Local HMI", "10SetpointUser", 1)			// Уставка пользователя
+	GetDataEx(SetpointRemote, "Local HMI", "10SetpointRemote", 1) 		// Дистанционная уставка
+	GetDataEx(SetpointPID, "Local HMI", "17SetpointPID", 1) 			// Уставка для настройки PID
+	GetDataEx(SetpointMode, "Local HMI", "10SetpointMode", 1)			// Источник задания уставки
+	GetDataEx(UnixTime, "Local HMI", "01UnixTime", 1)					//Время в unix формате
+
+	// a = (14 - LocalMonth) / 12
+	// m = (LocalMonth + 12) * ((14 - LocalMonth) / 12) - 2
+//y = LocalYear - (14 - LocalMonth) / 12
+//DayOfTheWeek = (7000 + (LocalDay + y + y / 4 - y / 100 + y / 400 + (31 * ((LocalMonth + 12) * ((14 - LocalMonth) / 12) - 2) / 12))) % 7	
+	// Результат: 0 — воскресенье, 1 — понедельник и т. д.
+
+
+
+
+	If LocalMonth < 3 Then
+		LocalYear = LocalYear - 1
+		LocalMonth = LocalMonth + 10
+	Else
+		LocalMonth = LocalMonth - 2
+	End If
+	TempFloat = (LocalDay + 31 * LocalMonth / 12 + LocalYear + LocalYear / 4 - LocalYear / 100 + LocalYear / 400) % 7
+	DayOfTheWeek = TempFloat
+
+
+
+
+	if SetpointMode == 0  then						// Если источник уставки не выбран
+		Setpoint = 0								// То уставка 0
+		DayType = 3
+		SetpointType = 7							// Тип уставки Нет
+	else if SetpointMode & 0000000000001000 then 	// Уставка пид регулятора Бит 3
+		Setpoint = SetpointPID
+		DayType = 3
+		SetpointType = 6							// Тип уставки PID
+	else if SetpointMode & 0000000000000001 then 	// Уставка пользователя Бит 0
+		Setpoint = SetpointUser
+		DayType = 3
+		SetpointType = 4							// Тип уставки пользовательская
+	else if SetpointMode & 0000000000000100 then 	// Дистанционная уставка бит 2
+			Setpoint = SetpointRemote 				// Уставка дистанционного режжима
+			DayType = 3
+			SetpointType = 5						// Тип уставки дистанционная
+	else if SetpointMode & 0000000000000010 then 	// Уставка по планировщику
+		unsigned short TypeOfDayMonday=0, TypeOfDayTuesday=0, TypeOfDayWednesday=0, TypeOfDayThursday=0, TypeOfDayFriday=0, TypeOfDaySaturday=0, TypeOfDaySunday=0
+		unsigned short SetpointWeekdaysMorning=0, SetpointWeekdaysDay=0, SetpointWeekdaysEvening=0, SetpointWeekdaysNights=0
+		unsigned short SetpointWeekendsMorning=0, SetpointWeekendsDay=0, SetpointWeekendsEvening=0, SetpointWeekendsNights=0
+		unsigned short WeekendMorningHour=0, WeekendMorningMinutes=0, WeekendDayHour=0, DayOffMinutes=0, WeekendEveningHour=0
+		unsigned short WeekendEveningMinutes=0, WeekendNightHour=0, WeekendNightMinutes=0
+		unsigned short WeekdayMorningHour=0, WeekdayMorningMinutes=0, WeekdayDayHour=0, WeekdayDayMinutes=0, WeekdayEveningHour=0
+		unsigned short WeekdayEveningMinutes=0, WeekdayNightHour=0, WeekdayNightMinutes=0
+		GetDataEx(TypeOfDayMonday, "Local HMI", "10TypeOfDayMonday", 1)						// Понедельник тип дня
+		GetDataEx(TypeOfDayTuesday, "Local HMI", "10TypeOfDayTuesday", 1) 					// Вторник тип дня
+		GetDataEx(TypeOfDayWednesday, "Local HMI", "10TypeOfDayWednesday", 1) 				// Среда тип дня
+		GetDataEx(TypeOfDayThursday, "Local HMI", "10TypeOfDayThursday", 1) 				// Четверг тип дня
+		GetDataEx(TypeOfDayFriday, "Local HMI", "10TypeOfDayFriday", 1) 					// Пятница тип дня
+		GetDataEx(TypeOfDaySaturday, "Local HMI", "10TypeOfDaySaturday", 1) 				// Суббота тип дня
+		GetDataEx(TypeOfDaySunday, "Local HMI", "10TypeOfDaySunday", 1) 					// Воскресенье тип дня
+		GetDataEx(SetpointWeekdaysMorning, "Local HMI", "10SetpointWeekdaysMorning", 1)		// Уставка утро будни
+		GetDataEx(SetpointWeekdaysDay, "Local HMI", "10SetpointWeekdaysDay", 1)				// Уставка день будни
+		GetDataEx(SetpointWeekdaysEvening, "Local HMI", "10SetpointWeekdaysEvening", 1)		// Уставка вечер будни
+		GetDataEx(SetpointWeekdaysNights, "Local HMI", "10SetpointWeekdaysNights", 1)		// Уставка ночь будни
+		GetDataEx(WeekdayMorningHour, "Local HMI", "10WeekdayMorningHour", 1) 				// Будни утро час
+		GetDataEx(WeekdayMorningMinutes, "Local HMI", "10WeekdayMorningMinutes", 1) 		// Будни утро минуты
+		GetDataEx(WeekdayDayHour, "Local HMI", "10WeekdayDayHour", 1) 						// Будни день час
+		GetDataEx(WeekdayDayMinutes, "Local HMI", "10WeekdayDayMinutes", 1) 				// Будни день минуты
+		GetDataEx(WeekdayEveningHour, "Local HMI", "10WeekdayEveningHour", 1) 				// Будни вечер час
+		GetDataEx(WeekdayEveningMinutes, "Local HMI", "10WeekdayEveningMinutes", 1) 		// Будни вечер минуты
+		GetDataEx(WeekdayNightHour, "Local HMI", "10WeekdayNightHour", 1) 					// Будни ночь час
+		GetDataEx(WeekdayNightMinutes, "Local HMI", "10WeekdayNightMinutes", 1) 			// Будни ночь минуты
+		GetDataEx(SetpointWeekendsMorning, "Local HMI", "10SetpointWeekendsMorning", 1)		// Уставка утро выходные
+		GetDataEx(SetpointWeekendsDay, "Local HMI", "10SetpointWeekendsDay", 1)				// Уставка день выходные
+		GetDataEx(SetpointWeekendsEvening, "Local HMI", "10SetpointWeekendsEvening", 1)		// Уставка вечер выходные
+		GetDataEx(SetpointWeekendsNights, "Local HMI", "10SetpointWeekendsNights", 1)		// Уставка ночь выходные
+		GetDataEx(WeekendMorningHour, "Local HMI", "10WeekendMorningHour", 1) 				// Выходные утро час
+		GetDataEx(WeekendMorningMinutes, "Local HMI", "10WeekendMorningMinutes", 1) 		// Выходные утро минуты
+		GetDataEx(WeekendDayHour, "Local HMI", "10WeekendDayHour", 1) 						// Выходные день час
+		GetDataEx(DayOffMinutes, "Local HMI", "10DayOffMinutes", 1) 						// Выходные день минуты
+		GetDataEx(WeekendEveningHour, "Local HMI", "10WeekendEveningHour", 1) 				// Выходные вечер час
+		GetDataEx(WeekendEveningMinutes, "Local HMI", "10WeekendEveningMinutes", 1) 		// Выходные вечер минуты
+		GetDataEx(WeekendNightHour, "Local HMI", "10WeekendNightHour", 1) 					// Выходные ночь час
+		GetDataEx(WeekendNightMinutes, "Local HMI", "10WeekendNightMinutes", 1) 			// Выходные ночь минуты
+
+		select case DayOfTheWeek
+			Case 0 												// если воскресенье
+				DayType = TypeOfDaySunday
+				break
+			Case 1												// Если понедельник
+				DayType = TypeOfDayMonday
+				break
+			Case 2												// Если вторник
+				DayType = TypeOfDayTuesday
+				break
+			Case 3												// Еси среда
+				DayType = TypeOfDayWednesday
+				break
+			Case 4												// Если четверг
+				DayType = TypeOfDayThursday
+				break
+			Case 5												// Если пятница
+				DayType = TypeOfDayFriday
+				break
+			Case 6												// Если суббота
+				DayType = TypeOfDaySaturday
+				break
+			end select
+
+			select case DayType
+				Case 0																							// если день простоя
+					Setpoint = 0																				// Возвращаем утавку 0
+					SetpointType = 7
+					break
+				Case 1																							// Если Будни
+					if UnixTime < UnixEMD+(WeekdayMorningHour*3600)+(WeekdayMorningMinutes*60) then 			// Будни НОЧЬ
+						Setpoint = SetpointWeekdaysNights 														// берем уставку на НОЧЬ
+						SetpointType = 0
+					else if UnixTime < UnixEMD+(WeekdayDayHour*3600)+(WeekdayDayMinutes*60) then 				// Будни ДЕНЬ
+						Setpoint = SetpointWeekdaysMorning														// берем уставку на утро
+						SetpointType = 1
+					else if UnixTime < UnixEMD+(WeekdayEveningHour*3600)+(WeekdayEveningMinutes*60) then		// Будни ВЕЧЕР
+						Setpoint = SetpointWeekdaysDay															// берем уставку на день
+						SetpointType = 2
+					else if UnixTime < UnixEMD+(WeekdayNightHour*3600)+(WeekdayNightMinutes*60) then			// Будни НОЧЬ
+						Setpoint = SetpointWeekdaysEvening														// берем уставку на вечер
+						SetpointType = 3
+					else
+						Setpoint = SetpointWeekdaysNights 														// берем уставку на НОЧЬ
+						SetpointType = 0
+					end if
+					break 
+				Case 2																							// Если Выходные
+					if UnixTime < UnixEMD+(WeekendMorningHour*3600)+(WeekendMorningMinutes*60) then				// Выходные НОЧЬ-УТРО часы
+						Setpoint = SetpointWeekendsNights 														// если текущие часы меньше перехода ночь-утро значит у нас ноч
+						SetpointType = 0																		// Тип уставки
+					else if UnixTime < UnixEMD+(WeekendDayHour*3600)+(DayOffMinutes*60) then					// Выходные УТРО-ДЕНЬ
+						Setpoint = SetpointWeekendsMorning														// берем уставку на утро
+						SetpointType = 1																		// Тип уставки
+					else if UnixTime < UnixEMD+(WeekendEveningHour*3600)+(WeekendEveningMinutes*60) then		// Выходные ДЕНЬ-ВЕЧЕР
+						Setpoint = SetpointWeekendsDay															// Выходные уставку на день
+						SetpointType = 2 																		// Тип уставки
+					else if UnixTime < UnixEMD+(WeekendNightHour*3600)+(WeekendNightMinutes*60) then			// Выходные ВЕЧЕР-НОЧЬ
+						Setpoint = SetpointWeekendsEvening														// берем уставку на вечер
+						SetpointType = 3 																		// Тип уставки
+					else
+						Setpoint = SetpointWeekendsNights														// берем уставку на ноч
+						SetpointType = 0																		// Тип уставки
+					end if
+					break
+				end select
+	else 																										// Если не один источник уставок не подошол, обнуляем переменную
+		Setpoint = 0
+	end if
+	SetDataEx(Setpoint, "Local HMI", "01Setpoint", 1)				// Текущ. уставка давления
+	SetDataEx(SetpointType, "Local HMI", "01SetpointType", 1)		// Тип уставки
+	SetDataEx(DayOfTheWeek, "Local HMI", "01DayOfTheWeek", 1)		// Текущий день недели
+	SetDataEx(DayType, "Local HMI", "01DayType", 1)					// Текущий тип дня
+end macro_command

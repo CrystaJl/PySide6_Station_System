@@ -1,0 +1,148 @@
+//******************************************************************
+//|	Скрипт инициализации. Задает адреса частотников в modbus,      |
+//| отображает, скрывает насосы в зависимости от лицензии.		   |
+//| -------------------------------------------------------------- |
+//|	Условие выполнения: Нет									       |
+//|		- Откл. когда бит: 								           |
+//|		- Имя плк:                                                 |
+//|		- Адрес:	 									   		   |
+//|	Однократное выполнение при старте панели: Да	               |
+//|	Период. вып.: Нет 											   |
+//|	Интервал времени: 100										   |
+//******************************************************************
+
+
+
+sub SetSingleHoldingFC(unsigned short AdresRegister, unsigned short Parametr)
+    SetDataEx(Parametr, "ABB_PCH", 4x, 2#AdresRegister, 1)
+    SetDataEx(Parametr, "ABB_PCH", 4x, 3#AdresRegister, 1)
+    SetDataEx(Parametr, "ABB_PCH", 4x, 4#AdresRegister, 1)
+    SetDataEx(Parametr, "ABB_PCH", 4x, 5#AdresRegister, 1)
+    SetDataEx(Parametr, "ABB_PCH", 4x, 6#AdresRegister, 1)
+    SetDataEx(Parametr, "ABB_PCH", 4x, 7#AdresRegister, 1)
+end Sub
+
+// Определяем с каким ПЧ мы имеем дело 0 = Неизвестный ПЧ; 1 = ABB ACS310; 2 = ABB ACS580; 3 = Danfoss FC-051; 4 = ABB ACQ580;
+sub unsigned short Search_FC()
+    unsigned short search[3]={0,0,0}
+	GetDataEx(search[0], "ABB_PCH", 4x, 2#3301, 1)
+	if (search[0] == 0x2101) or (search[0] == 0x2102) then
+		return 1                                        // ABB ACS310
+	end if
+	GetDataEx(search[0], "ABB_PCH", 4x, 2#702, 1)
+	if (search[0] == 0x07E6) then
+		return 2                                        // ABB ACS580
+	end if
+	GetDataEx(search[0], "ABB_PCH", 4x, 2#702, 1)
+	if (search[0] == 0x0838) then
+		return 4                                        // ABB ACQ580
+	end if
+	GetDataEx(search[0], "ABB_PCH", 4x, 2#15399, 3)
+	if (search[0] == 0x4643) and (search[1] == 0x2d30) and (search[2] == 0x3531) then
+		return 3                                        // Danfoss FC-051
+	end if
+	return 0                                            // Не удалось определить FC
+end Sub
+
+macro_command main()
+    unsigned short FCModel=0, SoftFillingOutControl=0, QuantityPump=0
+    SoftFillingOutControl = 1
+    SetDataEx(SoftFillingOutControl, "Local HMI", "80SoftFillingOutControl", 1)		        // Биты управления алгоритма плавного наполнения.
+
+    GetDataEx(QuantityPump, "Local HMI", "19QuantityPump", 1)	                        // Общее количество насосов в системе
+    // ограничиваем количество насосов на минимальном
+    if QuantityPump < 1 then
+        QuantityPump = 1
+        SetDataEx(QuantityPump, "Local HMI", "19QuantityPump", 1)	                        // Общее количество насосов в системе
+        SetDataEx(QuantityPump, "Local HMI", "19WorkingQuantityPump", 1)                    // Количество рабочих насосов
+    end if
+
+    GetDataEx(FCModel, "Local HMI", "150FCModel", 1) // Получаем текущию модель ПЧ
+    if FCModel == 0 then
+        FCModel = Search_FC()
+        SetDataEx(FCModel, "Local HMI", "150FCModel", 1)
+    end if
+    if  FCModel == 1 then                 // Если ABB ACS310
+        SetSingleHoldingFC(5309, 103)     // Параметр 5310 = 103 (Что значит что в 5-м регистре будет храниться значение параметра 103-выходная частота)
+        SetSingleHoldingFC(5310, 120)     // Параметр 5311 = 120 (Что значит что в 6-м регистре будет храниться значение параметра 120-Значение АВХ1)
+        SetSingleHoldingFC(5311, 121)     // Параметр 5312 = 120 (Что значит что в 7-м регистре будет храниться значение параметра 121-Значение АВХ2)
+        SetSingleHoldingFC(5312, 160)     // Параметр 5312 = 120 (Что значит что в 8-м регистре будет храниться значение параметра 160-Состояние ЦВХ)
+        SetSingleHoldingFC(5313, 138)     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Выяснить зачем мне это !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        SetSingleHoldingFC(1000, 10)      // Параметр 1001 = 10 (1001-команды внешн. 1 = 10-Управление по шине)
+        SetSingleHoldingFC(1001, 10)      // Параметр 1002 = 1 (1002-команды внешн. 2 = 1-ЦВХ1)
+        SetSingleHoldingFC(1101, 1)       // Параметр 1102 = 1 (1103-Выбор внешн. 1/2 = 1-ЦВХ1)
+        SetSingleHoldingFC(1102, 8)       // Параметр 1103 = 8 (1103-источник задания 1 = 8-Шина FBUS)
+        SetSingleHoldingFC(1200, 1)       // Параметр 1201 = 1 (1201-Выбор фикс. скор. = 1-ЦВХ1)
+        SetSingleHoldingFC(1201, 400)     // Параметр 1202 = 1 (1201-Фикс. скорость 1 = 400-40Гц)
+        SetSingleHoldingFC(1603, 8)       // Параметр 1604 = 8 (1604-выбор сброса отказов = 8-Шина FBUS)
+        SetSingleHoldingFC(1803, 0)       // Параметр 1804 = 0 (1804-Режим трвых = 0-Цифровой)
+        SetSingleHoldingFC(1804, 7)       // Параметр 1805 = 0 (1805-Сигнал цвых = 7-Работа)
+        SetSingleHoldingFC(2200, 0)       // Параметр 2201 = 0 (2201-Выбор ускорения замедления 1/2 = 0-Не выбран)
+        SetSingleHoldingFC(3017, 1)       // Параметр 3018 = 0 (3018-Функция ошбки связи = 1-Отказ)
+        SetSingleHoldingFC(3018, 30)      // Параметр 3019 = 0 (3019-Время ошбки связи = 30-3сек)
+        SetSingleHoldingFC(1606, 1)       // Сохранение параметров
+    else if FCModel == 2 then             // Если ABB ACS580
+        SetSingleHoldingFC(5813, 1)
+        SetSingleHoldingFC(5815, 30)
+        SetSingleHoldingFC(5824, 5)
+        SetSingleHoldingFC(5825, 5)
+        SetSingleHoldingFC(1911, 1)
+        SetSingleHoldingFC(1913, 1)
+        SetSingleHoldingFC(2000, 14)
+        SetSingleHoldingFC(2002, 0)
+        SetSingleHoldingFC(2003, 0)
+        SetSingleHoldingFC(2210, 0)
+        SetSingleHoldingFC(2221, 0)
+        SetSingleHoldingFC(2222, 0)
+        SetSingleHoldingFC(2810, 8)
+        SetSingleHoldingFC(2821, 0)
+        SetSingleHoldingFC(2822, 0)
+        SetSingleHoldingFC(1023, 14)
+        SetSingleHoldingFC(9606, 1)        // Сохранение параметров (Параметр 96.07 = 1 - Save).
+    else if FCModel == 3 then              // Если Danfoss FC-051
+	    SetSingleHoldingFC(64, 1)          // Разрешаем записть в EEPROM
+        SetSingleHoldingFC(3149, 11)       // Источник задания 1 = только по Mudbus RTU.
+        SetSingleHoldingFC(3159, 0)        // Источник задания 2 = Нет
+        SetSingleHoldingFC(3169, 0)        // Источник задания 3 = Нет
+        SetSingleHoldingFC(5099, 0)        // Цифровой вход 18 = Нет функции.
+        SetSingleHoldingFC(5109, 0)        // Цифровой вход 19 = Нет функции.
+        SetSingleHoldingFC(5119, 0)        // Цифровой вход 27 = Нет функции.
+        SetSingleHoldingFC(5129, 0)        // Цифровой вход 29 = Нет функции.
+        SetSingleHoldingFC(8499, 1)        // Управление выбегом = только по Mudbus RTU.
+        SetSingleHoldingFC(8509, 1)        // Управление быстрым остановом = только по Mudbus RTU.
+        SetSingleHoldingFC(8519, 1)        // Управление торможением постоянным током = только по Mudbus RTU.
+        SetSingleHoldingFC(8529, 1)        // Управление пуском = только по Mudbus RTU.
+        SetSingleHoldingFC(8539, 1)        // Управление реверсом = только по Mudbus RTU.
+        SetSingleHoldingFC(8549, 1)        // Управление Набором параметров = только по Mudbus RTU.
+        SetSingleHoldingFC(8559, 1)        // Управление выбором предустановленного значеня = только по Mudbus RTU.
+        SetSingleHoldingFC(8009, 2)        // Источник командного слова = только по Mudbus RTU.
+        SetSingleHoldingFC(5399, 1)        // Условие срабатывания реле = Авария
+        SetSingleHoldingFC(64, 0)          // Запрещаем записть в EEPROM
+    else if FCModel == 4 then              // ABB ACQ580
+        SetSingleHoldingFC(1023, 14)       // 10.24 Источник RO1, [14]-Отказ.
+        SetSingleHoldingFC(1214, 10)       // 12.15 Выбор едениц для AI1, [10]-мА.
+        SetSingleHoldingFC(1216, 4000)     // 12.17 Мин AI1, [4.000]-мА.
+        SetSingleHoldingFC(1217, 20000)    // 12.18 Макс AI1, [20.000]-мА.
+        SetSingleHoldingFC(1224, 10)       // 12.25 Выбор едениц для AI2, [10]-мА.
+        SetSingleHoldingFC(1226, 4000)     // 12.27 Мин AI2, [4.000]-мА.
+        SetSingleHoldingFC(1227, 20000)    // 12.28 Макс AI2, [20.000]-мА.
+        SetSingleHoldingFC(2000, 14)       // 20.01 Команды Внешн1, [14]-Встроенная шинаFieldbus.
+        SetSingleHoldingFC(2002, 0)        // 20.03 Источник Вх1 Внешн1, [0]-Не выбрано.
+        SetSingleHoldingFC(2003, 0)        // 20.04 Источник Вх2 Внешн1, [0]-Не выбрано.
+        SetSingleHoldingFC(2103, 1)        // 21.04 Emergency stop mode, [1]-Coast stop (Off2).
+        SetSingleHoldingFC(2210, 0)        // 22.11 Зад. скор. 1 для Внешн1, [0]-Ноль.
+        SetSingleHoldingFC(2221, 0)        // 22.22 Выбор пост. скорости 1, [0]-Не выбрано.
+        SetSingleHoldingFC(2222, 0)        // 22.23 Выбор пост. скорости 2, [0]-Не выбрано.
+        SetSingleHoldingFC(2810, 8)        // 28.11 Задание част. 1 для Внешн1, [8]-Задание1 EFB.
+        SetSingleHoldingFC(2821, 0)        // 28.22 Выбор пост. частоты 1, [0]-Не выбрано.
+        SetSingleHoldingFC(2822, 0)        // 28.23 Выбор пост. частоты 2, [0]-Не выбрано.
+        SetSingleHoldingFC(5813, 1)        // 58.14 Действия при потере связи, [1]-Отказ.
+        SetSingleHoldingFC(5815, 30)       // 58.16 Время потери связи, [30]-3,0сек.
+        SetSingleHoldingFC(5824, 5)        // 58.25 Профиль управления, [5]-Профиль DCU.
+        SetSingleHoldingFC(5825, 5)        // 58.26 Тип задания 1 EFB, [5]-Частота.
+        SetSingleHoldingFC(9606, 1)        // 96.07 Сохранение параметров, [1]-Сохранить.
+    else                                   // Если ПЧ не распознан
+        FCModel = 0
+        SetDataEx(FCModel, "Local HMI", "150FCModel", 1)
+    end if
+end macro_command

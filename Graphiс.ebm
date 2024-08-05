@@ -1,0 +1,318 @@
+unsigned short temp=0, y=0, i=0
+Bool TempBool=0
+unsigned int SysMs=0
+unsigned short QuantityPump=0, Mode=0, FConverterPoweredPumps=0, MainsPoweredPumps=0
+unsigned short LowerPipeline=0, UpperPipeline=0, Pump[6]={0,0,0,0,0,0}, StartPumpDetection[6]={0,0,0,0,0,0}, FCIcon[6]={0,0,0,0,0,0}
+unsigned short AlarmWord1=0, StatusWord1=0, lock=0, AlarmNasos=0, SoftFillingOutControl=0, WarningWord1=0
+unsigned short FrequencySetpoint=0, PumpStarted=0, PumpStartConfirmationFrequency=0, AlarmNotStartPump=0, CycleAlarmNotStartPump=0
+unsigned short BaseWindow=0
+float TempFloat=0
+macro_command main()
+    FILL(Pump[0], 0, 6)
+    FILL(StartPumpDetection[0], 0, 6)
+    FILL(FCIcon[0], 0, 6)
+    GetDataEx(Pump[0], "Local HMI", "60Pump1", 6)                                                               // Насос анимация 1
+    GetDataEx(QuantityPump, "Local HMI", "19QuantityPump", 1)	                                                // Общее количество насосов в системе
+    GetDataEx(Mode, "Local HMI", "01Mode", 1)				                                                    // Режим работы
+    GetDataEx(FConverterPoweredPumps, "Local HMI", "01FConverterPoweredPumps", 1) 		                        // Кол-во насосов работающих от сети
+	GetDataEx(MainsPoweredPumps, "Local HMI", "01MainsPoweredPumps", 1) 				                        // Кол-во насосов работающих от ПЧ
+    GetDataEx(AlarmWord1, "Local HMI", "09AlarmWord1", 1)                                                       // Получаем слово аварий
+    GetDataEx(StatusWord1, "Local HMI", "09StatusWord1", 1)                                                     // Статусы системы
+    GetDataEx(lock, "Local HMI", "09lock", 1)                                                                   // Различные блокировки
+    GetDataEx(AlarmNasos, "Local HMI", "09AlarmNasos", 1)                                                       // Получаем общие аварии насосов
+    GetDataEx(SoftFillingOutControl, "Local HMI", "80SoftFillingOutControl", 1)		                            // Биты управления алгоритма плавного наполнения.
+    GetDataEx(FrequencySetpoint, "Local HMI", "70FrequencySetpoint", 1)				                            // Частота задание
+    GetDataEx(PumpStarted, "Local HMI", "01PumpStarted", 1)								                        // Сигналы подтверждения запуска насосов.
+    GetDataEx(PumpStartConfirmationFrequency, "Local HMI", "14PumpStartConfirmationFrequency", 1)				// Частота отслеживания подтверждения запуска насоса
+    GetDataEx(AlarmNotStartPump, "Local HMI", "09AlarmNotStartPump", 1)											// Аварии по отсутствию подтверждения пуска
+    GetDataEx(CycleAlarmNotStartPump, "Local HMI", "09CycleAlarmNotStartPump", 1)								// Циклические аварии по отсутствию запуска насоса (Критические аварии)
+    GetDataEx(SysMs, "Local HMI", LW, 9030, 1)																	// Системное время в ms шаг 100 ms
+    GetDataEx(BaseWindow, "Local HMI", LW, 9050, 1)                                                             // идентификатор текущего базового окна
+//**********************************************************************************************************************************************************************************
+// Трубопровод
+//**********************************************************************************************************************************************************************************
+    if Mode == 0x0 then                                                                 // если режим стоп
+        UpperPipeline = QuantityPump - 1                                                // Верхний трубопровод. Просто серый
+        LowerPipeline = QuantityPump - 1                                                // Нижний трубопровод. Просто серый
+    else                                                                                // Если автоматический режим
+        if AlarmWord1 & 0x4 or AlarmWord1 & 0x8 then                                    // Проверяем критическое давление
+            UpperPipeline = (QuantityPump - 1) + 18                                     // Верхний трубопровод выставляем критическое давление
+        else if SoftFillingOutControl & 0x2 then                                        // проверяем режим наполнения
+            UpperPipeline = (QuantityPump - 1) + 12                                     // Выставляем режим наполнения
+        else if MainsPoweredPumps > 0 or  FConverterPoweredPumps > 0  then              // Проверяем запущен ли какойто из насосов или включон спящий режим
+            UpperPipeline = (QuantityPump - 1) + 6
+        else
+            UpperPipeline = QuantityPump - 1                                            // Верхний трубопровод. Просто серый
+        end if
+        // Нижний трубопровод
+        if AlarmWord1 & 0x1 or AlarmWord1 & 0x2 then                                    // Сухой ход и циклический сухой ход
+            LowerPipeline = (QuantityPump - 1) + 18                                     // Красный трубопровод
+        else if (WarningWord1 & 0x1) or (WarningWord1 & 0x2) then                       // Низкое давление на входе
+            LowerPipeline = (QuantityPump - 1) + 12                                     // Оранжевый трубопровод
+        else
+            LowerPipeline = (QuantityPump - 1) + 6                                      // Нижний трубопровод. Просто серый
+        end if
+    end if
+//**********************************************************************************************************************************************************************************
+// Насосы
+//**********************************************************************************************************************************************************************************
+    y = 0
+	i = 1
+    while y < QuantityPump
+        if lock & i then                                                                // Проверяем блокировки
+            Pump[y] = 2                                                                 // Выставляем блокировки насосов
+        else if AlarmNasos & i then                                                     // Проверяем наличие аварий
+            Pump[y] = 3                                                                 // Выставляем аварию на насосе (Красный)
+        else if Mode == 2 then                                                             // Проверяем работает ли насос в ручном режиме
+            if Pump[y] < 20 or Pump[y] >= 27 then
+                Pump[y] = 20
+            else
+                Pump[y] = Pump[y] + 1
+            end if
+        else if FConverterPoweredPumps & i then                                         // Проверяем работает ли насос от  ПЧ
+            if Pump[y] < 4 or Pump[y] >= 11 then
+                Pump[y] = 4
+            else
+                Pump[y] = Pump[y] + 1
+            end if
+        else if MainsPoweredPumps & i then                                              // Проверяем работает ли насос от сети
+            if Pump[y] < 12 or Pump[y] >= 19 then
+                Pump[y] = 12
+            else
+                Pump[y] = Pump[y] + 1
+            end if
+        else                                                                            // Значит насос выключен
+            Pump[y] = 1
+        end if
+
+		y = y + 1 					                                                    // Десятичный перебор
+		i = i<<1 					                                                    // Двоичный перебор
+	wend
+
+    y = 6
+    while y > QuantityPump and y >= 1
+        y = y - 1 					                                                    // Десятичный перебор
+        Pump[y] = 0                                                                     // Делаем не задеистваные насосы серыми
+	wend
+//**********************************************************************************************************************************************************************************
+// Значки ПЧ
+//**********************************************************************************************************************************************************************************
+    y = 0
+    i = 1
+    while y < QuantityPump
+       if FConverterPoweredPumps & i then                                               // Проверяем работает ли насос от  ПЧ
+            FCIcon[y] = 3                                                               // Значек ПЧ зеленый
+       else
+            FCIcon[y] = 1                                                               // Без значка ПЧ (зеленая полосо)
+       end if
+		y = y + 1 					                                                    // Десятичный перебор
+		i = i<<1 					                                                    // Двоичный перебор
+	wend
+    y = 6
+    while y > QuantityPump and y >= 1
+        y = y - 1 					                                                    // Десятичный перебор
+        FCIcon[y] = 0                                                                   // Делаем не задеистваные значки ПЧ полностью черными
+	wend
+//**********************************************************************************************************************************************************************************
+// РПД
+//**********************************************************************************************************************************************************************************
+    y = 0
+	i = 1
+    while y < QuantityPump
+        if (AlarmNotStartPump & i) or (CycleAlarmNotStartPump & i) then                 // Если есть авари по запуску
+            StartPumpDetection[y] = 4                                                   // Выставляем аварию запуска
+        else if PumpStarted & i then                                                    // Есть сигнал о сработке РПД
+            StartPumpDetection[y] = 2                                                   // Выставляем сигнал сработка РПД (Зеленый)
+        else If FConverterPoweredPumps & i then                                         // Если насос работает от ПЧ
+            if FrequencySetpoint > PumpStartConfirmationFrequency then                  // Если частота превысила значения срабатывания РПД
+                StartPumpDetection[y] = 3                                               // Ожидание сработки РПД (Оранжевый)
+            else
+                StartPumpDetection[y] = 1                                               // Нейтральное состояние (Черный)
+            end if
+        else if MainsPoweredPumps & i then                                              // Если насос работает от сети
+                StartPumpDetection[y] = 3                                               // Ожидание сработки РПД (Оранжевый)
+        else if PumpStarted & i then
+            StartPumpDetection[y] = 2                                                   // Выставляем сигнал сработка РПД (Зеленый)
+        else
+            StartPumpDetection[y] = 1                                                   // Нейтральное состояние (Черный)
+        end if
+		y = y + 1 					                                                    // Десятичный перебор
+		i = i<<1 					                                                    // Двоичный перебор
+	wend
+    y = 6
+    while y > QuantityPump and y >= 1
+        y = y - 1 					                                                    // Десятичный перебор
+        StartPumpDetection[y] = 0                                                       // Делаем не -задействаные РПД серыми
+	wend
+//**********************************************************************************************************************************************************************************
+// Возврат на главный экран при бездействии
+//**********************************************************************************************************************************************************************************
+bool GraphicTriggersInaction=0
+unsigned short MainWundowTime=0, WindowChangeTrigger=0
+unsigned int IdleUserTime=0
+GetDataEx(MainWundowTime, "Local HMI", "21MainWundowTime", 1)                                       // Время возврата на главный экран
+GetDataEx(IdleUserTime, "Local HMI", "80IdleUserTime", 1)                                           // Время начала фиксации бездействия пользователя
+GetDataEx(GraphicTriggersInaction, "Local HMI", "60GraphicTriggersInaction", 1)
+GetDataEx(WindowChangeTrigger, "Local HMI", "60WindowChangeTrigger", 1)
+if MainWundowTime > 0 then
+    if GraphicTriggersInaction then                                                                 // проверяем тригер последнего нажатия на экран
+        IdleUserTime = SysMs                                                                        // Если было нажатие запоминаем время
+        GraphicTriggersInaction = 0
+    end if
+    if BaseWindow <> 10 and BaseWindow <> 43 then                                                   // проверяем если текущий экран не главный, и не заставка
+        if WindowChangeTrigger <> 10 then                                                           // Защита от несработки триггера
+            if (SysMs >= (IdleUserTime + (MainWundowTime*600))) and (IdleUserTime > 0) then         // Если таймер досчитал до времени возврата на главный
+                WindowChangeTrigger = 10                                                            // возвращаемся на главный экран
+                IdleUserTime = 0
+            else if IdleUserTime <= 0 then
+                IdleUserTime = SysMs 
+            end if
+        else
+            WindowChangeTrigger = 0                                                                 // сброс триггера
+        end if
+    else
+        WindowChangeTrigger = 0                                                                     // сброс триггера
+    end if
+else
+    GraphicTriggersInaction = 0
+end if
+
+
+
+//**********************************************************************************************************************************************************************************
+// Отоброжение событий на главном при появлении аварии
+//**********************************************************************************************************************************************************************************
+// Надо подсчитать все аварии, и сравнить с предыдущим значением
+
+unsigned short AlarmSum=0            // Сумма аварий
+unsigned short AlarmSumPrev=0        // Сумма аварий предыдущая
+GetDataEx(AlarmSumPrev, "Local HMI", "60AlarmSumPrev", 1)           // Сумма аварий предыдущая
+GetDataEx(temp, "Local HMI", "09AlarmWord1", 1) 
+for i = 0 to 15
+    if temp & i then
+        AlarmSum = AlarmSum + 1                             // Увеличиваем количество активных аварий на 1
+    end if
+next
+GetDataEx(temp, "Local HMI", "09AlarmNasos", 1) 
+for i = 0 to 15
+    if temp & i then
+        AlarmSum = AlarmSum + 1                             // Увеличиваем количество активных аварий на 1
+    end if
+next
+GetDataEx(temp, "Local HMI", "09AlarmFC", 1) 
+for i = 0 to 15
+    if temp & i then
+        AlarmSum = AlarmSum + 1                             // Увеличиваем количество активных аварий на 1
+    end if
+next
+GetDataEx(temp, "Local HMI", "09AlarmCicleFC", 1) 
+for i = 0 to 15
+    if temp & i then
+        AlarmSum = AlarmSum + 1                             // Увеличиваем количество активных аварий на 1
+    end if
+next
+GetDataEx(temp, "Local HMI", "09AlarmNotStartPump", 1) 
+for i = 0 to 15
+    if temp & i then
+        AlarmSum = AlarmSum + 1                             // Увеличиваем количество активных аварий на 1
+    end if
+next
+GetDataEx(temp, "Local HMI", "09CycleAlarmNotStartPump", 1) 
+for i = 0 to 15
+    if temp & i then
+        AlarmSum = AlarmSum + 1                             // Увеличиваем количество активных аварий на 1
+    end if
+next
+GetDataEx(temp, "Local HMI", "09AZDAlarm", 1) 
+for i = 0 to 15
+    if temp & i then
+        AlarmSum = AlarmSum + 1                             // Увеличиваем количество активных аварий на 1
+    end if
+next
+GetDataEx(temp, "Local HMI", "09SensorsAlarm", 1) 
+for i = 0 to 15
+    if temp & i then
+        AlarmSum = AlarmSum + 1                             // Увеличиваем количество активных аварий на 1
+    end if
+next
+GetDataEx(temp, "Local HMI", "09AlarmModbus", 1) 
+for i = 0 to 15
+    if temp & i then
+        AlarmSum = AlarmSum + 1                             // Увеличиваем количество активных аварий на 1
+    end if
+next
+if AlarmSum > AlarmSumPrev then                             // Если появилась новая авария отображаем список сообщений на главном экране
+    temp = 59                                               // Экран событий
+    SetDataEx(temp, "Local HMI", "60NumberDisplayMain", 1)
+end if
+SetDataEx(AlarmSum, "Local HMI", "60AlarmSumPrev", 1)           // Сумма аварий предыдущая
+
+//**********************************************************************************************************************************************************************************
+// Заставка
+//**********************************************************************************************************************************************************************************
+unsigned short ScreensaverPosition[7]={0,0,0,0,0,0,0}, ScreensaverPositionCurrent=0
+unsigned int ScreensaverPositionTime=0
+GetDataEx(ScreensaverPositionTime, "Local HMI", "80ScreensaverPositionTime", 1)
+GetDataEx(ScreensaverPositionCurrent, "Local HMI", "80ScreensaverPositionCurrent", 1)
+GetDataEx(ScreensaverPosition[0], "Local HMI", "80ScreensaverPosition1", 7)
+ScreensaverPosition[ScreensaverPositionCurrent] = 44
+If SysMs >= ScreensaverPositionTime + 30 then                                           // Если пора менять положение окна показателей в заставке
+    ScreensaverPositionTime = SysMs
+    FILL(ScreensaverPosition[0], 0, 7)
+    ScreensaverPositionCurrent = ScreensaverPositionCurrent + 1
+    if ScreensaverPositionCurrent > 5 then
+        ScreensaverPositionCurrent = 0
+    end if
+end if
+GetDataEx(TempBool, "Local HMI", LB, 10, 1)                                             // Включина ли подстветка
+If TempBool then
+    if BaseWindow == 43 then
+        if WindowChangeTrigger == 10 then                                               // Защита от несработки триггера
+            WindowChangeTrigger = 0                                                     // Убераем заставку, переходом на главный
+        else
+            WindowChangeTrigger = 10
+        end if
+    end if
+end if
+SetDataEx(ScreensaverPositionTime, "Local HMI", "80ScreensaverPositionTime", 1)
+SetDataEx(ScreensaverPositionCurrent, "Local HMI", "80ScreensaverPositionCurrent", 1)
+SetDataEx(ScreensaverPosition[0], "Local HMI", "80ScreensaverPosition1", 7)
+
+//**********************************************************************************************************************************************************************************
+// Шкалы трендов
+//**********************************************************************************************************************************************************************************
+    unsigned short Scale1=0, Scale2=0, Scale3=0, Scale4=0, Scale5=0, Scale6=0, ScaleNumber=0
+    GetDataEx(ScaleNumber, "Local HMI", "70ScaleNumber", 1)                             // Номер шкалы
+    if ScaleNumber == 0 or ScaleNumber == 2 or ScaleNumber == 3 then
+        GetDataEx(temp, "Local HMI", "16RangeDischargeSensor", 1)                       // Датчик давления на нагнетании верхняя граница
+    else if ScaleNumber == 1 then
+        GetDataEx(temp, "Local HMI", "16RangeSuctionSensor", 1)                         // Датчик давления на всасе верхняя граница
+    else if ScaleNumber == 4 or ScaleNumber == 5 then                                   // Частота
+        GetDataEx(temp, "Local HMI", "11MaximumFrequency", 1)                           // Максимальная частота
+        temp = temp * 10
+    end if
+    Scale1 = 0
+    Scale2 = temp * 0.2
+    Scale3 = temp * 0.4
+    Scale4 = temp * 0.6
+    Scale5 = temp * 0.8
+    Scale6 = temp
+    SetDataEx(Scale1, "Local HMI", "70Scale1", 1)                                       // Значение шкалы 1 (всегда в нуле)
+    SetDataEx(Scale2, "Local HMI", "70Scale2", 1)                                       // Значение шкалы 2
+    SetDataEx(Scale3, "Local HMI", "70Scale3", 1)                                       // Значение шкалы 3
+    SetDataEx(Scale4, "Local HMI", "70Scale4", 1)                                       // Значение шкалы 4
+    SetDataEx(Scale5, "Local HMI", "70Scale5", 1)                                       // Значение шкалы 5
+    SetDataEx(Scale6, "Local HMI", "70Scale6", 1)                                       // Значение шкалы 6
+
+
+    SetDataEx(LowerPipeline, "Local HMI", "60LowerPipeline", 1)                         // Нижний трубопровод анимация
+    SetDataEx(UpperPipeline, "Local HMI", "60UpperPipeline", 1)                         // Верхний трубопровод анимация
+    SetDataEx(Pump[0], "Local HMI", "60Pump1", 6)                                       // Насос анимация 1
+    SetDataEx(StartPumpDetection[0], "Local HMI", "60StartPumpDetection1", 6)           // Индикация сигнала наличия подтверждения пуска насоса
+    SetDataEx(FCIcon[0], "Local HMI", "60FCIcon1", 6)                       // Иконки ПЧ на насосах
+
+
+    SetDataEx(WindowChangeTrigger, "Local HMI", "60WindowChangeTrigger", 1)     // Триггер смены экрана (Указываем номер экрана для смены)
+    SetDataEx(IdleUserTime, "Local HMI", "80IdleUserTime", 1)
+    SetDataEx(GraphicTriggersInaction, "Local HMI", "60GraphicTriggersInaction", 1)
+end macro_command

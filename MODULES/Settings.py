@@ -1,9 +1,12 @@
-from PySide6.QtWidgets import QPushButton, QLabel
-from PySide6.QtGui import QIcon, QPixmap, QPainter
+from PySide6.QtWidgets import QPushButton, QLabel, QApplication, QGraphicsScene, QGraphicsLineItem, QVBoxLayout, QWidget, QMainWindow, QGraphicsView
+from PySide6.QtGui import QIcon, QPixmap, QPainter, QPen
 from PySide6.QtCore import Qt, QTimer, QTime, QDateTime
 from PySide6.QtSvg import QSvgRenderer
 import json
 import os
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+
 
 
 class System_Station_Main_window_settings:
@@ -1718,3 +1721,64 @@ class Update_Attribute_Window_settings(Global_Keypad_settings):
 
         # обновляем текст, если все проверки пройдены
         self.text_to_aply_label.setText(new_text)
+        
+        
+        
+#######################################################################################################################################################
+class GraphsViewer:
+    def __init__(self, main_graphics_view):
+        self.main_graphics_view = main_graphics_view
+
+    def load_json_data(self, json_file):
+        with open(json_file, 'r') as file:
+            data = json.load(file)
+        return data
+
+    def update_graph(self, graphics_view, json_file):
+        data = self.load_json_data(json_file)
+        scene = graphics_view.scene()
+        scene.clear()
+        pen = QPen(Qt.blue)
+        if 'values' in data:
+            values = data['values']
+            for i in range(len(values) - 1):
+                line = QGraphicsLineItem(i * 100, values[i], (i + 1) * 100, values[i + 1])
+                line.setPen(pen)
+                scene.addItem(line)
+            
+            # Обновление границ сцены для адаптивного отображения
+            scene.setSceneRect(0, min(values), len(values) * 100, max(values))
+
+    def on_modified(self, event, graphics_view, json_file):
+        if event.src_path.endswith(json_file):
+            self.update_graph(graphics_view, json_file)
+
+    def main(self):
+        json_file = 'testing.json'
+        
+        graphics_view = self.main_graphics_view
+        graphics_view.setObjectName("main_graphicsView")
+        
+        scene = QGraphicsScene(graphics_view)
+        graphics_view.setScene(scene)
+        
+        self.update_graph(graphics_view, json_file)
+        
+        def handle_event(event):
+            self.on_modified(event, graphics_view, json_file)
+        
+        class Handler(FileSystemEventHandler):
+            def on_modified(self, event):
+                handle_event(event)
+        
+        observer = Observer()
+        event_handler = Handler()
+        observer.schedule(event_handler, path='.', recursive=False)
+        observer.start()
+        
+        timer = QTimer()
+        timer.timeout.connect(lambda: self.update_graph(graphics_view, json_file))
+        timer.start(1000)  # Обновление каждую секунду
+
+
+#######################################################################################################################################################

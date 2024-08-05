@@ -1,0 +1,154 @@
+﻿
+//******************************************************************
+//|	Скрипт считает мото часы насосов.                              |
+//| -------------------------------------------------------------- |
+//|	Условие выполнения: Нет									       |
+//|		- Откл. когда бит:							               |
+//|		- Имя плк:                                                 |
+//|		- Адрес:           						   		           |
+//|	Однократное выполнение при старте панели: Нет	               |
+//|	Период. вып.: Да 											   |
+//|	Интервал времени: 1										   	   |
+//******************************************************************
+unsigned short 	i=0, y=0
+unsigned short 	LocalSeconds=0, LocalMinutes=0, LocalHour=0, LocalDay=0, LocalMonth=0, LocalYear=0, LocalWeek=0
+unsigned int 	UnixTime=0, UnixTimePrev=0, UnixTimeDiff = 0
+unsigned short 	UnixHour=0
+
+unsigned short 	TriggerStartStop=0, FConverterPoweredPumps=0, MainsPoweredPumps=0
+
+unsigned short 	PumpNumberOfStarts[6]={0,0,0,0,0,0}, PumpOffSeconds[6]={0,0,0,0,0,0}, PumpRunSeconds[6]={0,0,0,0,0,0}, PumpRunHours[6]={0,0,0,0,0,0}
+unsigned short	HoursSinceLastStartPump[6]={0,0,0,0,0,0}, HoursSinceLastStopPump[6]={0,0,0,0,0,0}, TimeStartPump[6]={0,0,0,0,0,0}, NumberOfStartsPerHour[6]={0,0,0,0,0,0}
+unsigned short 	ArrayHoursSinceLastStartPump[360]={0}
+
+
+unsigned short 	lmos[12]={0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335}
+unsigned short 	mos[12]={0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334}
+unsigned int	days=0
+unsigned int	secs=0
+unsigned short	mon=0
+unsigned short	year=0
+unsigned short 	MONTAB=0
+
+macro_command main()
+	GetDataEx(TriggerStartStop, "Local HMI", "80TriggerStartStop", 1) 					// Триггеры старта насосов
+	GetDataEx(FConverterPoweredPumps, "Local HMI", "01FConverterPoweredPumps", 1) 		// Кол-во насосов работающих от сети
+	GetDataEx(MainsPoweredPumps, "Local HMI", "01MainsPoweredPumps", 1) 				// Кол-во насосов работающих от ПЧ
+	GetDataEx(PumpNumberOfStarts[0], "Local HMI", "150PumpNumberOfStarts1", 6) 			// Кол-во пуск. насосов 1..6
+	GetDataEx(PumpRunHours[0], "Local HMI", "150PumpRunHours1", 6) 						// Наработка часов, насосов 1..6
+	GetDataEx(HoursSinceLastStartPump[0], "Local HMI", "150HoursSinceLastStartPump1", 6) 	// Часов с пуска, насосов 1..6
+	GetDataEx(HoursSinceLastStopPump[0], "Local HMI", "150HoursSinceLastStopPump1", 6) 	// Часов со стопа насоса
+	GetDataEx(PumpRunSeconds[0], "Local HMI", "80PumpRunSeconds1", 6) 					// Наработка насосов 1..6 в секундах
+	GetDataEx(PumpOffSeconds[0], "Local HMI", "80PumpOffSeconds1", 6)					// Наработка насосов выкл. 1..6 в секундах
+	FILL(TimeStartPump[0], 0, 6)
+	FILL(NumberOfStartsPerHour[0], 0, 6)
+
+	GetDataEx(UnixTimePrev, "Local HMI", "80UnixTimePrev", 1) 							// Предыдущее время исполнения алгоритма расчета наработки
+	GetDataEx(ArrayHoursSinceLastStartPump[0], "Local HMI", "80ArrayHoursSinceLastStartPump", 360) // Массив последних включений насосов
+
+	// Перенести в основной алгор, внимание код не оптимезировать оставить вычисление как есть. Иначе произойдет переполнение.
+	GetDataEx(LocalSeconds, "Local HMI", "90LocalSeconds", 1)
+	GetDataEx(LocalMinutes, "Local HMI", "90LocalMinutes", 1)
+	GetDataEx(LocalHour, "Local HMI", "90LocalHour", 1)
+	GetDataEx(LocalDay, "Local HMI", "90LocalDay", 1)
+	GetDataEx(LocalMonth, "Local HMI", "90LocalMonth", 1)
+	GetDataEx(LocalYear, "Local HMI", "90LocalYear", 1)
+	GetDataEx(LocalWeek, "Local HMI", "90LocalWeek", 1)
+
+	// Calculate number of days.
+	mon = LocalMonth - 1
+	year = LocalYear - 1900
+	If ((year%400 == 0) or (year%100 <> 0)) and (year%4==0) then
+		MONTAB = lmos[mon]
+	else
+		MONTAB = mos[mon]
+	end if
+
+	days = (((year - 1) / 4) + MONTAB) - 1
+	days = days + (365 * year)
+	days = days + LocalDay
+	days = days - ((70 * 365) + 17)
+	days = days * 86400
+	//UnixDey = days
+	// Calculate number of seconds.
+	secs  = 3600 * LocalHour
+	secs = secs +(60 * LocalMinutes)
+	secs = secs + LocalSeconds
+	secs = secs + days
+	UnixHour = secs
+	UnixTime = secs
+
+
+	If UnixTime <> UnixTimePrev then 														// Сравниваем предыдущее время с текущим
+		UnixTimeDiff = UnixTime - UnixTimePrev 												// Если есть измениеня вычисляем разницу
+		UnixTimePrev = UnixTime
+	end if
+
+	i = 1
+	y = 0
+	while i < 32																			// Побитовый перебор
+		if (FConverterPoweredPumps | MainsPoweredPumps) & i and not (TriggerStartStop & i) and (FConverterPoweredPumps | MainsPoweredPumps & i) & i then // Подсчет пусков двигателей
+			PumpNumberOfStarts[y] = PumpNumberOfStarts[y] + 1
+			TimeStartPump[y] = UnixHour
+		end if
+		if (FConverterPoweredPumps | MainsPoweredPumps) & i then 							// Подсчет часов работы насоса и часов во включенном состоянии
+			PumpOffSeconds[y] = 0 															// Обнуляем время в выключеном состоянии
+			HoursSinceLastStopPump[y] = 0													// Обнуляем время в выключеном состоянии
+			PumpRunSeconds[y] = PumpRunSeconds[y] + UnixTimeDiff							// Добавляем прошедшие секунды к счетчику
+			if PumpRunSeconds[y] >= 3600 then
+				PumpRunSeconds[y] = 0
+				PumpRunHours[y] = PumpRunHours[y] + 1
+				HoursSinceLastStartPump[y] = HoursSinceLastStartPump[y] + 1					// Увеличиваем счетчик часов на 1
+			end if
+		else																				// Подсчет времени в выключеном состоянии
+			PumpOffSeconds[y] = PumpOffSeconds[y] + UnixTimeDiff 							// Добавляем прошедшие секунды к счетчику
+			HoursSinceLastStartPump[y] = 0 	
+			If PumpOffSeconds[y] >= 3600 then
+				PumpOffSeconds[y] = 0
+				HoursSinceLastStopPump[y] = HoursSinceLastStopPump[y] + 1
+			end if
+		end if
+		i = i<<1
+		y = y + 1
+	wend
+	TriggerStartStop = FConverterPoweredPumps | MainsPoweredPumps 							// Тригер переднего фронта включения насоса, не переносить по коду.
+
+	for i = 0 to 359 																		// Подсчет включений за час
+		if i < 59 then																		// Первый насос
+			y = 0
+		else if i < 119 then																// Второй насос
+			y = 1
+		else if i < 279 then																// Третий насос
+			y = 2
+		else if i < 239 then 																// Четвертый насос
+			y = 3
+		else if i < 299 then 																// Пятый насос
+			y = 4
+		else if i < 359 then 																// Шестой насос
+			y = 5
+		end if
+		if UnixHour - ArrayHoursSinceLastStartPump[i] > 30 and UnixHour >= ArrayHoursSinceLastStartPump[i] or ArrayHoursSinceLastStartPump[i] <= 0 then 		// Если значение отстало более чем на час или равно 0
+			ArrayHoursSinceLastStartPump[i] = TimeStartPump[y]								// Записываем новое значение
+			TimeStartPump[y] = 0
+		else
+			if UnixHour < ArrayHoursSinceLastStartPump[i] then  							// Считаем что произошло переполнение переменной
+				ArrayHoursSinceLastStartPump[i] = 0											// Записываем новое значение
+			end if
+		end if
+		if UnixHour - ArrayHoursSinceLastStartPump[i]  <= 30 and UnixHour >= ArrayHoursSinceLastStartPump[i] then	// Значение попадает в диапазон одного часа
+			NumberOfStartsPerHour[y] = NumberOfStartsPerHour[y] + 1							// + 1 к наработке за час
+		end if
+	next
+
+	SetDataEx(UnixTime, "Local HMI", "01UnixTime", 1)										//Время в unix формате
+	SetDataEx(TriggerStartStop, "Local HMI", "80TriggerStartStop", 1) 						// Триггеры старта насосов
+	SetDataEx(PumpNumberOfStarts[0], "Local HMI", "150PumpNumberOfStarts1", 6) 				// Кол-во пуск. насоса 6
+	SetDataEx(PumpRunHours[0], "Local HMI", "150PumpRunHours1", 6) 							// Наработка часов, насосов 1..6
+	SetDataEx(NumberOfStartsPerHour[0], "Local HMI", "150NumberOfStartsPerHour1", 6) 		// Кол-во пусков за последний час, насосы 1..6
+	SetDataEx(HoursSinceLastStartPump[0], "Local HMI", "150HoursSinceLastStartPump1", 6) 	// Часов с пуска, насосов 1..6
+	SetDataEx(HoursSinceLastStopPump[0], "Local HMI", "150HoursSinceLastStopPump1", 6) 		// Часов со стопа насоса
+	SetDataEx(PumpRunSeconds[0], "Local HMI", "80PumpRunSeconds1", 6) 						// Наработка насосов 1..6 в секундах
+	SetDataEx(PumpOffSeconds[0], "Local HMI", "80PumpOffSeconds1", 6)						// Наработка насосов выкл. 1..6 в секундах
+	SetDataEx(UnixTimePrev, "Local HMI", "80UnixTimePrev", 1) 								// Предыдущее время исполнения алгоритма расчета наработки
+	SetDataEx(ArrayHoursSinceLastStartPump[0], "Local HMI", "80ArrayHoursSinceLastStartPump", 360) // Массив последних включений насосов
+end macro_command

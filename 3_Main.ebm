@@ -1,0 +1,207 @@
+﻿
+
+//**********************************************************************************************************************************************************************************
+// Блок детекции сухого хода
+//**********************************************************************************************************************************************************************************
+
+	Слово отказов 1	09AlarmWord1	16 битное слово данных. Аварии
+	09AlarmDryRunning	Бит 0 = Авария сухой ход
+	09AlarmCycleDryRunning	Бит 1 = Авария циклический сухой ход (Критическая)
+	09AlarmCriticalPressure	Бит 2 = Авария критическое давление
+	09AlarmCycleCriticalPressure	Бит 3 = Авария циклическое критическое давление (Критическая)
+	14DryRunningWarningPressure 																	// Давление предупреждения о сухом ходе
+	14DryRunningEmergencyPressure												// Аварийное давление сухого хода
+	14MaxNumberEmergencyDryRunning 												// Максимальное число аварий сухой ход
+
+	if SuctionPressure < DryRunningWarningPressure then 						// Предупреждение о низком давлении
+
+	else if SuctionPressure < DryRunningEmergencyPressure then 					// Авария Сухой ход
+		If not TempBit then 													// Проверяем запускался ли алгоритм
+
+		else
+			if SysMs >= TempInt + Temp or (TempInt + Temp >= TempInt and SysMs < TempInt) then						// Проверяем пора ли включать сухой ход
+				// Сдрасываем предупреждение сухого хода
+				// Выставляем аварию сухого хода
+			end if
+		end if
+	else
+																				// Сброс параметров
+	end if
+
+		select case temp
+			Case 0																// детекция сухого хода по датчику давления
+				SetDataEx(Reset_bit, "Local HMI", LB, 7201, 1) 					// Убераем уведомление об аварии (на случае изменения типа детекции)
+				GetDataEx(temp, "Local HMI", RW, 1055, 1) 						// Давление аварии сухой ход
+				if BarDD1 <= temp	then										// Проверяем ниже ли давление минимума
+					GetDataEx(TempBit, "Local HMI", LB, 7427, 1)				// Временая переменная детекции сухого хода
+					If not TempBit then 										// Если ниже проверяем запускался ли алгоритм ранее
+						SetDataEx(Set_bit, "Local HMI", LB, 7427, 1)			// Временая переменная детекции сухого хода
+						SetDataEx(SysMs, "Local HMI", LW, 8441, 1) 				// запоминаем время срабатывания алгоритма
+					else														// Если алгоритм запускался
+						SetDataEx(Reset_bit, "Local HMI", LB, 7426, 1)			// СбрасываемВыставляем предупреждение сухого хода
+						GetDataEx(TempInt, "Local HMI", LW, 8441, 1) 			// Время детекции сухого хода
+						GetDataEx(Temp, "Local HMI", RW, 1135, 1)				// Время до включения аварии сухого хода
+						if SysMs >= TempInt + Temp or (TempInt + Temp >= TempInt and SysMs < TempInt) then						// Проверяем пора ли включать сухой ход
+							SuxXodAlarm = 1
+							SetDataEx(SuxXodAlarm, "Local HMI", LB, 7168, 1) 	// Авария сухой ход
+							SetDataEx(Reset_bit, "Local HMI", LB, 7427, 1)		// Временая переменная детекции сухого хода Сбрасываем запуск алгоритма
+							SetDataEx(SysMs, "Local HMI", LW, 8478  , 1) 		// Запоминаем время срабатывания сухого хода
+							GetDataEx(TempBit, "Local HMI", LB, 7463, 1)  		// Получаем предыдущее значенние срабытавания не срабатывания
+							if SuxXodAlarm <> TempBit then 						// Сравниваем предыдущие показания с текущими
+								SetDataEx(Set_bit, "Local HMI", LB, 7463, 1) 	// Временная переменная тригерра для подсчета цикл аварии
+								GetDataEx(temp, "Local HMI", LW, 8480, 1) 		// Получаем предыдущию сумму ошибок
+								temp = temp + 1
+								SetDataEx(temp, "Local HMI", LW, 8480, 1)		// Сохраняем сумму ошибок
+								if temp >= 3 then 								// Если число повторных срабатываний сохого = 3 выставляем циключескую аварию сухого хода
+									CiklAlarmSuxXod = 1
+									SetDataEx(CiklAlarmSuxXod, "Local HMI", LB, 7462, 1)	// Циклическая авария сухого хода
+								end if
+							end if
+						end if
+					end if
+				else 															// Если давление не ниже минимума
+					GetDataEx(temp, "Local HMI", RW, 1137, 1) 					// Давление при предупреждении
+					if 	BarDD1 <= temp then 									// Проверяем ниже ли давление уставки предупреждения
+						SetDataEx(Set_bit, "Local HMI", LB, 7426, 1)			// Выставляем предупреждение сухого хода
+						SetDataEx(Reset_bit, "Local HMI", LB, 7168, 1) 			// Обнуляем ошибку сухого хода
+						SetDataEx(Reset_bit, "Local HMI", LB, 7463, 1) 			// Временная переменная тригерра для подсчета цикл аварии
+						SetDataEx(Reset_bit, "Local HMI", LB, 7427, 1)			// Временая переменная детекции сухого хода
+					else														// Если давление в норме
+						SuxXodAlarm = 0
+						TempInt = 0
+						SetDataEx(TempInt, "Local HMI", LW, 8441, 1) 			// Обнуляем время срабатывания алгоритма
+						SetDataEx(SuxXodAlarm, "Local HMI", LB, 7427, 1)		// Временая переменная детекции сухого хода
+						SetDataEx(SuxXodAlarm, "Local HMI", LB, 7426, 1) 		// обнуляем предупреждение сухого хода
+						SetDataEx(SuxXodAlarm, "Local HMI", LB, 7168, 1) 		// Обнуляем ошибку сухого хода
+						SetDataEx(Reset_bit, "Local HMI", LB, 7463, 1) 			// Временная переменная тригерра для подсчета цикл аварии
+						GetDataEx(Tempint, "Local HMI", LW, 8478  , 1) 			// Штамп времени сухого хода
+						if SysMs >= Tempint + 6000 or (TempInt + 6000 >= TempInt and SysMs < TempInt) then 						// Проверяем пора ли обнулять сумму ошибок Сухого хода
+							temp = 0
+							SetDataEx(temp, "Local HMI", LW, 8480, 1) 			// Если пора обнуляем
+						end if
+					end if 	
+				end if
+				break
+			Case 1																// детекция сухого хода по датчику давления только Информация
+				SuxXodAlarm = 0
+				CiklAlarmSuxXod = 0
+				SetDataEx(SuxXodAlarm, "Local HMI", LB, 7168, 1) 				// Обнуляем ошибку сухого хода (на случий изменения типа детекции)
+				SetDataEx(CiklAlarmSuxXod, "Local HMI", LB, 7462, 1)			// обнуляем циклическую авария сухого хода
+				GetDataEx(temp, "Local HMI", RW, 1055, 1) 						// Давление аварии сухой ход
+				if BarDD1 <= temp then											// Проверяем ниже ли давление минимума
+					GetDataEx(TempBit, "Local HMI", LB, 7427, 1)				// Временая переменная детекции сухого хода
+					If not TempBit then 										// Если ниже проверяем запускался ли алгоритм ранее
+						SetDataEx(Set_bit, "Local HMI", LB, 7427, 1)			// Временая переменная детекции сухого хода
+						SetDataEx(SysMs, "Local HMI", LW, 8441, 1) 				// запоминаем время срабатывания алгоритма
+					else														// Если алгоритм запускался
+						SetDataEx(Reset_bit, "Local HMI", LB, 7426, 1)			// Сбрасываем предупреждение сухого хода
+						GetDataEx(TempInt, "Local HMI", LW, 8441, 1) 			// Время детекции сухого хода
+						GetDataEx(Temp, "Local HMI", RW, 1135, 1)				// Время до включения аварии сухого хода
+						if SysMs >= TempInt + Temp	or (TempInt + Temp >= TempInt and SysMs < TempInt) then						// Проверяем пора ли включать сухой ход
+							SetDataEx(Set_bit, "Local HMI", LB, 7201, 1) 		// Авария сухой ход (только уведомлние)
+							SetDataEx(Reset_bit, "Local HMI", LB, 7427, 1)		// Временая переменная детекции сухого хода Сбрасываем запуск алгоритма
+						end if
+					end if	
+				else 															// Если давление не ниже минимума
+					GetDataEx(temp, "Local HMI", RW, 1137, 1) 					// Давление при предупреждении
+					if 	BarDD1 <= temp then 									// Проверяем ниже ли давление уставки предупреждения
+						SetDataEx(Set_bit, "Local HMI", LB, 7426, 1)			// Выставляем предупреждение сухого хода
+						SetDataEx(Reset_bit, "Local HMI", LB, 7201, 1) 			// Обнуляем ошибку сухого хода (только уведомлние)
+						SetDataEx(Reset_bit, "Local HMI", LB, 7427, 1)			// Временая переменная детекции сухого хода
+					else														// Если давление в норме
+						SetDataEx(Reset_bit, "Local HMI", LB, 7427, 1)			// Временая переменная детекции сухого хода
+						SetDataEx(Reset_bit, "Local HMI", LB, 7426, 1) 			// обнуляем предупреждение сухого хода (предупреждение)
+						SetDataEx(Reset_bit, "Local HMI", LB, 7201, 1) 			// Обнуляем ошибку сухого хода (только уведомлние)
+						TempInt = 0
+						SetDataEx(TempInt, "Local HMI", LW, 8441, 1) 			// Обнуляем время срабатывания алгоритма
+					end if 	
+				end if
+			break
+			Case 2
+				CiklAlarmSuxXod = 0
+				SetDataEx(CiklAlarmSuxXod, "Local HMI", LB, 7462, 1)			// обнуляем циклическую авария сухого хода
+				SetDataEx(Reset_bit, "Local HMI", LB, 7426, 1) 					// обнуляем предупреждение сухого хода
+				SetDataEx(Reset_bit, "Local HMI", LB, 7168, 1) 					// Обнуляем ошибку сухого хода
+			break
+		end select
+
+
+
+
+
+
+		GetDataEx(TempBit, "Local HMI", RW_Bit, 27, 1) 														// Разрешение, запрет работы спящего режима
+		if TempBit then 																					// Проверяеи разрешено ли энергосбережение
+			if not ZapolnenieBit and not ObrivDD2 then
+				GetDataEx(SleepAlgoritm, "Local HMI", LB, 7458, 1)											// Идентификатор запуска алгоритма сна
+				if BarDD2 >= Setpoint - 10 then 															// Провяряем достигло ли давление задания + гистерезис если достигло
+					if not SleepAlgoritm then 																// проверяем запущен ли алгоритм сна если не запущен
+						GetDataEx(IterSumSleep, "Local HMI", LW, 8465, 1) 									// Подсчет количества сложений для алгоритма сна
+						GetDataEx(SredSumChastot, "Local HMI", LW, 8464, 1)									// Средняя сумма частот
+						if IterSumSleep >= 50 then															// Проверяем достигло ли количество суммирований частоты 5
+							SredSumChastot =  SredSumChastot / 50 											// Расчитываем среднию частоту за пять итераций
+							if regspch[1] <= SredSumChastot + 2 and regspch[1] >= SredSumChastot - 2 then 	// Проверяем находится ли среднее значение частот в пределах гистерезиса
+								GetDataEx(TempInt, "Local HMI", LW, 8468, 1)                                // Штамп времени для алгоритма сна
+								GetDataEx(temp, "Local HMI", RW, 1224, 1) 									// Время включения спящего режима
+								if SysMs >= TempInt + temp or (TempInt + Temp >= TempInt and SysMs < TempInt) then 											// Задержка для алгоритма сна
+									SleepAlgoritm = 1 														// Если частота в пределах гистерезиса ставим пометку о запуске алгоритма сна
+									SetDataEx(SleepAlgoritm, "Local HMI", LB, 7458, 1)						// Запоминаем включение алгоритма сна
+									SetDataEx(OutputPID, "Local HMI", LW, 8466, 1)							// Запоминаем текущее значение ПИДа
+									SetDataEx(SysMs, "Local HMI", LW, 8468, 1)                              // Штамп времени для алгоритма сна
+								end if
+							else	 																		// Если среднее частоты не попало в канал гистерезиса
+								SleepAlgoritm = 0															// Обнуляем выполнение данного алгоритма
+								temp = 0
+								SetDataEx(SleepAlgoritm, "Local HMI", LB, 7458, 1) 							// Идентификатор запуска алгоритма сна
+								SetDataEx(temp, "Local HMI", LW, 8466, 1)									// Частота алгоритма сна
+								SetDataEx(temp, "Local HMI", LW, 8464, 1)									// Средняя сумма частот
+								SetDataEx(temp, "Local HMI", LW, 8465, 1)									// Подсчет количества сложений для алгоритма сна
+							end if 
+						else 																				// Если число сложений частоты не достигла нужного
+								SredSumChastot =  SredSumChastot + regspch[1] 									// Складываем текущею частоту с сумой предыдущих
+								IterSumSleep = IterSumSleep + 1 												// Увеличиваем индекс сложений
+								SetDataEx(SredSumChastot, "Local HMI", LW, 8464, 1)								// Средняя сумма частот
+								SetDataEx(IterSumSleep, "Local HMI", LW, 8465, 1) 								// Подсчет количества сложений для алгоритма сна
+						end if
+					else 																					// Если алгиритм сна уже запустился
+						GetDataEx(SleepOutput, "Local HMI", LW, 8466, 1)									// Получаем значение выхода слипа
+						if KolichestvoNsRun >= 2 then 														// И если число работающих насосов больше 1-го
+							if SleepOutput > MinimalChastotaPH then 									// Проверяем превышает ли выход алгоритма сна минимальную частоту, если да продолжаем понижать          
+								SleepOutput = SleepOutput - 100
+							else
+								SleepOutput = MinimalChastotaPH
+							end if
+						else
+							SleepOutput = SleepOutput - 100 												// Уменьшаем выходную переменную
+							if SleepOutput <= 0 or SleepOutput >= 21000 then 								// Проверяем порали отключать алгоритм по достижению 0																// Обнуляем количество итераций
+								SleepOutput = 0
+							end if
+						end if
+						OutputPID = SleepOutput
+						SetDataEx(SleepOutput, "Local HMI", LW, 8466, 1) 									// Запоминаем новое значение выхода слипа
+					end if
+				else
+					if SleepAlgoritm then 																	// Если алгоритм был включин обнуляем все
+						GetDataEx(SleepOutput, "Local HMI", LW, 8466, 1) 									// Считываем новое значение выхода слипа
+						if SleepOutput <= 200 Then 															// Если алгоритм сня уже отработал
+							if BarDD2 <= Setpoint - 50 then 												// Проверяем давление если меньше уставки - 50
+								temp = 0
+								SetDataEx(temp, "Local HMI", LW, 8466, 1)									// Частота алгоритма сна
+								SetDataEx(temp, "Local HMI", LB, 7458, 1) 									// Идентификатор запуска алгоритма сна
+								SetDataEx(temp, "Local HMI", LW, 8464, 1)									// Средняя сумма частот
+								SetDataEx(temp, "Local HMI", LW, 8465, 1)									// Подсчет количества сложений для алгоритма сна
+							else
+								OutputPID = SleepOutput
+							end if
+						else
+							temp = 0
+							SleepAlgoritm = 0
+							SetDataEx(temp, "Local HMI", LW, 8466, 1)										// Частота алгоритма сна
+							SetDataEx(SleepAlgoritm, "Local HMI", LB, 7458, 1) 								// Идентификатор запуска алгоритма сна
+							SetDataEx(temp, "Local HMI", LW, 8464, 1)										// Средняя сумма частот
+							SetDataEx(temp, "Local HMI", LW, 8465, 1)										// Подсчет количества сложений для алгоритма сна
+						end if
+					end if
+				end if
+			end if
+		end if
