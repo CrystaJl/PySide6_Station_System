@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QApplication, QWidget
 from PySide6.QtCore import Qt
 
 from UI.Ui_System_Station_Main_window import Ui_System_Station_Main_window
-from MODULES.Settings import System_Station_Main_window_settings
+from MODULES.Settings import System_Station_Main_window_settings, GraphsViewer
 from MODULES.JsonParser import Json_parser
 from MAIN.PasswordWindow import Password_window
 from MAIN.UpdateAttributeWindow import Update_Attribute_window
@@ -17,7 +17,7 @@ class System_Station_Main_window(QWidget, Ui_System_Station_Main_window, System_
         self.giveTimer()
         self.timeChanger()
         
-        from MODULES.Settings import GraphsViewer
+        
         self.graph_viewer = GraphsViewer(self.main_graphicsView)
         self.graph_viewer.main()
 

@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QPushButton, QLabel, QApplication, QGraphicsScene, QGraphicsLineItem, QVBoxLayout, QWidget, QMainWindow, QGraphicsView
 from PySide6.QtGui import QIcon, QPixmap, QPainter, QPen
-from PySide6.QtCore import Qt, QTimer, QTime, QDateTime
+from PySide6.QtCore import Qt, QTimer, QTime, QDateTime, QThread, QObject, Signal, Slot
 from PySide6.QtSvg import QSvgRenderer
 import json
 import os
@@ -1729,9 +1729,13 @@ class Update_Attribute_Window_settings(Global_Keypad_settings):
 #создание графиков
 #######################################################################################################################################################
 #######################################################################################################################################################
-class GraphsViewer:
+class GraphsViewer(QObject):
+    update_signal = Signal()
+
     def __init__(self, main_graphics_view):
+        super().__init__()
         self.main_graphics_view = main_graphics_view
+        self.update_signal.connect(self.update_json_and_graph)
 
     def load_json_data(self, json_file):
         try:
@@ -1751,6 +1755,11 @@ class GraphsViewer:
                 return
             
             scene = graphics_view.scene()
+            if not scene:
+                print("No scene found, creating a new one.")
+                scene = QGraphicsScene(graphics_view)
+                graphics_view.setScene(scene)
+
             scene.clear()
             pen = QPen(Qt.blue)
             if 'values' in data:
@@ -1778,7 +1787,7 @@ class GraphsViewer:
 
             new_value = random.randint(1, 500)
             values = data.get('values', [])
-            if len(values) >= 17:
+            if len(values) >= 7:
                 values = values[1:] + [new_value]
             else:
                 values.append(new_value)
@@ -1792,14 +1801,7 @@ class GraphsViewer:
         except Exception as e:
             print(f"Error updating JSON: {e}")
 
-
-    def on_modified(self, event, graphics_view, json_file):
-        print(f"File modified: {event.src_path}")
-        if event.src_path.endswith(json_file):
-            self.update_graph(graphics_view, json_file)
-
-    
-
+    @Slot()
     def update_json_and_graph(self):
         try:
             print("update_json_and_graph method called")
@@ -1837,13 +1839,11 @@ class GraphsViewer:
             observer.start()
             
             self.timer = QTimer()
-            self.timer.timeout.connect(self.update_json_and_graph)
-            self.timer.start(1000)  # Обновление каждые 5 секунд
+            self.timer.timeout.connect(self.update_signal)
+            self.timer.start(3000)  # Обновление каждые 1 секунду
             print("Timer started")
         except Exception as e:
             print(f"Error in main method: {e}")
-
-
 #######################################################################################################################################################
 #######################################################################################################################################################
 #
