@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QPushButton, QLabel, QApplication, QGraphicsScene, QGraphicsLineItem, QVBoxLayout, QWidget, QMainWindow, QGraphicsView
 from PySide6.QtGui import QIcon, QPixmap, QPainter, QPen
-from PySide6.QtCore import Qt, QTimer, QTime, QDateTime, QThread, QObject, Signal, Slot
+from PySide6.QtCore import Qt, QTimer, QTime, QDateTime, QThread, QObject, Signal, Slot, QEvent
 from PySide6.QtSvg import QSvgRenderer
 import json
 import os
@@ -1736,6 +1736,8 @@ class GraphsViewer(QObject):
         super().__init__()
         self.main_graphics_view = main_graphics_view
         self.update_signal.connect(self.update_json_and_graph)
+        self.main_graphics_view.grabGesture(Qt.PinchGesture)
+        self.main_graphics_view.viewport().installEventFilter(self)
 
     def load_json_data(self, json_file):
         try:
@@ -1753,7 +1755,7 @@ class GraphsViewer(QObject):
             if not data:
                 print("No data to update.")
                 return
-            
+
             scene = graphics_view.scene()
             if not scene:
                 print("No scene found, creating a new one.")
@@ -1761,7 +1763,8 @@ class GraphsViewer(QObject):
                 graphics_view.setScene(scene)
 
             scene.clear()
-            pen = QPen(Qt.blue)
+            pen = QPen(Qt.red)
+            pen.setWidth(5)
             if 'values' in data:
                 values = data['values']
                 print(f"Graph values: {values}")
@@ -1769,7 +1772,7 @@ class GraphsViewer(QObject):
                     line = QGraphicsLineItem(i * 100, values[i], (i + 1) * 100, values[i + 1])
                     line.setPen(pen)
                     scene.addItem(line)
-                
+
                 min_y = min(values) if values else 0
                 max_y = max(values) if values else 0
                 scene.setSceneRect(0, min_y, len(values) * 100, max_y)
@@ -1785,9 +1788,9 @@ class GraphsViewer(QObject):
             with open(json_file, 'r') as file:
                 data = json.load(file)
 
-            new_value = random.randint(1, 500)
+            new_value = random.randint(1, 300)
             values = data.get('values', [])
-            if len(values) >= 7:
+            if len(values) >= 17:
                 values = values[1:] + [new_value]
             else:
                 values.append(new_value)
@@ -1814,36 +1817,33 @@ class GraphsViewer(QObject):
     def main(self):
         try:
             json_file = 'testing.json'
-            
+
             graphics_view = self.main_graphics_view
             graphics_view.setObjectName("main_graphicsView")
-            
+
             scene = QGraphicsScene(graphics_view)
             graphics_view.setScene(scene)
-            
+
             self.update_graph(graphics_view, json_file)
-            
-            def handle_event(event):
-                try:
-                    self.on_modified(event, graphics_view, json_file)
-                except Exception as e:
-                    print(f"Error handling file modification event: {e}")
-            
-            class Handler(FileSystemEventHandler):
-                def on_modified(self, event):
-                    handle_event(event)
-            
-            observer = Observer()
-            event_handler = Handler()
-            observer.schedule(event_handler, path='.', recursive=False)
-            observer.start()
-            
+
             self.timer = QTimer()
             self.timer.timeout.connect(self.update_signal)
-            self.timer.start(3000)  # Обновление каждые 1 секунду
+            self.timer.start(3000)  # Обновление каждые 3 секунды
             print("Timer started")
         except Exception as e:
             print(f"Error in main method: {e}")
+
+    def eventFilter(self, source, event):
+        if event.type() == QEvent.Gesture and event.gesture(Qt.PinchGesture):
+            return self.pinchTriggered(event.gesture(Qt.PinchGesture))
+        return super().eventFilter(source, event)
+
+    def pinchTriggered(self, gesture):
+        if gesture.state() == Qt.GestureFinished:
+            scaleFactor = gesture.totalScaleFactor()
+            self.main_graphics_view.scale(scaleFactor, scaleFactor)
+        return True
+
 #######################################################################################################################################################
 #######################################################################################################################################################
 #

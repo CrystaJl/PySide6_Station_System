@@ -492,27 +492,23 @@
         0,
         0
     ],
-
     "10SetpointWeekdaysMorning": 66.55,
     "10SetpointWeekdaysDay": 0.0,
     "10SetpointWeekdaysEvening": 0.0,
     "10SetpointWeekdaysNights": 66.0,
-
     "10SetpointWeekendsMorning": 0,
     "10SetpointWeekendsDay": 0,
     "10SetpointWeekendsEvening": 0,
     "10SetpointWeekendsNights": 0,
-    "10TypeOfDayMonday": 2,
-
-    "10TypeOfDayTuesday": 0,
+    "10TypeOfDayMonday": 0,
+    "10TypeOfDayTuesday": 2,
     "10TypeOfDayWednesday": 0,
     "10TypeOfDayThursday": 2,
     "10TypeOfDayFriday": 0,
     "10TypeOfDaySaturday": 0,
     "10TypeOfDaySunday": 0,
-    "10WeekdayMorningHour": 6,
+    "10WeekdayMorningHour": 23,
     "10WeekdayMorningMinutes": 6,
-
     "10WeekdayDayHour": 7,
     "10WeekdayDayMinutes": 5,
     "10WeekdayEveningHour": 6,
