@@ -584,6 +584,7 @@ class System_Station_Main_window_settings:
         self.panel_settings_gateway_2_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_gateway_2', 0, 255))                                    #new атрибут
         self.panel_settings_gateway_3_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_gateway_3', 0, 255))                                    #new атрибут
         self.panel_settings_gateway_4_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_gateway_4', 0, 255))                                    #new атрибут
+        self.panel_settings_gateway_4_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[4], 'panel_settings_gateway_4', 0, 255))                                    #new атрибут
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Контакты
@@ -602,7 +603,6 @@ class System_Station_Main_window_settings:
 
         # self.station_settings_engine_parameters_read_settings_pushButton.clicked.connect(self.show_password_window)                        #переименовать атрибут
         # self.station_settings_engine_parameters_write_settings_pushButton.clicked.connect(self.show_password_window)                       #переименовать атрибут
-
 ###################################################################################################################################################################################################################################################################################################################################################
         #Настройки датчиков                    (внутри настроек станции)
         self.station_settings_sensors_settings_milliamps_at_suction_16RangeSuctionSensor_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[0], '16RangeSuctionSensor', 0.00, 99.99))
