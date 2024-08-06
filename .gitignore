@@ -1,5 +1,6 @@
 test.json
 testing.json
+*.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
