@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file '(3)KeypadWindowALPHAX1vwsnxq.ui'
+## Form generated from reading UI file '(4)KeypadWindowALPHAX2qeytmz.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.1
+## Created by: Qt User Interface Compiler version 6.7.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -88,7 +88,7 @@ class Ui_Keypad_window(object):
         self.number_8_pushButton.setFont(font)
         self.reject_pushButton = QPushButton(self.Keypad_Window_Main_frame)
         self.reject_pushButton.setObjectName(u"reject_pushButton")
-        self.reject_pushButton.setGeometry(QRect(230, 250, 60, 60))
+        self.reject_pushButton.setGeometry(QRect(156, 320, 60, 60))
         font2 = QFont()
         font2.setFamilies([u"Arial"])
         font2.setPointSize(20)
@@ -96,7 +96,7 @@ class Ui_Keypad_window(object):
         self.reject_pushButton.setFont(font2)
         self.accept_pushButton = QPushButton(self.Keypad_Window_Main_frame)
         self.accept_pushButton.setObjectName(u"accept_pushButton")
-        self.accept_pushButton.setGeometry(QRect(156, 320, 134, 61))
+        self.accept_pushButton.setGeometry(QRect(229, 320, 61, 61))
         self.accept_pushButton.setFont(font)
         self.accept_pushButton.setStyleSheet(u"background-color: rgb(0,140,0);")
         self.number_4_pushButton = QPushButton(self.Keypad_Window_Main_frame)
@@ -120,6 +120,11 @@ class Ui_Keypad_window(object):
         self.delete_previous_pushButton.setObjectName(u"delete_previous_pushButton")
         self.delete_previous_pushButton.setGeometry(QRect(230, 180, 60, 60))
         self.delete_previous_pushButton.setFont(font2)
+        self.set_minus_pushButton = QPushButton(self.Keypad_Window_Main_frame)
+        self.set_minus_pushButton.setObjectName(u"set_minus_pushButton")
+        self.set_minus_pushButton.setGeometry(QRect(230, 250, 60, 60))
+        self.set_minus_pushButton.setFont(font)
+        self.set_minus_pushButton.setStyleSheet(u"")
 
         self.retranslateUi(Keypad_window)
         self.reject_pushButton.clicked.connect(Keypad_window.close)
@@ -146,5 +151,6 @@ class Ui_Keypad_window(object):
         self.number_2_pushButton.setText(QCoreApplication.translate("Keypad_window", u"2", None))
         self.number_3_pushButton.setText(QCoreApplication.translate("Keypad_window", u"3", None))
         self.delete_previous_pushButton.setText(QCoreApplication.translate("Keypad_window", u"<", None))
+        self.set_minus_pushButton.setText(QCoreApplication.translate("Keypad_window", u"-", None))
     # retranslateUi
 

@@ -663,12 +663,12 @@ class System_Station_Main_window_settings:
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #Настройки пид-регистрации                             (внутри инженерного меню)
-        self.engineering_menu_pid_registration_settings_proportional_coefficient_17ProportionalCoefficient_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.engineering_menu_pid_registration_settings_integral_coefficient_17IntegralCoefficient_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.engineering_menu_pid_registration_settings_differential_coefficient_17DifferentialCoefficient_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
-        self.engineering_menu_pid_registration_settings_constant_of_integration_17IntegrationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.engineering_menu_pid_registration_settings_proportional_coefficient_17ProportionalCoefficient_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '17ProportionalCoefficient', -5.999, 5.999))
+        self.engineering_menu_pid_registration_settings_integral_coefficient_17IntegralCoefficient_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '17IntegralCoefficient', -5.999, 5.999))
+        self.engineering_menu_pid_registration_settings_differential_coefficient_17DifferentialCoefficient_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '17DifferentialCoefficient', -5.999, 5.999))
+        self.engineering_menu_pid_registration_settings_constant_of_integration_17IntegrationTime_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '17IntegrationTime', -5.999, 5.999))
         # self.engineering_menu_pid_registration_settings_ustavka_change_10SetpointModePid_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000)) бит проблема
-        self.engineering_menu_pid_registration_settings_ustavka_for_change_17SetpointPID_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '', 100000, 10000000))
+        self.engineering_menu_pid_registration_settings_ustavka_for_change_17SetpointPID_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '17SetpointPID', 0.000, 1.000))
 
 ###################################################################################################################################################################################################################################################################################################################################################
         #PLC                                                   (внутри инженерного меню)
