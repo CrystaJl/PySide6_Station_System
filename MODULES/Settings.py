@@ -540,7 +540,7 @@ class System_Station_Main_window_settings:
         self.manager_morning_3_10SetpointWeekdaysMorning_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10SetpointWeekdaysMorning', 0.00, 99.99))
         self.manager_morning_4_10SetpointWeekendsMorning_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10SetpointWeekendsMorning', 0.00, 99.99))
 
-        self.manager_day_1_1_10WeekdayDayHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekdayDayHour', 0, 23))
+        self.manager_10WeekdayDayHour_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekdayDayHour', 0, 23))
         self.manager_day_1_2_10WeekdayDayMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10WeekdayDayMinutes', 0, 59))
         self.manager_day_2_1_10DayOffMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10DayOffMinutes', 0, 23))
         self.manager_day_2_2_10DayOffMinutes_pushButton.clicked.connect(lambda: self.choose_attribute_or_password_window(self.security_levels[3], '10DayOffMinutes', 0, 59))
