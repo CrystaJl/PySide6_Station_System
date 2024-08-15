@@ -1763,24 +1763,62 @@ class GraphsViewer(QObject):
                 graphics_view.setScene(scene)
 
             scene.clear()
-            pen = QPen(Qt.red)
-            pen.setWidth(5)
-            if 'values' in data:
-                values = data['values']
-                print(f"Graph values: {values}")
+
+            # Определение максимальной длины массива данных
+            max_length = max(
+                len(data.get('values_red', [])),
+                len(data.get('values_blue', [])),
+                len(data.get('values_green', [])),
+                len(data.get('values_purple', [])),
+                len(data.get('values_orange', [])),
+                len(data.get('values_yellow', []))
+            )
+
+            # Создание ручек для каждого графика
+            pen_red = QPen(Qt.red, 3)
+            pen_blue = QPen(Qt.blue, 3)
+            pen_green = QPen(Qt.green, 3)
+            pen_purple = QPen(Qt.magenta, 3)
+            pen_orange = QPen(Qt.gray, 3)
+            pen_yellow = QPen(Qt.yellow, 3)
+
+            # Словарь с данными графиков и их цветами
+            graphs = [
+                ('values_red', pen_red),
+                ('values_blue', pen_blue),
+                ('values_green', pen_green),
+                ('values_purple', pen_purple),
+                ('values_orange', pen_orange),
+                ('values_yellow', pen_yellow)
+            ]
+
+            # Рисование графиков
+            for key, pen in graphs:
+                values = data.get(key, [])
                 for i in range(len(values) - 1):
-                    line = QGraphicsLineItem(i * 100, values[i], (i + 1) * 100, values[i + 1])
+                    line = QGraphicsLineItem(i * 50, values[i], (i + 1) * 50, values[i + 1])
                     line.setPen(pen)
                     scene.addItem(line)
 
-                min_y = min(values) if values else 0
-                max_y = max(values) if values else 0
-                scene.setSceneRect(0, min_y, len(values) * 100, max_y)
-                graphics_view.fitInView(scene.sceneRect(), Qt.KeepAspectRatio)
-            else:
-                print("No 'values' key in data.")
+            # Установка границ сцены
+            min_y = min([min(data.get(key, []), default=0) for key, _ in graphs])
+            max_y = max([max(data.get(key, []), default=0) for key, _ in graphs])
+
+            # Установка размеров сцены с учетом максимального количества точек данных и диапазона значений
+            scene_width = max_length * 50
+            scene_height = max_y - min_y
+
+            scene.setSceneRect(0, min_y, scene_width, scene_height)
+
+            # Адаптация графика под размер окна с увеличением вертикального пространства
+            graphics_view.setScene(scene)
+            graphics_view.fitInView(scene.sceneRect(), Qt.IgnoreAspectRatio)  # Используем Qt.IgnoreAspectRatio для полного растяжения
+
         except Exception as e:
             print(f"Error updating graph: {e}")
+
+
+
 
     def update_json(self, json_file):
         try:
@@ -1788,19 +1826,67 @@ class GraphsViewer(QObject):
             with open(json_file, 'r') as file:
                 data = json.load(file)
 
-            new_value = random.randint(1, 300)
-            values = data.get('values', [])
-            if len(values) >= 17:
-                values = values[1:] + [new_value]
+            # Обновляем данные для первого графика (красный)
+            new_value_red = random.randint(0, 10)
+            values_red = data.get('values_red', [])
+            if len(values_red) >= 60:
+                values_red = values_red[1:] + [new_value_red]
             else:
-                values.append(new_value)
+                values_red.append(new_value_red)
+            data['values_red'] = values_red
 
-            data['values'] = values
+            # Обновляем данные для второго графика (синий)
+            new_value_blue = random.randint(10, 30)
+            values_blue = data.get('values_blue', [])
+            if len(values_blue) >= 60:
+                values_blue = values_blue[1:] + [new_value_blue]
+            else:
+                values_blue.append(new_value_blue)
+            data['values_blue'] = values_blue
+
+                        # Обновляем данные для второго графика (синий)
+            new_value_green = random.randint(30, 50)
+            values_green = data.get('values_green', [])
+            if len(values_green) >= 60:
+                values_green = values_green[1:] + [new_value_green]
+            else:
+                values_green.append(new_value_green)
+            data['values_green'] = values_green
+
+                        # Обновляем данные для второго графика (синий)
+            new_value_purple = random.randint(50, 70)
+            values_purple = data.get('values_purple', [])
+            if len(values_purple) >= 60:
+                values_purple = values_purple[1:] + [new_value_purple]
+            else:
+                values_purple.append(new_value_purple)
+            data['values_purple'] = values_purple
+
+                        # Обновляем данные для второго графика (синий)
+            new_value_orange = random.randint(70, 100)
+            values_orange = data.get('values_orange', [])
+            if len(values_orange) >= 60:
+                values_orange = values_orange[1:] + [new_value_orange]
+            else:
+                values_orange.append(new_value_orange)
+            data['values_orange'] = values_orange
+
+                        # Обновляем данные для второго графика (синий)
+            new_value_yellow = random.randint(100, 120)
+            values_yellow = data.get('values_yellow', [])
+            if len(values_yellow) >= 60:
+                values_yellow = values_yellow[1:] + [new_value_yellow]
+            else:
+                values_yellow.append(new_value_yellow)
+            data['values_yellow'] = values_yellow
+
+
 
             with open(json_file, 'w') as file:
                 json.dump(data, file, indent=4)
 
-            print(f"Updated values: {values}")
+            print(f"Updated values (red): {values_red}")
+            print(f"Updated values (blue): {values_blue}")
         except Exception as e:
             print(f"Error updating JSON: {e}")
 
@@ -1828,7 +1914,7 @@ class GraphsViewer(QObject):
 
             self.timer = QTimer()
             self.timer.timeout.connect(self.update_signal)
-            self.timer.start(3000)  # Обновление каждые 3 секунды
+            self.timer.start(1000)  # Обновление каждую секунду
             print("Timer started")
         except Exception as e:
             print(f"Error in main method: {e}")
@@ -1843,6 +1929,7 @@ class GraphsViewer(QObject):
             scaleFactor = gesture.totalScaleFactor()
             self.main_graphics_view.scale(scaleFactor, scaleFactor)
         return True
+
 
 #######################################################################################################################################################
 #######################################################################################################################################################
