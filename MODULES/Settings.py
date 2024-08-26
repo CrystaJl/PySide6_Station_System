@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QPushButton, QLabel, QApplication, QGraphicsScene, QGraphicsLineItem, QVBoxLayout, QWidget, QMainWindow, QGraphicsView
-from PySide6.QtGui import QIcon, QPixmap, QPainter, QPen
+from PySide6.QtGui import QIcon, QPixmap, QPainter, QPen, QColor
 from PySide6.QtCore import Qt, QTimer, QTime, QDateTime, QThread, QObject, Signal, Slot, QEvent
 from PySide6.QtSvg import QSvgRenderer
 import json
@@ -1779,7 +1779,7 @@ class GraphsViewer(QObject):
             pen_blue = QPen(Qt.blue, 3)
             pen_green = QPen(Qt.green, 3)
             pen_purple = QPen(Qt.magenta, 3)
-            pen_orange = QPen(Qt.gray, 3)
+            pen_orange = QPen(QColor(255, 165, 0), 3)
             pen_yellow = QPen(Qt.yellow, 3)
 
             # Словарь с данными графиков и их цветами
